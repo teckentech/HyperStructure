@@ -1,0 +1,678 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+#mainGame {
+  position: absolute; /* Impedisce lo scorrimento della pagina */
+  top: 0;
+  left: 0;
+  width:100%; /* Occupa l'intera larghezza del viewport */
+
+  height: 720px; /* Occupa l'intera altezza del viewport */
+  margin: 0;
+  padding: 0;
+  background-color: #ccc; /* Colore di sfondo */
+  overflow:visible; /* Nasconde l'eventuale contenuto che va oltre le dimensioni */
+}
+
+
+#valute,
+#selectorTab,
+#Menu,
+#componentsSummary,
+#componentsList,
+#energyScreen,
+#hardware,
+#data,
+#refiningLayer,
+#rarityLayer,
+#projects {
+  position: absolute;
+  border: 1px solid black;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#extractor1,
+#extractor3,
+#extractor4 {
+  border: 1px solid blue;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#valute {
+  left: 0%;
+  top: 0%;
+  width: 15%;
+  height: 35%;
+  background-color: #fff;
+}
+
+
+#selectorTab {
+  left: 0%;
+  top: 35%;
+  width: 15%;
+  height: 65%;
+  background-color: #fff;
+}
+
+#Menu {
+  left: 0%;
+  top: 0%;
+  width: 100%;
+  height: 5%;
+  background-color: #4caf50;
+}
+
+#componentsSummary {
+  display: flex;
+  flex-direction: column;
+  right: 0%;
+  top: 50%;
+  width: 24%;
+  height: 50%;
+  background-color: #fff;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+#componentsSummary>div {
+  margin-right: 100%;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+#componentsSummary>div>div {
+  display: flex;
+  flex-direction: column;
+}
+
+#componentTab {
+  right: 0%;
+  top: 0%;
+  width: 24%;
+  height: 20%;
+  background-color: #fff;
+  z-index: 0;
+  position: absolute;
+  border: 1px solid blue;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: auto;
+  /* o scroll */
+}
+
+#componentTab p {
+  margin: 5px 0;
+  /* Modifica la distanza tra i paragrafi come preferisci */
+}
+
+
+#componentsList {
+  overflow-y: scroll;
+  right:0vw;
+  top: 20%;
+  width: 100px;
+  height: 30%;
+  background-color: #fff;
+
+}
+
+#energyScreen {
+  overflow: auto;
+  padding: 0 2rem;
+  left: 15%;
+  top: 5%;
+  width: 61%;
+  height: 95%;
+  z-index: -1;
+}
+
+#quadrato {
+  right: 2%;
+  top: 2%;
+  width: 60px;
+  height: 60px;
+  background-color: #fff;
+  border: 1px solid blue;
+}
+
+
+#refiningLayer {
+  position: absolute;
+  z-index: 20;
+  left: 30%;
+  top: 50%;
+  background-color: lightblue;
+}
+
+#rarityLayer {
+  position: absolute;
+  z-index: 2;
+  left: 70%;
+  top: 20%;
+  background-color: lightgreen;
+}
+
+#test {
+  position: relative;
+  z-index: 2;
+}
+
+#rarityButtons {
+  left: 20%;
+  top: 10%;
+  position: absolute;
+  z-index: 1;
+}
+
+#rarityExtracted {
+  left: 20%;
+  top: 10%;
+  position: absolute;
+  z-index: 2;
+}
+
+#extractor1 {
+  position: relative;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #EEEEEE;
+}
+
+.extractor2 {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#extractor3 {
+  position: relative;
+  background-color: white;
+}
+
+#extractor4 {
+  position: relative;
+  background-color: white;
+  z-index: 2;
+}
+
+
+#projects {
+  position: absolute;
+  height: 235px;
+  width: 200px;
+  left: 30%;
+  top: 30%;
+  display: flex;
+  flex-direction: column;
+  z-index: 3;
+  overflow-y: scroll;
+  background-color: lightsalmon;
+}
+
+.projectSeparator {
+  display: flex;
+  flex-direction: row;
+}
+
+.invests {
+  display: flex;
+  flex-direction: column;
+}
+
+.invests {
+  display: flex;
+  flex-direction: column;
+}
+
+.square {
+  background-color: #ff0000;
+  border: 15px solid green;
+  width: 100px;
+  height: 100px;
+  position: absolute
+}
+
+#square1 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#square2 {
+  margin-left: auto;
+  margin-right: auto;
+  top: 40px;
+  z-index: 1;
+}
+
+#square3 {
+
+  top: 40px;
+  right: 40px;
+  z-index: 1;
+}
+
+#square4 {
+
+  bottom: 10px;
+  left: 40px;
+  z-index: 1;
+}
+
+#square5 {
+
+  bottom: 10px;
+  right: 40px;
+  z-index: 1;
+}
+
+#square6 {
+
+  bottom: 10px;
+  text-align: center;
+  z-index: 1;
+}
+
+.section {
+  position: absolute;
+  z-index: -1;
+}
+
+.section:nth-child(1) {
+  background-color: #5b1e1e;
+  width: 33%;
+  height: 50%;
+  top: 0%;
+  left: 0%;
+}
+
+.section:nth-child(2) {
+  background-color: #4c8d65;
+  width: 34%;
+  height: 50%;
+  top: 0%;
+  left: 33%;
+}
+
+.section:nth-child(3) {
+  background-color: #41288e;
+  width: 33%;
+  height: 50%;
+  top: 0%;
+  right: 0%;
+}
+
+.section:nth-child(4) {
+  background-color: #70245f;
+  width: 33%;
+  height: 50%;
+  bottom: 0%;
+  left: 0%;
+}
+
+.section:nth-child(5) {
+  background-color: #cb2f3c;
+  width: 33%;
+  height: 50%;
+  bottom: 0%;
+  right: 0%;
+}
+
+.section:nth-child(6) {
+  background-color: #97d9c8;
+  width: 34%;
+  height: 50%;
+  bottom: 0%;
+  left: 33%;
+}
+
+#hardware {
+  left: 15%;
+  top: 0%;
+  width: 85%;
+  height: 100%;
+  background-color: #37cdbe;
+}
+
+
+
+#energy {
+  position: absolute;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  /* Aggiunge un margine tra gli elementi */
+  left: 50%;
+  top: 10%;
+  z-index: 20;
+}
+
+.squareEnergy {
+  width: 100px;
+  /* Modifica la larghezza secondo le tue esigenze */
+  height: 100px;
+  /* Assicurati che larghezza e altezza siano uguali per ottenere un quadrato */
+  background-color: lightblue;
+  /* Modifica il colore di sfondo come desideri */
+}
+
+#exploration {
+  position: absolute;
+  padding: 10px;
+  left: 80%;
+  top: 50%;
+}
+
+#ExplorationUpgrades {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px
+}
+
+.dropbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdownExploration {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdownExploration-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdownExploration-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdownExploration-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdownExploration:hover .dropdownExploration-content {
+  display: block;
+}
+
+.dropdownExploration:hover .dropbtn {
+  background-color: #3e8e41;
+}
+
+#data {
+  background-color: lightblue;
+  left: 50%;
+  top: 30%;
+  height: 300px;
+  width: 450px;
+}
+
+#dataCollection {
+  position: absolute;
+  border: 1px solid black;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  height: 100%;
+  width: 150px;
+  top: 0%;
+  left: 0%;
+}
+
+#dataGraphic {
+  position: absolute;
+
+  border: 1px solid black;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  height: 150px;
+  width: 150px;
+  top: 0%;
+  left: 150px;
+}
+
+#dataUpgrade1 {
+  position: absolute;
+
+  border: 1px solid black;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  height: 100%;
+  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  top: 0%;
+
+  pointer-events: none;
+}
+
+#dataUpgrade2 {
+  position: absolute;
+
+  border: 1px solid black;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  height: 100%;
+  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  top: 0%;
+
+  pointer-events: none;
+}
+
+#dataButton1 {
+  position: absolute;
+
+  border: 1px solid black;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  left: 300px;
+  height: 25%;
+  width: 150px;
+  top: 0%;
+}
+
+#dataButton2 {
+  position: absolute;
+
+  border: 1px solid black;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  left: 300px;
+  height: 25%;
+  width: 150px;
+  top: 25%;
+}
+
+#dataGraph {
+  position: absolute;
+
+  border: 1px solid black;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  left: 150px;
+  height: 150px;
+  width: 150px;
+  top: 50%;
+}
+
+#dataSelector {
+  position: absolute;
+
+  border: 1px solid black;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+
+  display: flex;
+  flex-direction: column;
+  left: 300px;
+  height: 50%;
+  width: 150px;
+  top: 50%;
+}
+
+#dataLightProgress {
+  width: 100%;
+  position: relative;
+}
+
+#dataMediumProgress {
+  width: 100%;
+}
+
+#dataHeavyProgress {
+  width: 100%;
+}
+
+#energyTier1 {
+  position: absolute;
+
+  left: 50%;
+  transform: translateX(-50%);
+  top: 500px;
+}
+
+#energyTier2 {
+  position: absolute;
+
+  left: 50%;
+  transform: translateX(-50%);
+  top: 500px;
+}
+
+#squareEnergy1 {
+  position: absolute;
+
+  top: -100px;
+
+}
+
+#squareEnergy2 {
+  position: absolute;
+
+  left: 100px;
+
+  top: 100px;
+
+}
+
+#squareEnergy3 {
+  position: absolute;
+
+  left: -100px;
+
+  top: 100px;
+}
+
+#squareEnergy4 {
+  position: absolute;
+
+  top: 300px;
+
+}
+
+#squareEnergy5 {
+  position: absolute;
+
+  left: 300px;
+
+  top: -300px;
+
+}
+
+#squareEnergy6 {
+  position: absolute;
+
+  left: -300px;
+
+  top: -300px;
+}
+
+.progress-bar {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: #76c7c0;
+  width: 0;
+  transition: width 0.25s;
+  position: relative;
+}
+
+.progress-bar span {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 5px;
+  font-size: 0.8em;
+}
+
+#dataLightLabel::before {
+  content: attr(data-label);
+}
+
+#dataMediumLabel::before {
+  content: attr(data-label);
+  top: 100%;
+}
+
+#dataHeavyLabel::before {
+  content: attr(data-label);
+}
