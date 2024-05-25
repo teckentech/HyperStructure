@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+
+    <title>HyperStructure</title>
+    <link rel="stylesheet" href="cssPrototypes.css">
+    <style>
+        body,
+        html {
+            margin: 0px;
+            padding: 0px;
+            font-family: Courier new, monospace;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: moz-none;
+            -ms-user-select: none;
+            user-select: none;
+            background: #ccc;
+            overflow-y: auto;
+        }
+
+        #myProgress {
+            width: 100%;
+            background-color: #e02929;
+        }
+
+        #myBar {
+            width: 100%;
+            height: 30px;
+            background-color: #04aa6d;
+            text-align: center;
+            line-height: 30px;
+            color: #944444;
+        }
+
+        #Science {
+            width: 100%;
+        }
+
+        .grid-container {
+            border: 5px solid red;
+            border-color: #5013c3;
+        }
+
+        .grid-item {
+            border: 5px solid red;
+            border-color: #45c313;
+        }
+
+        .wrapper {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            grid-auto-rows: minmax(100px, auto);
+            border: 5px solid red;
+            border-color: red;
+        }
+
+        #Base {
+            position: relative;
+            color: blue;
+            width: 50%;
+            margin: auto;
+        }
+
+        #firstRow {
+            position: relative !important;
+            color: blue !important;
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: center !important;
+        }
+
+        #secondRow {
+            position: relative !important;
+            color: blue !important;
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: space-between !important;
+        }
+
+        #thirdRow {
+            position: relative !important;
+            color: blue !important;
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: center !important;
+        }
+
+        .item {
+            /* Misc */
+            border: 1px solid #cbd5e0;
+            height: 100px;
+            width: 100px;
+            background-color: red;
+        }
+
+        #baseSelector {
+            /* Misc */
+            border: 1px solid #cbd5e0;
+            height: 100px;
+            width: 100px;
+            background-color: rgb(45, 201, 10);
+        }
+    </style>
+</head>
+
+<body>
+        <div id="mainGame">
+            <div id="ui">
+
+                <div id="valute">
+                    <p id="structureBuilt">0 Structure Points</p>
+                    <p id="showSciencePoints">0 Science Points</p>
+                    <button onclick="addCells(1000)">aggiungi 10 celle</button>
+                    <button onclick="resetSave()">resetSave</button>
+                </div>
+
+                <div id="selectorTab">
+                    <div id="navigateButtons">
+                        <button id="coreTab" onclick="tab('core')">Core</button>
+                        <button id="hardwareTab" onclick="tab('hardware')">Hardware</button>
+                        <button id="softwareTab" onclick="tab('software')">Software</button>
+                        <button id="communicationTab" onclick="tab('communication')">Communication</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="hardware">
+                <div id="component1">
+
+                    <div id="refiningLayer">
+                        <div style="text-align: center" id="extractor1">
+                            <div>EXTRACTOR</div>
+                            <div class="extractorValue">0</div>
+                        </div>
+                        <div class="extractor2" style="display: flex; flex-direction:row;">
+                            <div id="extractor3">
+                                <div class="extractors1">description</div>
+                                <button id="buyExtractor">EXTRACTORS</button>
+                                <div class="extractors2">level + price</div>
+                            </div>
+                            <div id="extractor4">
+                                <div class="speedExtractors1">description</div>
+                                <button id="buySpeedExtractor">SPEED</button>
+                                <div class="speedExtractors2">level + price</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="rarityLayer">
+                        <button id="increaseRarityButton" class="rarity1">INCREASE RARITY</button>
+                        <button id="selectedRarity">selected</button>
+                        <div data-value="" id="rarityExtracted"></div>
+                        <div><button class="rarity" data-value="" onclick="raritySelected('t0')"></button></div>
+                        <div><button class="rarity" data-value="" onclick="raritySelected('t1')"></button></div>
+                        <div><button class="rarity" data-value="" onclick="raritySelected('t2')"></button></div>
+                        <div><button class="rarity" data-value="" onclick="raritySelected('t3')"></button></div>
+                        <div><button class="rarity" data-value="" onclick="raritySelected('t4')"></button></div>
+                        <div><button class="rarity" data-value="" onclick="raritySelected('t5')"></button></div>
+                        <div><button class="rarity" data-value="" onclick="raritySelected('t6')"></button></div>
+                        <div><button class="rarity" data-value="" onclick="raritySelected('t7')"></button></div>
+                        <div><button class="rarity" data-value="" onclick="raritySelected('t8')"></button></div>
+                        <div><button class="rarity" data-value="" onclick="raritySelected('t9')"></button></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="software">
+                <div id="component2">
+                    <div id="projects">
+                        PROJECTS
+                        <div id="projectUtility">
+                            <div id="unlockable1">
+                                <div id="unlockable1Box"></div>
+                                <button id="unlockable1Button" class='projectButtons'>BUY</button>
+                            </div>
+                            <div id="unlockable2">
+                                <div id="unlockable2Box"></div>
+                                <button id="unlockable2Button" class='projectButtons'>BUY</button>
+
+                            </div>
+                        </div>
+
+                        <div id="projectUnlockables">
+                            <div id="unlockable3">
+                                <div id="unlockable3Box"></div>
+                                <button id="unlockable3Button" class='projectButtons'>BUY</button>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div id="data">
+                        <div id="dataCollection">
+                            <div id="lightDataCollection">LIGHT</div>
+                            <div id="collectable1"></div>
+                            <div id="mediumDataCollection">MEDIUM</div>
+                            <div id="collectable2"></div>
+                            <div id="heavyDataCollection">HEAVY</div>
+                        </div>
+                        <div id="dataGraphic">
+                            PLACEHOLDER
+                        </div>
+                        <div id="dataUpgrades">
+                            <button id="dataButton1">
+                                <div data-value="" id="dataUpgrade1"></div>
+                            </button>
+                            <button id="dataButton2">
+                                <div data-value="" id="dataUpgrade2"></div>
+                            </button>
+                        </div>
+                        <div id="dataGraph">
+                            <div id="dataLightProgress" class="progress-bar">
+                                <div id="dataLightProgressBar" class="progress-bar-fill"></div>
+                                <span id="dataLightLabel" class="progress-label" data-label="test"></span>
+                            </div>
+                            <div id="dataMediumProgress" class="progress-bar">
+                                <div id="dataMediumProgressBar" class="progress-bar-fill"></div>
+                                <span id="dataMediumLabel" class="progress-label" data-label="test"></span>
+                            </div>
+                            <div id="dataHeavyProgress" class="progress-bar">
+                                <div id="dataHeavyProgressBar" class="progress-bar-fill"></div>
+                                <span id="dataHeavyLabel" class="progress-label" data-label="test"></span>
+                            </div>
+                        </div>
+                        <div id="dataSelector">
+                            <button id="dataLight">
+                                <div id="dataLightWait" value="0" max="100">Light</div>
+                            </button>
+                            <button id="dataMedium">
+                                <div id="dataMediumWait" value="0" max="100">Medium</div>
+                            </button>
+                            <button id="dataHeavy">
+                                <div id="dataHeavyWait" value="0" max="100">Heavy</div>
+                            </button>
+                            <button id="dataNull">ferma</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div id="communication">
+                <div id="component3">
+
+                    <div id="energyScreen">
+                        <div style="position: absolute; left: 1000px; top: 0px">.</div>
+                        <div style="position: absolute; left: 0px; top: 0px">.</div>
+                        <div style="position: absolute; left: 1000px; top: 1000px">.</div>
+                        <div style="position: absolute; left: 0px; top: 1000px">.</div>
+                        <div id="energy">
+                            <div id="energyTier1">
+                                <div class="squareEnergy" id="squareEnergy1">
+                                    <span id="energy1"></span>
+                                    <button id="energy1Bottone">Buy!</button>
+                                </div>
+                                <div class="squareEnergy" id="squareEnergy2">
+                                    <span id="energy2"></span>
+                                    <button id="energy2Bottone">Buy!</button>
+                                </div>
+                                <div class="squareEnergy" id="squareEnergy3">
+                                    <span id="energy3"></span>
+                                    <button id="energy3Bottone">Buy!</button>
+                                </div>
+                            </div>
+                            <div id="energyTier2">
+                                <div class="squareEnergy" id="squareEnergy4">
+                                    <span id="energy4"></span>
+                                    <button id="energy4Bottone">Buy!</button>
+                                </div>
+                                <div class="squareEnergy" id="squareEnergy5">
+                                    <span id="energy5"></span>
+                                    <button id="energy5Bottone">Buy!</button>
+                                </div>
+                                <div class="squareEnergy" id="squareEnergy6">
+                                    <span id="energy6"></span>
+                                    <button id="energy6Bottone">Buy!</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="exploration">
+                        <div id="exploration1">
+                            <progress class="myBar" id="exploration1Progress" value="0" max="100"></progress>
+                            <div class="explorationSelection" id="explorationA">
+
+                            </div>
+                            <div class="dropdownExploration">
+                                <button id="explorationAButton" class="dropbtn">Select</button>
+                                <div class="dropdownExploration-content">
+                                    <div>
+                                        <button onclick="getExplorationSelected('explorationA1')">Catch Space
+                                            Dust</button>
+                                    </div>
+                                    <div>
+                                        <button onclick="getExplorationSelected('explorationA2')">Catch
+                                            Asteroids</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="exploration2">
+                            <progress class="myBar" id="exploration1Progress" value="0" max="100"></progress>
+                            <div class="explorationSelection" id="explorationB">
+
+                            </div>
+                            <div class="dropdownExploration">
+                                <button id="explorationBButton" class="dropbtn">Select</button>
+                                <div class="dropdownExploration-content">
+                                    <div>
+                                        <button onclick="getExplorationSelected('explorationB1')">Glimpse in the
+                                            sun</button>
+                                    </div>
+                                    <div>
+                                        <button onclick="getExplorationSelected('explorationB2')">Glimpse in a black
+                                            hole</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div id="core">
+                <div id="componentSelector">
+                    <div style="position: absolute; left: 50%; top: 50%; transform: translateX(-50%);"
+                        id="baseSelector">
+                        <div style="position: absolute; top: -200px;" class="item">
+                            <button onclick="showComponents('components1')" id="components1Module"
+                                style="height: 100px; width: 100px;  max-height: 100px; max-width: 100px; background: url(); background-size: contain;">
+                            </button>
+                        </div>
+
+                        <div style="position: absolute; left: 200px; top: -75px; transform: translateX(-50%)"
+                            class="item">
+                            <button onclick="showComponents('components2')" id="components2Module"
+                                style="height: 100px; width: 100px;  max-height: 100px; max-width: 100px; background: url(); background-size: contain;">
+                            </button>
+                        </div>
+
+                        <div style="position: absolute ; right: 200px; top: -75px; transform: translateX(50%)"
+                            class="item">
+                            <button onclick="showComponents('components3')" id="components3Module"
+                                style="height: 100px; width: 100px; max-height: 100px; max-width: 100px; background: url(); background-size: contain"></button>
+                        </div>
+
+                        <div style="position: absolute; left: -200px; top: 50px; transform: translateX(50%)"
+                            class="item">4
+                        </div>
+
+                        <div style="position: absolute; left: 200px; top: 50px; transform: translateX(-50%)"
+                            class="item">5
+                        </div>
+
+                        <div style="position: absolute; left: 0px; top: 175px" class="item">6
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="componentInfo">
+                    <div id="componentsSummary">
+                        <div id="hardwareSummary">
+                            <div>Hardware</div>
+                            <div class="HardwareEffect1">parola</div>
+                            <div class="HardwareEffect2">parola</div>
+                        </div>
+                        <div id="softwareSummary">
+                            <div>Software</div>
+                            <div class="SoftwareEffect1">parola</div>
+                            <div class="SoftwareEffect2">parola</div>
+                        </div>
+                        <div id="communicationSummary">
+                            <div>Communication</div>
+                            <div class="CommunicationEffect1">parola</div>
+                            <div class="CommunicationEffect2">parola</div>
+                        </div>
+                        <div id="x1Summary">
+                            <div>???</div>
+                            <div>parola </div>
+                            <div>parola </div>
+                        </div>
+                        <div id="x2Summary">
+                            <div>???</div>
+                            <div>parola </div>
+                            <div>parola</div>
+                        </div>
+                        <div id="x3Summary">
+                            <div>???</div>
+                            <div>parola</div>
+                            <div>parola</div>
+                        </div>
+                    </div>
+                    <div id="componentTab">
+                        <p id="componentRow1"></p>
+                        <p id="componentRow2"></p>
+                        <p id="componentRow3"></p>
+                        <p id="componentRow4"></p>
+                        <p id="componentRow5"></p>
+                        <p id="componentRow6"></p>
+                    </div>
+                    <div id="componentsList">
+                        <div class="flex-container" style="flex-direction: right" id="components1">
+                            <div id="components1Tier1">
+                                <button id="token1" onclick=""
+                                    style="background-image: 'images/token_1.jpg;'; width: 60px; height: 60px"></button>
+                                <button id="token2" onclick=""
+                                    style="background-image: 'images/token_1.jpg;'; width: 60px; height: 60px"></button>
+                                <button id="" onclick=""
+                                    style="background-image: 'images/token_1.jpg;'; width: 60px; height: 60px"></button>
+                                <button id="" onclick=""
+                                    style="background-image: 'images/token_1.jpg;'; width: 60px; height: 60px"></button>
+                            </div>
+                            <div id="components1Tier2">
+                                <div>
+                                    <button id="" onclick=""
+                                        style="background-image: 'images/token_1.jpg;'; width: 60px; height: 60px"></button>
+                                    <button id="" onclick=""
+                                        style="background-image: 'images/token_1.jpg;'; width: 60px; height: 60px"></button>
+                                    <button id="" onclick=""
+                                        style="background-image: 'images/token_1.jpg;'; width: 60px; height: 60px"></button>
+                                    <button id="" onclick=""
+                                        style="background-image: 'images/token_1.jpg;'; width: 60px; height: 60px"></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex-container" id="components2">
+                            <div id="components2Tier1">
+                                <button id="token5" onclick=""
+                                    style="background-image: 'images/token_1.jpg;'; width: 60px; height: 60px"></button>
+                                <button id="token6" onclick=""
+                                    style="background-image: 'images/token_1.jpg;'; width: 60px; height: 60px"></button>
+                                <button id="" onclick=""
+                                    style="background-image: 'images/token_1.jpg;'; width: 60px; height: 60px"></button>
+                                <button id="" onclick=""
+                                    style="background-image: 'images/token_1.jpg;'; width: 60px; height: 60px"></button>
+                            </div>
+                            <div id="components2Tier2">
+                                <button id="" onclick=""
+                                    style="background-image: 'images/token_1.jpg;'; width: 60px; height: 60px"></button>
+                                <button id="" onclick=""
+                                    style="background-image: 'images/token_1.jpg;'; width: 60px; height: 60px"></button>
+                                <button id="" onclick=""
+                                    style="background-image: 'images/token_1.jpg;'; width: 60px; height: 60px"></button>
+                                <button id="" onclick=""
+                                    style="background-image: 'images/token_1.jpg;'; width: 60px; height: 60px"></button>
+                            </div>
+                        </div>
+
+                        <div class="flex-container" id="components3">
+                            <div id="components3Tier1">
+                                <button id="token3" onclick=""
+                                    style="background-image: 'images/token_1.jpg;'; width: 60px; height: 60px"></button>
+                                <button id="token4" onclick=""
+                                    style="background-image: 'images/token_1.jpg;'; width: 60px; height: 60px"></button>
+                                <button id="" onclick=""
+                                    style="background-image: 'images/token_1.jpg;'; width: 60px; height: 60px"></button>
+                                <button id="" onclick=""
+                                    style="background-image: 'images/token_1.jpg;'; width: 60px; height: 60px"></button>
+                            </div>
+                            <div id="components3Tier2">
+                                <button id="" onclick=""
+                                    style="background-image: 'images/token_1.jpg;'; width: 60px; height: 60px"></button>
+                                <button id="" onclick=""
+                                    style="background-image: 'images/token_1.jpg;'; width: 60px; height: 60px"></button>
+                                <button id="" onclick=""
+                                    style="background-image: 'images/token_1.jpg;'; width: 60px; height: 60px"></button>
+                                <button id="" onclick=""
+                                    style="background-image: 'images/token_1.jpg;'; width: 60px; height: 60px"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <script src="main.js" charset="utf-8" type="text/javascript"></script>
+</body>
+
+</html>
