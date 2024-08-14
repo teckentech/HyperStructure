@@ -1,0 +1,1533 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/* questo mi permette di rendere il gioco ridimensionabile, credo almeno*/
+button,
+.redimension {
+  font-size: 1.25vw;
+}
+
+.redimension1 {
+  font-size: 1.50vw
+}
+
+
+#selectorTab,
+#Menu,
+#componentsSummary,
+#componentsList,
+/*
+#energyScreen,
+*/
+#energyTier1,
+#energy,
+#options,
+#hardware,
+#software,
+#communication,
+#data,
+#refiningLayer,
+#rarityLayer,
+#projects,
+#exploration,
+#loadoutShow,
+#equipButton,
+#removeButton {
+  position: absolute;
+  border: 1px solid black;
+  box-sizing: border-box;
+  padding: 1vw;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#extractor1,
+#extractor3,
+#extractor4 {
+  border: 1px solid blue;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+#valute {
+  position: absolute;
+  left: 0vw;
+  top: 0vh;
+  width: 15vw;
+  height: 35vh;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+
+  background: #000000;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#valute>div {
+  position: relative;
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#valute>div:hover {
+  transform: scale(1.05);
+}
+
+
+#selectorTab {
+  left: 0vw;
+  top: 35vh;
+  width: 15vw;
+  height: 65vh;
+
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+}
+
+#selectorTab>div>button {
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+}
+
+#selectorTab>div>button:hover {
+  transform: scale(1.05);
+} 
+
+#Menu {
+  left: 0vw;
+  top: 0vh;
+  width: 100vw;
+  height: 5vh;
+  background-color: #000000;
+}
+
+#baseSelector {
+  position: absolute;
+  left: 45vw;
+  top: 50vh;
+  transform: translate3D(-55%, 0, 0);
+  background: greenyellow;
+}
+
+
+
+.item {
+  /* Misc */
+  border: 2px solid #000000;
+  border-radius: 5px;
+  height: 7vw;
+  width: 7vw;
+  background-color: #857f7f;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.item button {
+  border: none;
+  border-radius: 2px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  
+}
+
+.item button:hover {
+  transform: scale(1.1);
+}
+
+#loadout {
+  position: absolute;
+  left: 15vw;
+  top: 95vh;
+  height: 5vh;
+  width: 15vw;
+  transform: translate3D(0, -5%, 0);
+  background: #000000;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+}
+
+#loadoutShow {
+  position: absolute;
+  left: 15vw;
+  bottom: 5vh;
+  height: 60vh;
+  width: 15vw;
+  transform: translate3D(0, 0, 0);
+  background: #000000;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+}
+
+#loadoutShow>div>button {
+  background: #000000;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#loadoutShow>div>button:hover {
+  transform: scale(1.05);
+}
+
+#loadoutShow>div>div>button {
+  background: #000000;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#loadoutShow>div>div>button:hover {
+  transform: scale(1.05);
+}
+
+#loadoutName1 {
+  height: 50%;
+}
+
+#loadoutName2 {
+  height: 50%;
+}
+
+#loadoutName3 {
+  height: 50%;
+}
+
+#equipTab {
+  position: absolute;
+  left: 65vw;
+  top: 9vh;
+  height: 5vh;
+  width: 10vw;
+}
+
+#equipButton {
+  position: relative;
+  text-align: center;
+  width: inherit;
+  background: #000000;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#equipButton:hover {
+  transform: scale(1.05);
+}
+
+#removeButton {
+  position: relative;
+  text-align: center;
+  width: inherit;
+  background: #000000;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#removeButton:hover {
+  transform: scale(1.05);
+}
+
+#componentsSummary {
+  right: 0vw;
+  top: 50%;
+  width: 25vw;
+  height: 50%;
+  background-color: #000000;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+}
+
+div {
+  font-size: 1vw;
+  /* Base font size */
+}
+
+#componentsSummary>div {
+  font-size: 1vw;
+  margin-right: 1px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  background: #000000;
+  padding: 10px;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+}
+
+#componentsSummary>div>div {
+  display: flex;
+  flex-direction: column;
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+}
+
+#componentTab {
+  right: 0vw;
+  top: 0%;
+  width: 25vw;
+  height: 20%;
+  z-index: 0;
+  position: absolute;
+  box-sizing: border-box;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: auto;
+  background: #1a1a1a;
+  padding: 10px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(6, auto);
+  border: 1px solid #ffffff;
+  /* Unico bordo */
+}
+
+#componentTab div {
+  width: 100%;
+  /* Assicurati che ogni div figlio occupi il 100% della larghezza */
+
+
+}
+
+#componentsList {
+  overflow-y: auto;
+  right: 0vw;
+  top: 20vh;
+  width: 25vw;
+  height: 30%;
+  background: #1a1a1a;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+}
+
+#quadrato {
+  right: 2%;
+  top: 2%;
+  width: 60px;
+  height: 60px;
+  background-color: #fff;
+  border: 1px solid #ffffff;
+}
+
+
+#refiningLayer {
+  position: absolute;
+  z-index: 1;
+  left: 20vw;
+  top: 50vh;
+  transform: translateY(-50%);
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+}
+
+#refiningLayer>div>div>button {
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#refiningLayer>div>div>button:hover {
+  transform: scale(1.05);
+}
+
+#increaseRarityButtonDiv {
+  pointer-events: none;
+}
+
+#rarityLayer {
+  position: absolute;
+  z-index: 0;
+  left: 60vw;
+  top: 50vh;
+  transform: translateY(-50%);
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+}
+
+#rarityLayer>button {
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+
+  z-index: 1;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#rarityLayer>button>div {
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+
+  pointer-events: none;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#increaseRarityButton {
+  z-index: 2
+}
+
+#rarityButtons {
+  left: 20%;
+  top: 10%;
+  position: absolute;
+  z-index: 0;
+}
+
+#rarityExtracted {
+  left: 20%;
+  top: 10%;
+  position: absolute;
+  z-index: 0;
+}
+
+#extractor1 {
+  position: relative;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+}
+
+.extractor2 {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+}
+
+#extractor3 {
+  position: relative;
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+}
+
+#extractor4 {
+  position: relative;
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  z-index: 1;
+}
+
+
+#projects {
+  position: absolute;
+  height: 60vh;
+  width: 40vw;
+  left: 42vw;
+  top: 50vh;
+  transform: translateY(-50%);
+  z-index: 1;
+  overflow-y: scroll;
+
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#projects > div > div {
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#projectUtility {
+  position: absolute;
+  height: 90%;
+  width: 50%;
+  left: 0%;
+  top: 10%;
+
+  
+}
+
+#projectUnlockables {
+  position: absolute;
+  height: 90%;
+  width: 50%;
+  left: 50%;
+  top: 10%;
+}
+
+
+.projectSeparator {
+  display: flex;
+  flex-direction: row;
+}
+
+.invests {
+  display: flex;
+  flex-direction: column;
+}
+
+.invests {
+  display: flex;
+  flex-direction: column;
+}
+
+.square {
+  background-color: #ff0000;
+  border: 15px solid green;
+  width: 100px;
+  height: 100px;
+  position: absolute
+}
+
+#square1 {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#square2 {
+  margin-left: auto;
+  margin-right: auto;
+  top: 40px;
+  z-index: 1;
+}
+
+#square3 {
+
+  top: 40px;
+  right: 40px;
+  z-index: 1;
+}
+
+#square4 {
+
+  bottom: 10px;
+  left: 40px;
+  z-index: 1;
+}
+
+#square5 {
+
+  bottom: 10px;
+  right: 40px;
+  z-index: 1;
+}
+
+#square6 {
+
+  bottom: 10px;
+  text-align: center;
+  z-index: 1;
+}
+
+.section {
+  position: absolute;
+  z-index: 1;
+}
+
+.section:nth-child(1) {
+  background-color: #5b1e1e;
+  width: 33%;
+  height: 50%;
+  top: 0%;
+  left: 0%;
+}
+
+.section:nth-child(2) {
+  background-color: #4c8d65;
+  width: 34%;
+  height: 50%;
+  top: 0%;
+  left: 33%;
+}
+
+.section:nth-child(3) {
+  background-color: #41288e;
+  width: 33%;
+  height: 50%;
+  top: 0%;
+  right: 0%;
+}
+
+.section:nth-child(4) {
+  background-color: #70245f;
+  width: 33%;
+  height: 50%;
+  bottom: 0%;
+  left: 0%;
+}
+
+.section:nth-child(5) {
+  background-color: #cb2f3c;
+  width: 33%;
+  height: 50%;
+  bottom: 0%;
+  right: 0%;
+}
+
+.section:nth-child(6) {
+  background-color: #97d9c8;
+  width: 34%;
+  height: 50%;
+  bottom: 0%;
+  left: 33%;
+}
+
+#options {
+  left: 15vw;
+  top: 0vh;
+  width: 85vw;
+  height: 100%;
+
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  overflow-y: scroll;
+}
+
+#options>div>button {
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#options>div>button:hover {
+  transform: scale(1.05);
+}
+
+#hardware {
+  left: 15vw;
+  top: 0vh;
+  width: 85vw;
+  height: 100%;
+  background-color: #37cdbe;
+  z-index: 1;
+}
+
+#software {
+  left: 15vw;
+  top: 0vh;
+  width: 85vw;
+  height: 100%;
+  background-color: #37cdbe;
+  z-index: 1;
+}
+
+#communication {
+  left: 15vw;
+  top: 0vh;
+  width: 85vw;
+  height: 100%;
+  background-color: #37cdbe;
+  z-index: 1;
+}
+
+
+
+#energy {
+  width: 30vw;
+  height: 30vw;
+  /* Aggiunge un margine tra gli elementi */
+  left: 20%;
+  top: 20%;
+  z-index: 1;
+
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.squareEnergy {
+  width: 100px;
+  height: 100px;
+  background-color: lightblue;
+
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#exploration {
+  position: absolute;
+  padding: 10px;
+  width: 30vw;
+  height: 30vw;
+  left: 50vw;
+  top: 10vh;
+  background-color: lightskyblue;
+}
+
+#ExplorationUpgrades {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px
+}
+
+#exploration1 {
+  position: absolute;
+  border: 1px solid black;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 50%;
+
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#exploration2 {
+  position: absolute;
+  border: 1px solid black;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  top: 50%;
+  left: 0%;
+  width: 100%;
+  height: 50%;
+
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dropbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdownExploration {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdownExploration-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdownExploration-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdownExploration-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdownExploration:hover .dropdownExploration-content {
+  display: block;
+}
+
+.dropdownExploration:hover .dropbtn {
+  background-color: #3e8e41;
+}
+
+#data {
+  background-color: lightblue;
+  left: 1vw;
+  top: 50vh;
+  transform: translateY(-50%);
+  height: 20vw;
+  width: 40vw;
+
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#dataCollection {
+  position: absolute;
+
+  background: #000000;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  overflow-y: scroll;
+
+  height: 100%;
+  width: 30%;
+  top: 0%;
+  left: 0%;
+}
+
+#dataGraphic {
+  position: absolute;
+
+  background: #000000;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  height: 50%;
+  width: 30%;
+  top: 0%;
+  left: 30%
+}
+
+
+#dataUpgrade1 {
+  font-size: xx-small;
+
+  position: relative;
+
+  border: 0.1vw solid black;
+  box-sizing: border-box;
+  border-radius: 1vw;
+  box-shadow: 0 0 1vw rgba(0, 0, 0, 0.1);
+
+
+  height: 100%;
+  width: 100%;
+  left: 0%;
+  top: 0%;
+
+  pointer-events: none;
+}
+
+#dataUpgrade2 {
+
+  position: relative;
+
+  border: 0.1vw solid black;
+  box-sizing: border-box;
+  border-radius: 1vw;
+  box-shadow: 0 0 1vw rgba(0, 0, 0, 0.1);
+
+
+  height: 100%;
+  width: 100%;
+  left: 0%;
+  top: 0%;
+
+  pointer-events: none;
+}
+
+
+#dataButton1 {
+  position: absolute;
+
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+
+  height: 25%;
+  width: 40%;
+  left: 60%;
+  top: 0%;
+
+}
+
+#dataButton1:hover {
+  transform: scale(1.05);
+}
+
+#dataButton2 {
+  position: absolute;
+
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+
+  height: 25%;
+  width: 40%;
+  left: 60%;
+  top: 25%;
+
+}
+
+#dataButton2:hover {
+  transform: scale(1.05);
+}
+
+#dataGraph {
+  position: absolute;
+
+  background: #000000;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  left: 30%;
+  height: 50%;
+  width: 30%;
+  top: 50%;
+}
+
+#dataSelector {
+  position: absolute;
+
+  background: #000000;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+
+  display: flex;
+  flex-direction: column;
+  left: 60%;
+  height: 50%;
+  width: 40%;
+  top: 50%;
+}
+
+#dataSelector>button {
+  background: #000000;
+  padding: 9px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#dataSelector>button:hover {
+  transform: scale(1.05);
+}
+
+#dataLightProgress {
+  width: 100%;
+  height: 20%;
+  position: relative;
+}
+
+#dataMediumProgress {
+  width: 100%;
+  height: 20%;
+}
+
+#dataHeavyProgress {
+  width: 100%;
+  height: 20%;
+}
+
+.redimensionDataCollection>div {
+  font-size: xx-small;
+}
+
+.redimensionDataCollection {
+  padding: 2px;
+
+  font-size: xx-small;
+
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  background-color: rgb(69, 69, 69);
+}
+
+.redimensionDataUpgrades {
+  font-size: x-small;
+}
+
+.redimensionDataUpgrades>div {
+  font-size: x-small;
+}
+
+
+
+#energyTier1 {
+  position: absolute;
+  width: 30vw;
+  height: 30vw;
+  top: 0%;
+  left: 0%;
+
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#energyTier2 {
+  position: absolute;
+  width: 30vw;
+  height: 30vw;
+  top: 0%;
+  left: 0%;
+
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#squareEnergy1 {
+  position: absolute;
+
+  width: 90%;
+  height: 20%;
+  background-color: #3e8e41;
+
+  top: 30%;
+  left: 50%;
+  transform: translate3d(-50%, -66%, 0);
+
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#squareEnergy2 {
+  position: absolute;
+
+  width: 90%;
+  height: 20%;
+  background-color: #3e8e41;
+
+  top: 40%;
+  left: 50%;
+
+  transform: translate3d(-50%, 0, 0);
+
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#squareEnergy3 {
+  position: absolute;
+
+  width: 90%;
+  height: 20%;
+  background-color: #3e8e41;
+
+  top: 70%;
+  left: 50%;
+
+  transform: translate3d(-50%, 0, 0);
+
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#squareEnergy4 {
+  position: absolute;
+
+  width: 10vw;
+  height: 10vw;
+  background-color: #3e8e41;
+
+  top: 40%;
+  left: 50%;
+  transform: translate3d(-50%, -66%, 0);
+
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#squareEnergy5 {
+  position: absolute;
+
+  width: 10vw;
+  height: 10vw;
+  background-color: #3e8e41;
+
+  top: 66%;
+  left: 33%;
+  transform: translate3d(-66%, -33%, 0);
+
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#squareEnergy6 {
+  position: absolute;
+
+  width: 10vw;
+  height: 10vw;
+  background-color: #3e8e41;
+
+  top: 66%;
+  left: 66%;
+  transform: translate3d(-33%, -33%, 0);
+
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.progress-bar {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background-color: #76c7c0;
+  width: 0;
+  transition: width 0.25s;
+  position: relative;
+}
+
+/*
+.progress-bar-data {
+  height: 100%;
+  background-color: #76c7c0;
+  width: 1%;
+  position: relative;
+}
+*/
+
+#dataLightWait {
+  background-color: rgb(0, 255, 0);
+}
+
+#dataMediumWait {
+  background-color: rgb(0, 255, 0);
+}
+
+#dataHeavyWait {
+  background-color: rgb(0, 255, 0);
+}
+
+.progress-bar span {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  top: 5px;
+  font-size: 0.8em;
+}
+
+#dataLightLabel::before {
+  content: attr(data-label);
+  color: #000000;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+}
+
+#dataMediumLabel::before {
+  content: attr(data-label);
+  top: 100%;
+
+  color: #000000;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+}
+
+#dataHeavyLabel::before {
+  content: attr(data-label);
+
+  color: #000000;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+}
+
+#softwareSummary {
+  width: 100%;
+}
+
+#communicationSummary {
+  width: 100%;
+}
+
+#x1Summary {
+  width: 100%;
+}
+
+#x2Summary {
+  width: 100%;
+}
+
+#x3Summary {
+  width: 100%;
+}
+
+#buttonComponentRow0 {
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#buttonComponentRow0>div {
+  pointer-events: none;
+  background: #000000;
+  padding: 10px;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#buttonComponentRow0>div:hover {
+  transform: scale(1.05);
+}
+
+#buttonComponentRow0:hover {
+  transform: scale(1.05);
+}
+
+#componentRow1 {
+  padding-right: 10px;
+  font-size: large;
+
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+
+  padding: 0px;
+}
+
+#componentRow2 {
+  font-size: large;
+
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+
+  padding: 0px;
+}
+
+#componentRow3 {
+  background: #000000;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+
+}
+
+
+
+#componentTabZone1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  padding-bottom: 0px;
+}
+
+#softwareTier1 {
+  position: absolute;
+  left: 5vw;
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#hardwareTier1 {
+  position: absolute;
+  left: 5vw;
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#communicationTier1 {
+  position: absolute;
+  left: 5vw;
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type=text] {
+  word-wrap: break-word;
+  word-break: break-all;
+  height: 80px;
+}
+
+#Save {
+  width: 60vw;
+  height: 20vh;
+  flex: 1 1 100%;
+  /* Allow the input to take the full width of the container */
+  box-sizing: border-box;
+  /* Include padding and border in the element's total width and height */
+}
+
+#automation>div {
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#automation>div>div {
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#progress {
+  position: absolute;
+
+  top: 0vh;
+  left: 15vw;
+  width: 83vw;
+  overflow-y: scroll;
+
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+}

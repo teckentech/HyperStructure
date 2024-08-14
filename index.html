@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+
+    <title>HyperStructure</title>
+    <link rel="stylesheet" href="cssPrototypes.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            font-family: Courier new, monospace;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: moz-none;
+            -ms-user-select: none;
+            user-select: none;
+            background: #e4eff0;
+            overflow-y: auto;
+        }
+
+        .grid-container {
+            border: 5px solid red;
+            border-color: #5013c3;
+        }
+
+        .grid-item {
+            border: 5px solid red;
+            border-color: #45c313;
+        }
+
+        .wrapper {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            grid-auto-rows: minmax(100px, auto);
+            border: 5px solid red;
+            border-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mainGame">
+        <div id="ui">
+
+            <div class="redimension" id="valute">
+                <div id="cellsValute">testText</div>
+                <div id="cellsPerSecondValute">testText</div>
+                <div id="dataValute">testText</div>
+                <div id="dataPerSecondValute">testText</div>
+                <div id="energyValute">testText</div>
+                <div id="energyPerSecondValute">testText</div>
+                <div id="asteroidsValute">testText</div>
+                <div id="asteroidsPerSecondValute">testText</div>
+
+            </div>
+
+            <div id="options">
+                <div><button onclick="resetSave()">RESET SAVE</button></div>
+                <div><button onclick="exportSave()">Export Save</button></div>
+                <div><button onclick="importSave()">Import Save</button></div>
+                <input type="text" id="Save" name="Save" value=""><br>
+
+                <div id="automation">
+
+                    <div>
+                        <div id="automation1">test</div>
+                        <button id="automation1Button">ACTIVATE</button>
+                    </div>
+
+                    <div>
+                        <div id="automation2">test</div>
+                        <button id="automation2Button">ACTIVATE</button>
+                    </div>
+
+                    <div>
+                        <div id="automation4">test</div>
+                        <button id="automation4Button">ACTIVATE</button>
+                    </div>
+
+                    <div>
+                        <div id="automation5">test</div>
+                        <button id="automation5Button">ACTIVATE</button>
+                    </div>
+
+                    <div>
+                        <div id="automation6">test</div>
+                        <button id="automation6Button">ACTIVATE</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="progress">
+                <div id="progress1"><b>Initiate Hardware</b>
+                    <br>
+                    In a lonely place, a scientist was working on a machine that could grow forever.
+                    After decades his work was stalling, the machine could not grow without help.
+                    In the vastness of the universe, hundreds of dimensions far from earth an Entity responded.
+                    It gave the Structure life, it was called USER
+                    <br>
+                    <br>
+                    <b>HARDWARE LAYER AT 100 CELLS</b>
+                    <br>
+                </div>
+
+                <div id="progress2">
+                    <b>Extractor Unlocked</b>
+                    <br>
+                    The first drill is built, it is weak and lonely but never stops working.
+                    <br>
+                    Earth crust starts being tempered.
+                    <br>
+                    <br>
+                    <b>SOFTWARE LAYER AT 1E4 CELLS</b>
+                    <br>
+                </div>
+
+                <div id="progress3">
+                    <b>Data Unlocked</b>
+                    <br>
+                    Two Cells filament give a simple command, a hundred are able to make a decision, a thousand make a
+                    thought, ten thousand make a change.
+                    <br>
+                    <br>
+                    <b>PROJECTS AT 100 DATA</b>
+                    <br>
+                </div>
+
+                <div id="progress4">
+                    <b>Projects Unlocked</b>
+                    <br>
+                    One must use all his resources to make progress real, tinker, build, think, create!
+                    <br>
+                    This is the way for the structure to grow.
+                    <br>
+                    <br>
+                    <b>FIRST BIG PROJECT AT 1E4 DATA</b>
+                    <br>
+                </div>
+
+                <div id="progress5">
+                    <b>The First Pillar</b>
+                    <br>
+                    The structure after many iterations is finally finding his true path, people start accepting this
+                    reality.
+                    <br> 
+                    The Pillar is necessary for people to live in the structure, it has all necessities, many
+                    will grow to the sky, separated by a sea of machines.
+                    <br>
+                    <br>
+                    <b>NEXT PROJECTS AT 1E5 DATA</b>
+                    <br>
+                </div>
+
+                <div id="progress6">
+                    <b>New Projects New Me</b>
+                    <br>
+                    Components are the heart of the structure, they decide the direction in which progress is made,
+                    never forget them, inventions will become obsolete, but not components.
+                    <br>
+                </div>
+
+                <div id="progress7">
+                    <b>Energy, life of the structure</b>
+                    <br>
+                    Energy flows in every crevice of the structure, never filling it enough, seeking a way to make this
+                    overflowing energy a stepping stone for your never ending expansion.
+                    <br>
+                    <br>
+                    <b>EXPLORATION AT 1E5 ENERGY</b>
+                    <br>
+                </div>
+
+                <div id="progress8">
+                    <b>New Horizons</b>
+                    <br>
+                    Looking at the stars inspired countless generations to dream bigger, and set sight on something
+                    greater on themself, can the structure dream? will its path be forged in the stars?
+                    <br>
+                    <br>
+                    <b>BUILD THE FIRST STRATUM</b>
+                    <br>
+                </div>
+
+                <div id="progress9">
+                    <b>A new age awaits</b>
+                    <br>
+                    Every City destroyed and rebuilt, every human inhabits the pillars, the gray walls give life, the
+                    humming machines give peace, and we humans will feed the structure, because the structure must grow.
+                    <br>
+                    <br>
+                    <b>CURRENT ENDGAME, THANKS FOR PLAYING</b>
+                </div>
+
+            </div>
+
+            <div id="selectorTab">
+                <div><button id="coreTab" onclick="tab('core')">Core</button></div>
+                <div><button id="hardwareTab" onclick="tab('hardware')">Hardware</button></div>
+
+                <div><button id="softwareTab" onclick="tab('software')">Software</button></div>
+
+                <div><button id="communicationTab" onclick="tab('communication')">Communication</button></div>
+                <div><button id="optionsTab" onclick="tab('options')">Options</button></div>
+                <div><button id="progressTab" onclick="tab('progress')">Progress</button></div>
+
+                <button onclick="addCells(100000000000)">ADD 1E7 CELLS</button>
+                <button onclick="addCells(-10000)">REMOVE 1E4 CELLS</button>
+                <button onclick="addData(10000)">ADD 10K DATA</button>
+                <button onclick="boostTickspeed(800)">double tickspeed</button>
+                <button onclick="boostTickspeed(1)">reset tickspeed</button>
+                <button onclick="boostTickspeed(0)">stop time</button>
+                <button onclick="addEnergy(100)">add 100 energy</button>
+            </div>
+
+        </div>
+
+        <div id="hardware">
+            <button id="hardwareTier1">Tier1(Current Layer)</button>
+            <div id="hardwareT1">
+
+                <div id="refiningLayer">
+                    <div style="text-align: center" id="extractor1">
+                        <div class="redimension">EXTRACTOR</div>
+                        <div class="redimension, extractorValue">0</div>
+                    </div>
+                    <div class="extractor2" style="display: flex; flex-direction:row;">
+                        <div id="extractor3">
+                            <div class="redimension, extractors1">+1 to the base</div>
+                            <div>Delve deeper in earth crust</div>
+                            <button id="buyExtractor">EXTRACTORS</button>
+                            <div class="redimension, extractors2" class="extractors2"></div>
+                        </div>
+                        <div id="extractor4">
+                            <div class="redimension, speedExtractors1">description</div>
+                            <button id="buySpeedExtractor">SPEED</button>
+                            <div class="redimension, speedExtractors2">level + price</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="software">
+            <div id="softwareT1">
+                <button id="softwareTier1">Tier1(Current Layer)</button>
+
+                <div id="projects">
+                    PROJECTS
+                    <div id="projectUtility">
+                        UTILITIES
+                        <div id="unlockable5">
+                            <div id="unlockable5Box"></div>
+                            <button id="unlockable5Button" class='projectButtons'>BUY</button>
+                        </div>
+
+                        <div id="unlockable6">
+                            <div id="unlockable6Box"></div>
+                            <button id="unlockable6Button" class='projectButtons'>BUY</button>
+                        </div>
+
+                        <div id="unlockable7">
+                            <div id="unlockable7Box"></div>
+                            <button id="unlockable7Button" class='projectButtons'>BUY</button>
+                        </div>
+
+                        <div id="unlockable8">
+                            <div id="unlockable8Box"></div>
+                            <button id="unlockable8Button" class='projectButtons'>BUY</button>
+                        </div>
+
+                        <div id="unlockable9">
+                            <div id="unlockable9Box"></div>
+                            <button id="unlockable9Button" class='projectButtons'>BUY</button>
+                        </div>
+
+                        <div id="unlockable10">
+                            <div id="unlockable10Box"></div>
+                            <button id="unlockable10Button" class='projectButtons'>BUY</button>
+                        </div>
+
+                        <div id="unlockable11">
+                            <div id="unlockable11Box"></div>
+                            <button id="unlockable11Button" class='projectButtons'>BUY</button>
+                        </div>
+
+                        <div id="unlockable12">
+                            <div id="unlockable12Box"></div>
+                            <button id="unlockable12Button" class='projectButtons'>BUY</button>
+                        </div>
+                    </div>
+
+                    <div id="projectUnlockables">
+                        UNLOCKABLES
+                        <div id="unlockable1">
+                            <div id="unlockable1Box"></div>
+                            <button id="unlockable1Button" class='projectButtons'>BUY</button>
+                        </div>
+
+                        <div id="unlockable2">
+                            <div id="unlockable2Box"></div>
+                            <button id="unlockable2Button" class='projectButtons'>BUY</button>
+                        </div>
+
+                        <div id="unlockable3">
+                            <div id="unlockable3Box"></div>
+                            <button id="unlockable3Button" class='projectButtons'>BUY</button>
+                        </div>
+
+                        <div id="unlockable4">
+                            <div id="unlockable4Box"></div>
+                            <button id="unlockable4Button" class='projectButtons'>BUY</button>
+                        </div>
+
+                        <div id="unlockable13">
+                            <div id="unlockable13Box"></div>
+                            <button id="unlockable13Button" class='projectButtons'>BUY</button>
+                        </div>
+
+                        <div id="unlockable14">
+                            <div id="unlockable14Box"></div>
+                            <button id="unlockable14Button" class='projectButtons'>BUY</button>
+                        </div>
+
+                        <div id="unlockable15">
+                            <div id="unlockable15Box"></div>
+                            <button id="unlockable15Button" class='projectButtons'>BUY</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="data">
+                    <div id="dataCollection">
+                        <div id="lightDataCollection">LIGHT</div>
+                        <div id="collectable1" class="redimensionDataCollection">NOT UNLOCKED</div>
+                        <div id="collectable2" class="redimensionDataCollection">NOT UNLOCKED</div>
+                        <div id="collectable3" class="redimensionDataCollection">NOT UNLOCKED</div>
+                        <div id="collectable4" class="redimensionDataCollection">NOT UNLOCKED</div>
+                        <div id="mediumDataCollection">MEDIUM</div>
+                        <div id="collectable5" class="redimensionDataCollection">NOT UNLOCKED</div>
+                        <div id="collectable6" class="redimensionDataCollection">NOT UNLOCKED</div>
+                        <div id="collectable7" class="redimensionDataCollection">NOT UNLOCKED</div>
+                        <div id="collectable8" class="redimensionDataCollection">NOT UNLOCKED</div>
+                        <div id="heavyDataCollection">HEAVY</div>
+                        <div id="collectable9" class="redimensionDataCollection">NOT UNLOCKED</div>
+                        <div id="collectable11" class="redimensionDataCollection">NOT UNLOCKED</div>
+                    </div>
+                    <div id="dataGraphic">
+                        PLACEHOLDER
+                    </div>
+
+                    <button id="dataButton1">
+                        <div class="redimensionDataUpgrades" data-value="" id="dataUpgrade1"></div>
+                    </button>
+                    <button id="dataButton2">
+                        <div class="redimensionDataUpgrades" data-value="" id="dataUpgrade2"></div>
+                    </button>
+
+                    <div id="dataGraph">
+                        <div id="dataLightProgress" class="progress-bar">
+                            <div id="dataLightProgressBar" class="progress-bar-fill"></div>
+                            <span id="dataLightLabel" class="progress-label" data-label="test"></span>
+                        </div>
+                        <div id="dataMediumProgress" class="progress-bar">
+                            <div id="dataMediumProgressBar" class="progress-bar-fill"></div>
+                            <span id="dataMediumLabel" class="progress-label" data-label="test"></span>
+                        </div>
+                        <div id="dataHeavyProgress" class="progress-bar">
+                            <div id="dataHeavyProgressBar" class="progress-bar-fill"></div>
+                            <span id="dataHeavyLabel" class="progress-label" data-label="test"></span>
+                        </div>
+                    </div>
+                    <div id="dataSelector">
+                        <button id="dataLight">
+                            <div id="dataLightWait" value="0" max="100">Light</div>
+                        </button>
+                        <button id="dataMedium">
+                            <div id="dataMediumWait" value="0" max="100">Medium</div>
+                        </button>
+                        <button id="dataHeavy">
+                            <div id="dataHeavyWait" value="0" max="100">Heavy</div>
+                        </button>
+                        <button id="dataNull">ferma</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="communication">
+            <div id="communicationT1">
+                <button id="communicationTier1">Tier1(Current Layer)</button>
+
+                <div id="energy">
+                    <div id="energyTier1">
+
+                        <button id="reallocateEnergy1">REALLOCATE THIS TIER (reset this energy structures, doesnt give
+                            resources invested back)</button>
+                        <div id="squareEnergy1">
+                            <span id="energy1"></span>
+                            <button id="energy1Bottone">Buy!</button>
+                        </div>
+                        <div id="squareEnergy2">
+                            <span id="energy2"></span>
+                            <button id="energy2Bottone">Buy!</button>
+                        </div>
+                        <div id="squareEnergy3">
+                            <span id="energy3"></span>
+                            <button id="energy3Bottone">Buy!</button>
+                        </div>
+                    </div>
+                    <div id="energyTier2">
+                        <button id="reallocateEnergy2">REALLOCATE THIS TIER (reset this energy structures, doesnt give
+                            resources invested back)</button>
+                        <div id="squareEnergy4">
+                            <span id="energy4"></span>
+                            <button id="energy4Bottone">Buy!</button>
+                        </div>
+                        <div id="squareEnergy5">
+                            <span id="energy5"></span>
+                            <button id="energy5Bottone">Buy!</button>
+                        </div>
+                        <div id="squareEnergy6">
+                            <span id="energy6"></span>
+                            <button id="energy6Bottone">Buy!</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="exploration">
+                    <div id="exploration1">
+                        <div class="explorationSelection" id="explorationA">
+
+                        </div>
+                        <div class="dropdownExploration">
+                            <button id="explorationAButton" class="dropbtn">Select</button>
+                            <div class="dropdownExploration-content">
+                                <div>
+                                    <button onclick="getExplorationSelected('explorationA0')">do nothing</button>
+                                </div>
+                                <div>
+                                    <button onclick="getExplorationSelected('explorationA1')">Catch Space
+                                        Dust</button>
+                                </div>
+                                <div>
+                                    <button onclick="getExplorationSelected('explorationA2')">Catch
+                                        Asteroids</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="exploration2">
+                        <div class="explorationSelection" id="explorationB">
+
+                        </div>
+                        <div class="dropdownExploration">
+                            <button id="explorationBButton" class="dropbtn">Select</button>
+                            <div class="dropdownExploration-content">
+                                <div>
+                                    <button onclick="getExplorationSelected('explorationB0')">do nothing</button>
+                                </div>
+                                <div>
+                                    <button onclick="getExplorationSelected('explorationB1')">Glimpse in the
+                                        sun</button>
+                                </div>
+                                <div>
+                                    <button onclick="getExplorationSelected('explorationB2')">Glimpse in a black
+                                        hole</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="core">
+
+            <button id="loadout">LOADOUT</button>
+
+            <div id="loadoutShow">
+
+                <div>
+                    LOADOUT 1
+                    <div><button id="loadoutNameMod1">M</button><input style="width: 70%" type="text" id="loadoutName1"
+                            name="loadout1" value="" disabled><br></div>
+                    <button id="saveloadout1">save</button>
+                    <button id="loadloadout1">load</button>
+                </div>
+
+                <div>
+                    LOADOUT 2
+                    <div><button id="loadoutNameMod2">M</button><input style="width: 70%" type="text" id="loadoutName2"
+                            name="loadout1" value="" disabled><br></div>
+                    <button id="saveloadout2">save</button>
+                    <button id="loadloadout2">load</button>
+                </div>
+
+                <div>
+                    LOADOUT 3
+                    <div><button id="loadoutNameMod3">M</button><input style="width: 70%" type="text" id="loadoutName3"
+                            name="loadout1" value="" disabled><br></div>
+                    <button id="saveloadout3">save</button>
+                    <button id="loadloadout3">load</button>
+                </div>
+
+
+            </div>
+
+            <div id="componentSelector">
+                <div id="baseSelector">
+
+                    <div style="position: absolute; left: 0vw; top: -14vw;" class="item" id="visualModule1">
+                        <button onclick="showComponents('components1')" id="components1Module"
+                            style="height: 7vw; width: 7vw; background: url(images/plus.png); background-size: cover;">
+                        </button>
+                    </div>
+                    <div style="position: absolute; left: -10vw; top: -7vw;" class="item" id="visualModule2">
+                        <button onclick="showComponents('components2')" id="components2Module"
+                            style="height: 7vw; width: 7vw; background: url(); background-size: cover;">
+                        </button>
+                    </div>
+                    <div style="position: absolute; left: 10vw; top: -7vw;" class="item" id="visualModule3">
+                        <button onclick="showComponents('components3')" id="components3Module"
+                            style="height: 7vw; width: 7vw; background: url(); background-size: cover;">
+                        </button>
+                    </div>
+
+                    <div style="position: absolute; left: -10vw; top: 7vw; " class="item" id="visualModule4">
+
+                    </div>
+                    <div style="position: absolute; left: 10vw; top: 7vw;" class="item" id="visualModule5">
+
+                    </div>
+                    <div style="position: absolute; left: 0vw;  top: 14vw;" class="item" id="visualModule6">
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="componentInfo">
+                <div id="componentsSummary">
+                    ACTIVE COMPONENTS EFFECTS
+                    <div id="hardwareSummary">
+                        <div>Hardware</div>
+                        <div class="components1Effect1">parola</div>
+                        <div class="components1Effect2">parola</div>
+                    </div>
+                    <div id="softwareSummary">
+                        <div>Software</div>
+                        <div class="components2Effect1">parola</div>
+                        <div class="components2Effect2">parola</div>
+                    </div>
+                    <div id="communicationSummary">
+                        <div>Communication</div>
+                        <div class="components3Effect1">parola</div>
+                        <div class="components3Effect2">parola</div>
+                    </div>
+                    <div id="x1Summary">
+                        <div>???</div>
+                        <div>parola </div>
+                        <div>parola </div>
+                    </div>
+                    <div id="x2Summary">
+                        <div>???</div>
+                        <div>parola </div>
+                        <div>parola</div>
+                    </div>
+                    <div id="x3Summary">
+                        <div>???</div>
+                        <div>parola</div>
+                        <div>parola</div>
+                    </div>
+                </div>
+
+                <div id="equipTab">
+                    <button id="buttonComponentRow0">
+                        <div id="componentRow0"></div>
+                    </button>
+                    <button id="equipButton">EQUIP</button>
+                    <button id="removeButton">REMOVE</button>
+                </div>
+
+                <div id="componentTab">
+                    <div id="visualComponentTab">
+
+                        <div id="componentTabZone1">
+                            <p id="componentRow1"></p>
+                            <p id="componentRow2"></p>
+                        </div>
+                        <div id="componentTabZone2">
+                            <div id="componentRow3"></div>
+                        </div>
+                        <div id="componentRow4"></div>
+                        <div id="componentRow5"></div>
+                    </div>
+                </div>
+
+                <div id="componentsList">
+                    <div class="flex-container" style="flex-direction: right" id="components1">
+                        <div id="components1Tier1">
+                            <button id="token1" onclick=""
+                                style="background-image: 'images/token_1.jpg;'; width: 3.5vw; height: 3.5vw"></button>
+                            <button id="token2" onclick=""
+                                style="background-image: 'images/token_2.jpg;'; width: 3.5vw; height: 3.5vw"></button>
+                            <button id="token3" onclick=""
+                                style="background-image: 'images/token_1.jpg;'; width: 3.5vw; height: 3.5vw"></button>
+                        </div>
+                        <div id="components1Tier2">
+                            <div>
+                                <!--
+                                <button id="" onclick=""
+                                    style="background-image: 'images/token_1.jpg;'; width: 3.5vw; height: 3.5vw"></button>
+                                    -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex-container" id="components2">
+                        <div id="components2Tier1">
+                            <button id="token4" onclick=""
+                                style="background-image: 'images/token_1.jpg;'; width: 3.5vw; height: 3.5vw"></button>
+                            <button id="token5" onclick=""
+                                style="background-image: 'images/token_1.jpg;'; width: 3.5vw; height: 3.5vw"></button>
+                            <button id="token6" onclick=""
+                                style="background-image: 'images/token_1.jpg;'; width: 3.5vw; height: 3.5vw"></button>
+                        </div>
+                        <div id="components2Tier2">
+
+                        </div>
+                    </div>
+
+                    <div class="flex-container" id="components3">
+                        <div id="components3Tier1">
+                            <button id="token7" onclick=""
+                                style="background-image: 'images/token_1.jpg;'; width: 3.5vw; height: 3.5vw"></button>
+                            <button id="token8" onclick=""
+                                style="background-image: 'images/token_1.jpg;'; width: 3.5vw; height: 3.5vw"></button>
+                            <button id="token9" onclick=""
+                                style="background-image: 'images/token_1.jpg;'; width: 3.5vw; height: 3.5vw"></button>
+
+                        </div>
+                        <div id="components3Tier2">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="main.js" charset="utf-8" type="text/javascript"></script>
+</body>
+
+</html>
