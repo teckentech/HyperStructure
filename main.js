@@ -3183,9 +3183,13 @@ function clickExpand(element) {
 // MISCELLANEA
 // MISCELLANEA
 
+var VisualLoop = setInterval(function () {
+  manualVisualLoop()
+}, 50)
+
 var mainGameLoop = window.setInterval(function () {
 
-  let diff = Date.now() - getNotIf(gameData, null, "lastTick")
+  let diff = Date.now() - gameData[0].lastTick
   let diffSec = diff / 1000;
 
 
@@ -3200,8 +3204,8 @@ var mainGameLoop = window.setInterval(function () {
 
   offProgress(diffSec);
 
-  setNotIf(gameData, null, "lastTick", Date.now())
-
+  gameData[0].lastTick = Date.now()
+  //setNotIf(gameData, null, "lastTick", Date.now())
 
 
   //   gameData.StructurePoints += gameData.StructurePointsPerClick * (diff / 1000)
@@ -3218,6 +3222,7 @@ var mainGameLoop = window.setInterval(function () {
 
 function manualVisualLoop() {
   //global
+  console.log("manualVisual")
   visual_valute();
   LoopShow();
   //core
@@ -3258,7 +3263,6 @@ function manualVisualLoop() {
 // Aggiorna tutti gli array
 
 var SaveGameLoop = window.setInterval(function () {
-
   var saveData = {
     gameData: gameData,
     componentsEquipped: componentsEquipped,
