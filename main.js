@@ -3185,7 +3185,7 @@ function clickExpand(element) {
 
 var mainGameLoop = window.setInterval(function () {
 
-  let diff = Date.now() - getNotIf(gamedata, null, "lastTick")
+  let diff = Date.now() - getNotIf(gameData, null, "lastTick")
   let diffSec = diff / 1000;
 
 
