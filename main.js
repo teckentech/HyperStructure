@@ -3141,7 +3141,21 @@ async function dataActuator() {
   }
 }
 
+function pauseFunction(fun, time, bool) {
+  setNotIf(canCall, null, fun + "CanCall", false)
+  if (time != null) {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        setNotIf(canCall, null, fun + "CanCall", true)
+        resolve();
+      }, time);
+    });
+  }
 
+  if (time == null) {
+    setNotIf(canCall, fun + "CanCall", bool)
+  }
+}
 
 async function offProgress(time) {
   if (!waiting) {
@@ -3169,6 +3183,36 @@ function clickExpand(element) {
 // MISCELLANEA
 // MISCELLANEA
 
+var mainGameLoop = window.setInterval(function () {
+
+  let diff = Date.now() - gameData[0].lastTick;
+  let diffSec = diff / 1000;
+
+
+  if (diffSec > gameData[0].offProgressLimit) {
+    diffSec = gameData[0].offProgressLimit;
+  }
+
+  if (diffSec < 10) {
+    diffSec = 1;
+  }
+
+
+  offProgress(diffSec);
+
+  gameData[0].lastTick = Date.now();
+
+
+
+  //   gameData.StructurePoints += gameData.StructurePointsPerClick * (diff / 1000)
+  //   update("StructureBuilt", format(gameData.StructurePoints, "scientific") + "Structure Points")
+  // prodCells();
+  valuesSetterDinamic()
+  //ora lo mettiamo qui, ma dovra' essere messo dopo la funzione quando finisce la ricerca di un light/medium/heavy
+  dataActuator()
+  automationActuator()
+  valuesSetter()
+}, 1000)
 
 
 
@@ -3213,7 +3257,169 @@ function manualVisualLoop() {
 
 // Aggiorna tutti gli array
 
+var SaveGameLoop = window.setInterval(function () {
 
+  var saveData = {
+    gameData: gameData,
+    componentsEquipped: componentsEquipped,
+    components: components,
+    explorationUpgrades: explorationUpgrades,
+    explorationSelected: explorationSelected,
+    data: data,
+    dataUpgrades: dataUpgrades,
+    energyBuilding: energyBuilding,
+    refining: refining,
+    //rarity: rarity,
+    projects: projects,
+    loadoutData: loadoutData,
+    automation: automation,
+    showable: showable,
+
+    RgameData: RgameData,
+    RcomponentsEquipped: RcomponentsEquipped,
+    Rcomponents: Rcomponents,
+    RexplorationUpgrades: RexplorationUpgrades,
+    RexplorationSelected: RexplorationSelected,
+    Rdata: Rdata,
+    RdataUpgrades: RdataUpgrades,
+    RenergyBuilding: RenergyBuilding,
+    Rrefining: Rrefining,
+    //Rrarity: Rrarity,
+    Rprojects: Rprojects,
+    RloadoutData: RloadoutData,
+    Rautomation: Rautomation,
+    Rshowable: Rshowable
+  };
+
+  localStorage.setItem("HyperStructureSave", JSON.stringify(saveData));
+
+
+}, 500);
+
+if (localStorage.getItem("HyperStructureSave") !== null) {
+
+  var savedGameData = JSON.parse(localStorage.getItem("HyperStructureSave"));
+  // Assicurati di aggiornare i dati di gioco con quelli caricati 
+  if (savedGameData.gameData) {
+    gameData = savedGameData.gameData;
+  }
+
+  if (savedGameData.components) {
+    components = savedGameData.components;
+  }
+
+  if (savedGameData.componentsEquipped) {
+    componentsEquipped = savedGameData.componentsEquipped;
+  }
+
+  if (savedGameData.explorationUpgrades) {
+    explorationUpgrades = savedGameData.explorationUpgrades;
+  }
+
+  if (savedGameData.explorationSelected) {
+    explorationSelected = savedGameData.explorationSelected;
+  }
+
+  if (savedGameData.data) {
+    data = data;
+  }
+
+  if (savedGameData.dataUpgrades) {
+    dataUpgrades = dataUpgrades;
+  }
+
+  if (savedGameData.energyBuilding) {
+    energyBuilding = savedGameData.energyBuilding;
+  }
+
+  if (savedGameData.refining) {
+    refining = refining;
+  }
+
+  /*
+  if (savedGameData.rarity) {
+    rarity = savedGameData.rarity;
+  }
+    */
+
+  if (savedGameData.projects) {
+    projects = savedGameData.projects;
+  }
+
+  if (savedGameData.loadoutData) {
+    loadoutData = savedGameData.loadoutData;
+  }
+
+  if (savedGameData.automation) {
+    automation = savedGameData.automation;
+  }
+
+  if (savedGameData.showable) {
+    showable = savedGameData.showable;
+  }
+
+  updateGame()
+  ///////////////////////////
+
+  if (savedGameData.RgameData) {
+    savedGameData.RgameData = RgameData
+  }
+
+  if (savedGameData.Rcomponents) {
+    savedGameData.Rcomponents = Rcomponents;
+  }
+
+  if (savedGameData.RcomponentsEquipped) {
+    savedGameData.RcomponentsEquipped = RcomponentsEquipped
+  }
+
+  if (savedGameData.RexplorationUpgrades) {
+    savedGameData.RexplorationUpgrades = RexplorationUpgrades
+  }
+
+  if (savedGameData.RexplorationSelected) {
+    savedGameData.RexplorationSelected = RexplorationSelected
+  }
+
+  if (savedGameData.Rdata) {
+    savedGameData.Rdata = Rdata
+  }
+
+  if (savedGameData.RdataUpgrades) {
+    savedGameData.RdataUpgrades = RdataUpgrades
+  }
+
+  if (savedGameData.RenergyBuilding) {
+    savedGameData.RenergyBuilding = RenergyBuilding
+  }
+
+  if (savedGameData.Rrefining) {
+    savedGameData.Rrefining = Rrefining
+  }
+
+  /*
+  if (savedGameData.Rrarity) {
+    savedGameData.Rrarity = Rrarity
+  }
+    */
+
+  if (savedGameData.Rprojects) {
+    savedGameData.Rprojects = Rprojects
+  }
+
+  if (savedGameData.RloadoutData) {
+    savedGameData.RloadoutData = RloadoutData
+  }
+
+  if (savedGameData.Rautomation) {
+    savedGameData.Rautomation = Rautomation
+  }
+
+  if (savedGameData.Rshowable) {
+    savedGameData.Rshowable = Rshowable
+  }
+
+}
 
 //funziona, ma controlla come funziona
 function updateSavedArrays(savedArray, defaultArray, newDefaultArray) {
