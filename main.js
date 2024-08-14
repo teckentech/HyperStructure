@@ -3932,6 +3932,7 @@ function LoopShow() {
 
   if (getNotIf(gameData, null, "cells") >= 100) {
     unlockShow("hardwareTab", true)
+    unlockShow("progress2", true)
   }
 
   //cells: 100-1E4
@@ -3939,12 +3940,14 @@ function LoopShow() {
     unlockShow("softwareTab", true)
     unlockShow("dataValute", true)
     unlockShow("dataPerSecondValute", true)
+    unlockShow("progress3", true)
   }
 
   //cells: 1E4 - 1E6
 
   if (getNotIf(gameData, null, "data") >= 100) {
     unlockShow("projects", true);
+    unlockShow("progress4", true)
   }
 
   //hardware package 1
@@ -3977,11 +3980,13 @@ function LoopShow() {
   //new resources package 1
   if (getNotIf(gameData, null, "data") >= 10000 && !(getNotIf(projects, "unlockable4", "unlocked"))) {
     unlockShow("unlockable4", true);
+    unlockShow("progress6", true)
   }
 
   //extraction automation
   if (getNotIf(gameData, null, "data") >= 10000 && !(getNotIf(projects, "unlockable5", "unlocked"))) {
     unlockShow("unlockable5", true);
+    unlockShow("progress6", true)
   }
 
   //cells: 1E10 - 1E12
@@ -3989,16 +3994,19 @@ function LoopShow() {
   //idle 2
   if (getNotIf(gameData, null, "data") >= 10000 && !(getNotIf(projects, "unlockable10", "unlocked"))) {
     unlockShow("unlockable10", true);
+    unlockShow("progress6", true)
   }
 
   //data automation
   if (getNotIf(gameData, null, "data") >= 10000 && !(getNotIf(projects, "unlockable6", "unlocked"))) {
     unlockShow("unlockable6", true);
+    unlockShow("progress6", true)
   }
 
   //communication package 1
   if (getNotIf(gameData, null, "data") >= 10000 && !(getNotIf(projects, "unlockable13", "unlocked"))) {
     unlockShow("unlockable13", true);
+    unlockShow("progress6", true)
   }
 
   //cells: 1E12 - 1E14
@@ -4028,6 +4036,7 @@ function LoopShow() {
     unlockShow("exploration", true)
     unlockShow("asteroidsValute", true)
     unlockShow("asteroidsPerSecondValute", true)
+    unlockShow("progress8", true)
   }
 
   if (checkShow("energy", true)) {
@@ -4082,6 +4091,7 @@ function LoopShow() {
     unlockShow("energyValute", true)
     unlockShow("energyPerSecondValute", true)
     unlockShow("energy", true)
+    unlockShow("progress7", true)
   }
 
   //extraction automation
@@ -4157,6 +4167,7 @@ function LoopShow() {
 
   if (getNotIf(projects, "unlockable15", "unlocked")) {
     unlockShow("unlockable15", false);
+    unlockShow("progress5", true)
   }
 
 }
