@@ -683,8 +683,6 @@ function visual_ComponentInfo(component) {
       actualComponentTag3 = components[x].tag3;
       actualComponentImage = components[x].image;
 
-      console.log(components[x].tag1)
-
       unlockShow("equipTab", true)
       unlockShow("visualComponentTab", true)
 
@@ -745,9 +743,7 @@ function componentSummary() {
 }
 
 function equipButton(moduleName, operation) {
-console.log("1")
   if (operation == "equip") {
-    console.log("2")
     for (x in components) {
       if (components[x].id == moduleName && components[x].tag1 == actualComponentTag1) {
         setNotIf(components, components[x].id, "active", true)
@@ -2671,7 +2667,6 @@ document.getElementById("loadoutNameMod3").onclick = function () {
 
 //equip module
 document.getElementById("equipButton").onclick = function () {
-  console.log("hel")
   equipButton(actualComponentId, "equip");
   valuesSetter()
   manualVisualLoop()
@@ -2686,11 +2681,8 @@ document.getElementById("removeButton").onclick = function () {
 
 //components upgrade
 document.getElementById("buttonComponentRow0").onclick = function () {
-  console.log("hhello?")
   if (getNotIf(components, actualComponentId, "active")) {
-    console.log("hhello?")
     buyId(components, actualComponentId, "price", components, actualComponentId, "level", 1)
-    console.log("hhello?")
   }
   if (componentsEquipped[0][actualComponentTag1 != ""]) {
     clickExpand(actualComponentTag1 + "Module")
@@ -3222,7 +3214,6 @@ var mainGameLoop = window.setInterval(function () {
 
 function manualVisualLoop() {
   //global
-  console.log("manualVisual")
   visual_valute();
   LoopShow();
   //core
@@ -3832,7 +3823,6 @@ function LoopShow() {
     init1 = false
 
     actualComponentId = ""
-    console.log("inizializzazione")
     tab(core)
     unlockShow("mainGame", true);
     unlockShow("ui", true)
@@ -4284,24 +4274,16 @@ function automationActuator() {
 
     var multHeavy = getNotIf(data, null, "heavyExtractionMult")
 
-    console.log("restLight: " + restLight + "test: " + getExtractedData("light"))
-    console.log("restMedium: " + restMedium)
-    console.log("restHeavy: " + restHeavy)
-
     if (restLight >= restMedium && multLight > 0 || restLight >= restHeavy && multLight > 0) {
       dataSelected("dataLight")
-
-    console.log("start light!")
     }
 
     if (restMedium >= restLight && multMedium > 0 || restMedium >= restHeavy && multMedium > 0) {
       dataSelected("dataMedium")
-      console.log("start medium!")
     }
 
     if (restHeavy >= restMedium && multHeavy > 0 || restHeavy >= restLight && multHeavy > 0) {
       dataSelected("dataHeavy")
-      console.log("start heavy")
     }
     valuesSetter()
   }
