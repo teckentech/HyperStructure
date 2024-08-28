@@ -3748,7 +3748,7 @@ var SaveGameLoop = window.setInterval(function () {
   localStorage.setItem("HyperStructureSave", JSON.stringify(saveData));
 
 
-}, 500);
+}, 50);
 
 if (localStorage.getItem("HyperStructureSave") !== null) {
 
