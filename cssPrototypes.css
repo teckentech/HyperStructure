@@ -247,7 +247,7 @@ button,
   position: relative;
   text-align: center;
   width: inherit;
-  background: #000000;
+  background: #0bb50b;
   border: 2px solid #ffffff;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -264,7 +264,7 @@ button,
   position: relative;
   text-align: center;
   width: inherit;
-  background: #000000;
+  background: #aa0b0b;
   border: 2px solid #ffffff;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -1401,7 +1401,7 @@ div {
 }
 
 #buttonComponentRow0 {
-  background: #000000;
+  background: #2683ab;
   padding: 10px;
   border: 1px solid #ffffff;
   border-radius: 5px;
