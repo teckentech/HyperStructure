@@ -24,7 +24,9 @@ let gameData = [{
 
   explorationResource1: 0,
   explorationResource1Prod: 0,
-  explorationResource1ProdActive: false
+  explorationResource1ProdActive: false,
+
+  topProgressCount: 0
 }]
 
 //ACCEPTED
@@ -45,7 +47,7 @@ let components = [
     levelActive: false, priceActive: false, effect1Active: false, effect2Active: false
   },
   {
-    id: "token3", name: "Multimaker", description1: "each valute: x", description2: "-", level: 1, price: 0, effect1: 0, effect2: 0, identity1: "a_Base", identity2: "a_Base", active: false, image: 'images/token_3.png', tag1: "components1", tag2: ".", tag3: ".", priceIdentity: "cells",
+    id: "token3", name: "Multimaker", description1: "each resource: x", description2: "-", level: 1, price: 0, effect1: 0, effect2: 0, identity1: "a_Base", identity2: "a_Base", active: false, image: 'images/token_3.png', tag1: "components1", tag2: ".", tag3: ".", priceIdentity: "cells",
     levelActive: false, priceActive: false, effect1Active: false, effect2Active: false
   },
   {
@@ -71,11 +73,19 @@ let components = [
   {
     id: "token9", name: "Ally Synergy", description1: "other components's effects are boosted based on this components level +X: ", description2: "-", level: 1, price: 0, effect1: 0, effect2: 0, identity1: "cell_Base", identity2: "a_Base", active: false, image: 'images/token_9.png', tag1: "components3", tag2: "Synergy", tag3: ".", priceIdentity: "cells",
     levelActive: false, priceActive: false, effect1Active: false, effect2Active: false
-  }
-
-
-
-
+  },
+  {
+    id: "token10", name: "Energized Structure", description1: "Energy/s x:", description2: "-", level: 1, price: 0, effect1: 0, effect2: 0, identity1: "cell_Base", identity2: "a_Base", active: false, image: 'images/token_2.png', tag1: "components3", tag2: "Synergy", tag3: ".", priceIdentity: "cells",
+    levelActive: false, priceActive: false, effect1Active: false, effect2Active: false
+  },
+  {
+    id: "token11", name: "Asteroid Cells Booster", description1: "reduces Energy/s by 30%", description2: "More cells -> More Cells/s: ", level: 1, price: 0, effect1: 0, effect2: 0, identity1: "cell_Base", identity2: "a_Base", active: false, image: 'images/token_7.png', tag1: "components1", tag2: "Booster", tag3: ".", priceIdentity: "cells",
+    levelActive: false, priceActive: false, effect1Active: false, effect2Active: false
+  },
+  {
+    id: "token12", name: "Asteroid Data Booster", description1: "reduces Energy/s by 30%", description2: "data X: ", level: 1, price: 0, effect1: 0, effect2: 0, identity1: "cell_Base", identity2: "a_Base", active: false, image: 'images/token_8.png', tag1: "components2", tag2: "booster", tag3: ".", priceIdentity: "cells",
+    levelActive: false, priceActive: false, effect1Active: false, effect2Active: false
+  },
 ]
 
 //ACCEPTED
@@ -83,7 +93,7 @@ let explorationUpgrades = [
   {
     effectActive: false,
     priceActive: false,
-    id: "explorationA0", masterKey: "explorationA", name: "do nothing", description: "explore other things, maibe the fridge",
+    id: "explorationA0", masterKey: "explorationA", name: "do nothing", description: "explore other things, maybe the fridge",
     effect: 0, price: 0, priceIdentity: "energy"
   },
   {
@@ -182,8 +192,6 @@ let dataUpgrades = [
     id: "collectable8", name: "Components Cost is reduced", effect: 0, maxQuantity: 0, extracted: 0, identity: "medium",
     effectActive: false, maxQuantityActive: false, extractedActive: false,
   },
-
-
   {
     id: "collectable9", name: "Data + 10/s", effect: 0, maxQuantity: 0, extracted: 0, identity: "heavy",
     effectActive: false, maxQuantityActive: false, extractedActive: false,
@@ -197,7 +205,7 @@ let dataUpgrades = [
 //ACCEPTED
 let energyBuilding = [
   {
-    id: "energy1", name: "SOLAR ENERGY", description: "2^Level Energy/s", level: 0, active: true, effect: 0, price: 0, priceIdentity: "cells",
+    id: "energy1", name: "SOLAR ENERGY", description: "Energy/s: 2^Level", level: 0, active: true, effect: 0, price: 0, priceIdentity: "cells",
     levelActive: false, effectActive: false, priceActive: false
   },
   {
@@ -311,13 +319,19 @@ let projects = [
   },
 
   {
-    id: "unlockable14", name: "FIRST EXPLORATION COMPONENT", unlocked: false, unlockable1: "Component: Asteroid Enchancher", unlockable2: "", unlockable3: "", price1: 10, price2: 0, price3: 0, price1Identity: "cells", price2Identity: "explorationResource1", price3Identity: "",
+    id: "unlockable14", name: "FIRST EXPLORATION COMPONENTS", unlocked: false, unlockable1: "Component: Asteroid Enchancher", unlockable2: "Component: Asteroid Cells Booster", unlockable3: "Component: Asteroid Data Booster", price1: 10, price2: 0, price3: 0, price1Identity: "cells", price2Identity: "explorationResource1", price3Identity: "",
     positioned: false,
     price1Active: false, price2Active: false, price3Active: false
   },
 
   {
     id: "unlockable15", name: "MILESTONE: FIRST PILLAR", unlocked: false, unlockable1: "Removes Limit 5e3 on Data, data x5", unlockable2: "", unlockable3: "", price1: 10, price2: 0, price3: 0, price1Identity: "cellsProd", price2Identity: "data", price3Identity: "",
+    positioned: false,
+    price1Active: false, price2Active: false, price3Active: false
+  },
+
+  {
+    id: "unlockable16", name: "MILESTONE: FIRST STRATUM", unlocked: false, unlockable1: "Will Unlock K2", unlockable2: "", unlockable3: "", price1: 10, price2: 0, price3: 0, price1Identity: "cellsProd", price2Identity: "data", price3Identity: "explorationResource1",
     positioned: false,
     price1Active: false, price2Active: false, price3Active: false
   }
@@ -359,6 +373,7 @@ let automation = [
 
 let showable = [
   {
+    coreImage: false,
 
     mainGame: false, ui: false,
 
@@ -376,7 +391,7 @@ let showable = [
     // rarityLayer: false,
 
     software: false, softwareT1: false,
-    projects: false, unlockable1: false, unlockable2: false, unlockable3: false, unlockable4: false, unlockable5: false, unlockable6: false, unlockable7: false, unlockable8: false, unlockable9: false, unlockable10: false, unlockable11: false, unlockable12: false, unlockable13: false, unlockable14: false, unlockable15: false,
+    projects: false, unlockable1: false, unlockable2: false, unlockable3: false, unlockable4: false, unlockable5: false, unlockable6: false, unlockable7: false, unlockable8: false, unlockable9: false, unlockable10: false, unlockable11: false, unlockable12: false, unlockable13: false, unlockable14: false, unlockable15: false, unlockable16: false,
 
     data: false,
 
@@ -393,7 +408,7 @@ let showable = [
 
     equipTab: false,
 
-    token1: false, token2: false, token3: false, token4: false, token5: false, token6: false, token7: false, token8: false, token9: false,
+    token1: false, token2: false, token3: false, token4: false, token5: false, token6: false, token7: false, token8: false, token9: false, token10: false, token11: false, token12: false, 
 
     automation: false, automation1: false, automation1Button: false, automation2: false, automation2Button: false, automation4: false, automation4Button: false, automation5: false, automation5Button: false, automation6: false, automation6Button: false,
 
@@ -404,11 +419,14 @@ let showable = [
     componentTabZone1: false, componentTabZone2: false,
 
     collectable1: false, collectable2: false, collectable3: false, collectable4: false, collectable5: false, collectable6: false, collectable7: false, collectable8: false, collectable9: false, collectable11: false,
-  
-    progressTab:false, progress: false, progress1: false, progress2: false, progress3: false, progress4: false, progress5: false, progress6: false, progress7: false, progress8: false, progress9: false
+
+    progressTab: false, progress: false, progress1: false, progress2: false, progress3: false, progress4: false, progress5: false, progress6: false, progress7: false, progress8: false, progress9: false,
+
+    unlockable1Button: true, unlockable2Button: true, unlockable3Button: true, unlockable4Button: true, unlockable5Button: true, unlockable6Button: true, unlockable7Button: true, unlockable8Button: true, unlockable9Button: true, unlockable10Button: true, unlockable11Button: true, unlockable12Button: true, unlockable13Button: true, unlockable14Button: true, unlockable15Button: true, unlockable16Button: true,
+
+    topProgress: false, topProgress1: false, topProgress2: false, topProgress3: false, topProgress4: false, topProgress5: false, topProgress6: false, topProgress7: false, topProgress8: false
   }
 ]
-
 
 //setta un timer per fare in modo che si possano bloccare funzioni
 let canCall = [
@@ -446,42 +464,7 @@ var refiningEffect = 0;
 var refiningPriceExtractors = 0;
 var refiningSpeedExtractorPrice = 0;
 //RARITY
-/*
-let rarityLevel = 0;
-let rarityEffect = 0;
-let rarityPrice = 0;
-let rarityT0Effect = 0;
-let rarityT1Effect = 0;
-let rarityT2Effect = 0;
-let rarityT3Effect = 0;
-let rarityT4Effect = 0;
-let rarityT5Effect = 0;
-let rarityT6Effect = 0;
-let rarityT7Effect = 0;
-let rarityT8Effect = 0;
-let rarityT9Effect = 0;
 
-let rarityT1Log = 0;
-let rarityT2Log = 0;
-let rarityT3Log = 0;
-let rarityT4Log = 0;
-let rarityT5Log = 0;
-let rarityT6Log = 0;
-let rarityT7Log = 0;
-let rarityT8Log = 0;
-let rarityT9Log = 0;
-
-let rarityT0 = 0;
-let rarityT1 = 0;
-let rarityT2 = 0;
-let rarityT3 = 0;
-let rarityT4 = 0;
-let rarityT5 = 0;
-let rarityT6 = 0;
-let rarityT7 = 0;
-let rarityT8 = 0;
-let rarityT9 = 0;
-*/
 
 var actualComponentId
 var actualComponentName;
@@ -656,6 +639,7 @@ function visual_Loadout() {
 function visual_ComponentInfo(component) {
   for (let x in components) {
     if (components[x].id == component) {
+
       actualComponentId = components[x].id
       actualComponentName = components[x].name;
       actualComponentDescription1 = components[x].description1;
@@ -670,13 +654,13 @@ function visual_ComponentInfo(component) {
       actualComponentTag1 = components[x].tag1;
 
       visualTag1 = actualComponentTag1
-      if(visualTag1 == "components1"){
+      if (visualTag1 == "components1") {
         visualTag1 = "HARDWARE"
       }
-      if(visualTag1 == "components2"){
+      if (visualTag1 == "components2") {
         visualTag1 = "SOFTWARE"
       }
-      if(visualTag1 == "components3"){
+      if (visualTag1 == "components3") {
         visualTag1 = "COMMUNICATION"
       }
       actualComponentTag2 = components[x].tag2;
@@ -685,13 +669,21 @@ function visual_ComponentInfo(component) {
 
       unlockShow("equipTab", true)
       unlockShow("visualComponentTab", true)
+      unlockShow("componentTab", true)
+      unlockShow("componentsSummary", true)
 
-      update("componentRow0", "<div> LEVEL UP </div> <div>" + format(actualComponentPrice, "scientific") + "</div>")
-      update("componentRow1", format(actualComponentLevel, "scientific") + "/10  ");
+
+
+      update("componentRow0", "<div> LEVEL UP </div> <div>" + format(actualComponentPrice, "scientific") + " cells" + "</div> <div>EVERY 10 UPGRADES IT BOOSTS THE COMPONENT</div>")
+      update("componentRow1", actualComponentLevel + "/20");
       update("componentRow2", actualComponentName)
       update("componentRow3", "[" + visualTag1 + "][" + actualComponentTag2 + "][" + actualComponentTag3 + "]");
       update("componentRow4", "<div>" + actualComponentDescription1 + format(actualComponentEffect1, "scientific") + "</div>");
-      update("componentRow5", actualComponentDescription2 + format(actualComponentEffect2, "scientific"));
+      update("componentRow5", "<div>" + actualComponentDescription2 + format(actualComponentEffect2, "scientific") + "</div>");
+    }
+
+    if (actualComponentId == "") {
+      update("componentRow0", "<div> LEVEL UP </div> <div><div>-</div><div>EVERY 10 UPGRADES IT BOOSTS THE COMPONENT</div>")
     }
   }
 }
@@ -728,6 +720,8 @@ function show_componentInfo() {
     componentOnClick.style.background = "url('" + actualComponentImage + "')";
     componentOnClick.style.backgroundSize = "100%";
 
+
+
   }
 }
 
@@ -738,6 +732,11 @@ function componentSummary() {
 
       updateClass(components[x].tag1 + "Effect1", "<div>" + components[x].description1 + " " + format(components[x].effect1, "scientific") + "</div>");
       updateClass(components[x].tag1 + "Effect2", "<div>" + components[x].description2 + " " + format(components[x].effect2, "scientific") + "</div>");
+    }
+
+    else if (componentsEquipped[0][tag] == "") {
+      updateClass(components[x].tag1 + "Effect1", "<div>.</div>");
+      updateClass(components[x].tag1 + "Effect2", "<div>.</div>");
     }
   }
 }
@@ -783,19 +782,19 @@ function visual_EnergyInfo() {
 
     building.innerHTML = "<div>" + actualEnergyName + "</div>" +
       "<div>" + actualEnergyDescription + "</div>" +
-      "<div>" + "Level: " + format(actualEnergyLevel, "scientific") + "</div>" +
+      "<div>" + "Level: " + format(actualEnergyLevel, "scientific") + "/ 10" + "</div>" +
       "<div>" + "Effect: " + format(actualEnergyEffect, "scientific") + "</div>" +
       "<div>" + "Price: " + format(actualEnergyPrice, "scientific") + " " + actualEnergyIdentity + "</div>"
 
   }
 }
 
-function resetEnergy(min,max) {
+function resetEnergy(min, max) {
   for (x in energyBuilding) {
-    if(x >= min&& x <= max){
-    idEnergy = energyBuilding[x].id
+    if (x >= min && x <= max) {
+      idEnergy = energyBuilding[x].id
 
-    setNotIf(energyBuilding, idEnergy, "level", 0)
+      setNotIf(energyBuilding, idEnergy, "level", 0)
     }
   }
 }
@@ -860,7 +859,7 @@ function getExplorationSelected(a) {
         }
       }
 
-      valuesSetter()
+  valuesSetter()
 }
 
 //getters
@@ -892,7 +891,7 @@ function visual_valute() {
   update("dataValute", format(gameData[0].data, "scientific") + " Data")
   update("dataPerSecondValute", format(gameData[0].dataProd, "scientific") + " Data/s")
 
-  update("energyValute", format(gameData[0].energy, "scientific") + "/" +  format(gameData[0].energyMax, "scientific") + " Energy")
+  update("energyValute", format(gameData[0].energy, "scientific") + "/" + format(gameData[0].energyMax, "scientific") + " Energy")
   update("energyPerSecondValute", format(gameData[0].energyProd, "scientific") + " Energy/s")
 
   update("asteroidsValute", format(gameData[0].explorationResource1, "scientific") + " Asteroids")
@@ -915,11 +914,12 @@ function visual_refiner() {
   var actualPriceSpeedExtractorIdentity = refining[0].speedExtractorPriceIdentity
 
   updateClass("extractorValue", "adds to the base of cells/s: " + actualValue);
+
   updateClass("extractors1", "<div>" + "Adds +1 to the base" + "</div>");
-  updateClass("extractors2", "<div>" + actualExtractors + "</div><div>" + " price: " + actualPriceExtractors + " " + actualPriceExtractorsIdentity + "</div>")
+  updateClass("extractors2", "<div>" + actualExtractors + "/200" + "</div><div>" + " price: " + actualPriceExtractors + " " + actualPriceExtractorsIdentity + "</div>")
 
   updateClass("speedExtractors1", "<div>" + "multiplies Base x2" + "</div>");
-  updateClass("speedExtractors2", "<div>" + actualSpeedExtractor + "|" + " price: " + actualPriceSpeedExtractor + " " + actualPriceSpeedExtractorIdentity + "</div>")
+  updateClass("speedExtractors2", "<div>" + actualSpeedExtractor + "/30" + "|" + " price: " + actualPriceSpeedExtractor + " " + actualPriceSpeedExtractorIdentity + "</div>")
 }
 
 function logBase(b, n) {
@@ -941,14 +941,24 @@ function visual_projects() {
     var actualIdentity2 = projects[y].price2Identity;
     var actualIdentity3 = projects[y].price3Identity;
 
-    if(actualIdentity1 == "cellsProd"){
+    if (actualIdentity1 == "cellsProd") {
       actualIdentity1 = "cells/s"
     }
-    if(actualIdentity2 == "cellsProd"){
-      actualIdentity1 = "cells/s"
+    if (actualIdentity2 == "cellsProd") {
+      actualIdentity2 = "cells/s"
     }
-    if(actualIdentity3 == "cellsProd"){
-      actualIdentity1 = "cells/s"
+    if (actualIdentity3 == "cellsProd") {
+      actualIdentity3 = "cells/s"
+    }
+
+    if (actualIdentity1 == "explorationResource1") {
+      actualIdentity1 = "asteroids"
+    }
+    if (actualIdentity2 == "explorationResource1") {
+      actualIdentity2 = "asteroids"
+    }
+    if (actualIdentity3 == "explorationResource1") {
+      actualIdentity3 = "asteroids"
     }
     var actualUnlockable1 = projects[y].unlockable1;
     var actualUnlockable2 = projects[y].unlockable2;
@@ -966,6 +976,14 @@ function visual_projects() {
         "<div>" + actualUnlockable1 + "</div>" +
         "<div>" + actualUnlockable2 + "</div>" +
         "<div>" + actualUnlockable3 + "</div>";
+    }
+    else if (actualUnlocked == true) {
+      projectBox.innerHTML = "<div>" + actualName + "</div>" +
+        "<div>" + actualUnlockable1 + "</div>" +
+        "<div>" + actualUnlockable2 + "</div>" +
+        "<div>" + actualUnlockable3 + "</div>";
+
+      unlockShow(actualId + "Button", false)
     }
   }
 }
@@ -995,15 +1013,38 @@ function visual_dataLayer() {
 
   actualDataUpgrade1.innerHTML = "<div>" + actualUpgradeName1 + "</div>" +
     "<div>" + actualUpgradeDescription1 + "</div>" +
-    "<div>" + "effect: " + format(actualUpgradeEffect1, "scientific") + "</div>" +
+    "<div>" + "effect: " + format(actualUpgradeEffect1, "scientific") + " / 15" + "</div>" +
     "<div>" + "price: " + format(actualUpgradePrice1, "scientific") + " " + actualUpgradeIdentity1 + "</div>";
 
   actualDataUpgrade2.innerHTML = "<div>" + actualUpgradeName2 + "</div>" +
     "<div>" + actualUpgradeDescription2 + "</div>" +
-    "<div>" + "effect: " + format(actualUpgradeEffect2, "scientific") + "</div>" +
+    "<div>" + "effect: " + format(actualUpgradeEffect2, "scientific") + " / 15" + "</div>" +
     "<div>" + "price: " + format(actualUpgradePrice2, "scientific") + " " + actualUpgradeIdentity2 + "</div>";
 
+  let elemColor1 = document.getElementById("dataLightWait")
+  let elemColor2 = document.getElementById("dataMediumWait")
+  let elemColor3 = document.getElementById("dataHeavyWait")
 
+
+  if (getNotIf(data, null, "lightExtractionMult") == 0) {
+    elemColor1.style.backgroundColor = "red";
+  }
+  if (getNotIf(data, null, "mediumExtractionMult") == 0) {
+    elemColor2.style.backgroundColor = "red";
+  }
+  if (getNotIf(data, null, "heavyExtractionMult") == 0) {
+    elemColor3.style.backgroundColor = "red";
+  }
+
+  if (getNotIf(data, null, "lightExtractionMult") > 0) {
+    elemColor1.style.backgroundColor = "lightGreen";
+  }
+  if (getNotIf(data, null, "mediumExtractionMult") > 0) {
+    elemColor2.style.backgroundColor = "lightGreen";
+  }
+  if (getNotIf(data, null, "heavyExtractionMult") > 0) {
+    elemColor3.style.backgroundColor = "lightGreen";
+  }
 
   for (let y in dataUpgrades) {
     var actualDataUpgradesId = dataUpgrades[y].id
@@ -1208,19 +1249,36 @@ function valuesSetterDinamic() {
 
   setNotIf(gameData, null, "data", getNotIf(gameData, null, "data") + getNotIf(gameData, null, "dataProd"))
 
-  if(!(getNotIf(projects, "unlockable15", "unlocked")) && getNotIf(gameData, null, "data") > 5000){
+  if (!(getNotIf(projects, "unlockable15", "unlocked")) && getNotIf(gameData, null, "data") > 5000) {
     setNotIf(gameData, null, "data", 5000)
   }
 
   setNotIf(gameData, null, "energy", getNotIf(gameData, null, "energy") + getNotIf(gameData, null, "energyProd"))
 
-  if(getNotIf(gameData, null, "energy") > getNotIf(gameData, null, "energyMax")){
+  if (getNotIf(gameData, null, "energy") > getNotIf(gameData, null, "energyMax")) {
     setNotIf(gameData, null, "energy", getNotIf(gameData, null, "energyMax"))
   }
 
   setNotIf(gameData, null, "explorationResource1", getNotIf(gameData, null, "explorationResource1") + getNotIf(gameData, null, "explorationResource1Prod"))
 
+
   setNotIf(gameData, null, "tickSpeed", getNotIf(gameData, null, "tickSpeedProd"))
+
+  if (getNotIf(gameData, null, "cells") < 0) {
+    setNotIf(gameData, null, "cells", 0)
+  }
+
+  if (getNotIf(gameData, null, "data") < 0) {
+    setNotIf(gameData, null, "data", 0)
+  }
+
+  if (getNotIf(gameData, null, "energy") < 0) {
+    setNotIf(gameData, null, "energy", 0)
+  }
+
+  if (getNotIf(gameData, null, "asteroids") < 0) {
+    setNotIf(gameData, null, "asteroids", 0)
+  }
 
   if (getIfActive(projects, "unlockable9", "unlocked")) {
     setNotIf(gameData, null, "offProgressLimit", 3600)
@@ -1324,17 +1382,17 @@ function valuesSetter() {
   energy2 = norm(energy2)
   energy3 = norm(energy3)
   energy5 = norm(energy5)
-  
+
 
   let globalEnergyProd = (0 + energy1 * energy4 * energy5) - energy6 - energy7
   let globalEnergyMax = 10 + energy2
-  
+
   ///////////////////////////
 
   //tickSpeed elements
 
   var tickspeed1 = getIfActive(gameData, null, "tickSpeed")
-  var tickspeed2 = getNotIf(components, "token4", "effect1")
+  var tickspeed2 = getIfActive(components, "token4", "effect1")
   var tickspeed3 = getNotIf(gameData, null, "tickspeed3")
 
   tickspeed2 = norm(tickspeed2)
@@ -1357,6 +1415,12 @@ function valuesSetter() {
   setNotIf(gameData, null, "explorationResource1Prod", globalExplorationResource1Prod)
   setNotIf(gameData, null, "tickSpeedProd", globalTickSpeedProd)
   setNotIf(gameData, null, "tickSpeed", getNotIf(gameData, null, "tickSpeedProd"))
+
+  //BALANCING
+
+  var bal1 = 10;
+  var bal2 = 100;
+  var bal3 = 1000;
 
   //COMPONENTS
 
@@ -1486,23 +1550,69 @@ function valuesSetter() {
     setActive(components, "token9", "price", false)
   }
 
+
+  if (getNotIf(components, "token10", "active")) {
+    setActive(components, "token10", "level", true)
+    setActive(components, "token10", "effect1", true)
+    setActive(components, "token10", "effect2", true)
+    setActive(components, "token10", "price", true)
+  }
+  else if (!(getNotIf(components, "token10", "active"))) {
+    setActive(components, "token10", "level", false)
+    setActive(components, "token10", "effect1", false)
+    setActive(components, "token10", "effect2", false)
+    setActive(components, "token10", "price", false)
+  }
+
+
+  if (getNotIf(components, "token11", "active")) {
+    setActive(components, "token11", "level", true)
+    setActive(components, "token11", "effect1", true)
+    setActive(components, "token11", "effect2", true)
+    setActive(components, "token11", "price", true)
+  }
+  else if (!(getNotIf(components, "token11", "active"))) {
+    setActive(components, "token11", "level", false)
+    setActive(components, "token11", "effect1", false)
+    setActive(components, "token11", "effect2", false)
+    setActive(components, "token11", "price", false)
+  }
+
+
+  if (getNotIf(components, "token12", "active")) {
+    setActive(components, "token12", "level", true)
+    setActive(components, "token12", "effect1", true)
+    setActive(components, "token12", "effect2", true)
+    setActive(components, "token12", "price", true)
+  }
+  else if (!(getNotIf(components, "token12", "active"))) {
+    setActive(components, "token12", "level", false)
+    setActive(components, "token12", "effect1", false)
+    setActive(components, "token12", "effect2", false)
+    setActive(components, "token12", "price", false)
+  }
+
   //producer
   let componentsToken1Level = getNotIf(components, "token1", "level")
-  let componentsToken1Effect1 = getNotIf(components, "token1", "level") * getNotIf(components, "token9", "effect1")
-  let componentsToken1Effect2 = (1 + (0.1 * getNotIf(components, "token1", "level"))) * getNotIf(components, "token9", "effect1")
-  let componentsToken1price = (1 ** getNotIf(components, "token1", "level")) / getNotIf(dataUpgrades, "collectable8", "effect")
+  let componentsToken1Effect1 = 0
+  let componentsToken1Effect2 = 0
+  let componentsToken1price = 0
 
 
   if (getNotIf(components, "token1", "level") >= 0 && getNotIf(components, "token1", "level") < 10) {
-    componentsToken1Effect1 = getNotIf(components, "token1", "level") * getNotIf(components, "token9", "effect1")
-    componentsToken1Effect2 = (1 + (0.1 * getNotIf(components, "token1", "level"))) * getNotIf(components, "token9", "effect1")
-    componentsToken1price = (2.5 ** getNotIf(components, "token1", "level")) / getNotIf(dataUpgrades, "collectable8", "effect")
+    componentsToken1Effect1 = (2 * getNotIf(components, "token1", "level")) * getNotIf(components, "token9", "effect1")
+    componentsToken1Effect2 = (1 + (0.5 * getNotIf(components, "token1", "level"))) * getNotIf(components, "token9", "effect1")
+    componentsToken1price = (4.5 ** getNotIf(components, "token1", "level")) / getNotIf(dataUpgrades, "collectable8", "effect")
   }
 
   if (getNotIf(components, "token1", "level") >= 10 && getNotIf(components, "token1", "level") < 20) {
-    componentsToken1Effect1 = (2 * getNotIf(components, "token1", "level")) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable6", "effect")
-    componentsToken1Effect2 = (1 + (0.2 * getNotIf(components, "token1", "level"))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable6", "effect")
-    componentsToken1price = (5 ** getNotIf(components, "token1", "level")) / getNotIf(dataUpgrades, "collectable8", "effect")
+    componentsToken1Effect1 = (20 * getNotIf(components, "token1", "level")) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable6", "effect")
+    componentsToken1Effect2 = (1 + (5 * getNotIf(components, "token1", "level"))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable6", "effect")
+    componentsToken1price = (10 ** getNotIf(components, "token1", "level")) / getNotIf(dataUpgrades, "collectable8", "effect")
+  }
+  if (getNotIf(components, "token1", "level") == 20) {
+    componentsToken1Effect1 = (200 * getNotIf(components, "token1", "level")) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable6", "effect")
+    componentsToken1Effect2 = (1 + (1000 * getNotIf(components, "token1", "level"))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable6", "effect")
   }
 
   componentsToken1Effect1 = norm(componentsToken1Effect1)
@@ -1510,77 +1620,92 @@ function valuesSetter() {
 
   //booster
   let componentsToken2Level = getNotIf(components, "token2", "level")
-  let componentsToken2Effect1 = (logBase(30, getNotIf(gameData, null, "cells") * (1 + (1.05 * (getNotIf(components, "token2", "level")))))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable7", "effect")
+  let componentsToken2Effect1 = 0
   let componentsToken2Effect2 = 0
-  let componentsToken2price = ((2.5 ** getNotIf(components, "token2", "level")) * (10 ** 4)) / getNotIf(dataUpgrades, "collectable8", "effect")
+  let componentsToken2price = 0
 
   if (getNotIf(components, "token2", "level") >= 0 && getNotIf(components, "token2", "level") < 10) {
-    componentsToken2Effect1 = (1 + (0.1 * getNotIf(components, "token2", "level"))) * logBase(80, getNotIf(gameData, null, "cells")) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable7", "effect")
+    componentsToken2Effect1 = (1 + (0.5 * getNotIf(components, "token2", "level"))) * logBase(2, getNotIf(gameData, null, "cells")) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable7", "effect")
     componentsToken2Effect2 = 0
-    componentsToken2price = ((2.5 ** getNotIf(components, "token2", "level")) * (10 ** 4)) / getNotIf(dataUpgrades, "collectable8", "effect")
+    componentsToken2price = ((4.5 ** getNotIf(components, "token2", "level")) * (10 ** 8)) / getNotIf(dataUpgrades, "collectable8", "effect")
   }
   if (getNotIf(components, "token2", "level") >= 10 && getNotIf(components, "token2", "level") < 20) {
-    componentsToken2Effect1 = (2 * (1 + (0.1 * getNotIf(components, "token2", "level"))) * logBase(80, getNotIf(gameData, null, "cells"))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable7", "effect") * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable7", "effect")
+    componentsToken2Effect1 = (2 * (1 + (0.5 * getNotIf(components, "token2", "level"))) * logBase(2, getNotIf(gameData, null, "cells"))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable7", "effect")
     componentsToken2Effect2 = 0
-    componentsToken2price = ((5 ** getNotIf(components, "token2", "level")) * (10 ** 4)) / getNotIf(dataUpgrades, "collectable8", "effect")
+    componentsToken2price = ((10 ** getNotIf(components, "token2", "level")) * (10 ** 16)) / getNotIf(dataUpgrades, "collectable8", "effect")
+  }
+  if (getNotIf(components, "token2", "level") == 20) {
+    componentsToken2Effect1 = (4 * (1 + (0.5 * getNotIf(components, "token2", "level"))) * logBase(2, getNotIf(gameData, null, "cells"))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable7", "effect")
+    componentsToken2Effect2 = 0
   }
 
   componentsToken2Effect1 = norm(componentsToken2Effect1)
 
   //multimaker
   let componentsToken3Level = getNotIf(components, "token3", "level")
-  let componentsToken3Effect1 = 1 + (0.3 * (getNotIf(components, "token3", "level")) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable4", "effect"))
+  let componentsToken3Effect1 = 0
   let componentsToken3Effect2 = 0
-  let componentsToken3price = ((2.5 ** getNotIf(components, "token3", "level")) * (10 ** 6)) / getNotIf(dataUpgrades, "collectable8", "effect")
+  let componentsToken3price = 0
 
   if (getNotIf(components, "token3", "level") >= 0 && getNotIf(components, "token3", "level") < 10) {
     componentsToken3Effect1 = 1 + (0.3 * (getNotIf(components, "token3", "level")) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable4", "effect"))
     componentsToken3Effect2 = 0
-    componentsToken3price = ((2.5 ** getNotIf(components, "token3", "level")) * (10 ** 4)) / getNotIf(dataUpgrades, "collectable8", "effect")
+    componentsToken3price = ((4.5 ** getNotIf(components, "token3", "level")) * (10 ** 8)) / getNotIf(dataUpgrades, "collectable8", "effect")
   }
   if (getNotIf(components, "token3", "level") >= 10 && getNotIf(components, "token3", "level") < 20) {
     componentsToken3Effect1 = 1 + (0.6 * getNotIf(components, "token3", "level")) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable4", "effect") * getNotIf(dataUpgrades, "collectable6", "effect")
     componentsToken3Effect2 = 0
-    componentsToken3price = ((5 ** getNotIf(components, "token3", "level")) * (10 ** 4)) / getNotIf(dataUpgrades, "collectable8", "effect")
+    componentsToken3price = ((10 ** getNotIf(components, "token3", "level")) * (10 ** 16)) / getNotIf(dataUpgrades, "collectable8", "effect")
+  }
+  if (getNotIf(components, "token3", "level") == 20) {
+    componentsToken3Effect1 = 1 + (2 * getNotIf(components, "token3", "level")) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable4", "effect") * getNotIf(dataUpgrades, "collectable6", "effect")
+    componentsToken3Effect2 = 0
   }
 
   componentsToken3Effect1 = norm(componentsToken3Effect1)
 
   //Tick producer
   let componentsToken4Level = getNotIf(components, "token4", "level")
-  let componentsToken4Effect1 = 1 + (0.1 * (getIfActive(components, "token4", "level")) * getNotIf(components, "token9", "effect1"))
-
+  let componentsToken4Effect1 = 0
   let componentsToken4Effect2 = 0
-  let componentsToken4price = ((2.5 ** getNotIf(components, "token4", "level")) * (10 ** 7)) / getNotIf(dataUpgrades, "collectable8", "effect")
+  let componentsToken4price = 0
 
   if (getNotIf(components, "token4", "level") >= 0 && getNotIf(components, "token4", "level") < 10) {
-    componentsToken4Effect1 = 1 + (0.1 * (getIfActive(components, "token4", "level")) * getNotIf(components, "token9", "effect1"))
+    componentsToken4Effect1 = 1 + (1 * (getIfActive(components, "token4", "level")) * getNotIf(components, "token9", "effect1"))
     componentsToken4Effect2 = 0
-    componentsToken4price = ((2.5 ** getNotIf(components, "token4", "level")) * (10 ** 6)) / getNotIf(dataUpgrades, "collectable8", "effect")
+    componentsToken4price = ((4.5 ** getNotIf(components, "token4", "level")) * (10 ** 9)) / getNotIf(dataUpgrades, "collectable8", "effect")
   }
   if (getNotIf(components, "token4", "level") >= 10 && getNotIf(components, "token4", "level") < 20) {
-    componentsToken4Effect1 = 1 + (0.1 * (getIfActive(components, "token4", "level")) * getNotIf(components, "token9", "effect1") * getIfActive(dataUpgrades, "collectable6", "effect"))
+    componentsToken4Effect1 = 1 + (1.5 * (getIfActive(components, "token4", "level")) * getNotIf(components, "token9", "effect1") * getIfActive(dataUpgrades, "collectable6", "effect"))
     componentsToken4Effect2 = 0
-    componentsToken4price = ((5 ** getNotIf(components, "token4", "level")) * (10 ** 6)) / getNotIf(dataUpgrades, "collectable8", "effect")
+    componentsToken4price = ((10 ** getNotIf(components, "token4", "level")) * (10 ** 17)) / getNotIf(dataUpgrades, "collectable8", "effect")
+  }
+  if (getNotIf(components, "token4", "level") == 20) {
+    componentsToken4Effect1 = 1 + (2 * (getIfActive(components, "token4", "level")) * getNotIf(components, "token9", "effect1") * getIfActive(dataUpgrades, "collectable6", "effect"))
+    componentsToken4Effect2 = 0
   }
 
   componentsToken4Effect1 = norm(componentsToken4Effect1)
 
   //Data Booster
   let componentsToken5Level = getNotIf(components, "token5", "level")
-  let componentsToken5Effect1 = (1 + (0.5 * (getNotIf(components, "token5", "level")))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable7", "effect")
+  let componentsToken5Effect1 = 0
   let componentsToken5Effect2 = 0
-  let componentsToken5price = ((2.5 ** getNotIf(components, "token5", "level")) * (10 ** 6)) / getNotIf(dataUpgrades, "collectable8", "effect")
+  let componentsToken5price = 0
 
   if (getNotIf(components, "token5", "level") >= 0 && getNotIf(components, "token5", "level") < 10) {
     componentsToken5Effect1 = (1 + (0.5 * (getNotIf(components, "token5", "level")))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable7", "effect")
     componentsToken5Effect2 = 0
-    componentsToken5price = ((2.5 ** getNotIf(components, "token5", "level")) * (10 ** 6)) / getNotIf(dataUpgrades, "collectable8", "effect")
+    componentsToken5price = ((4.5 ** getNotIf(components, "token5", "level")) * (10 ** 9)) / getNotIf(dataUpgrades, "collectable8", "effect")
   }
   if (getNotIf(components, "token5", "level") >= 10 && getNotIf(components, "token5", "level") < 20) {
     componentsToken5Effect1 = (1 + (1 * (getNotIf(components, "token5", "level")))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable6", "effect") * getNotIf(dataUpgrades, "collectable7", "effect")
     componentsToken5Effect2 = 0
-    componentsToken5price = ((5 ** getNotIf(components, "token5", "level")) * (10 ** 6)) / getNotIf(dataUpgrades, "collectable8", "effect")
+    componentsToken5price = ((10 ** getNotIf(components, "token5", "level")) * (10 ** 17)) / getNotIf(dataUpgrades, "collectable8", "effect")
+  }
+  if (getNotIf(components, "token5", "level") == 20) {
+    componentsToken5Effect1 = (1 + (2 * (getNotIf(components, "token5", "level")))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable6", "effect") * getNotIf(dataUpgrades, "collectable7", "effect")
+    componentsToken5Effect2 = 0
   }
 
   componentsToken5Effect1 = norm(componentsToken5Effect1)
@@ -1601,63 +1726,151 @@ function valuesSetter() {
     componentsToken6Effect2 = (20 * getIfActive(components, "token6", "level"))
     componentsToken6price = (5 ** getIfActive(components, "token6", "level"))
   }
+  if (getNotIf(components, "token6", "level") == 20) {
+
+  }
 
 
   //Energy Synergy
   let componentsToken7Level = getNotIf(components, "token7", "level")
-  let componentsToken7Effect1 = (4 ** logBase(10, getNotIf(gameData, null, "energy") * (1.1 * (getNotIf(components, "token7", "level"))))) * getNotIf(components, "token9", "effect1")
+  let componentsToken7Effect1 = 0
   let componentsToken7Effect2 = 0
-  let componentsToken7price = ((2.5 ** getNotIf(components, "token7", "level")) * (10 ** 11)) / getNotIf(dataUpgrades, "collectable8", "effect")
+  let componentsToken7price = 0
 
   if (getNotIf(components, "token7", "level") >= 0 && getNotIf(components, "token7", "level") < 10) {
     componentsToken7Effect1 = (4 ** logBase(10, getNotIf(gameData, null, "energy") * (1.1 * (getNotIf(components, "token7", "level"))))) * getNotIf(components, "token9", "effect1")
     componentsToken7Effect2 = 0
-    componentsToken7price = ((2.5 ** getNotIf(components, "token7", "level")) * (10 ** 11)) / getNotIf(dataUpgrades, "collectable8", "effect")
+    componentsToken7price = ((4.5 ** getNotIf(components, "token7", "level")) * (10 ** 20)) / getNotIf(dataUpgrades, "collectable8", "effect")
   }
   if (getNotIf(components, "token7", "level") >= 10 && getNotIf(components, "token7", "level") < 20) {
     componentsToken7Effect1 = (10 * ((4 ** logBase(10, getNotIf(gameData, null, "energy") * (1.1 * (getNotIf(components, "token7", "level")))))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable6", "effect"))
     componentsToken7Effect2 = 0
-    componentsToken7price = ((5 ** getNotIf(components, "token7", "level")) * (10 ** 11)) / getNotIf(dataUpgrades, "collectable8", "effect")
+    componentsToken7price = ((10 ** getNotIf(components, "token7", "level")) * (10 ** 30)) / getNotIf(dataUpgrades, "collectable8", "effect")
+  }
+  if (getNotIf(components, "token7", "level") == 20) {
+    componentsToken7Effect1 = (100 * ((4 ** logBase(10, getNotIf(gameData, null, "energy") * (1.1 * (getNotIf(components, "token7", "level")))))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable6", "effect"))
+    componentsToken7Effect2 = 0
   }
 
   componentsToken7Effect1 = norm(componentsToken7Effect1)
 
-  //Asteroid Booster (not active, needs to make all asteroid upgrades)
+
+  //Asteroid Enchancer
   let componentsToken8Level = getNotIf(components, "token8", "level")
-  let componentsToken8Effect1 = 1 + (getNotIf(components, "token8", "level"))
-  let componentsToken8Effect2 = 10 * (getNotIf(components, "token8", "level"))
-  let componentsToken8price = (2.5 ** getNotIf(components, "token8", "level"))
+  let componentsToken8Effect1 = 0
+  let componentsToken8Effect2 = 0
+  let componentsToken8price = 0
 
   if (getNotIf(components, "token8", "level") >= 0 && getNotIf(components, "token8", "level") < 10) {
-    componentsToken8Effect1 = (1 + getNotIf(components, "token8", "level"))
-    componentsToken8Effect2 = (10 * getNotIf(components, "token8", "level"))
-    componentsToken8price = (2.5 ** getNotIf(components, "token8", "level"))
+    componentsToken8Effect1 = (1 + (1 * getNotIf(components, "token8", "level"))) * getNotIf(components, "token9", "effect1")
+    componentsToken8Effect2 = 0
+    componentsToken8price = (10 ** getNotIf(components, "token8", "level"))
   }
   if (getNotIf(components, "token8", "level") >= 10 && getNotIf(components, "token8", "level") < 20) {
-    componentsToken8Effect1 = 1 + (2 * getNotIf(components, "token8", "level"))
-    componentsToken8Effect2 = (20 * getNotIf(components, "token8", "level"))
-    componentsToken8price = (5 ** getNotIf(components, "token8", "level"))
+    componentsToken8Effect1 = 1 + (2 * getNotIf(components, "token8", "level")) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable6", "effect")
+    componentsToken8Effect2 = 0
+    componentsToken8price = (20 ** getNotIf(components, "token8", "level"))
+  }
+  if (getNotIf(components, "token8", "level") == 20) {
+    componentsToken8Effect1 = 1 + (2 * getNotIf(components, "token8", "level")) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable6", "effect")
   }
 
 
   //Ally Synergy
   let componentsToken9Level = getNotIf(components, "token9", "level")
-  let componentsToken9Effect1 = 1 + (0.1 * getIfActive(components, "token9", "level"))
+  let componentsToken9Effect1 = 0
   let componentsToken9Effect2 = 0
-  let componentsToken9price = ((2.5 ** getNotIf(components, "token9", "level")) * (10 ** 11)) / getNotIf(dataUpgrades, "collectable8", "effect")
+  let componentsToken9price = 0
 
   if (getNotIf(components, "token9", "level") >= 0 && getNotIf(components, "token9", "level") < 10) {
-    componentsToken9Effect1 = 1 + (0.1 * getIfActive(components, "token9", "level"))
+    componentsToken9Effect1 = 1 + (0.25 * getIfActive(components, "token9", "level"))
     componentsToken9Effect2 = 0
-    componentsToken9price = ((2.5 ** getNotIf(components, "token9", "level")) * (10 ** 11)) / getNotIf(dataUpgrades, "collectable8", "effect")
+    componentsToken9price = ((4.5 ** getNotIf(components, "token9", "level")) * (10 ** 20)) / getNotIf(dataUpgrades, "collectable8", "effect")
   }
   if (getNotIf(components, "token9", "level") >= 10 && getNotIf(components, "token9", "level") < 20) {
-    componentsToken9Effect1 = 1 + (0.2 * getIfActive(components, "token9", "level")) * getNotIf(dataUpgrades, "collectable6", "effect")
+    componentsToken9Effect1 = 1 + (0.5 * getIfActive(components, "token9", "level")) * getNotIf(dataUpgrades, "collectable6", "effect")
     componentsToken9Effect2 = 0
-    componentsToken9price = ((5 ** getNotIf(components, "token9", "level")) * (10 ** 11)) / getNotIf(dataUpgrades, "collectable8", "effect")
+    componentsToken9price = ((10 ** getNotIf(components, "token9", "level")) * (10 ** 30)) / getNotIf(dataUpgrades, "collectable8", "effect")
+  }
+  if (getNotIf(components, "token9", "level") == 20) {
+    componentsToken9Effect1 = 1 + (1 * getIfActive(components, "token9", "level")) * getNotIf(dataUpgrades, "collectable6", "effect")
+    componentsToken9Effect2 = 0
   }
 
   componentsToken9Effect1 = norm(componentsToken9Effect1)
+
+
+  //Energized Structure
+  let componentsToken10Level = getNotIf(components, "token10", "level")
+  let componentsToken10Effect1 = 0
+  let componentsToken10Effect2 = 0
+  let componentsToken10price = 0
+
+  if (getNotIf(components, "token10", "level") >= 0 && getNotIf(components, "token10", "level") < 10) {
+    componentsToken10Effect1 = 1 + (0.5 * getIfActive(components, "token10", "level"))
+    componentsToken10Effect2 = 0
+    componentsToken10price = ((4.5 ** getNotIf(components, "token10", "level")) * (10 ** 20)) / getNotIf(dataUpgrades, "collectable8", "effect")
+  }
+  if (getNotIf(components, "token10", "level") >= 10 && getNotIf(components, "token10", "level") < 20) {
+    componentsToken10Effect1 = 1 + (1 * getIfActive(components, "token10", "level")) * getNotIf(dataUpgrades, "collectable6", "effect")
+    componentsToken10Effect2 = 0
+    componentsToken10price = ((10 ** getNotIf(components, "token10", "level")) * (10 ** 30)) / getNotIf(dataUpgrades, "collectable8", "effect")
+  }
+  if (getNotIf(components, "token10", "level") == 20) {
+    componentsToken10Effect1 = 1 + (2 * getIfActive(components, "token10", "level")) * getNotIf(dataUpgrades, "collectable6", "effect")
+    componentsToken10Effect2 = 0
+  }
+
+  componentsToken10Effect1 = norm(componentsToken10Effect1)
+
+
+  //Asteroids Cells Booster
+  let componentsToken11Level = getNotIf(components, "token11", "level")
+  let componentsToken11Effect1 = 0
+  let componentsToken11Effect2 = 0
+  let componentsToken11price = 0
+
+  if (getNotIf(components, "token11", "level") >= 0 && getNotIf(components, "token11", "level") < 10) {
+    componentsToken10Effect1 = getNotIf(gameData, null, "energyProd") * 0.3;
+    componentsToken10Effect2 = (4 * (1 + (0.5 * getNotIf(components, "token11", "level"))) * logBase(2, getNotIf(gameData, null, "cells"))) * getNotIf(components, "token9", "effect1")
+    componentsToken10price = ((4.5 ** getNotIf(components, "token11", "level")) * (10 ** 20)) / getNotIf(dataUpgrades, "collectable8", "effect")
+  }
+  if (getNotIf(components, "token11", "level") >= 10 && getNotIf(components, "token11", "level") < 20) {
+    componentsToken10Effect1 = getNotIf(gameData, null, "energyProd") * 0.3;
+    componentsToken10Effect2 = (12 * (1 + (0.5 * getNotIf(components, "token11", "level"))) * logBase(2, getNotIf(gameData, null, "cells"))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable7", "effect")
+    componentsToken10price = ((10 ** getNotIf(components, "token11", "level")) * (10 ** 30)) / getNotIf(dataUpgrades, "collectable8", "effect")
+  }
+  if (getNotIf(components, "token11", "level") == 20) {
+    componentsToken10Effect1 = getNotIf(gameData, null, "energyProd") * 0.3;
+    componentsToken10Effect2 = (30 * (1 + (0.5 * getNotIf(components, "token11", "level"))) * logBase(2, getNotIf(gameData, null, "cells"))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable7", "effect")
+  }
+
+  componentsToken11Effect1 = norm(componentsToken11Effect1)
+
+
+
+  //Asteroids Data Booster
+  let componentsToken12Level = getNotIf(components, "token12", "level")
+  let componentsToken12Effect1 = 0
+  let componentsToken12Effect2 = 0
+  let componentsToken12price = 0
+
+  if (getNotIf(components, "token12", "level") >= 0 && getNotIf(components, "token12", "level") < 10) {
+    componentsToken10Effect1 = getNotIf(gameData, null, "energyProd") * 0.3;
+    componentsToken10Effect2 = (1 + (4 * (getNotIf(components, "token12", "level")))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable7", "effect")
+    componentsToken10price = ((4.5 ** getNotIf(components, "token12", "level")) * (10 ** 20)) / getNotIf(dataUpgrades, "collectable8", "effect")
+  }
+  if (getNotIf(components, "token12", "level") >= 10 && getNotIf(components, "token12", "level") < 20) {
+    componentsToken10Effect1 = getNotIf(gameData, null, "energyProd") * 0.3;
+    componentsToken10Effect2 = (1 + (8 * (getNotIf(components, "token12", "level")))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable6", "effect") * getNotIf(dataUpgrades, "collectable7", "effect")
+    componentsToken10price = ((10 ** getNotIf(components, "token12", "level")) * (10 ** 30)) / getNotIf(dataUpgrades, "collectable8", "effect")
+  }
+  if (getNotIf(components, "token12", "level") == 20) {
+    componentsToken10Effect1 = getNotIf(gameData, null, "energyProd") * 0.3;
+    componentsToken10Effect2 = (1 + (16 * (getNotIf(components, "token12", "level")))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable6", "effect") * getNotIf(dataUpgrades, "collectable7", "effect")
+  }
+
+  componentsToken12Effect1 = norm(componentsToken12Effect1)
 
   setNotIf(components, "token1", "level", componentsToken1Level)
   setNotIf(components, "token1", "effect1", componentsToken1Effect1)
@@ -1704,6 +1917,21 @@ function valuesSetter() {
   setNotIf(components, "token9", "effect2", componentsToken9Effect2)
   setNotIf(components, "token9", "price", componentsToken9price)
 
+  setNotIf(components, "token10", "level", componentsToken10Level)
+  setNotIf(components, "token10", "effect1", componentsToken10Effect1)
+  setNotIf(components, "token10", "effect2", componentsToken10Effect2)
+  setNotIf(components, "token10", "price", componentsToken10price)
+
+  setNotIf(components, "token11", "level", componentsToken11Level)
+  setNotIf(components, "token11", "effect1", componentsToken11Effect1)
+  setNotIf(components, "token11", "effect2", componentsToken11Effect2)
+  setNotIf(components, "token11", "price", componentsToken11price)
+
+  setNotIf(components, "token12", "level", componentsToken12Level)
+  setNotIf(components, "token12", "effect1", componentsToken12Effect1)
+  setNotIf(components, "token12", "effect2", componentsToken12Effect2)
+  setNotIf(components, "token12", "price", componentsToken12price)
+
   //refining
 
   if (getNotIf(gameData, null, "cells") >= 100) {
@@ -1715,12 +1943,12 @@ function valuesSetter() {
     setActive(refining, null, "speedExtractorPrice", true)
   }
 
-  let refiningValue = ((getIfActive(refining, null, "extractors")) * (2 ** getIfActive(refining, null, "speedExtractor"))) * getNotIf(dataUpgrades, "collectable3", "effect");
+  let refiningValue = (4 * (getIfActive(refining, null, "extractors")) * (2 ** getIfActive(refining, null, "speedExtractor"))) * getNotIf(dataUpgrades, "collectable3", "effect");
 
   let refiningExtractors = getIfActive(refining, null, "extractors");
   let refiningSpeedExtractor = getIfActive(refining, null, "speedExtractor");
   let refiningEffect = 0; //effetto che si applica fra extractors e speedExtractors, attualmente, non viene usato
-  let refiningPriceExtractors = (getIfActive(refining, null, "extractors") ** 3) / getNotIf(dataUpgrades, "collectable2", "effect");
+  let refiningPriceExtractors = (1.4 ** (10 + getIfActive(refining, null, "extractors"))) / getNotIf(dataUpgrades, "collectable2", "effect");
   let refiningSpeedExtractorPrice = (10 ** (2 + getIfActive(refining, null, "speedExtractor"))) / getNotIf(dataUpgrades, "collectable2", "effect");
 
   setIfActive(refining, null, "value", refiningValue)
@@ -1746,17 +1974,35 @@ function valuesSetter() {
 
   let dataUpgradeEffect1 = getIfActive(data, null, "upgradeNumber1");
   let dataUpgradePrice1 = 10 ** getIfActive(data, null, "upgradeNumber1");
+
+  if (getIfActive(data, null, "upgradeNumber1") > 4) {
+    dataUpgradePrice1 = 20 ** getIfActive(data, null, "upgradeNumber1");
+  }
   let dataUpgradeNumber1 = getIfActive(data, null, "upgradeNumber1");
   let dataUpgradeEffect2 = getIfActive(data, null, "upgradeNumber2");
   let dataUpgradePrice2 = 10 ** getIfActive(data, null, "upgradeNumber2");
+
+  if (getIfActive(data, null, "upgradeNumber2") > 4) {
+    dataUpgradePrice2 = 20 ** getIfActive(data, null, "upgradeNumber2");
+  }
   let dataUpgradeNumber2 = getIfActive(data, null, "upgradeNumber2");
 
   let dataLightDuration = 3000 / (getNotIf(gameData, null, "tickSpeed") / 1000)
+  //30000
   let dataMediumDuration = 30000 / (getNotIf(gameData, null, "tickSpeed") / 1000)
+  //180000
   let dataHeavyDuration = 180000 / (getNotIf(gameData, null, "tickSpeed") / 1000)
   let dataLightExtractionMult = Math.floor(1 + getIfActive(data, null, "upgradeEffect1"))
+
   let dataMediumExtractionMult = Math.floor(getIfActive(data, null, "upgradeEffect1") / 4)
+  if (Math.floor(getIfActive(data, null, "upgradeEffect1") / 4) >= 1) {
+    dataMediumExtractionMult = 1 + (getIfActive(data, null, "upgradeEffect1") - 4)
+  }
+
   let dataHeavyExtractionMult = Math.floor(getIfActive(data, null, "upgradeEffect1") / 8)
+  if (Math.floor(getIfActive(data, null, "upgradeEffect1") / 8) >= 1) {
+    dataHeavyExtractionMult = 1 + (getIfActive(data, null, "upgradeEffect1") - 8)
+  }
 
 
   setIfActive(data, null, "upgradeEffect1", dataUpgradeEffect1)
@@ -1820,17 +2066,17 @@ function valuesSetter() {
 
 
   //Hardware T1 layer is slightly cheaper
-  let dataUpgrade2Effect = 1 + (0.01 * getIfActive(dataUpgrades, "collectable2", "extracted"));
+  let dataUpgrade2Effect = 1 + (0.1 * getIfActive(dataUpgrades, "collectable2", "extracted"));
   let dataUpgrade2MaxQuantity = 10 + getIfActive(data, null, "upgradeEffect2");
   let dataUpgrade2Extracted = getIfActive(dataUpgrades, "collectable2", "extracted");
 
   //Extractor is slightly boosted
-  let dataUpgrade3Effect = 1 + (0.01 * getIfActive(dataUpgrades, "collectable3", "extracted"));
+  let dataUpgrade3Effect = 1 + (0.1 * getIfActive(dataUpgrades, "collectable3", "extracted"));
   let dataUpgrade3MaxQuantity = 10 + getIfActive(data, null, "upgradeEffect2");;
   let dataUpgrade3Extracted = getIfActive(dataUpgrades, "collectable3", "extracted");
 
   //Multimakers are slightly stronger
-  let dataUpgrade4Effect = 1 + (0.01 * getIfActive(dataUpgrades, "collectable4", "extracted"));
+  let dataUpgrade4Effect = 1 + (0.1 * getIfActive(dataUpgrades, "collectable4", "extracted"));
   let dataUpgrade4MaxQuantity = 10 + getIfActive(data, null, "upgradeEffect2");
   let dataUpgrade4Extracted = getIfActive(dataUpgrades, "collectable4", "extracted");
 
@@ -1840,17 +2086,17 @@ function valuesSetter() {
   let dataUpgrade5Extracted = getIfActive(dataUpgrades, "collectable5", "extracted");
 
   //Components rankup are stronger
-  let dataUpgrade6Effect = 1 + (0.1 * getIfActive(dataUpgrades, "collectable6", "extracted"));
+  let dataUpgrade6Effect = 1 + (1 * getIfActive(dataUpgrades, "collectable6", "extracted"));
   let dataUpgrade6MaxQuantity = 10 + getIfActive(data, null, "upgradeEffect2");
   let dataUpgrade6Extracted = getIfActive(dataUpgrades, "collectable6", "extracted");
 
   //Boosters are stronger
-  let dataUpgrade7Effect = 1 + (0.1 * getIfActive(dataUpgrades, "collectable7", "extracted"));
+  let dataUpgrade7Effect = 1 + (1 * getIfActive(dataUpgrades, "collectable7", "extracted"));
   let dataUpgrade7MaxQuantity = 10 + getIfActive(data, null, "upgradeEffect2");;
   let dataUpgrade7Extracted = getIfActive(dataUpgrades, "collectable7", "extracted");
 
   //Components Cost is reduced
-  let dataUpgrade8Effect = 1 + (0.1 * getIfActive(dataUpgrades, "collectable8", "extracted"));
+  let dataUpgrade8Effect = 1 + (1 * getIfActive(dataUpgrades, "collectable8", "extracted"));
   let dataUpgrade8MaxQuantity = 10 + getIfActive(data, null, "upgradeEffect2");
   let dataUpgrade8Extracted = getIfActive(dataUpgrades, "collectable8", "extracted");
 
@@ -1860,7 +2106,7 @@ function valuesSetter() {
   let dataUpgrade9Extracted = getIfActive(dataUpgrades, "collectable9", "extracted");
 
   //Components Effect are slightly stronger
-  let dataUpgrade11Effect = 1 + (0.01 * getIfActive(dataUpgrades, "collectable11", "extracted"));
+  let dataUpgrade11Effect = 1 + (0.1 * getIfActive(dataUpgrades, "collectable11", "extracted"));
   let dataUpgrade11MaxQuantity = 10 + getIfActive(data, null, "upgradeEffect2");;
   let dataUpgrade11Extracted = getIfActive(dataUpgrades, "collectable11", "extracted");
 
@@ -1951,9 +2197,12 @@ function valuesSetter() {
   setActive(projects, "unlockable15", "price1", true)
   setActive(projects, "unlockable15", "price2", true)
   setActive(projects, "unlockable15", "price3", true)
+  setActive(projects, "unlockable16", "price1", true)
+  setActive(projects, "unlockable16", "price2", true)
+  setActive(projects, "unlockable16", "price3", true)
 
   //Hardware Package 1
-  let projectsUnlockable1Price1 = 10 ** 5
+  let projectsUnlockable1Price1 = 2 * (10 ** 8)
   let projectsUnlockable1Price2 = 150
   let projectsUnlockable1Price3 = 0
 
@@ -1968,18 +2217,18 @@ function valuesSetter() {
   let projectsUnlockable3Price3 = 0
 
   //new resources package 1
-  let projectsUnlockable4Price1 = 10 ** 5
+  let projectsUnlockable4Price1 = 5 * (10 ** 9)
   let projectsUnlockable4Price2 = 0
   let projectsUnlockable4Price3 = 0
 
   //extractors automation
-  let projectsUnlockable5Price1 = 10 ** 7
-  let projectsUnlockable5Price2 = 5000
+  let projectsUnlockable5Price1 = 10 ** 18
+  let projectsUnlockable5Price2 = 5 * (10 ** 5)
   let projectsUnlockable5Price3 = 100
 
   //data automation
-  let projectsUnlockable6Price1 = 10 ** 7
-  let projectsUnlockable6Price2 = 5000
+  let projectsUnlockable6Price1 = 10 ** 18
+  let projectsUnlockable6Price2 = 5 * (10 ** 5)
   let projectsUnlockable6Price3 = 100
 
 
@@ -1999,7 +2248,7 @@ function valuesSetter() {
   let projectsUnlockable9Price3 = 0
 
   //IDLE 2
-  let projectsUnlockable10Price1 = 10 ** 5
+  let projectsUnlockable10Price1 = 5 * (10 ** 5)
   let projectsUnlockable10Price2 = 0
   let projectsUnlockable10Price3 = 0
 
@@ -2014,19 +2263,24 @@ function valuesSetter() {
   let projectsUnlockable12Price3 = 0
 
   //COMMUNICATION PACKAGE 1
-  let projectsUnlockable13Price1 = 10 ** 8
-  let projectsUnlockable13Price2 = 10 ** 5
+  let projectsUnlockable13Price1 = 10 ** 18
+  let projectsUnlockable13Price2 = 5 * (10 ** 9)
   let projectsUnlockable13Price3 = 100
 
   //FIRST EXPLORATION STEP
-  let projectsUnlockable14Price1 = 10 ** 11
+  let projectsUnlockable14Price1 = 10 ** 13
   let projectsUnlockable14Price2 = 10
   let projectsUnlockable14Price3 = 0
 
-  //MILESTONE 1
-  let projectsUnlockable15Price1 = 10 ** 5
+  //MILESTONE: FIRST PILLAR
+  let projectsUnlockable15Price1 = 10 ** 16
   let projectsUnlockable15Price2 = 5000
   let projectsUnlockable15Price3 = 0
+
+    //MILESTONE: FIRST STRATUM
+    let projectsUnlockable16Price1 = 10 ** 40
+    let projectsUnlockable16Price2 = 10 ** 20
+    let projectsUnlockable16Price3 = 10 ** 6
 
   setIfActive(projects, "unlockable1", "price1", projectsUnlockable1Price1)
   setIfActive(projects, "unlockable1", "price2", projectsUnlockable1Price2)
@@ -2073,6 +2327,9 @@ function valuesSetter() {
   setIfActive(projects, "unlockable15", "price1", projectsUnlockable15Price1)
   setIfActive(projects, "unlockable15", "price2", projectsUnlockable15Price2)
   setIfActive(projects, "unlockable15", "price3", projectsUnlockable15Price3)
+  setIfActive(projects, "unlockable16", "price1", projectsUnlockable16Price1)
+  setIfActive(projects, "unlockable16", "price2", projectsUnlockable16Price2)
+  setIfActive(projects, "unlockable16", "price3", projectsUnlockable16Price3)
 
   //energy
 
@@ -2104,12 +2361,12 @@ function valuesSetter() {
   let energyBuildingEnergy5Level = getNotIf(energyBuilding, "energy5", "level");
   let energyBuildingEnergy6Level = getNotIf(energyBuilding, "energy6", "level");
 
- let totLevel = getNotIf(energyBuilding, "energy1", "level") + 
- getNotIf(energyBuilding, "energy2", "level") + 
- getNotIf(energyBuilding, "energy3", "level") + 
- getNotIf(energyBuilding, "energy4", "level") + 
- getNotIf(energyBuilding, "energy5", "level") + 
- getNotIf(energyBuilding, "energy6", "level")
+  let totLevel = getNotIf(energyBuilding, "energy1", "level") +
+    getNotIf(energyBuilding, "energy2", "level") +
+    getNotIf(energyBuilding, "energy3", "level") +
+    getNotIf(energyBuilding, "energy4", "level") +
+    getNotIf(energyBuilding, "energy5", "level") +
+    getNotIf(energyBuilding, "energy6", "level")
 
   let energyBuildingEnergy1Effect = 2 ** getNotIf(energyBuilding, "energy1", "level");
 
@@ -2125,9 +2382,9 @@ function valuesSetter() {
   let energyBuildingEnergy6Effect = 0;
 
 
-  let energyBuildingEnergy1Price = (10 ** totLevel) * ((10 ** 6) * (2 ** getNotIf(energyBuilding, "energy1", "level")));
-  let energyBuildingEnergy2Price = (10 ** totLevel) * ((10 ** 6) * (2 ** getNotIf(energyBuilding, "energy2", "level")));
-  let energyBuildingEnergy3Price = (10 ** totLevel) * ((10 ** 6) * (2 ** getNotIf(energyBuilding, "energy3", "level")));
+  let energyBuildingEnergy1Price = (10 ** totLevel) * ((10 ** 18) * (2 ** getNotIf(energyBuilding, "energy1", "level")));
+  let energyBuildingEnergy2Price = (10 ** totLevel) * ((10 ** 18) * (2 ** getNotIf(energyBuilding, "energy2", "level")));
+  let energyBuildingEnergy3Price = (10 ** totLevel) * ((10 ** 18) * (2 ** getNotIf(energyBuilding, "energy3", "level")));
   let energyBuildingEnergy4Price = 0;
   let energyBuildingEnergy5Price = 0;
   let energyBuildingEnergy6Price = 0;
@@ -2156,28 +2413,28 @@ function valuesSetter() {
 
   //exploration
 
-//PRICE
+  //PRICE
 
 
-if(getNotIf(gameData, null, "energyProd") < getNotIf(explorationUpgrades, getNotIf(explorationSelected, null, "explorationB"), "price")) {
-  setNotIf(explorationSelected, null, "explorationB", "explorationB0")
-}
+  if (getNotIf(gameData, null, "energyProd") < getNotIf(explorationUpgrades, getNotIf(explorationSelected, null, "explorationB"), "price")) {
+    setNotIf(explorationSelected, null, "explorationB", "explorationB0")
+  }
 
-  if(getNotIf(explorationSelected, null, "explorationA") == "explorationA0" && getNotIf(gameData, null, "energyProd") > getNotIf(explorationUpgrades, getNotIf(explorationSelected, null, "explorationA"), "price")){
+  if (getNotIf(explorationSelected, null, "explorationA") == "explorationA0" && getNotIf(gameData, null, "energyProd") > getNotIf(explorationUpgrades, getNotIf(explorationSelected, null, "explorationA"), "price")) {
     setActive(explorationUpgrades, "explorationA0", "price", true)
   }
   else (
     setActive(explorationUpgrades, "explorationA0", "price", false)
   )
 
-  if(getNotIf(explorationSelected, null, "explorationA") == "explorationA1" && getNotIf(gameData, null, "energyProd") > getNotIf(explorationUpgrades, getNotIf(explorationSelected, null, "explorationA"), "price")){
+  if (getNotIf(explorationSelected, null, "explorationA") == "explorationA1" && getNotIf(gameData, null, "energyProd") > getNotIf(explorationUpgrades, getNotIf(explorationSelected, null, "explorationA"), "price")) {
     setActive(explorationUpgrades, "explorationA1", "price", true)
   }
   else (
     setActive(explorationUpgrades, "explorationA1", "price", false)
   )
 
-  if(getNotIf(explorationSelected, null, "explorationA") == "explorationA2" && getNotIf(gameData, null, "energyProd") > getNotIf(explorationUpgrades, getNotIf(explorationSelected, null, "explorationA"), "price")){
+  if (getNotIf(explorationSelected, null, "explorationA") == "explorationA2" && getNotIf(gameData, null, "energyProd") > getNotIf(explorationUpgrades, getNotIf(explorationSelected, null, "explorationA"), "price")) {
     setActive(explorationUpgrades, "explorationA2", "price", true)
   }
   else (
@@ -2185,43 +2442,43 @@ if(getNotIf(gameData, null, "energyProd") < getNotIf(explorationUpgrades, getNot
   )
 
 
-  if(getNotIf(explorationSelected, null, "explorationB") == "explorationB0" && getNotIf(gameData, null, "energyProd") > getNotIf(explorationUpgrades, getNotIf(explorationSelected, null, "explorationB"), "price")){
+  if (getNotIf(explorationSelected, null, "explorationB") == "explorationB0" && getNotIf(gameData, null, "energyProd") > getNotIf(explorationUpgrades, getNotIf(explorationSelected, null, "explorationB"), "price")) {
     setActive(explorationUpgrades, "explorationB0", "price", true)
   }
   else (
     setActive(explorationUpgrades, "explorationB0", "price", false)
   )
 
-  if(getNotIf(explorationSelected, null, "explorationB") == "explorationB1" && getNotIf(gameData, null, "energyProd") > getNotIf(explorationUpgrades, getNotIf(explorationSelected, null, "explorationB"), "price")){
+  if (getNotIf(explorationSelected, null, "explorationB") == "explorationB1" && getNotIf(gameData, null, "energyProd") > getNotIf(explorationUpgrades, getNotIf(explorationSelected, null, "explorationB"), "price")) {
     setActive(explorationUpgrades, "explorationB1", "price", true)
   }
   else (
     setActive(explorationUpgrades, "explorationB1", "price", false)
   )
 
-  if(getNotIf(explorationSelected, null, "explorationB") == "explorationB2" && getNotIf(gameData, null, "energyProd") > getNotIf(explorationUpgrades, getNotIf(explorationSelected, null, "explorationB"), "price")){
+  if (getNotIf(explorationSelected, null, "explorationB") == "explorationB2" && getNotIf(gameData, null, "energyProd") > getNotIf(explorationUpgrades, getNotIf(explorationSelected, null, "explorationB"), "price")) {
     setActive(explorationUpgrades, "explorationB2", "price", true)
   }
   else (
     setActive(explorationUpgrades, "explorationB2", "price", false)
   )
 
-//EFFECT
-  if(getNotIf(explorationSelected, null, "explorationA") == "explorationA0" && getNotIf(gameData, null, "energyProd") > getNotIf(explorationUpgrades, getNotIf(explorationSelected, null, "explorationA"), "price")){
+  //EFFECT
+  if (getNotIf(explorationSelected, null, "explorationA") == "explorationA0" && getNotIf(gameData, null, "energyProd") > getNotIf(explorationUpgrades, getNotIf(explorationSelected, null, "explorationA"), "price")) {
     setActive(explorationUpgrades, "explorationA0", "effect", true)
   }
   else (
     setActive(explorationUpgrades, "explorationA0", "effect", false)
   )
 
-  if(getNotIf(explorationSelected, null, "explorationA") == "explorationA1" && getNotIf(gameData, null, "energyProd") > getNotIf(explorationUpgrades, getNotIf(explorationSelected, null, "explorationA"), "price")){
+  if (getNotIf(explorationSelected, null, "explorationA") == "explorationA1" && getNotIf(gameData, null, "energyProd") > getNotIf(explorationUpgrades, getNotIf(explorationSelected, null, "explorationA"), "price")) {
     setActive(explorationUpgrades, "explorationA1", "effect", true)
   }
   else (
     setActive(explorationUpgrades, "explorationA1", "effect", false)
   )
 
-  if(getNotIf(explorationSelected, null, "explorationA") == "explorationA2" && getNotIf(gameData, null, "energyProd") > getNotIf(explorationUpgrades, getNotIf(explorationSelected, null, "explorationA"), "price")){
+  if (getNotIf(explorationSelected, null, "explorationA") == "explorationA2" && getNotIf(gameData, null, "energyProd") > getNotIf(explorationUpgrades, getNotIf(explorationSelected, null, "explorationA"), "price")) {
     setActive(explorationUpgrades, "explorationA2", "effect", true)
   }
   else (
@@ -2229,21 +2486,21 @@ if(getNotIf(gameData, null, "energyProd") < getNotIf(explorationUpgrades, getNot
   )
 
 
-  if(getNotIf(explorationSelected, null, "explorationB") == "explorationB0" && getNotIf(gameData, null, "energyProd") > getNotIf(explorationUpgrades, getNotIf(explorationSelected, null, "explorationB"), "price")){
+  if (getNotIf(explorationSelected, null, "explorationB") == "explorationB0" && getNotIf(gameData, null, "energyProd") > getNotIf(explorationUpgrades, getNotIf(explorationSelected, null, "explorationB"), "price")) {
     setActive(explorationUpgrades, "explorationB0", "effect", true)
   }
   else (
     setActive(explorationUpgrades, "explorationB0", "effect", false)
   )
 
-  if(getNotIf(explorationSelected, null, "explorationB") == "explorationB1" && getNotIf(gameData, null, "energyProd") > getNotIf(explorationUpgrades, getNotIf(explorationSelected, null, "explorationB"), "price")){
+  if (getNotIf(explorationSelected, null, "explorationB") == "explorationB1" && getNotIf(gameData, null, "energyProd") > getNotIf(explorationUpgrades, getNotIf(explorationSelected, null, "explorationB"), "price")) {
     setActive(explorationUpgrades, "explorationB1", "effect", true)
   }
   else (
     setActive(explorationUpgrades, "explorationB1", "effect", false)
   )
 
-  if(getNotIf(explorationSelected, null, "explorationB") == "explorationB2" && getNotIf(gameData, null, "energyProd") > getNotIf(explorationUpgrades, getNotIf(explorationSelected, null, "explorationB"), "price")){
+  if (getNotIf(explorationSelected, null, "explorationB") == "explorationB2" && getNotIf(gameData, null, "energyProd") > getNotIf(explorationUpgrades, getNotIf(explorationSelected, null, "explorationB"), "price")) {
     setActive(explorationUpgrades, "explorationB2", "effect", true)
   }
   else (
@@ -2253,10 +2510,10 @@ if(getNotIf(gameData, null, "energyProd") < getNotIf(explorationUpgrades, getNot
 
   let explorationUpgradesExplorationA0Price = 0;
   let explorationUpgradesExplorationB0Price = 0;
-  let explorationUpgradesExplorationA1Price = 1;
-  let explorationUpgradesExplorationA2Price = 100;
-  let explorationUpgradesExplorationB1Price = 10000;
-  let explorationUpgradesExplorationB2Price = 1000000;
+  let explorationUpgradesExplorationA1Price = 10 ** 3;
+  let explorationUpgradesExplorationA2Price = 10 ** 7;
+  let explorationUpgradesExplorationB1Price = 1;
+  let explorationUpgradesExplorationB2Price = 1;
 
 
   let explorationUpgradesExplorationA0Effect = 0;
@@ -2284,38 +2541,195 @@ if(getNotIf(gameData, null, "energyProd") < getNotIf(explorationUpgrades, getNot
 
 }
 
+function setTickSpeed() {
+
+  var tickspeed1 = getIfActive(gameData, null, "tickSpeed")
+  var tickspeed2 = getIfActive(components, "token4", "effect1")
+  var tickspeed3 = getNotIf(gameData, null, "tickspeed3")
+
+  tickspeed2 = norm(tickspeed2)
+
+  console.log(tickspeed2)
+  console.log(tickspeed3)
+
+  let globalTickSpeedProd = 1000 * tickspeed2 * tickspeed3
+
+  console.log(globalTickSpeedProd)
+
+  setNotIf(gameData, null, "tickSpeed", globalTickSpeedProd)
+
+}
+
+
+function setComponentActive() {
+  if (getNotIf(components, "token1", "active")) {
+    setActive(components, "token1", "level", true)
+    setActive(components, "token1", "effect1", true)
+    setActive(components, "token1", "effect2", true)
+    setActive(components, "token1", "price", true)
+  }
+  else if (!(getNotIf(components, "token1", "active"))) {
+    setActive(components, "token1", "level", false)
+    setActive(components, "token1", "effect1", false)
+    setActive(components, "token1", "effect2", false)
+    setActive(components, "token1", "price", false)
+  }
+
+
+  if (getNotIf(components, "token2", "active")) {
+    setActive(components, "token2", "level", true)
+    setActive(components, "token2", "effect1", true)
+    setActive(components, "token2", "effect2", true)
+    setActive(components, "token2", "price", true)
+  }
+  else if (!(getNotIf(components, "token2", "active"))) {
+    setActive(components, "token2", "level", false)
+    setActive(components, "token2", "effect1", false)
+    setActive(components, "token2", "effect2", false)
+    setActive(components, "token2", "price", false)
+  }
+
+
+  if (getNotIf(components, "token3", "active")) {
+    setActive(components, "token3", "level", true)
+    setActive(components, "token3", "effect1", true)
+    setActive(components, "token3", "effect2", true)
+    setActive(components, "token3", "price", true)
+  }
+  else if (!(getNotIf(components, "token3", "active"))) {
+    setActive(components, "token3", "level", false)
+    setActive(components, "token3", "effect1", false)
+    setActive(components, "token3", "effect2", false)
+    setActive(components, "token3", "price", false)
+  }
+
+
+  if (getNotIf(components, "token4", "active")) {
+    setActive(components, "token4", "level", true)
+    setActive(components, "token4", "effect1", true)
+    setActive(components, "token4", "effect2", true)
+    setActive(components, "token4", "price", true)
+  }
+  else if (!(getNotIf(components, "token4", "active"))) {
+    setActive(components, "token4", "level", false)
+    setActive(components, "token4", "effect1", false)
+    setActive(components, "token4", "effect2", false)
+    setActive(components, "token4", "price", false)
+  }
+
+
+  if (getNotIf(components, "token5", "active")) {
+    setActive(components, "token5", "level", true)
+    setActive(components, "token5", "effect1", true)
+    setActive(components, "token5", "effect2", true)
+    setActive(components, "token5", "price", true)
+  }
+  else if (!(getNotIf(components, "token5", "active"))) {
+    setActive(components, "token5", "level", false)
+    setActive(components, "token5", "effect1", false)
+    setActive(components, "token5", "effect2", false)
+    setActive(components, "token5", "price", false)
+  }
+
+
+  if (getNotIf(components, "token6", "active")) {
+    setActive(components, "token6", "level", true)
+    setActive(components, "token6", "effect1", true)
+    setActive(components, "token6", "effect2", true)
+    setActive(components, "token6", "price", true)
+  }
+  else if (!(getNotIf(components, "token6", "active"))) {
+    setActive(components, "token6", "level", false)
+    setActive(components, "token6", "effect1", false)
+    setActive(components, "token6", "effect2", false)
+    setActive(components, "token6", "price", false)
+  }
+
+
+  if (getNotIf(components, "token7", "active")) {
+    setActive(components, "token7", "level", true)
+    setActive(components, "token7", "effect1", true)
+    setActive(components, "token7", "effect2", true)
+    setActive(components, "token7", "price", true)
+  }
+  else if (!(getNotIf(components, "token7", "active"))) {
+    setActive(components, "token7", "level", false)
+    setActive(components, "token7", "effect1", false)
+    setActive(components, "token7", "effect2", false)
+    setActive(components, "token7", "price", false)
+  }
+
+
+  if (getNotIf(components, "token8", "active")) {
+    setActive(components, "token8", "level", true)
+    setActive(components, "token8", "effect1", true)
+    setActive(components, "token8", "effect2", true)
+    setActive(components, "token8", "price", true)
+  }
+  else if (!(getNotIf(components, "token8", "active"))) {
+    setActive(components, "token8", "level", false)
+    setActive(components, "token8", "effect1", false)
+    setActive(components, "token8", "effect2", false)
+    setActive(components, "token8", "price", false)
+  }
+
+
+  if (getNotIf(components, "token9", "active")) {
+    setActive(components, "token9", "level", true)
+    setActive(components, "token9", "effect1", true)
+    setActive(components, "token9", "effect2", true)
+    setActive(components, "token9", "price", true)
+  }
+  else if (!(getNotIf(components, "token9", "active"))) {
+    setActive(components, "token9", "level", false)
+    setActive(components, "token9", "effect1", false)
+    setActive(components, "token9", "effect2", false)
+    setActive(components, "token9", "price", false)
+  }
+}
+
 //ZONA COMPERE
 
 //extractors
 document.getElementById("buyExtractor").onclick = function () {
-  buy(refining, "priceExtractors", refining, "extractors", 1)
-  valuesSetter()
-  manualVisualLoop()
+  if (getNotIf(refining, null, "extractors") < 200) {
+    buy(refining, "priceExtractors", refining, "extractors", 1)
+    valuesSetter()
+    manualVisualLoop()
+  }
 }
 
 document.getElementById("buySpeedExtractor").onclick = function () {
-  buy(refining, "speedExtractorPrice", refining, "speedExtractor", 1)
-  valuesSetter()
-  manualVisualLoop()
+  if (getNotIf(refining, null, "speedExtractor") < 30) {
+    buy(refining, "speedExtractorPrice", refining, "speedExtractor", 1)
+    valuesSetter()
+    manualVisualLoop()
+  }
 }
 
 //ora vi e' una funzione che non usa buy, creala
 document.getElementById("dataLight").onclick = function () {
-  dataSelected("dataLight")
-  valuesSetter()
-  manualVisualLoop()
+  if (getNotIf(data, null, "lightExtractionMult") > 0) {
+    dataSelected("dataLight")
+    valuesSetter()
+    manualVisualLoop()
+  }
 }
 
 document.getElementById("dataMedium").onclick = function () {
-  dataSelected("dataMedium")
-  valuesSetter()
-  manualVisualLoop()
+  if (getNotIf(data, null, "mediumExtractionMult") > 0) {
+    dataSelected("dataMedium")
+    valuesSetter()
+    manualVisualLoop()
+  }
 }
 
 document.getElementById("dataHeavy").onclick = function () {
-  dataSelected("dataHeavy")
-  valuesSetter()
-  manualVisualLoop()
+  if (getNotIf(data, null, "heavyExtractionMult") > 0) {
+    dataSelected("dataHeavy")
+    valuesSetter()
+    manualVisualLoop()
+  }
 }
 
 document.getElementById("dataNull").onclick = function () {
@@ -2347,7 +2761,7 @@ document.getElementById("unlockable1Button").onclick = function () {
   if (getNotIf(gameData, null, getNotIf(projects, "unlockable1", "price2Identity")) < getNotIf(projects, "unlockable1", "price2")) { priceChecker = false }
   if (getNotIf(gameData, null, getNotIf(projects, "unlockable1", "price3Identity")) < getNotIf(projects, "unlockable1", "price3")) { priceChecker = false }
 
-  if (priceChecker == true) {
+  if (priceChecker == true && !(getNotIf(projects, "unlockable1", "unlocked"))) {
     buyIdUnlock(projects, "unlockable1", "price1", projects, "unlockable1", "unlocked", true)
     buyIdUnlock(projects, "unlockable1", "price2", projects, "unlockable1", "unlocked", true)
     buyIdUnlock(projects, "unlockable1", "price3", projects, "unlockable1", "unlocked", true)
@@ -2362,7 +2776,7 @@ document.getElementById("unlockable2Button").onclick = function () {
   if (getNotIf(gameData, null, getNotIf(projects, "unlockable2", "price2Identity")) < getNotIf(projects, "unlockable2", "price2")) { priceChecker = false }
   if (getNotIf(gameData, null, getNotIf(projects, "unlockable2", "price3Identity")) < getNotIf(projects, "unlockable2", "price3")) { priceChecker = false }
 
-  if (priceChecker == true) {
+  if (priceChecker == true && !(getNotIf(projects, "unlockable2", "unlocked"))) {
     buyIdUnlock(projects, "unlockable2", "price1", projects, "unlockable2", "unlocked", true)
     buyIdUnlock(projects, "unlockable2", "price2", projects, "unlockable2", "unlocked", true)
     buyIdUnlock(projects, "unlockable2", "price3", projects, "unlockable2", "unlocked", true)
@@ -2377,7 +2791,7 @@ document.getElementById("unlockable3Button").onclick = function () {
   if (getNotIf(gameData, null, getNotIf(projects, "unlockable3", "price2Identity")) < getNotIf(projects, "unlockable3", "price2")) { priceChecker = false }
   if (getNotIf(gameData, null, getNotIf(projects, "unlockable3", "price3Identity")) < getNotIf(projects, "unlockable3", "price3")) { priceChecker = false }
 
-  if (priceChecker == true) {
+  if (priceChecker == true && !(getNotIf(projects, "unlockable3", "unlocked"))) {
     buyIdUnlock(projects, "unlockable3", "price1", projects, "unlockable3", "unlocked", true)
     buyIdUnlock(projects, "unlockable3", "price2", projects, "unlockable3", "unlocked", true)
     buyIdUnlock(projects, "unlockable3", "price3", projects, "unlockable3", "unlocked", true)
@@ -2392,7 +2806,7 @@ document.getElementById("unlockable4Button").onclick = function () {
   if (getNotIf(gameData, null, getNotIf(projects, "unlockable4", "price2Identity")) < getNotIf(projects, "unlockable4", "price2")) { priceChecker = false }
   if (getNotIf(gameData, null, getNotIf(projects, "unlockable4", "price3Identity")) < getNotIf(projects, "unlockable4", "price3")) { priceChecker = false }
 
-  if (priceChecker == true) {
+  if (priceChecker == true && !(getNotIf(projects, "unlockable4", "unlocked"))) {
     buyIdUnlock(projects, "unlockable4", "price1", projects, "unlockable4", "unlocked", true)
     buyIdUnlock(projects, "unlockable4", "price2", projects, "unlockable4", "unlocked", true)
     buyIdUnlock(projects, "unlockable4", "price3", projects, "unlockable4", "unlocked", true)
@@ -2407,7 +2821,7 @@ document.getElementById("unlockable5Button").onclick = function () {
   if (getNotIf(gameData, null, getNotIf(projects, "unlockable5", "price2Identity")) < getNotIf(projects, "unlockable5", "price2")) { priceChecker = false }
   if (getNotIf(gameData, null, getNotIf(projects, "unlockable5", "price3Identity")) < getNotIf(projects, "unlockable5", "price3")) { priceChecker = false }
 
-  if (priceChecker == true) {
+  if (priceChecker == true && !(getNotIf(projects, "unlockable5", "unlocked"))) {
     buyIdUnlock(projects, "unlockable5", "price1", projects, "unlockable5", "unlocked", true)
     buyIdUnlock(projects, "unlockable5", "price2", projects, "unlockable5", "unlocked", true)
     buyIdUnlock(projects, "unlockable5", "price3", projects, "unlockable5", "unlocked", true)
@@ -2422,7 +2836,7 @@ document.getElementById("unlockable6Button").onclick = function () {
   if (getNotIf(gameData, null, getNotIf(projects, "unlockable6", "price2Identity")) < getNotIf(projects, "unlockable6", "price2")) { priceChecker = false }
   if (getNotIf(gameData, null, getNotIf(projects, "unlockable6", "price3Identity")) < getNotIf(projects, "unlockable6", "price3")) { priceChecker = false }
 
-  if (priceChecker == true) {
+  if (priceChecker == true && !(getNotIf(projects, "unlockable6", "unlocked"))) {
     buyIdUnlock(projects, "unlockable6", "price1", projects, "unlockable6", "unlocked", true)
     buyIdUnlock(projects, "unlockable6", "price2", projects, "unlockable6", "unlocked", true)
     buyIdUnlock(projects, "unlockable6", "price3", projects, "unlockable6", "unlocked", true)
@@ -2437,7 +2851,7 @@ document.getElementById("unlockable7Button").onclick = function () {
   if (getNotIf(gameData, null, getNotIf(projects, "unlockable7", "price2Identity")) < getNotIf(projects, "unlockable7", "price2")) { priceChecker = false }
   if (getNotIf(gameData, null, getNotIf(projects, "unlockable7", "price3Identity")) < getNotIf(projects, "unlockable7", "price3")) { priceChecker = false }
 
-  if (priceChecker == true) {
+  if (priceChecker == true && !(getNotIf(projects, "unlockable7", "unlocked"))) {
     buyIdUnlock(projects, "unlockable7", "price1", projects, "unlockable7", "unlocked", true)
     buyIdUnlock(projects, "unlockable7", "price2", projects, "unlockable7", "unlocked", true)
     buyIdUnlock(projects, "unlockable7", "price3", projects, "unlockable7", "unlocked", true)
@@ -2452,7 +2866,7 @@ document.getElementById("unlockable8Button").onclick = function () {
   if (getNotIf(gameData, null, getNotIf(projects, "unlockable8", "price2Identity")) < getNotIf(projects, "unlockable8", "price2")) { priceChecker = false }
   if (getNotIf(gameData, null, getNotIf(projects, "unlockable8", "price3Identity")) < getNotIf(projects, "unlockable8", "price3")) { priceChecker = false }
 
-  if (priceChecker == true) {
+  if (priceChecker == true && !(getNotIf(projects, "unlockable8", "unlocked"))) {
     buyIdUnlock(projects, "unlockable8", "price1", projects, "unlockable8", "unlocked", true)
     buyIdUnlock(projects, "unlockable8", "price2", projects, "unlockable8", "unlocked", true)
     buyIdUnlock(projects, "unlockable8", "price3", projects, "unlockable8", "unlocked", true)
@@ -2467,7 +2881,7 @@ document.getElementById("unlockable9Button").onclick = function () {
   if (getNotIf(gameData, null, getNotIf(projects, "unlockable9", "price2Identity")) < getNotIf(projects, "unlockable9", "price2")) { priceChecker = false }
   if (getNotIf(gameData, null, getNotIf(projects, "unlockable9", "price3Identity")) < getNotIf(projects, "unlockable9", "price3")) { priceChecker = false }
 
-  if (priceChecker == true) {
+  if (priceChecker == true && !(getNotIf(projects, "unlockable9", "unlocked"))) {
     buyIdUnlock(projects, "unlockable9", "price1", projects, "unlockable9", "unlocked", true)
     buyIdUnlock(projects, "unlockable9", "price2", projects, "unlockable9", "unlocked", true)
     buyIdUnlock(projects, "unlockable9", "price3", projects, "unlockable9", "unlocked", true)
@@ -2482,7 +2896,7 @@ document.getElementById("unlockable10Button").onclick = function () {
   if (getNotIf(gameData, null, getNotIf(projects, "unlockable10", "price2Identity")) < getNotIf(projects, "unlockable10", "price2")) { priceChecker = false }
   if (getNotIf(gameData, null, getNotIf(projects, "unlockable10", "price3Identity")) < getNotIf(projects, "unlockable10", "price3")) { priceChecker = false }
 
-  if (priceChecker == true) {
+  if (priceChecker == true && !(getNotIf(projects, "unlockable10", "unlocked"))) {
     buyIdUnlock(projects, "unlockable10", "price1", projects, "unlockable10", "unlocked", true)
     buyIdUnlock(projects, "unlockable10", "price2", projects, "unlockable10", "unlocked", true)
     buyIdUnlock(projects, "unlockable10", "price3", projects, "unlockable10", "unlocked", true)
@@ -2497,7 +2911,7 @@ document.getElementById("unlockable11Button").onclick = function () {
   if (getNotIf(gameData, null, getNotIf(projects, "unlockable11", "price2Identity")) < getNotIf(projects, "unlockable11", "price2")) { priceChecker = false }
   if (getNotIf(gameData, null, getNotIf(projects, "unlockable11", "price3Identity")) < getNotIf(projects, "unlockable11", "price3")) { priceChecker = false }
 
-  if (priceChecker == true) {
+  if (priceChecker == true && !(getNotIf(projects, "unlockable11", "unlocked"))) {
     buyIdUnlock(projects, "unlockable11", "price1", projects, "unlockable11", "unlocked", true)
     buyIdUnlock(projects, "unlockable11", "price2", projects, "unlockable11", "unlocked", true)
     buyIdUnlock(projects, "unlockable11", "price3", projects, "unlockable11", "unlocked", true)
@@ -2512,7 +2926,7 @@ document.getElementById("unlockable12Button").onclick = function () {
   if (getNotIf(gameData, null, getNotIf(projects, "unlockable12", "price2Identity")) < getNotIf(projects, "unlockable12", "price2")) { priceChecker = false }
   if (getNotIf(gameData, null, getNotIf(projects, "unlockable12", "price3Identity")) < getNotIf(projects, "unlockable12", "price3")) { priceChecker = false }
 
-  if (priceChecker == true) {
+  if (priceChecker == true && !(getNotIf(projects, "unlockable12", "unlocked"))) {
     buyIdUnlock(projects, "unlockable12", "price1", projects, "unlockable12", "unlocked", true)
     buyIdUnlock(projects, "unlockable12", "price2", projects, "unlockable12", "unlocked", true)
     buyIdUnlock(projects, "unlockable12", "price3", projects, "unlockable12", "unlocked", true)
@@ -2527,7 +2941,7 @@ document.getElementById("unlockable13Button").onclick = function () {
   if (getNotIf(gameData, null, getNotIf(projects, "unlockable13", "price2Identity")) < getNotIf(projects, "unlockable13", "price2")) { priceChecker = false }
   if (getNotIf(gameData, null, getNotIf(projects, "unlockable13", "price3Identity")) < getNotIf(projects, "unlockable13", "price3")) { priceChecker = false }
 
-  if (priceChecker == true) {
+  if (priceChecker == true && !(getNotIf(projects, "unlockable13", "unlocked"))) {
     buyIdUnlock(projects, "unlockable13", "price1", projects, "unlockable13", "unlocked", true)
     buyIdUnlock(projects, "unlockable13", "price2", projects, "unlockable13", "unlocked", true)
     buyIdUnlock(projects, "unlockable13", "price3", projects, "unlockable13", "unlocked", true)
@@ -2542,7 +2956,7 @@ document.getElementById("unlockable14Button").onclick = function () {
   if (getNotIf(gameData, null, getNotIf(projects, "unlockable14", "price2Identity")) < getNotIf(projects, "unlockable14", "price2")) { priceChecker = false }
   if (getNotIf(gameData, null, getNotIf(projects, "unlockable14", "price3Identity")) < getNotIf(projects, "unlockable14", "price3")) { priceChecker = false }
 
-  if (priceChecker == true) {
+  if (priceChecker == true && !(getNotIf(projects, "unlockable14", "unlocked"))) {
     buyIdUnlock(projects, "unlockable14", "price1", projects, "unlockable14", "unlocked", true)
     buyIdUnlock(projects, "unlockable14", "price2", projects, "unlockable14", "unlocked", true)
     buyIdUnlock(projects, "unlockable14", "price3", projects, "unlockable14", "unlocked", true)
@@ -2557,7 +2971,7 @@ document.getElementById("unlockable15Button").onclick = function () {
   if (getNotIf(gameData, null, getNotIf(projects, "unlockable15", "price2Identity")) < getNotIf(projects, "unlockable15", "price2")) { priceChecker = false }
   if (getNotIf(gameData, null, getNotIf(projects, "unlockable15", "price3Identity")) < getNotIf(projects, "unlockable15", "price3")) { priceChecker = false }
 
-  if (priceChecker == true) {
+  if (priceChecker == true && !(getNotIf(projects, "unlockable15", "unlocked"))) {
     buyIdUnlock(projects, "unlockable15", "price1", projects, "unlockable15", "unlocked", true)
     buyIdUnlock(projects, "unlockable15", "price2", projects, "unlockable15", "unlocked", true)
     buyIdUnlock(projects, "unlockable15", "price3", projects, "unlockable15", "unlocked", true)
@@ -2566,42 +2980,69 @@ document.getElementById("unlockable15Button").onclick = function () {
   }
 }
 
+document.getElementById("unlockable16Button").onclick = function () {
+  var priceChecker = true
+  if (getNotIf(gameData, null, getNotIf(projects, "unlockable16", "price1Identity")) < getNotIf(projects, "unlockable16", "price1")) { priceChecker = false }
+  if (getNotIf(gameData, null, getNotIf(projects, "unlockable16", "price2Identity")) < getNotIf(projects, "unlockable16", "price2")) { priceChecker = false }
+  if (getNotIf(gameData, null, getNotIf(projects, "unlockable16", "price3Identity")) < getNotIf(projects, "unlockable16", "price3")) { priceChecker = false }
+
+  if (priceChecker == true && !(getNotIf(projects, "unlockable16", "unlocked"))) {
+    buyIdUnlock(projects, "unlockable16", "price1", projects, "unlockable16", "unlocked", true)
+    buyIdUnlock(projects, "unlockable16", "price2", projects, "unlockable16", "unlocked", true)
+    buyIdUnlock(projects, "unlockable16", "price3", projects, "unlockable16", "unlocked", true)
+    valuesSetter()
+    manualVisualLoop()
+  }
+}
+
 //energy
 
 document.getElementById("energy1Bottone").onclick = function () {
-  buyId(energyBuilding, "energy1", "price", energyBuilding, "energy1", "level", 1)
-  valuesSetter()
-  manualVisualLoop()
+  if (getNotIf(energy, "energy1", "level") < 10) {
+    buyId(energyBuilding, "energy1", "price", energyBuilding, "energy1", "level", 1)
+    valuesSetter()
+    manualVisualLoop()
+  }
 }
 
 document.getElementById("energy2Bottone").onclick = function () {
-  buyId(energyBuilding, "energy2", "price", energyBuilding, "energy2", "level", 1)
-  valuesSetter()
-  manualVisualLoop()
+  if (getNotIf(energy, "energy2", "level") < 10) {
+    buyId(energyBuilding, "energy2", "price", energyBuilding, "energy2", "level", 1)
+    valuesSetter()
+    manualVisualLoop()
+  }
 }
 
 document.getElementById("energy3Bottone").onclick = function () {
-  buyId(energyBuilding, "energy3", "price", energyBuilding, "energy3", "level", 1)
-  valuesSetter()
-  manualVisualLoop()
+  if (getNotIf(energy, "energy3", "level") < 10) {
+    buyId(energyBuilding, "energy3", "price", energyBuilding, "energy3", "level", 1)
+    valuesSetter()
+    manualVisualLoop()
+  }
 }
 
 document.getElementById("energy4Bottone").onclick = function () {
-  buyId(energyBuilding, "energy4", "price", energyBuilding, "energy4", "level", 1)
-  valuesSetter()
-  manualVisualLoop()
+  if (getNotIf(energy, "energy4", "level") < 10) {
+    buyId(energyBuilding, "energy4", "price", energyBuilding, "energy4", "level", 1)
+    valuesSetter()
+    manualVisualLoop()
+  }
 }
 
 document.getElementById("energy5Bottone").onclick = function () {
-  buyId(energyBuilding, "energy5", "price", energyBuilding, "energy5", "level", 1)
-  valuesSetter()
-  manualVisualLoop()
+  if (getNotIf(energy, "energy5", "level") < 10) {
+    buyId(energyBuilding, "energy5", "price", energyBuilding, "energy5", "level", 1)
+    valuesSetter()
+    manualVisualLoop()
+  }
 }
 
 document.getElementById("energy6Bottone").onclick = function () {
-  buyId(energyBuilding, "energy6", "price", energyBuilding, "energy6", "level", 1)
-  valuesSetter()
-  manualVisualLoop()
+  if (getNotIf(energy, "energy6", "level") < 10) {
+    buyId(energyBuilding, "energy6", "price", energyBuilding, "energy6", "level", 1)
+    valuesSetter()
+    manualVisualLoop()
+  }
 }
 
 //loadout
@@ -2668,21 +3109,30 @@ document.getElementById("loadoutNameMod3").onclick = function () {
 //equip module
 document.getElementById("equipButton").onclick = function () {
   equipButton(actualComponentId, "equip");
+  setComponentActive()
+  setTickSpeed()
   valuesSetter()
   manualVisualLoop()
+  setComponentActive()
 }
 
 document.getElementById("removeButton").onclick = function () {
   equipButton(actualComponentId, "remove")
+  setComponentActive()
   resetImage(actualComponentTag1 + "Module")
+  setComponentActive()
+  setTickSpeed()
   valuesSetter()
   manualVisualLoop()
+  setComponentActive()
 }
 
 //components upgrade
 document.getElementById("buttonComponentRow0").onclick = function () {
   if (getNotIf(components, actualComponentId, "active")) {
-    buyId(components, actualComponentId, "price", components, actualComponentId, "level", 1)
+    if (getNotIf(components, actualComponentId, "level") < 20) {
+      buyId(components, actualComponentId, "price", components, actualComponentId, "level", 1)
+    }
   }
   if (componentsEquipped[0][actualComponentTag1 != ""]) {
     clickExpand(actualComponentTag1 + "Module")
@@ -2767,13 +3217,13 @@ document.getElementById("automation6Button").onclick = function () {
 
 //reallocateEnergy
 document.getElementById("reallocateEnergy1").onclick = function () {
-  resetEnergy(0,2)
+  resetEnergy(0, 2)
   valuesSetter()
   manualVisualLoop()
 }
 
 document.getElementById("reallocateEnergy2").onclick = function () {
-  resetEnergy(3,5)
+  resetEnergy(3, 5)
   valuesSetter()
   manualVisualLoop()
 }
@@ -2813,7 +3263,7 @@ function buy(array, price, arrayEffector, effector, value) {
 }
 
 //funzione necessaria se vuoi comprare qualcosa ma non vuoi pagare
-function buyNoPrice(array, price, arrayEffector, effector, value){
+function buyNoPrice(array, price, arrayEffector, effector, value) {
   const priceIdentity = getNotIf(array, null, price + "Identity");
   const activePrice = getNotIf(array, null, price);
 
@@ -2885,6 +3335,9 @@ function buyIdUnlock(array, id, price, arrayEffector, idEffector, effector, valu
 
 
 function dataSelected(x) {
+  if (x == "") {
+    x = "dataNull"
+  }
   var elem = document.getElementById("selectedData");
 
   let elem1 = document.getElementById("dataLight")
@@ -3037,7 +3490,7 @@ function getExtractedData(y) {
   }
 }
 
-function progressBarActuator(id2, time) {
+async function progressBarActuator(id2, time) {
   var elem = document.getElementById(id2);
   var startTime = null;
 
@@ -3051,8 +3504,8 @@ function progressBarActuator(id2, time) {
     if (width < 100) {
       requestAnimationFrame(frame);
     }
-  }
 
+  }
   requestAnimationFrame(frame);
 }
 
@@ -3113,8 +3566,6 @@ async function dataActuator() {
 
         progressBarActuator("dataHeavyWait", getIfActive(data, null, "heavyDuration"));
 
-
-
         await pauseFunction("dataActuator", getIfActive(data, null, "heavyDuration"), true);  // QUI 1
 
         var found = 0;
@@ -3171,6 +3622,7 @@ function clickExpand(element) {
 }
 
 
+
 // MISCELLANEA
 // MISCELLANEA
 // MISCELLANEA
@@ -3218,15 +3670,22 @@ function manualVisualLoop() {
   LoopShow();
   //core
   if (checkShow("core", true)) {
+    unlockShow("coreImage", true)
     visual_ComponentInfo(actualComponentId)
     show_componentInfo();
     componentSummary();
     visual_Loadout();
+    unlockShow("topProgress", true)
   }
+
+  if (!(checkShow("core",))) {
+    unlockShow("coreImage", false)
+  }
+
   //hardware
   if (checkShow("hardware", true)) {
     visual_refiner();
-    //visual_rarity();
+    unlockShow("topProgress", true)
   }
   //software
   if (checkShow("software", true)) {
@@ -3234,17 +3693,19 @@ function manualVisualLoop() {
     visual_dataLayer();
     dataVisual();
     dataSelected(getNotIf(data, null, "selected"))
+    unlockShow("topProgress", true)
   }
   //communication
   if (checkShow("communication", true)) {
     visual_EnergyInfo();
     visual_ExplorationInfo();
+    unlockShow("topProgress", true)
   }
   //options
   if (checkShow("options", true)) {
     visual_automation()
+    unlockShow("topProgress", false)
   }
-
 }
 
 // Funzione per salvare i dati di gioco
@@ -3264,7 +3725,6 @@ var SaveGameLoop = window.setInterval(function () {
     dataUpgrades: dataUpgrades,
     energyBuilding: energyBuilding,
     refining: refining,
-    //rarity: rarity,
     projects: projects,
     loadoutData: loadoutData,
     automation: automation,
@@ -3279,11 +3739,10 @@ var SaveGameLoop = window.setInterval(function () {
     RdataUpgrades: RdataUpgrades,
     RenergyBuilding: RenergyBuilding,
     Rrefining: Rrefining,
-    //Rrarity: Rrarity,
     Rprojects: Rprojects,
     RloadoutData: RloadoutData,
     Rautomation: Rautomation,
-    Rshowable: Rshowable
+    Rshowable: Rshowable,
   };
 
   localStorage.setItem("HyperStructureSave", JSON.stringify(saveData));
@@ -3330,12 +3789,6 @@ if (localStorage.getItem("HyperStructureSave") !== null) {
   if (savedGameData.refining) {
     refining = refining;
   }
-
-  /*
-  if (savedGameData.rarity) {
-    rarity = savedGameData.rarity;
-  }
-    */
 
   if (savedGameData.projects) {
     projects = savedGameData.projects;
@@ -3391,12 +3844,6 @@ if (localStorage.getItem("HyperStructureSave") !== null) {
   if (savedGameData.Rrefining) {
     savedGameData.Rrefining = Rrefining
   }
-
-  /*
-  if (savedGameData.Rrarity) {
-    savedGameData.Rrarity = Rrarity
-  }
-    */
 
   if (savedGameData.Rprojects) {
     savedGameData.Rprojects = Rprojects
@@ -3465,13 +3912,10 @@ function updateGame() {
     updateSavedArrays(dataUpgrades, savedGameData.RdataUpgrades, RdataUpgrades);
     updateSavedArrays(energyBuilding, savedGameData.RenergyBuilding, RenergyBuilding);
     updateSavedArrays(refining, savedGameData.Rrefining, Rrefining);
-    // updateSavedArrays(rarity, savedGameData.Rrarity, Rrarity);
     updateSavedArrays(projects, savedGameData.Rprojects, Rprojects);
     updateSavedArrays(loadoutData, savedGameData.RloadoutData, RloadoutData);
     updateSavedArrays(automation, savedGameData.Rautomation, Rautomation);
     updateSavedArrays(showable, savedGameData.Rshowable, Rshowable);
-
-
   }
 }
 
@@ -3488,7 +3932,6 @@ function resetSave() {
       dataUpgrades: RdataUpgrades,
       energyBuilding: RenergyBuilding,
       refining: Rrefining,
-      // rarity: Rrarity,
       projects: Rprojects,
       loadoutData: RloadoutData,
       automation: Rautomation,
@@ -3504,11 +3947,10 @@ function resetSave() {
       RdataUpgrades: RdataUpgrades,
       RenergyBuilding: RenergyBuilding,
       Rrefining: Rrefining,
-      //Rrarity: Rrarity,
       Rprojects: Rprojects,
       RloadoutData: RloadoutData,
       Rautomation: Rautomation,
-      Rshowable: Rshowable
+      Rshowable: Rshowable,
     };
 
     localStorage.setItem("HyperStructureSave", JSON.stringify(saveData));
@@ -3516,31 +3958,17 @@ function resetSave() {
     var savedGameData = JSON.parse(localStorage.getItem("HyperStructureSave"));
     // Assicurati di aggiornare i dati di gioco con quelli caricati
     gameData = savedGameData.gameData;
-
     componentsEquipped = savedGameData.componentsEquipped
-
     components = savedGameData.components;
-
     explorationUpgrades = savedGameData.explorationUpgrades;
-
     explorationSelected = savedGameData.explorationSelected;
-
     data = savedGameData.data;
-
     dataUpgrades = savedGameData.dataUpgrades;
-
     energyBuilding = savedGameData.energyBuilding;
-
     refining = savedGameData.refining;
-
-    // rarity = savedGameData.rarity;
-
     projects = savedGameData.projects;
-
     loadoutData = savedGameData.loadoutData;
-
     automation = savedGameData.automation;
-
     showable = savedGameData.showable;
 
 
@@ -3553,13 +3981,24 @@ function resetSave() {
       RdataUpgrades = savedGameData.RdataUpgrades,
       RenergyBuilding = savedGameData.RenergyBuilding,
       Rrefining = savedGameData.Rrefining,
-      //Rrarity = savedGameData.Rrarity,
       Rprojects = savedGameData.Rprojects,
       RloadoutData = savedGameData.RloadoutData,
       Rautomation = savedGameData.Rautomation,
-      Rshowable = savedGameData.Rshowable
+      Rshowable = savedGameData.Rshowable,
 
-    init1 = true;
+      init1 = true;
+
+    resetStyleAll()
+  }
+}
+
+function resetStyleAll() {
+  for (let a in showable) {
+    const keys = Object.keys(showable[a]);
+    for (let key of keys) {
+      console.log(key)
+      document.getElementById(key).style.background = ""
+    }
   }
 }
 
@@ -3574,7 +4013,6 @@ function exportSave() {
     dataUpgrades: dataUpgrades,
     energyBuilding: energyBuilding,
     refining: refining,
-    //rarity: rarity,
     projects: projects,
     loadoutData: loadoutData,
     automation: automation,
@@ -3590,11 +4028,10 @@ function exportSave() {
     RdataUpgrades: RdataUpgrades,
     RenergyBuilding: RenergyBuilding,
     Rrefining: Rrefining,
-    //Rrarity: Rrarity,
     Rprojects: Rprojects,
     RloadoutData: RloadoutData,
     Rautomation: Rautomation,
-    Rshowable: Rshowable
+    Rshowable: Rshowable,
   };
   document.getElementById("Save").value = JSON.stringify(saveData);
 
@@ -3605,31 +4042,17 @@ function importSave() {
   var savedGameData = JSON.parse(localStorage.getItem("HyperStructureSave"));
   // Assicurati di aggiornare i dati di gioco con quelli caricati
   gameData = savedGameData.gameData;
-
   componentsEquipped = savedGameData.componentsEquipped
-
   components = savedGameData.components;
-
   explorationUpgrades = savedGameData.explorationUpgrades;
-
   explorationSelected = savedGameData.explorationSelected;
-
   data = savedGameData.data;
-
   dataUpgrades = savedGameData.dataUpgrades;
-
   energyBuilding = savedGameData.energyBuilding;
-
   refining = savedGameData.refining;
-
-  //rarity = savedGameData.rarity;
-
   projects = savedGameData.projects;
-
   loadoutData = savedGameData.loadoutData;
-
   automation = savedGameData.automation;
-
   showable = savedGameData.showable;
 
 
@@ -3642,7 +4065,6 @@ function importSave() {
     RdataUpgrades = savedGameData.RdataUpgrades,
     RenergyBuilding = savedGameData.RenergyBuilding,
     Rrefining = savedGameData.Rrefining,
-    //Rrarity = savedGameData.Rrarity,
     Rprojects = savedGameData.Rprojects,
     RloadoutData = savedGameData.RloadoutData,
     Rautomation = savedGameData.Rautomation,
@@ -3697,18 +4119,23 @@ function showComponents(c) {
   unlockShow("components2", false);
   unlockShow("components3", false);
   unlockShow(c, true);
+
+  if (c == "components1") {
+    visual_ComponentInfo(getNotIf(componentsEquipped, null, "components1"))
+    unlockShow("componentsList", true)
+  }
+
+  if (c == "components2") {
+    visual_ComponentInfo(getNotIf(componentsEquipped, null, "components2"))
+  }
+
+  if (c == "components3") {
+    visual_ComponentInfo(getNotIf(componentsEquipped, null, "components3"))
+  }
   actualSelectedComponent = c;
 
-  /*
-  var ret = true;
-  if (ret) {
-    unlockShow("componentTab", true);
-  }
-  ret = false;
-*/
 
 }
-showComponents("a")
 
 function componentsTab(a, b) {
   var componentClass = document.getElementsByClassName(a);
@@ -3822,6 +4249,10 @@ function LoopShow() {
   if (init1) {
     init1 = false
 
+    console.log(gameData[0].topProgressCount)
+
+    //contatore per non far riapparire topProgress vecchi
+    //
     actualComponentId = ""
     tab(core)
     unlockShow("mainGame", true);
@@ -3842,6 +4273,7 @@ function LoopShow() {
     unlockShow("token1", true)
 
     unlockShow("progressTab", true)
+    unlockShow("topProgress", true)
 
     unlockShow("core", true)
     unlockShow("componentSelector", true)
@@ -3849,12 +4281,9 @@ function LoopShow() {
     unlockShow("components2Module", true)
     unlockShow("components3Module", true)
     unlockShow("componentInfo", true)
-    unlockShow("componentsSummary", true)
     unlockShow("hardwareSummary", true)
     unlockShow("softwareSummary", false)
     unlockShow("communicationSummary", false)
-    unlockShow("componentTab", true)
-    unlockShow("componentsList", true)
 
     unlockShow("visualModule1", true)
 
@@ -3882,10 +4311,7 @@ function LoopShow() {
   }
 
   if (checkShow("componentInfo")) {
-    unlockShow("componentsSummary", true)
     unlockShow("componentList", true)
-    unlockShow("componentTab", true)
-    unlockShow("equipTab", true)
   }
 
   if (checkShow("componentTab", true)) {
@@ -3900,14 +4326,17 @@ function LoopShow() {
 
   if (checkShow("components1")) {
     unlockShow("components1Tier1", true);
+    unlockShow("components1Tier2", true);
   }
 
   if (checkShow("components2")) {
     unlockShow("components2Tier1", true);
+    unlockShow("components2Tier2", true);
   }
 
   if (checkShow("components3")) {
     unlockShow("components3Tier1", true);
+    unlockShow("components3Tier2", true);
   }
 
   if (checkShow("hardware")) {
@@ -3925,22 +4354,41 @@ function LoopShow() {
     unlockShow("energy", true);
   }
 
-  if(checkShow("progress")) {
+  if (checkShow("progress")) {
     unlockShow("progress1", true)
+    unlockShow("topProgress", false)
   }
-  //cells: 1-100
 
-  if (getNotIf(gameData, null, "cells") >= 100) {
+  if (checkShow("topProgress")) {
+
+    if (gameData[0].topProgressCount < 1) {
+      gameData[0].topProgressCount = 1
+      unlockShow("topProgress1", true)
+    }
+  }
+  //cells: 1-1e3
+  //proffed
+  if (getNotIf(gameData, null, "cells") >= 1000) {
     unlockShow("hardwareTab", true)
     unlockShow("progress2", true)
+    if (gameData[0].topProgressCount < 2) {
+      gameData[0].topProgressCount = 2
+      unlockShow("topProgress1", false)
+      unlockShow("topProgress2", true)
+    }
   }
 
   //cells: 100-1E4
-  if (getNotIf(gameData, null, "cells") >= 10 ** 4) {
+  if (getNotIf(gameData, null, "cells") >= 10 ** 8) {
     unlockShow("softwareTab", true)
     unlockShow("dataValute", true)
     unlockShow("dataPerSecondValute", true)
     unlockShow("progress3", true)
+    if (gameData[0].topProgressCount < 3) {
+      gameData[0].topProgressCount = 3
+      unlockShow("topProgress2", false)
+      unlockShow("topProgress3", true)
+    }
   }
 
   //cells: 1E4 - 1E6
@@ -3948,6 +4396,11 @@ function LoopShow() {
   if (getNotIf(gameData, null, "data") >= 100) {
     unlockShow("projects", true);
     unlockShow("progress4", true)
+    if (gameData[0].topProgressCount < 4) {
+      gameData[0].topProgressCount = 4
+      unlockShow("topProgress3", false)
+      unlockShow("topProgress4", true)
+    }
   }
 
   //hardware package 1
@@ -3970,7 +4423,7 @@ function LoopShow() {
 
 
   //MILESTONE 1
-  if (getNotIf(gameData, null, "data") >= 1000 && !(getNotIf(projects, "unlockable15", "unlocked"))) {
+  if (getNotIf(gameData, null, "data") >= 100 && !(getNotIf(projects, "unlockable15", "unlocked"))) {
     unlockShow("unlockable15", true);
   }
 
@@ -3978,35 +4431,37 @@ function LoopShow() {
 
 
   //new resources package 1
-  if (getNotIf(gameData, null, "data") >= 10000 && !(getNotIf(projects, "unlockable4", "unlocked"))) {
+  if (getNotIf(gameData, null, "data") >= 1 * (10 ** 10) && !(getNotIf(projects, "unlockable4", "unlocked")) && getNotIf(projects, "unlockable15", "unlocked")) {
     unlockShow("unlockable4", true);
     unlockShow("progress6", true)
+
+    if (gameData[0].topProgressCount < 6) {
+      gameData[0].topProgressCount = 6
+      unlockShow("topProgress5", false)
+      unlockShow("topProgress6", true)
+    }
   }
 
   //extraction automation
-  if (getNotIf(gameData, null, "data") >= 10000 && !(getNotIf(projects, "unlockable5", "unlocked"))) {
+  if (getNotIf(gameData, null, "data") >= 1 * (10 ** 10) && !(getNotIf(projects, "unlockable5", "unlocked"))) {
     unlockShow("unlockable5", true);
-    unlockShow("progress6", true)
   }
 
   //cells: 1E10 - 1E12
 
   //idle 2
-  if (getNotIf(gameData, null, "data") >= 10000 && !(getNotIf(projects, "unlockable10", "unlocked"))) {
+  if (getNotIf(gameData, null, "data") >= 1 * (10 ** 10) && !(getNotIf(projects, "unlockable10", "unlocked"))) {
     unlockShow("unlockable10", true);
-    unlockShow("progress6", true)
   }
 
   //data automation
-  if (getNotIf(gameData, null, "data") >= 10000 && !(getNotIf(projects, "unlockable6", "unlocked"))) {
+  if (getNotIf(gameData, null, "data") >= 1 * (10 ** 10) && !(getNotIf(projects, "unlockable6", "unlocked"))) {
     unlockShow("unlockable6", true);
-    unlockShow("progress6", true)
   }
 
   //communication package 1
-  if (getNotIf(gameData, null, "data") >= 10000 && !(getNotIf(projects, "unlockable13", "unlocked"))) {
+  if (getNotIf(gameData, null, "data") >= 1 * (10 ** 10) && !(getNotIf(projects, "unlockable13", "unlocked"))) {
     unlockShow("unlockable13", true);
-    unlockShow("progress6", true)
   }
 
   //cells: 1E12 - 1E14
@@ -4024,12 +4479,8 @@ function LoopShow() {
   }
 
   //exploration
-  if (getNotIf(gameData, null, "energy") >= 1000 && !(getNotIf(projects, "unlockable15", "unlocked"))) {
+  if (getNotIf(gameData, null, "energy") >= 10 ** 5 && !(getNotIf(projects, "unlockable14", "unlocked"))) {
     unlockShow("unlockable14", true);
-  }
-
-  if (getNotIf(gameData, null, "energy") >= 1000 && !(getNotIf(projects, "unlockable15", "unlocked"))) {
-    unlockShow("unlockable15", true);
   }
 
   if (getNotIf(gameData, null, "energy") >= 10 ** 5) {
@@ -4037,6 +4488,23 @@ function LoopShow() {
     unlockShow("asteroidsValute", true)
     unlockShow("asteroidsPerSecondValute", true)
     unlockShow("progress8", true)
+
+    if (gameData[0].topProgressCount < 7) {
+      gameData[0].topProgressCount = 7
+      unlockShow("topProgress6", false)
+      unlockShow("topProgress7", true)
+    }
+
+  }
+
+  if (getNotIf(gameData, null, "cells") >= 10 ** 30 && !(getNotIf(projects, "unlockable16", "unlocked"))) {
+    unlockShow("unlockable16", true);
+
+    if (gameData[0].topProgressCount < 8) {
+      gameData[0].topProgressCount = 8
+      unlockShow("topProgress7", false)
+      unlockShow("topProgress8", true)
+    }
   }
 
   if (checkShow("energy", true)) {
@@ -4064,14 +4532,14 @@ function LoopShow() {
 
   //hardware package 1
   if (getNotIf(projects, "unlockable1", "unlocked")) {
-    unlockShow("unlockable1", false);
+    document.getElementById("unlockable1").style.backgroundColor = "#939393";
     unlockShow("token2", true)
     unlockShow("token3", true)
   }
 
   //software package 1
   if (getNotIf(projects, "unlockable2", "unlocked")) {
-    unlockShow("unlockable2", false);
+    document.getElementById("unlockable2").style.backgroundColor = "#939393";
     unlockShow("visualModule2", true)
     unlockShow("token4", true)
     unlockShow("token5", true)
@@ -4080,46 +4548,38 @@ function LoopShow() {
 
   //deep exploration
   if (getNotIf(projects, "unlockable3", "unlocked")) {
-    unlockShow("unlockable3", false);
+    document.getElementById("unlockable3").style.backgroundColor = "#939393";
     //unlockShow("rarityLayer", true)
   }
 
   //new resources package 1
   if (getNotIf(projects, "unlockable4", "unlocked")) {
-    unlockShow("unlockable4", false);
+    document.getElementById("unlockable4").style.backgroundColor = "#939393";
     unlockShow("communicationTab", true)
     unlockShow("energyValute", true)
     unlockShow("energyPerSecondValute", true)
     unlockShow("energy", true)
     unlockShow("progress7", true)
+
   }
 
   //extraction automation
   if (getNotIf(projects, "unlockable5", "unlocked")) {
-    unlockShow("unlockable5", false);
+    document.getElementById("unlockable5").style.backgroundColor = "#939393";
     unlockShow("automation1", true)
     unlockShow("automation1Button", true)
   }
 
   //data automation
   if (getNotIf(projects, "unlockable6", "unlocked")) {
-    unlockShow("unlockable6", false);
+    document.getElementById("unlockable6").style.backgroundColor = "#939393";
     unlockShow("automation2", true)
     unlockShow("automation2Button", true)
   }
 
-  //rarity automation
-  /*
-  if (getNotIf(projects, "unlockable7", "unlocked")) {
-    unlockShow("unlockable7", false);
-    unlockShow("automation3", true)
-    unlockShow("automation3Button", true)
-  }
-    */
-
   //components automation
   if (getNotIf(projects, "unlockable8", "unlocked")) {
-    unlockShow("unlockable8", false);
+    document.getElementById("unlockable8").style.backgroundColor = "#939393";
     unlockShow("automation4", true)
     unlockShow("automation4Button", true)
 
@@ -4132,27 +4592,27 @@ function LoopShow() {
 
   //idle 1
   if (getNotIf(projects, "unlockable9", "unlocked")) {
-    unlockShow("unlockable9", false);
+    document.getElementById("unlockable9").style.backgroundColor = "#939393";
   }
 
   //idle 2
   if (getNotIf(projects, "unlockable10", "unlocked")) {
-    unlockShow("unlockable10", false);
+    document.getElementById("unlockable10").style.backgroundColor = "#939393";
   }
 
   //idle 3
   if (getNotIf(projects, "unlockable11", "unlocked")) {
-    unlockShow("unlockable11", false);
+    document.getElementById("unlockable11").style.backgroundColor = "#939393";
   }
 
   //idle 4
   if (getNotIf(projects, "unlockable12", "unlocked")) {
-    unlockShow("unlockable12", false);
+    document.getElementById("unlockable12").style.backgroundColor = "#939393";
   }
 
   //communication package 1
   if (getNotIf(projects, "unlockable13", "unlocked")) {
-    unlockShow("unlockable13", false);
+    document.getElementById("unlockable13").style.backgroundColor = "#939393";
     unlockShow("visualModule3", true)
     unlockShow("communicationSummary", true)
     unlockShow("token7", true)
@@ -4161,13 +4621,20 @@ function LoopShow() {
 
   //exploration
   if (getNotIf(projects, "unlockable14", "unlocked")) {
-    unlockShow("unlockable14", false);
+    document.getElementById("unlockable14").style.backgroundColor = "#939393";
     unlockShow("token8", true)
+    unlockShow("token11", true)
+    unlockShow("token12", true)
   }
 
   if (getNotIf(projects, "unlockable15", "unlocked")) {
-    unlockShow("unlockable15", false);
+    document.getElementById("unlockable15").style.backgroundColor = "#939393";
     unlockShow("progress5", true)
+    if (gameData[0].topProgressCount < 5) {
+      gameData[0].topProgressCount = 5
+      unlockShow("topProgress4", false)
+      unlockShow("topProgress5", true)
+    }
   }
 
 }

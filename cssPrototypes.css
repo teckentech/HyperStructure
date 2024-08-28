@@ -15,6 +15,10 @@ button,
   font-size: 1.50vw
 }
 
+.redimensionSmall {
+  font-size: 0.75vw;
+}
+
 
 #selectorTab,
 #Menu,
@@ -115,12 +119,12 @@ button,
   text-transform: uppercase;
 
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  
+
 }
 
 #selectorTab>div>button:hover {
   transform: scale(1.05);
-} 
+}
 
 #Menu {
   left: 0vw;
@@ -155,7 +159,7 @@ button,
   border-radius: 2px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-  
+
 }
 
 .item button:hover {
@@ -230,10 +234,11 @@ button,
   height: 50%;
 }
 
+
 #equipTab {
   position: absolute;
   left: 65vw;
-  top: 9vh;
+  top: 0vh;
   height: 5vh;
   width: 10vw;
 }
@@ -265,7 +270,7 @@ button,
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
 
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 #removeButton:hover {
@@ -329,8 +334,9 @@ div {
   position: absolute;
   box-sizing: border-box;
   border-radius: 5px;
+  overflow-y:scroll;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  overflow: auto;
+  overflow: hide;
   background: #1a1a1a;
   padding: 10px;
   color: #ffffff;
@@ -340,14 +346,10 @@ div {
   grid-template-columns: 1fr;
   grid-template-rows: repeat(6, auto);
   border: 1px solid #ffffff;
-  /* Unico bordo */
 }
 
 #componentTab div {
   width: 100%;
-  /* Assicurati che ogni div figlio occupi il 100% della larghezza */
-
-
 }
 
 #componentsList {
@@ -363,6 +365,10 @@ div {
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
+}
+
+#componentsList>div>div {
+  width: 100%;
 }
 
 #quadrato {
@@ -542,7 +548,13 @@ div {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-#projects > div > div {
+#projects>div>div {
+
+  height: 20vh;
+  width: 16vw;
+
+  margin: 10px;
+
   background: #000000;
   padding: 10px;
   border: 1px solid #ffffff;
@@ -560,7 +572,7 @@ div {
   left: 0%;
   top: 10%;
 
-  
+
 }
 
 #projectUnlockables {
@@ -939,9 +951,7 @@ div {
   left: 30%
 }
 
-
 #dataUpgrade1 {
-  font-size: xx-small;
 
   position: relative;
 
@@ -960,7 +970,6 @@ div {
 }
 
 #dataUpgrade2 {
-
   position: relative;
 
   border: 0.1vw solid black;
@@ -979,6 +988,7 @@ div {
 
 
 #dataButton1 {
+
   position: absolute;
 
   background: #000000;
@@ -1349,24 +1359,45 @@ div {
   text-transform: uppercase;
 }
 
+#dataDescription {
+  position: absolute;
+  top: -10vh;
+  right: -0.2vw;
+  height: 10vh;
+  width: 40vw;
+
+  background: #000000;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+}
+
+#hardwareSummary {
+  width: 80%;
+}
+
 #softwareSummary {
-  width: 100%;
+  width: 80%;
 }
 
 #communicationSummary {
-  width: 100%;
+  width: 80%;
 }
 
 #x1Summary {
-  width: 100%;
+  width: 80%;
 }
 
 #x2Summary {
-  width: 100%;
+  width: 80%;
 }
 
 #x3Summary {
-  width: 100%;
+  width: 80%;
 }
 
 #buttonComponentRow0 {
@@ -1377,6 +1408,8 @@ div {
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
+
+  height: 20vh;
 
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -1403,7 +1436,6 @@ div {
 
 #componentRow1 {
   padding-right: 10px;
-  font-size: large;
 
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -1413,7 +1445,6 @@ div {
 }
 
 #componentRow2 {
-  font-size: large;
 
   border-radius: 5px;
   color: #ffffff;
@@ -1424,7 +1455,6 @@ div {
 }
 
 #componentRow3 {
-  background: #000000;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
@@ -1485,24 +1515,18 @@ input[type=text] {
   height: 80px;
 }
 
-#Save {
-  width: 60vw;
-  height: 20vh;
-  flex: 1 1 100%;
-  /* Allow the input to take the full width of the container */
-  box-sizing: border-box;
-  /* Include padding and border in the element's total width and height */
-}
-
-#automation>div {
-  background: #000000;
-  padding: 10px;
-  border: 1px solid #ffffff;
-  border-radius: 5px;
-  color: #ffffff;
-  font-family: 'Orbitron', sans-serif;
-  text-transform: uppercase;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.input-like {
+  width: 500px; 
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 1.5;
+  min-height: 30px;
+  white-space: pre-wrap; 
+  word-wrap: break-word; 
+  outline: none; 
+  overflow-wrap: break-word;
 }
 
 #automation>div>div {
@@ -1517,12 +1541,12 @@ input[type=text] {
 }
 
 #progress {
-  position: absolute;
+  position: relative;
 
   top: 0vh;
   left: 15vw;
   width: 83vw;
-  overflow-y: scroll;
+  height: 100vh;
 
   background: #000000;
   padding: 10px;
@@ -1530,4 +1554,37 @@ input[type=text] {
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
+
+  overflow-y:scroll;
+}
+
+#topProgress {
+  position: absolute;
+  top: 1vh;
+  left: 50%;
+  transform: translate3d(-50%, 0, 0);
+  z-index: 4;
+
+  background: #B78628;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+}
+
+#coreImage {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: url("images/coreB2.png");
+  background-repeat: no-repeat;
+  background-size:cover;
+  pointer-events: none;
+}
+
+.tokenSizes {
+  width: 5vw;
+  height: 5vw;
 }

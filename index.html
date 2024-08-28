@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+
 <head>
 
     <meta charset="UTF-8">
@@ -22,7 +24,8 @@
             -ms-user-select: none;
             user-select: none;
             background: #e4eff0;
-            overflow-y: auto;
+            overflow-y: hidden;
+            overflow-x: hidden
         }
 
         .grid-container {
@@ -48,6 +51,7 @@
 
 <body>
     <div id="mainGame">
+
         <div id="ui">
 
             <div class="redimension" id="valute">
@@ -66,7 +70,7 @@
                 <div><button onclick="resetSave()">RESET SAVE</button></div>
                 <div><button onclick="exportSave()">Export Save</button></div>
                 <div><button onclick="importSave()">Import Save</button></div>
-                <input type="text" id="Save" name="Save" value=""><br>
+                <textarea class="input-like" id="Save" name="Save" rows="4" cols="50"></textarea><br>
 
                 <div id="automation">
 
@@ -98,15 +102,16 @@
             </div>
 
             <div id="progress">
-                <div id="progress1"><b>Initiate Hardware</b>
+                <div id="progress1">
+                    <b>Initiate Hardware</b>
                     <br>
                     In a lonely place, a scientist was working on a machine that could grow forever.
                     After decades his work was stalling, the machine could not grow without help.
                     In the vastness of the universe, hundreds of dimensions far from earth an Entity responded.
                     It gave the Structure life, it was called USER
                     <br>
+                    <b>HARDWARE LAYER AT 1000 CELLS</b>
                     <br>
-                    <b>HARDWARE LAYER AT 100 CELLS</b>
                     <br>
                 </div>
 
@@ -117,8 +122,8 @@
                     <br>
                     Earth crust starts being tempered.
                     <br>
+                    <b>SOFTWARE LAYER AT 1E8 CELLS</b>
                     <br>
-                    <b>SOFTWARE LAYER AT 1E4 CELLS</b>
                     <br>
                 </div>
 
@@ -128,8 +133,8 @@
                     Two Cells filament give a simple command, a hundred are able to make a decision, a thousand make a
                     thought, ten thousand make a change.
                     <br>
-                    <br>
                     <b>PROJECTS AT 100 DATA</b>
+                    <br>
                     <br>
                 </div>
 
@@ -140,8 +145,8 @@
                     <br>
                     This is the way for the structure to grow.
                     <br>
+                    <b>COMPLETE THE PROJECT: THE FIRST PILLAR</b>
                     <br>
-                    <b>FIRST BIG PROJECT AT 1E4 DATA</b>
                     <br>
                 </div>
 
@@ -150,12 +155,12 @@
                     <br>
                     The structure after many iterations is finally finding his true path, people start accepting this
                     reality.
-                    <br> 
+                    <br>
                     The Pillar is necessary for people to live in the structure, it has all necessities, many
                     will grow to the sky, separated by a sea of machines.
                     <br>
+                    <b>NEXT PROJECTS AT 5E10 DATA</b>
                     <br>
-                    <b>NEXT PROJECTS AT 1E5 DATA</b>
                     <br>
                 </div>
 
@@ -165,6 +170,7 @@
                     Components are the heart of the structure, they decide the direction in which progress is made,
                     never forget them, inventions will become obsolete, but not components.
                     <br>
+                    <br>
                 </div>
 
                 <div id="progress7">
@@ -173,8 +179,8 @@
                     Energy flows in every crevice of the structure, never filling it enough, seeking a way to make this
                     overflowing energy a stepping stone for your never ending expansion.
                     <br>
-                    <br>
                     <b>EXPLORATION AT 1E5 ENERGY</b>
+                    <br>
                     <br>
                 </div>
 
@@ -184,8 +190,8 @@
                     Looking at the stars inspired countless generations to dream bigger, and set sight on something
                     greater on themself, can the structure dream? will its path be forged in the stars?
                     <br>
-                    <br>
                     <b>BUILD THE FIRST STRATUM</b>
+                    <br>
                     <br>
                 </div>
 
@@ -195,10 +201,44 @@
                     Every City destroyed and rebuilt, every human inhabits the pillars, the gray walls give life, the
                     humming machines give peace, and we humans will feed the structure, because the structure must grow.
                     <br>
-                    <br>
                     <b>CURRENT ENDGAME, THANKS FOR PLAYING</b>
+                    <br>
+                    <br>
+                </div>
+            </div>
+
+            <div id="topProgress">
+                <div id="topProgress1">
+                    <b>HARDWARE LAYER AT 1000 CELLS</b>
                 </div>
 
+                <div id="topProgress2">
+                    <b>SOFTWARE LAYER AT 1E8 CELLS</b>
+                </div>
+
+                <div id="topProgress3">
+                    <b>PROJECTS AT 100 DATA</b>
+                </div>
+
+                <div id="topProgress4">
+                    <b>COMPLETE THE PROJECT: THE FIRST PILLAR</b>
+                </div>
+
+                <div id="topProgress5">
+                    <b>NEXT PROJECTS AT 5E10 DATA</b>
+                </div>
+
+                <div id="topProgress6">
+                    <b>EXPLORATION AT 1E5 ENERGY</b>
+                </div>
+
+                <div id="topProgress7">
+                    <b>BUILD THE FIRST STRATUM</b>
+                </div>
+
+                <div id="topProgress8">
+                    <b>CURRENT ENDGAME, THANKS FOR PLAYING</b>
+                </div>
             </div>
 
             <div id="selectorTab">
@@ -211,13 +251,8 @@
                 <div><button id="optionsTab" onclick="tab('options')">Options</button></div>
                 <div><button id="progressTab" onclick="tab('progress')">Progress</button></div>
 
-                <button onclick="addCells(100000000000)">ADD 1E7 CELLS</button>
-                <button onclick="addCells(-10000)">REMOVE 1E4 CELLS</button>
-                <button onclick="addData(10000)">ADD 10K DATA</button>
-                <button onclick="boostTickspeed(800)">double tickspeed</button>
                 <button onclick="boostTickspeed(1)">reset tickspeed</button>
                 <button onclick="boostTickspeed(0)">stop time</button>
-                <button onclick="addEnergy(100)">add 100 energy</button>
             </div>
 
         </div>
@@ -229,19 +264,19 @@
                 <div id="refiningLayer">
                     <div style="text-align: center" id="extractor1">
                         <div class="redimension">EXTRACTOR</div>
-                        <div class="redimension, extractorValue">0</div>
+                        <div class="redimension extractorValue"></div>
                     </div>
-                    <div class="extractor2" style="display: flex; flex-direction:row;">
+                    <div class="extractor2"
+                        style="display: flex; flex-direction: row; justify-content: space-around; gap: 15px;">
                         <div id="extractor3">
-                            <div class="redimension, extractors1">+1 to the base</div>
-                            <div>Delve deeper in earth crust</div>
+                            <div class="redimension extractors1">+10 TO THE BASE</div>
                             <button id="buyExtractor">EXTRACTORS</button>
-                            <div class="redimension, extractors2" class="extractors2"></div>
+                            <div class="redimension extractors2"></div>
                         </div>
                         <div id="extractor4">
-                            <div class="redimension, speedExtractors1">description</div>
+                            <div class="redimension speedExtractors1">MULTIPLIES BASE X2</div>
                             <button id="buySpeedExtractor">SPEED</button>
-                            <div class="redimension, speedExtractors2">level + price</div>
+                            <div class="redimension speedExtractors2"></div>
                         </div>
                     </div>
                 </div>
@@ -249,6 +284,7 @@
         </div>
 
         <div id="software">
+
             <div id="softwareT1">
                 <button id="softwareTier1">Tier1(Current Layer)</button>
 
@@ -333,11 +369,20 @@
                             <div id="unlockable15Box"></div>
                             <button id="unlockable15Button" class='projectButtons'>BUY</button>
                         </div>
+
+                        <div id="unlockable16">
+                            <div id="unlockable16Box"></div>
+                            <button id="unlockable16Button" class='projectButtons'>BUY</button>
+                        </div>
                     </div>
                 </div>
 
 
                 <div id="data">
+                    <div id="dataDescription">CLICK ON DATA TYPE "LIGHT" TO START, "MEDIUM" AND "HEAVY" WILL BE AVAIABLE
+                        WHEN THEIR BAR IS GREEN.
+                        WHEN A BAR IS FILLED IT WILL GENERATE AN UPGRADE OF THE FOLLOWING DATA TYPE.
+                    </div>
                     <div id="dataCollection">
                         <div id="lightDataCollection">LIGHT</div>
                         <div id="collectable1" class="redimensionDataCollection">NOT UNLOCKED</div>
@@ -358,11 +403,12 @@
                     </div>
 
                     <button id="dataButton1">
-                        <div class="redimensionDataUpgrades" data-value="" id="dataUpgrade1"></div>
+                        <div class="redimensionDataCollection" data-value="" id="dataUpgrade1"></div>
                     </button>
                     <button id="dataButton2">
-                        <div class="redimensionDataUpgrades" data-value="" id="dataUpgrade2"></div>
+                        <div class="redimensionDataCollection" data-value="" id="dataUpgrade2"></div>
                     </button>
+
 
                     <div id="dataGraph">
                         <div id="dataLightProgress" class="progress-bar">
@@ -388,7 +434,7 @@
                         <button id="dataHeavy">
                             <div id="dataHeavyWait" value="0" max="100">Heavy</div>
                         </button>
-                        <button id="dataNull">ferma</button>
+                        <button id="dataNull">stop</button>
                     </div>
 
                 </div>
@@ -486,6 +532,8 @@
 
         <div id="core">
 
+            <div id="coreImage"></div>
+
             <button id="loadout">LOADOUT</button>
 
             <div id="loadoutShow">
@@ -554,33 +602,33 @@
                     ACTIVE COMPONENTS EFFECTS
                     <div id="hardwareSummary">
                         <div>Hardware</div>
-                        <div class="components1Effect1">parola</div>
-                        <div class="components1Effect2">parola</div>
+                        <div class="components1Effect1">-</div>
+                        <div class="components1Effect2">-</div>
                     </div>
                     <div id="softwareSummary">
                         <div>Software</div>
-                        <div class="components2Effect1">parola</div>
-                        <div class="components2Effect2">parola</div>
+                        <div class="components2Effect1">-</div>
+                        <div class="components2Effect2">-</div>
                     </div>
                     <div id="communicationSummary">
                         <div>Communication</div>
-                        <div class="components3Effect1">parola</div>
-                        <div class="components3Effect2">parola</div>
+                        <div class="components3Effect1">-</div>
+                        <div class="components3Effect2">-</div>
                     </div>
                     <div id="x1Summary">
                         <div>???</div>
-                        <div>parola </div>
-                        <div>parola </div>
+                        <div>- </div>
+                        <div>- </div>
                     </div>
                     <div id="x2Summary">
                         <div>???</div>
-                        <div>parola </div>
-                        <div>parola</div>
+                        <div>- </div>
+                        <div>-</div>
                     </div>
                     <div id="x3Summary">
                         <div>???</div>
-                        <div>parola</div>
-                        <div>parola</div>
+                        <div>-</div>
+                        <div>-</div>
                     </div>
                 </div>
 
@@ -594,67 +642,64 @@
 
                 <div id="componentTab">
                     <div id="visualComponentTab">
-
                         <div id="componentTabZone1">
-                            <p id="componentRow1"></p>
-                            <p id="componentRow2"></p>
+                            <p class="redimension" id="componentRow1"></p>
+                            <p class="redimension" id="componentRow2"></p>
                         </div>
                         <div id="componentTabZone2">
-                            <div id="componentRow3"></div>
+                            <div class="redimension" id="componentRow3"></div>
                         </div>
-                        <div id="componentRow4"></div>
-                        <div id="componentRow5"></div>
+                        <div class="redimension" id="componentRow4"></div>
+                        <div class="redimension" id="componentRow5"></div>
                     </div>
                 </div>
 
                 <div id="componentsList">
-                    <div class="flex-container" style="flex-direction: right" id="components1">
+                    <div class="flex-container" id="components1">
                         <div id="components1Tier1">
-                            <button id="token1" onclick=""
-                                style="background-image: 'images/token_1.jpg;'; width: 3.5vw; height: 3.5vw"></button>
-                            <button id="token2" onclick=""
-                                style="background-image: 'images/token_2.jpg;'; width: 3.5vw; height: 3.5vw"></button>
-                            <button id="token3" onclick=""
-                                style="background-image: 'images/token_1.jpg;'; width: 3.5vw; height: 3.5vw"></button>
+                            <button id="token1" class="tokenSizes" onclick=""
+                                style="background-image: 'images/token_1.jpg;'"></button>
+                            <button id="token2" class="tokenSizes" onclick=""
+                                style="background-image: 'images/token_2.jpg;';"></button>
+                            <button id="token3" class="tokenSizes" onclick=""
+                                style="background-image: 'images/token_1.jpg;'"></button>
                         </div>
                         <div id="components1Tier2">
-                            <div>
-                                <!--
-                                <button id="" onclick=""
-                                    style="background-image: 'images/token_1.jpg;'; width: 3.5vw; height: 3.5vw"></button>
-                                    -->
-                            </div>
+                            <button id="token11" class="tokenSizes" onclick=""
+                                style="background-image: 'images/token_1.jpg;'"></button>
                         </div>
                     </div>
 
                     <div class="flex-container" id="components2">
                         <div id="components2Tier1">
-                            <button id="token4" onclick=""
-                                style="background-image: 'images/token_1.jpg;'; width: 3.5vw; height: 3.5vw"></button>
-                            <button id="token5" onclick=""
-                                style="background-image: 'images/token_1.jpg;'; width: 3.5vw; height: 3.5vw"></button>
-                            <button id="token6" onclick=""
-                                style="background-image: 'images/token_1.jpg;'; width: 3.5vw; height: 3.5vw"></button>
+                            <button id="token4" class="tokenSizes" onclick=""
+                                style="background-image: 'images/token_1.jpg;'"></button>
+                            <button id="token5" class="tokenSizes" onclick=""
+                                style="background-image: 'images/token_1.jpg;'"></button>
+                            <button id="token6" class="tokenSizes" onclick=""
+                                style="background-image: 'images/token_1.jpg;';"></button>
                         </div>
                         <div id="components2Tier2">
-
+                            <button id="token12" class="tokenSizes" onclick=""
+                                style="background-image: 'images/token_1.jpg;'"></button>
                         </div>
                     </div>
 
                     <div class="flex-container" id="components3">
                         <div id="components3Tier1">
-                            <button id="token7" onclick=""
-                                style="background-image: 'images/token_1.jpg;'; width: 3.5vw; height: 3.5vw"></button>
-                            <button id="token8" onclick=""
-                                style="background-image: 'images/token_1.jpg;'; width: 3.5vw; height: 3.5vw"></button>
-                            <button id="token9" onclick=""
-                                style="background-image: 'images/token_1.jpg;'; width: 3.5vw; height: 3.5vw"></button>
-
+                            <button id="token7" class="tokenSizes" onclick=""
+                                style="background-image: 'images/token_1.jpg;'"></button>
+                            <button id="token8" class="tokenSizes" onclick=""
+                                style="background-image: 'images/token_1.jpg;'"></button>
+                            <button id="token9" class="tokenSizes" onclick=""
+                                style="background-image: 'images/token_1.jpg;'"></button>
                         </div>
                         <div id="components3Tier2">
-
+                            <button id="token10" class="tokenSizes" onclick=""
+                                style="background-image: 'images/token_1.jpg;'"></button>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </div>
