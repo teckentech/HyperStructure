@@ -1577,6 +1577,7 @@ input[type=text] {
   position: absolute;
   width: 100vw;
   height: 100vh;
+  left: -2.35vw;
   z-index: -1;
   background: url("images/coreB2.png");
   background-repeat: no-repeat;
