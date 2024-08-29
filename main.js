@@ -43,7 +43,7 @@ let components = [
     levelActive: false, priceActive: false, effect1Active: false, effect2Active: false
   },
   {
-    id: "token2", name: "Cells Booster", description1: "More cells -> More Cells/s: ", description2: "-", level: 1, price: 0, effect1: 0, effect2: 0, identity1: "cell_Base", identity2: "a_Base", active: false, image: 'images/token_2.png', tag1: "components1", tag2: "booster", tag3: ".", priceIdentity: "cells",
+    id: "token2", name: "Cells Booster", description1: "More cells -> More Cells/s X: ", description2: "-", level: 1, price: 0, effect1: 0, effect2: 0, identity1: "cell_Base", identity2: "a_Base", active: false, image: 'images/token_2.png', tag1: "components1", tag2: "booster", tag3: ".", priceIdentity: "cells",
     levelActive: false, priceActive: false, effect1Active: false, effect2Active: false
   },
   {
