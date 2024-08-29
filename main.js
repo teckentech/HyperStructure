@@ -915,7 +915,7 @@ function visual_refiner() {
 
   updateClass("extractorValue", "adds to the base of cells/s: " + actualValue);
 
-  updateClass("extractors1", "<div>" + "Adds +1 to the base" + "</div>");
+  updateClass("extractors1", "<div>" + "Adds +10 to the base" + "</div>");
   updateClass("extractors2", "<div>" + actualExtractors + "/200" + "</div><div>" + " price: " + actualPriceExtractors + " " + actualPriceExtractorsIdentity + "</div>")
 
   updateClass("speedExtractors1", "<div>" + "multiplies Base x2" + "</div>");
