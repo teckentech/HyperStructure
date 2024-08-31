@@ -75,15 +75,15 @@ let components = [
     levelActive: false, priceActive: false, effect1Active: false, effect2Active: false
   },
   {
-    id: "token10", name: "Energized Structure", description1: "Energy/s x:", description2: "-", level: 1, price: 0, effect1: 0, effect2: 0, identity1: "cell_Base", identity2: "a_Base", active: false, image: 'images/token_2.png', tag1: "components3", tag2: "Synergy", tag3: ".", priceIdentity: "cells",
+    id: "token10", name: "Energized Structure", description1: "Energy/s x:", description2: "-", level: 1, price: 0, effect1: 0, effect2: 0, identity1: "cell_Base", identity2: "a_Base", active: false, image: 'images/token_10.png', tag1: "components3", tag2: "Synergy", tag3: ".", priceIdentity: "cells",
     levelActive: false, priceActive: false, effect1Active: false, effect2Active: false
   },
   {
-    id: "token11", name: "Asteroid Cells Booster", description1: "reduces Energy/s by 30%", description2: "More cells -> More Cells/s: ", level: 1, price: 0, effect1: 0, effect2: 0, identity1: "cell_Base", identity2: "a_Base", active: false, image: 'images/token_7.png', tag1: "components1", tag2: "Booster", tag3: ".", priceIdentity: "cells",
+    id: "token11", name: "Asteroid Cells Booster", description1: "reduces Energy/s by 30%", description2: "More cells -> More Cells/s: ", level: 1, price: 0, effect1: 0, effect2: 0, identity1: "cell_Base", identity2: "a_Base", active: false, image: 'images/token_11.png', tag1: "components1", tag2: "Booster", tag3: ".", priceIdentity: "cells",
     levelActive: false, priceActive: false, effect1Active: false, effect2Active: false
   },
   {
-    id: "token12", name: "Asteroid Data Booster", description1: "reduces Energy/s by 30%", description2: "data X: ", level: 1, price: 0, effect1: 0, effect2: 0, identity1: "cell_Base", identity2: "a_Base", active: false, image: 'images/token_8.png', tag1: "components2", tag2: "booster", tag3: ".", priceIdentity: "cells",
+    id: "token12", name: "Asteroid Data Booster", description1: "reduces Energy/s by 30%", description2: "data X: ", level: 1, price: 0, effect1: 0, effect2: 0, identity1: "cell_Base", identity2: "a_Base", active: false, image: 'images/token_12.png', tag1: "components2", tag2: "booster", tag3: ".", priceIdentity: "cells",
     levelActive: false, priceActive: false, effect1Active: false, effect2Active: false
   },
 ]
