@@ -67,7 +67,7 @@ let components = [
     levelActive: false, priceActive: false, effect1Active: false, effect2Active: false
   },
   {
-    id: "token8", name: "Asteroid Enchancer", description1: "all Asteroid Upgrades and components are boosted: x", description2: "-", level: 1, price: 0, effect1: 0, effect2: 0, identity1: "cell_Base", identity2: "a_Base", active: false, image: 'images/token_8.png', tag1: "components3", tag2: "booster", tag3: ".", priceIdentity: "cells",
+    id: "token8", name: "Asteroid Enchancer", description1: "all Asteroid Upgrades and components are boosted: x", description2: "-", level: 1, price: 0, effect1: 0, effect2: 0, identity1: "cell_Base", identity2: "a_Base", active: false, image: 'images/token_8.png', tag1: "components3", tag2: "booster", tag3: ".", priceIdentity: "explorationResource1",
     levelActive: false, priceActive: false, effect1Active: false, effect2Active: false
   },
   {
@@ -75,7 +75,7 @@ let components = [
     levelActive: false, priceActive: false, effect1Active: false, effect2Active: false
   },
   {
-    id: "token10", name: "Energized Structure", description1: "Energy/s x:", description2: "-", level: 1, price: 0, effect1: 0, effect2: 0, identity1: "cell_Base", identity2: "a_Base", active: false, image: 'images/token_10.png', tag1: "components3", tag2: "Synergy", tag3: ".", priceIdentity: "explorationResource1",
+    id: "token10", name: "Energized Structure", description1: "Energy/s x:", description2: "-", level: 1, price: 0, effect1: 0, effect2: 0, identity1: "cell_Base", identity2: "a_Base", active: false, image: 'images/token_10.png', tag1: "components2", tag2: "Synergy", tag3: ".", priceIdentity: "cells",
     levelActive: false, priceActive: false, effect1Active: false, effect2Active: false
   },
   {
@@ -118,14 +118,14 @@ let explorationUpgrades = [
   {
     effectActive: false,
     priceActive: false,
-    id: "explorationB1", masterKey: "explorationB", name: "glimpse in a sun", description: "send a satellite inside the sun",
+    id: "explorationB1", masterKey: "explorationB", name: "glimpse in a sun", description: "send a satellite inside the sun, dont worry it wont burn up, its nighttime",
     effect: 0, price: 0, priceIdentity: "energy"
   },
 
   {
     effectActive: false,
     priceActive: false,
-    id: "explorationB2", masterKey: "explorationB", name: "glimpse in a black hole", description: "send a satellite inside a black hole",
+    id: "explorationB2", masterKey: "explorationB", name: "glimpse in a black hole", description: "send a satellite inside a black hole, with some luck we will get something out of it",
     effect: 0, price: 0, priceIdentity: "energy"
   },
 ]
@@ -865,8 +865,7 @@ function getExplorationSelected(a) {
           }
         }
       }
-
-  valuesSetter()
+  valuesSetter() 
 }
 
 //getters
@@ -1317,6 +1316,7 @@ function valuesSetter() {
   setActive(gameData, null, "explorationResource1Prod", true)
   setActive(gameData, null, "tickSpeed", true)
 
+  var cells7 = getIfActive(components, "token7", "effect1")
   var cells1 = getIfActive(refining, null, "value")
   var cells2 = getIfActive(components, "token1", "effect1")
   var cells3 = getIfActive(components, "token1", "effect2")
@@ -1324,6 +1324,7 @@ function valuesSetter() {
   var cells5 = getIfActive(components, "token2", "effect1")
   var cells6 = getIfActive(components, "token3", "effect1")
   var cells7 = getIfActive(components, "token7", "effect1")
+
   var cells8 = getIfActive(components, "token11", "effect2")
 
   cells3 = norm(cells3)
@@ -1399,11 +1400,8 @@ function valuesSetter() {
   energy3 = norm(energy3)
   energy5 = norm(energy5)
   energy8 = norm(energy8)
-  energy9 = norm(energy8)
-  energy10 = norm(energy10)
 
-
-  let globalEnergyProd = (0 + energy1 * energy4 * energy5) - energy6 - energy7 - energy9 - energy10
+  let globalEnergyProd = (0 + energy1 * energy4 * energy5 * energy8) - energy6 - energy7 - energy9 - energy10
 
   globalEnergyProd = norm(globalEnergyProd)
   let globalEnergyMax = 10 + energy2
@@ -1783,20 +1781,22 @@ function valuesSetter() {
   let componentsToken8price = 0
 
   if (getNotIf(components, "token8", "level") >= 0 && getNotIf(components, "token8", "level") < 10) {
-    componentsToken8Effect1 = (1 + (1 * getNotIf(components, "token8", "level"))) * getNotIf(components, "token9", "effect1")
+    componentsToken8Effect1 = (1 + (2 ** getNotIf(components, "token8", "level")))
     componentsToken8Effect2 = 0
-    componentsToken8price = (10 ** getNotIf(components, "token8", "level"))
+    componentsToken8price = (4.5 ** (1 + getNotIf(components, "token8", "level"))) * 10
   }
   if (getNotIf(components, "token8", "level") >= 10 && getNotIf(components, "token8", "level") < 20) {
-    componentsToken8Effect1 = 1 + (2 * getNotIf(components, "token8", "level")) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable6", "effect")
+    componentsToken8Effect1 = 1 + (3.5 ** getNotIf(components, "token8", "level")) * getNotIf(dataUpgrades, "collectable6", "effect")
     componentsToken8Effect2 = 0
-    componentsToken8price = (20 ** getNotIf(components, "token8", "level"))
+    componentsToken8price = (10 ** getNotIf(components, "token8", "level")) * 10
   }
   if (getNotIf(components, "token8", "level") == 20) {
-    componentsToken8Effect1 = 1 + (4 * getNotIf(components, "token8", "level")) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable6", "effect")
+    componentsToken8Effect1 = 1 + (5 ** getNotIf(components, "token8", "level")) * getNotIf(dataUpgrades, "collectable6", "effect")
   }
 
   componentsToken8Effect1 = norm(componentsToken8Effect1)
+
+  console.log("token8 actual effect" + componentsToken8Effect1)
 
   //Ally Synergy
   let componentsToken9Level = getNotIf(components, "token9", "level")
@@ -1829,17 +1829,17 @@ function valuesSetter() {
   let componentsToken10price = 0
 
   if (getNotIf(components, "token10", "level") >= 0 && getNotIf(components, "token10", "level") < 10) {
-    componentsToken10Effect1 = 1 + (0.5 * getIfActive(components, "token10", "level"))
+    componentsToken10Effect1 = 1 + (0.5 * getNotIf(components, "token10", "level"))
     componentsToken10Effect2 = 0
-    componentsToken10price = ((4.5 ** getNotIf(components, "token10", "level")) * (10 ** 20)) / getNotIf(dataUpgrades, "collectable8", "effect")
+    componentsToken10price = ((4.5 ** getNotIf(components, "token10", "level")) * (10 ** 37))/ getNotIf(dataUpgrades, "collectable8", "effect")
   }
   if (getNotIf(components, "token10", "level") >= 10 && getNotIf(components, "token10", "level") < 20) {
-    componentsToken10Effect1 = 1 + (1 * getIfActive(components, "token10", "level")) * getNotIf(dataUpgrades, "collectable6", "effect")
+    componentsToken10Effect1 = 1 + (5 * getNotIf(components, "token10", "level")) * getNotIf(dataUpgrades, "collectable6", "effect")
     componentsToken10Effect2 = 0
-    componentsToken10price = ((10 ** getNotIf(components, "token10", "level")) * (10 ** 30)) / getNotIf(dataUpgrades, "collectable8", "effect")
+    componentsToken10price = ((10 ** getNotIf(components, "token10", "level"))* (10 ** 37)) / getNotIf(dataUpgrades, "collectable8", "effect")
   }
   if (getNotIf(components, "token10", "level") == 20) {
-    componentsToken10Effect1 = 1 + (2 * getIfActive(components, "token10", "level")) * getNotIf(dataUpgrades, "collectable6", "effect")
+    componentsToken10Effect1 = 1 + (25 * getNotIf(components, "token10", "level")) * getNotIf(dataUpgrades, "collectable6", "effect")
     componentsToken10Effect2 = 0
   }
 
@@ -1855,7 +1855,7 @@ function valuesSetter() {
   if (getNotIf(components, "token11", "level") >= 0 && getNotIf(components, "token11", "level") < 10) {
     componentsToken11Effect1 = getNotIf(gameData, null, "energyProd") * 0.3;
     componentsToken11Effect2 = (4 * (1 + (0.5 * getNotIf(components, "token11", "level"))) * logBase(2, getNotIf(gameData, null, "cells"))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable7", "effect") * getNotIf(dataUpgrades, "collectable6", "effect") * getNotIf(components, "token8", "effect1")
-    componentsToken11price = (4.5 ** getNotIf(components, "token11", "level")) / getNotIf(dataUpgrades, "collectable8", "effect")
+    componentsToken11price = (4.5 ** (1 + getNotIf(components, "token11", "level"))) / getNotIf(dataUpgrades, "collectable8", "effect")
   }
   if (getNotIf(components, "token11", "level") >= 10 && getNotIf(components, "token11", "level") < 20) {
     componentsToken11Effect1 = getNotIf(gameData, null, "energyProd") * 0.3;
@@ -1879,9 +1879,10 @@ function valuesSetter() {
 
   if (getNotIf(components, "token12", "level") >= 0 && getNotIf(components, "token12", "level") < 10) {
     componentsToken12Effect1 = getNotIf(gameData, null, "energyProd") * 0.3;
-    componentsToken12Effect2 = (1 + (8 * (getNotIf(components, "token12", "level")))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable7", "effect") * getNotIf(components, "token8", "effect1")
-    componentsToken12price = (4.5 ** getNotIf(components, "token12", "level")) / getNotIf(dataUpgrades, "collectable8", "effect")
+    componentsToken12Effect2 = (1 + (8 * (10 + getNotIf(components, "token12", "level")))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable7", "effect") * getNotIf(components, "token8", "effect1")
+    componentsToken12price = (4.5 ** (1 + getNotIf(components, "token12", "level"))) / getNotIf(dataUpgrades, "collectable8", "effect")
   }
+
   if (getNotIf(components, "token12", "level") >= 10 && getNotIf(components, "token12", "level") < 20) {
     componentsToken12Effect1 = getNotIf(gameData, null, "energyProd") * 0.3;
     componentsToken12Effect2 = (1 + (16 * (getNotIf(components, "token12", "level")))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable6", "effect") * getNotIf(dataUpgrades, "collectable7", "effect") * getNotIf(components, "token8", "effect1")
@@ -2239,7 +2240,7 @@ function valuesSetter() {
   let projectsUnlockable3Price3 = 0
 
   //new resources package 1
-  let projectsUnlockable4Price1 = 5 * (10 ** 9)
+  let projectsUnlockable4Price1 = 5 * (10 ** 11)
   let projectsUnlockable4Price2 = 0
   let projectsUnlockable4Price3 = 0
 
@@ -2285,8 +2286,8 @@ function valuesSetter() {
   let projectsUnlockable12Price3 = 0
 
   //COMMUNICATION PACKAGE 1
-  let projectsUnlockable13Price1 = 10 ** 18
-  let projectsUnlockable13Price2 = 5 * (10 ** 9)
+  let projectsUnlockable13Price1 = 10 ** 20
+  let projectsUnlockable13Price2 = 5 * (10 ** 11)
   let projectsUnlockable13Price3 = 100
 
   //FIRST EXPLORATION STEP
@@ -2437,11 +2438,6 @@ function valuesSetter() {
 
   //PRICE
 
-
-  if (getNotIf(gameData, null, "energyProd") < getNotIf(explorationUpgrades, getNotIf(explorationSelected, null, "explorationB"), "price")) {
-    setNotIf(explorationSelected, null, "explorationB", "explorationB0")
-  }
-
   if (getNotIf(explorationSelected, null, "explorationA") == "explorationA0" && getNotIf(gameData, null, "energyProd") > getNotIf(explorationUpgrades, getNotIf(explorationSelected, null, "explorationA"), "price")) {
     setActive(explorationUpgrades, "explorationA0", "price", true)
   }
@@ -2532,18 +2528,21 @@ function valuesSetter() {
 
   let explorationUpgradesExplorationA0Price = 0;
   let explorationUpgradesExplorationB0Price = 0;
-  let explorationUpgradesExplorationA1Price = 10 ** 3;
+  let explorationUpgradesExplorationA1Price = 10 ** 4;
   let explorationUpgradesExplorationA2Price = 10 ** 7;
-  let explorationUpgradesExplorationB1Price = 1;
-  let explorationUpgradesExplorationB2Price = 1;
+  let explorationUpgradesExplorationB1Price = 10 ** 12;
+  let explorationUpgradesExplorationB2Price = 10 ** 15;
 
+  console.log("token8: " + getIfActive(components, "token8", "effect1"))
+
+  let token8Effect = norm(getIfActive(components, "token8", "effect1"))
 
   let explorationUpgradesExplorationA0Effect = 0;
   let explorationUpgradesExplorationB0Effect = 0;
-  let explorationUpgradesExplorationA1Effect = 0.1;
-  let explorationUpgradesExplorationA2Effect = 2;
-  let explorationUpgradesExplorationB1Effect = 50;
-  let explorationUpgradesExplorationB2Effect = 1000;
+  let explorationUpgradesExplorationA1Effect = 0.1 * token8Effect
+  let explorationUpgradesExplorationA2Effect = 2 * token8Effect
+  let explorationUpgradesExplorationB1Effect = 50 * token8Effect
+  let explorationUpgradesExplorationB2Effect = 1000 * token8Effect
 
 
   setIfActive(explorationUpgrades, "explorationA0", "price", explorationUpgradesExplorationA0Price)
@@ -4510,6 +4509,7 @@ function LoopShow() {
     unlockShow("unlockable14", true);
   }
 
+
   if (getNotIf(gameData, null, "energy") >= 10 ** 5) {
     unlockShow("exploration", true)
     unlockShow("asteroidsValute", true)
@@ -4527,11 +4527,6 @@ function LoopShow() {
   if (getNotIf(gameData, null, "cells") >= 10 ** 30 && !(getNotIf(projects, "unlockable16", "unlocked"))) {
     unlockShow("unlockable16", true);
 
-    if (gameData[0].topProgressCount < 8) {
-      gameData[0].topProgressCount = 8
-      unlockShow("topProgress7", false)
-      unlockShow("topProgress8", true)
-    }
   }
 
   if (checkShow("energy", true)) {
@@ -4549,8 +4544,11 @@ function LoopShow() {
     unlockShow("exploration1", true)
     unlockShow("explorationA", true)
     unlockShow("explorationAButton", true)
-    unlockShow("exploration2", false)
-    unlockShow("explorationBButton", false)
+    unlockShow("exploration2", true)
+    unlockShow("explorationB", true)
+    unlockShow("explorationBButton", true)
+
+    
   }
 
   unlockShow("cellsValute", true)
@@ -4650,6 +4648,7 @@ function LoopShow() {
   if (getNotIf(projects, "unlockable14", "unlocked")) {
     document.getElementById("unlockable14").style.backgroundColor = "#939393";
     unlockShow("token8", true)
+    unlockShow("token10", true)
     unlockShow("token11", true)
     unlockShow("token12", true)
   }
@@ -4664,6 +4663,15 @@ function LoopShow() {
     }
   }
 
+  if (getNotIf(projects, "unlockable16", "unlocked")) {
+    document.getElementById("unlockable16").style.backgroundColor = "#939393";
+    unlockShow("progress9", true)
+    if (gameData[0].topProgressCount < 8) {
+      gameData[0].topProgressCount = 8
+      unlockShow("topProgress7", false)
+      unlockShow("topProgress8", true)
+    }
+  }
 }
 
 //FUNZIONI DI SERVIZIO
@@ -4757,12 +4765,16 @@ function boostTickspeed(x) {
 function automationActuator() {
   //automator estrattore
   if (getNotIf(automation, "automation1", "active")) {
+    if (getNotIf(refining, null, "extractors") < 200) {
     buyNoPrice(refining, "priceExtractors", refining, "extractors", 1)
     manualVisualLoop()
+    }
 
+    if (getNotIf(refining, null, "speedExtractors") < 30) {
     buyNoPrice(refining, "speedExtractorPrice", refining, "speedExtractor", 1)
     manualVisualLoop()
     valuesSetter()
+    }
   }
 
   //automator data
@@ -4779,15 +4791,19 @@ function automationActuator() {
 
     var multHeavy = getNotIf(data, null, "heavyExtractionMult")
 
-    if (restLight >= restMedium && multLight > 0 || restLight >= restHeavy && multLight > 0) {
+
+    console.log(restLight)
+    console.log(restMedium)
+    console.log(restHeavy)
+    if (restLight >= restMedium && multLight > 0 && restLight >= restHeavy && multLight > 0) {
       dataSelected("dataLight")
     }
 
-    if (restMedium >= restLight && multMedium > 0 || restMedium >= restHeavy && multMedium > 0) {
+    if (restMedium >= restLight && multMedium > 0 && restMedium >= restHeavy && multMedium > 0) {
       dataSelected("dataMedium")
     }
 
-    if (restHeavy >= restMedium && multHeavy > 0 || restHeavy >= restLight && multHeavy > 0) {
+    if (restHeavy >= restMedium && multHeavy > 0 && restHeavy >= restLight && multHeavy > 0) {
       dataSelected("dataHeavy")
     }
     valuesSetter()
