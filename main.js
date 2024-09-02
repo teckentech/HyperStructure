@@ -17,7 +17,6 @@ let gameData = [{
 
   tickspeed3: 1,
 
-  //si calcola in sec
   offProgressLimit: 1800,
 
   lastTick: Date.now(),
@@ -239,7 +238,6 @@ let refining = [
 ]
 
 //ACCEPTED
-//sblocca i div che sono elencati nell' unlocked, quando le risorse necessarie vengono fornite
 let projects = [
   {
     id: "unlockable1", name: "HARDWARE PACKAGE 1", unlocked: false, unlockable1: "Component: Booster", unlockable2: "Component: Multimaker", unlockable3: "", price1: 10 ** 6, price2: 500, price3: 0, price1Identity: "cells", price2Identity: "data", price3Identity: "",
@@ -388,8 +386,6 @@ let showable = [
     hardware: false, hardwareT1: false,
     refiningLayer: false,
 
-    // rarityLayer: false,
-
     software: false, softwareT1: false,
     projects: false, unlockable1: false, unlockable2: false, unlockable3: false, unlockable4: false, unlockable5: false, unlockable6: false, unlockable7: false, unlockable8: false, unlockable9: false, unlockable10: false, unlockable11: false, unlockable12: false, unlockable13: false, unlockable14: false, unlockable15: false, unlockable16: false,
 
@@ -428,7 +424,6 @@ let showable = [
   }
 ]
 
-//setta un timer per fare in modo che si possano bloccare funzioni
 let canCall = [
   {
     dataActuatorCanCall: true
@@ -493,12 +488,10 @@ var maxTabNumber = 2;
 var init1 = true;
 var ThisExplorationName = "ExplorationA1";
 
-//necessario per offProgress(time)
 var waiting = false;
 var tempTickSpeed = 0;
 
-//PARTE VISUALE
-//PARTE VISUALE
+
 function update(id, content) {
   document.getElementById(id).innerHTML = content;
 }
@@ -521,19 +514,16 @@ function loadoutLoad(number) {
     if (components[x].id == loadoutData[number].components1) {
       setNotIf(components, components[x].id, "active", true)
       setNotIf(componentsEquipped, null, components[x].tag1, components[x].id)
-      //componentsEquipped[0][components[x].tag1] = components[x].id
     }
 
     if (components[x].id == loadoutData[number].components2) {
       setNotIf(components, components[x].id, "active", true)
       setNotIf(componentsEquipped, null, components[x].tag1, components[x].id)
-      //componentsEquipped[0][components[x].tag1] = components[x].id
     }
 
     if (components[x].id == loadoutData[number].components3) {
       setNotIf(components, components[x].id, "active", true)
       setNotIf(componentsEquipped, null, components[x].tag1, components[x].id)
-      //componentsEquipped[0][components[x].tag1] = components[x].id
     }
 
     if (components[x].id != loadoutData[number].components1 && components[x].tag1 == "components1") {
@@ -551,20 +541,16 @@ function loadoutLoad(number) {
     if (loadoutData[number].components1 == "" && components[x].tag1 == "components1") {
       setNotIf(components, components[x].id, "active", false)
       setNotIf(componentsEquipped, null, components[x].tag1, "")
-
-      //componentsEquipped[0][components[x].tag1] = ""
     }
 
     if (loadoutData[number].components2 == "" && components[x].tag1 == "components2") {
       setNotIf(components, components[x].id, "active", false)
       setNotIf(componentsEquipped, null, components[x].tag1, "")
-      //componentsEquipped[0][components[x].tag1] = ""
     }
 
     if (loadoutData[number].components3 == "" && components[x].tag1 == "components3") {
       setNotIf(components, components[x].id, "active", false)
       setNotIf(componentsEquipped, null, components[x].tag1, "")
-      //componentsEquipped[0][components[x].tag1] = ""
     }
   }
 }
@@ -934,8 +920,6 @@ function logBase(b, n) {
 
 function visual_projects() {
 
-  //id: "unlockable1", name: "test", unlocked: false, unlockable1: "test", unlockable2: "test", unlockable3: "test", price1: 0, price2: 0, price3: 0, identity1: "test", identity2: "test", identity3: "test"
-
   for (let y in projects) {
 
     var actualId = projects[y].id;
@@ -1093,9 +1077,6 @@ function visual_automation() {
   }
 }
 
-//PARTE FUNZIONALE
-//PARTE FUNZIONALE
-//PARTE FUNZIONALE
 
 function setActive(array, id, element, ac) {
   if (array != null) {
@@ -1126,7 +1107,6 @@ function setActive(array, id, element, ac) {
     }
   }
 
-  //se vuoi modificare gameData array = null, id = null
   if (array == null && id == null) {
     let elementActive = element + "Active"
     gameData[elementActive] = ac;
@@ -1233,7 +1213,6 @@ function getStatic(element) {
   return gameData[element]
 }
 
-//serve per valori non attivi di cui vogliamo il valore = 1 senza cambiare il valore originale
 function norm(x) {
   if (x == 0) {
     return 1;
@@ -1242,7 +1221,7 @@ function norm(x) {
 }
 
 function valuesSetterDinamic() {
-  //GLOBALI
+  //globals
 
   setActive(gameData, null, "cells", true)
   setActive(gameData, null, "data", true)
@@ -1304,11 +1283,6 @@ function valuesSetterDinamic() {
 }
 
 function valuesSetter() {
-  //usa setActive(array, id, element, ac)(_, "", "", _)
-  //getIfActive(array, id, element)(_, "", "")
-  //istanziamo gli [X]nome esternamente alla funzione cosi' che
-  //non vi siano errori di non referenzialita'
-  //components
 
   setActive(gameData, null, "cellsProd", true)
   setActive(gameData, null, "dataProd", true)
@@ -1970,7 +1944,7 @@ function valuesSetter() {
 
   let refiningExtractors = getIfActive(refining, null, "extractors");
   let refiningSpeedExtractor = getIfActive(refining, null, "speedExtractor");
-  let refiningEffect = 0; //effetto che si applica fra extractors e speedExtractors, attualmente, non viene usato
+  let refiningEffect = 0; 
   let refiningPriceExtractors = (1.4 ** (19 + getIfActive(refining, null, "extractors"))) / getNotIf(dataUpgrades, "collectable2", "effect");
   let refiningSpeedExtractorPrice = (10 ** (1 + getIfActive(refining, null, "speedExtractor"))) / getNotIf(dataUpgrades, "collectable2", "effect");
 
@@ -2709,7 +2683,7 @@ function setComponentActive() {
   }
 }
 
-//ZONA COMPERE
+//buy zone
 
 //extractors
 document.getElementById("buyExtractor").onclick = function () {
@@ -2728,7 +2702,6 @@ document.getElementById("buySpeedExtractor").onclick = function () {
   }
 }
 
-//ora vi e' una funzione che non usa buy, creala
 document.getElementById("dataLight").onclick = function () {
   if (getNotIf(data, null, "lightExtractionMult") > 0) {
     dataSelected("dataLight")
@@ -3283,7 +3256,6 @@ function buy(array, price, arrayEffector, effector, value) {
   return false;
 }
 
-//funzione necessaria se vuoi comprare qualcosa ma non vuoi pagare
 function buyNoPrice(array, price, arrayEffector, effector, value) {
   const priceIdentity = getNotIf(array, null, price + "Identity");
   const activePrice = getNotIf(array, null, price);
@@ -3545,7 +3517,7 @@ async function dataActuator() {
 
         progressBarActuator("dataLightWait", getIfActive(data, null, "lightDuration"));
 
-        await pauseFunction("dataActuator", getIfActive(data, null, "lightDuration"), true);  // QUI 1
+        await pauseFunction("dataActuator", getIfActive(data, null, "lightDuration"), true);  
 
         var found = 0;
         while (found == 0) {
@@ -3566,7 +3538,7 @@ async function dataActuator() {
 
         progressBarActuator("dataMediumWait", getIfActive(data, null, "mediumDuration"));
 
-        await pauseFunction("dataActuator", getIfActive(data, null, "mediumDuration"), true);  // QUI 1
+        await pauseFunction("dataActuator", getIfActive(data, null, "mediumDuration"), true);  
 
         var found = 0;
         while (found == 0) {
@@ -3587,7 +3559,7 @@ async function dataActuator() {
 
         progressBarActuator("dataHeavyWait", getIfActive(data, null, "heavyDuration"));
 
-        await pauseFunction("dataActuator", getIfActive(data, null, "heavyDuration"), true);  // QUI 1
+        await pauseFunction("dataActuator", getIfActive(data, null, "heavyDuration"), true);  
 
         var found = 0;
         while (found == 0) {
@@ -3642,12 +3614,6 @@ function clickExpand(element) {
   selElement.style.backgroundPositionY = "50%"
 }
 
-
-
-// MISCELLANEA
-// MISCELLANEA
-// MISCELLANEA
-
 var VisualLoop = setInterval(function () {
   manualVisualLoop()
 }, 50)
@@ -3670,14 +3636,8 @@ var mainGameLoop = window.setInterval(function () {
   offProgress(diffSec);
 
   gameData[0].lastTick = Date.now()
-  //setNotIf(gameData, null, "lastTick", Date.now())
-
-
-  //   gameData.StructurePoints += gameData.StructurePointsPerClick * (diff / 1000)
-  //   update("StructureBuilt", format(gameData.StructurePoints, "scientific") + "Structure Points")
-  // prodCells();
+ 
   valuesSetterDinamic()
-  //ora lo mettiamo qui, ma dovra' essere messo dopo la funzione quando finisce la ricerca di un light/medium/heavy
   dataActuator()
   automationActuator()
   valuesSetter()
@@ -3731,11 +3691,6 @@ function manualVisualLoop() {
   LoopShow()
 }
 
-// Funzione per salvare i dati di gioco
-// Definisci la funzione per salvare i dati di gioco
-
-
-// Aggiorna tutti gli array
 
 var SaveGameLoop = window.setInterval(function () {
   var saveData = {
@@ -3776,7 +3731,6 @@ var SaveGameLoop = window.setInterval(function () {
 if (localStorage.getItem("HyperStructureSave") !== null) {
 
   var savedGameData = JSON.parse(localStorage.getItem("HyperStructureSave"));
-  // Assicurati di aggiornare i dati di gioco con quelli caricati 
   if (savedGameData.gameData) {
     gameData = savedGameData.gameData;
   }
@@ -3886,37 +3840,27 @@ if (localStorage.getItem("HyperStructureSave") !== null) {
 
 }
 
-//funziona, ma controlla come funziona
 function updateSavedArrays(savedArray, defaultArray, newDefaultArray) {
-  // Crea una mappa per i nuovi valori predefiniti
   const newDefaultMap = newDefaultArray.reduce((map, item) => {
     map[item.id] = item;
     return map;
   }, {});
 
-  // Aggiorna o aggiungi elementi esistenti
   for (let i = 0; i < savedArray.length; i++) {
     const savedItem = savedArray[i];
     const newItem = newDefaultMap[savedItem.id];
     if (newItem) {
-      // Aggiorna le chiavi che sono diverse
       for (let key in savedItem) {
         if (defaultArray[i][key] !== newItem[key]) {
           savedItem[key] = newItem[key];
         }
       }
-      //aggiorna gli elementi delle chiavi che sono diverse
-
-      // Rimuovi l'elemento dalla mappa per tenere traccia degli elementi già gestiti
       delete newDefaultMap[savedItem.id];
     } else {
-      // Rimuovi l'elemento che non è più presente nel nuovo array predefinito
       savedArray.splice(i, 1);
-      i--; // Correggi l'indice poiché un elemento è stato rimosso
+      i--; 
     }
   }
-
-  // Aggiungi nuovi elementi che non sono presenti nell'array salvato
   for (let id in newDefaultMap) {
     savedArray.push(newDefaultMap[id]);
   }
@@ -3979,7 +3923,6 @@ function resetSave() {
     localStorage.setItem("HyperStructureSave", JSON.stringify(saveData));
 
     var savedGameData = JSON.parse(localStorage.getItem("HyperStructureSave"));
-    // Assicurati di aggiornare i dati di gioco con quelli caricati
     gameData = savedGameData.gameData;
     componentsEquipped = savedGameData.componentsEquipped
     components = savedGameData.components;
@@ -4063,7 +4006,6 @@ function exportSave() {
 function importSave() {
   localStorage.setItem("HyperStructureSave", document.getElementById("Save").value);
   var savedGameData = JSON.parse(localStorage.getItem("HyperStructureSave"));
-  // Assicurati di aggiornare i dati di gioco con quelli caricati
   gameData = savedGameData.gameData;
   componentsEquipped = savedGameData.componentsEquipped
   components = savedGameData.components;
@@ -4094,8 +4036,6 @@ function importSave() {
     Rautomation = savedGameData.Rautomation,
     Rshowable = savedGameData.Rshowable
 }
-
-// Carica i dati di gioco solo se non sono stati già salvati in precedenza
 
 function changeImage(component) {
 
@@ -4168,19 +4108,17 @@ function componentsTab(a, b) {
 
   var actualA = a;
   var actualB = b;
-  var found = false; // Aggiunto un flag per tracciare se è stato trovato un elemento corrispondente
+  var found = false; 
 
   for (let y = 0; y < componentClass.length; y++) {
     if (componentClass[y].getAttribute("id") == b) {
-      found = true; // Imposta il flag a true se trova un elemento corrispondente
-      // Esci dal ciclo una volta trovato l'elemento corrispondente
+      found = true; 
     }
     else {
       unlockShow(componentClass[y].getAttribute("id"), false);
     }
   }
 
-  // Dopo il ciclo, chiamiamo unlockShow solo se un elemento è stato trovato
   if (found) {
     unlockShow(b, true);
   } else {
@@ -4239,13 +4177,8 @@ function checkShow(show) {
     }
   }
 }
-//cicla in tutti gli if per controllare se un certo layer o parte di layer dovrebbe essere mostrato.
-//e' possibile capire se qualcosa e' stato sbloccato
-//NB, alcuni componenti del gioco vengono mostrate per una funzione di un altro componente.
-//questo e' simile.
 
 function LoopShow() {
-  //questa funzione si assicura che le impostazioni di visibilita' siano effettive
   for (let a in showable) {
     const keys = Object.keys(showable[a]);
     for (let key of keys) {
@@ -4262,23 +4195,9 @@ function LoopShow() {
     }
   }
 
-
-  //POINTS
-
-  //CORE LAYER
-
-  //Components2
-  //if (gameData.cells > 10) {
-  //  unlockShow("components2Module", true);
-  //}
-
   if (init1) {
     init1 = false
 
-    console.log(gameData[0].topProgressCount)
-
-    //contatore per non far riapparire topProgress vecchi
-    //
     actualComponentId = ""
     tab(core)
     unlockShow("mainGame", true);
@@ -4393,7 +4312,6 @@ function LoopShow() {
     }
   }
   //cells: 1-1e3
-  //proffed
   if (getNotIf(gameData, null, "cells") >= 1000) {
     unlockShow("hardwareTab", true)
     unlockShow("progress2", true)
@@ -4574,7 +4492,6 @@ function LoopShow() {
   //deep exploration
   if (getNotIf(projects, "unlockable3", "unlocked")) {
     document.getElementById("unlockable3").style.backgroundColor = "#939393";
-    //unlockShow("rarityLayer", true)
   }
 
   //new resources package 1
@@ -4674,7 +4591,7 @@ function LoopShow() {
   }
 }
 
-//FUNZIONI DI SERVIZIO
+//SERVICE FUNCTIONS
 
 function screen(x) {
   const ele = document.getElementById(x);
@@ -4791,10 +4708,6 @@ function automationActuator() {
 
     var multHeavy = getNotIf(data, null, "heavyExtractionMult")
 
-
-    console.log(restLight)
-    console.log(restMedium)
-    console.log(restHeavy)
     if (restLight >= restMedium && multLight > 0 && restLight >= restHeavy && multLight > 0) {
       dataSelected("dataLight")
     }
@@ -4808,22 +4721,6 @@ function automationActuator() {
     }
     valuesSetter()
   }
-
-
-  //fuck not possible
-  if (getNotIf(automation, "automation4", "active")) {
-
-  }
-
-  //fuck not possible
-  if (getNotIf(automation, "automation5", "active")) {
-
-  }
-
-  //fuck not possible
-  if (getNotIf(automation, "automation6", "active")) {
-
-  }
 }
 
 
@@ -4836,7 +4733,6 @@ if (typeof savedGameData.data !== "undefined") data = savedGameData.data
 if (typeof savedGameData.dataUpgrades !== "undefined") dataUpgrades = savedGameData.dataUpgrades
 if (typeof savedGameData.energyBuilding !== "undefined") energyBuilding = savedGameData.energyBuilding
 if (typeof savedGameData.refining !== "undefined") refining = savedGameData.refining
-//if (typeof savedGameData.rarity !== "undefined") rarity = savedGameData.rarity
 if (typeof savedGameData.projects !== "undefined") projects = savedGameData.projects
 if (typeof savedGameData.loadoutData !== "undefined") loadoutData = savedGameData.loadoutData
 if (typeof savedGameData.automation !== "undefined") automation = savedGameData.automation
@@ -4853,7 +4749,6 @@ if (typeof savedGameData.Rdata !== "undefined") Rdata = savedGameData.Rdata
 if (typeof savedGameData.RdataUpgrades !== "undefined") RdataUpgrades = savedGameData.RdataUpgrades
 if (typeof savedGameData.RenergyBuilding !== "undefined") RenergyBuilding = savedGameData.RenergyBuilding
 if (typeof savedGameData.Rrefining !== "undefined") Rrefining = savedGameData.Rrefining
-//if (typeof savedGameData.Rrarity !== "undefined") Rrarity = savedGameData.Rrarity
 if (typeof savedGameData.Rprojects !== "undefined") Rprojects = savedGameData.Rprojects
 if (typeof savedGameData.RloadoutData !== "undefined") RloadoutData = savedGameData.RloadoutData
 if (typeof savedGameData.Rautomation !== "undefined") Rautomation = savedGameData.Rautomation
