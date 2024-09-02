@@ -1002,15 +1002,15 @@ function visual_dataLayer() {
   }
 
   if(actualUpgradeEffect1 < 5){
-    console.log("test")
+    console.log(actualDataGraphic)
     actualDataGraphic.style.background = "url(computer1.png)";
   }
   if(actualUpgradeEffect1 > 5 && actualUpgradeEffect1 < 10){
-    console.log("test")
+    console.log(actualDataGraphic)
     actualDataGraphic.style.background = "url(computer2.png)";
   }
   if(actualUpgradeEffect1 > 10 && actualUpgradeEffect1 < 16){
-    console.log("test")
+    console.log(actualDataGraphic)
     actualDataGraphic.style.background = "url(computer3.png)";
     console.log(actualDataGraphic.style.background)
   }
@@ -4250,6 +4250,7 @@ function LoopShow() {
 
     unlockShow("automation", true)
 
+    unlockShow("dataGraphic", true)
   }
 
   //generic unlocks

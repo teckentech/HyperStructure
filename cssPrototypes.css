@@ -947,7 +947,7 @@ div {
 #dataGraphic {
   position: absolute;
 
-  background: url("computer1.png");
+  background: url("coreB.png");
   background-repeat: no-repeat;
   background-size:cover;
   pointer-events: none;
@@ -1113,13 +1113,13 @@ div {
 }
 
 .redimensionDataCollection>div {
-  font-size: xx-small;
+  font-size: x-small;
 }
 
 .redimensionDataCollection {
   padding: 2px;
 
-  font-size: xx-small;
+  font-size: small;
 
   border: 1px solid #ffffff;
   border-radius: 5px;
@@ -1127,11 +1127,11 @@ div {
 }
 
 .redimensionDataUpgrades {
-  font-size: x-small;
+  font-size: small;
 }
 
 .redimensionDataUpgrades>div {
-  font-size: x-small;
+  font-size: medium;
 }
 
 
@@ -1315,15 +1315,6 @@ div {
   transition: width 0.25s;
   position: relative;
 }
-
-/*
-.progress-bar-data {
-  height: 100%;
-  background-color: #76c7c0;
-  width: 1%;
-  position: relative;
-}
-*/
 
 #dataLightWait {
   background-color: rgb(0, 255, 0);
