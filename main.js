@@ -3999,12 +3999,12 @@ function exportSave() {
     Rautomation: Rautomation,
     Rshowable: Rshowable,
   };
-  document.getElementById("Save").value = JSON.stringify(saveData);
+  document.getElementById("Save").value = btoa(JSON.stringify(saveData));
 
 }
 
 function importSave() {
-  localStorage.setItem("HyperStructureSave", document.getElementById("Save").value);
+  localStorage.setItem("HyperStructureSave", atob(document.getElementById("Save").value));
   var savedGameData = JSON.parse(localStorage.getItem("HyperStructureSave"));
   gameData = savedGameData.gameData;
   componentsEquipped = savedGameData.componentsEquipped
