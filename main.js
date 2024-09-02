@@ -600,17 +600,17 @@ function loadoutSave(number) {
 
 //loadout name
 
-function loadoutName(number) {
+function loadoutName(number, enter) {
   loadout = document.getElementById("loadoutName" + (number + 1))
-  if (loadout.disabled) {
+  console.log("test")
+  if(enter == true){
     loadout.disabled = false;
   }
 
-  else if (!loadout.disabled) {
+  if(enter == false){
     loadout.disabled = true;
-    loadoutData[number].name = loadout.value
+    loadoutData[number].name = loadout.value;
   }
-
 }
 
 function visual_Loadout() {
@@ -1770,7 +1770,6 @@ function valuesSetter() {
 
   componentsToken8Effect1 = norm(componentsToken8Effect1)
 
-  console.log("token8 actual effect" + componentsToken8Effect1)
 
   //Ally Synergy
   let componentsToken9Level = getNotIf(components, "token9", "level")
@@ -2507,7 +2506,6 @@ function valuesSetter() {
   let explorationUpgradesExplorationB1Price = 10 ** 12;
   let explorationUpgradesExplorationB2Price = 10 ** 15;
 
-  console.log("token8: " + getIfActive(components, "token8", "effect1"))
 
   let token8Effect = norm(getIfActive(components, "token8", "effect1"))
 
@@ -2544,12 +2542,7 @@ function setTickSpeed() {
 
   tickspeed2 = norm(tickspeed2)
 
-  console.log(tickspeed2)
-  console.log(tickspeed3)
-
   let globalTickSpeedProd = 1000 * tickspeed2 * tickspeed3
-
-  console.log(globalTickSpeedProd)
 
   setNotIf(gameData, null, "tickSpeed", globalTickSpeedProd)
 
@@ -3086,18 +3079,28 @@ document.getElementById("loadloadout3").onclick = function () {
 
 //name
 
-document.getElementById("loadoutNameMod1").onclick = function () {
-  loadoutName(0);
-
+document.getElementById("loadoutName1").onmouseenter = function () {
+  loadoutName(0, true);
 }
 
-document.getElementById("loadoutNameMod2").onclick = function () {
-  loadoutName(1);
-
+document.getElementById("loadoutName2").onmouseenter = function () {
+  loadoutName(1, true);
 }
 
-document.getElementById("loadoutNameMod3").onclick = function () {
-  loadoutName(2);
+document.getElementById("loadoutName3").onmouseenter = function () {
+  loadoutName(2, true);
+}
+
+document.getElementById("loadoutName1").onmouseleave = function () {
+  loadoutName(0, false);
+}
+
+document.getElementById("loadoutName2").onmouseleave = function () {
+  loadoutName(1, false);
+}
+
+document.getElementById("loadoutName3").onmouseleave = function () {
+  loadoutName(2, false);
 }
 
 //equip module
@@ -3962,7 +3965,6 @@ function resetStyleAll() {
   for (let a in showable) {
     const keys = Object.keys(showable[a]);
     for (let key of keys) {
-      console.log(key)
       document.getElementById(key).style.background = ""
     }
   }
