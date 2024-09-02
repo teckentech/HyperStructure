@@ -75,15 +75,15 @@ let components = [
     levelActive: false, priceActive: false, effect1Active: false, effect2Active: false
   },
   {
-    id: "token10", name: "Energized Structure", description1: "Energy/s x:", description2: "-", level: 1, price: 0, effect1: 0, effect2: 0, identity1: "cell_Base", identity2: "a_Base", active: false, image: 'images/token_10.png', tag1: "components3", tag2: "Synergy", tag3: ".", priceIdentity: "cells",
+    id: "token10", name: "Energized Structure", description1: "Energy/s x:", description2: "-", level: 1, price: 0, effect1: 0, effect2: 0, identity1: "cell_Base", identity2: "a_Base", active: false, image: 'images/token_10.png', tag1: "components3", tag2: "Synergy", tag3: ".", priceIdentity: "explorationResource1",
     levelActive: false, priceActive: false, effect1Active: false, effect2Active: false
   },
   {
-    id: "token11", name: "Asteroid Cells Booster", description1: "reduces Energy/s by 30%", description2: "More cells -> More Cells/s: ", level: 1, price: 0, effect1: 0, effect2: 0, identity1: "cell_Base", identity2: "a_Base", active: false, image: 'images/token_11.png', tag1: "components1", tag2: "Booster", tag3: ".", priceIdentity: "cells",
+    id: "token11", name: "Asteroid Cells Booster", description1: "reduces Energy/s by 30%: ", description2: "More cells -> More Cells/s: ", level: 1, price: 0, effect1: 0, effect2: 0, identity1: "cell_Base", identity2: "a_Base", active: false, image: 'images/token_11.png', tag1: "components1", tag2: "Booster", tag3: ".", priceIdentity: "explorationResource1",
     levelActive: false, priceActive: false, effect1Active: false, effect2Active: false
   },
   {
-    id: "token12", name: "Asteroid Data Booster", description1: "reduces Energy/s by 30%", description2: "data X: ", level: 1, price: 0, effect1: 0, effect2: 0, identity1: "cell_Base", identity2: "a_Base", active: false, image: 'images/token_12.png', tag1: "components2", tag2: "booster", tag3: ".", priceIdentity: "cells",
+    id: "token12", name: "Asteroid Data Booster", description1: "reduces Energy/s by 30%: ", description2: "data X: ", level: 1, price: 0, effect1: 0, effect2: 0, identity1: "cell_Base", identity2: "a_Base", active: false, image: 'images/token_12.png', tag1: "components2", tag2: "booster", tag3: ".", priceIdentity: "explorationResource1",
     levelActive: false, priceActive: false, effect1Active: false, effect2Active: false
   },
 ]
@@ -472,6 +472,7 @@ var actualComponentDescription1;
 var actualComponentDescription2;
 var actualComponentLevel;
 var actualComponentPrice;
+var actualComponentPriceIdentity;
 var actualComponentEffect1;
 var actualComponentEffect2;
 var actualComponentIdentity1;
@@ -646,6 +647,7 @@ function visual_ComponentInfo(component) {
       actualComponentDescription2 = components[x].description2;
       actualComponentLevel = components[x].level;
       actualComponentPrice = components[x].price
+      actualComponentPriceIdentity = components[x].priceIdentity
       actualComponentEffect1 = components[x].effect1;
       actualComponentEffect2 = components[x].effect2;
       actualComponentIdentity1 = components[x].identity1;
@@ -663,6 +665,11 @@ function visual_ComponentInfo(component) {
       if (visualTag1 == "components3") {
         visualTag1 = "COMMUNICATION"
       }
+
+      if(actualComponentPriceIdentity == "explorationResource1"){
+        actualComponentPriceIdentity = "asteroids"
+      }
+
       actualComponentTag2 = components[x].tag2;
       actualComponentTag3 = components[x].tag3;
       actualComponentImage = components[x].image;
@@ -674,7 +681,7 @@ function visual_ComponentInfo(component) {
 
 
 
-      update("componentRow0", "<div> LEVEL UP </div> <div>" + format(actualComponentPrice, "scientific") + " cells" + "</div> <div>EVERY 10 UPGRADES IT BOOSTS THE COMPONENT</div>")
+      update("componentRow0", "<div> LEVEL UP </div> <div>" + format(actualComponentPrice, "scientific") + " " + actualComponentPriceIdentity + "</div> <div>EVERY 10 UPGRADES IT BOOSTS THE COMPONENT</div>")
       update("componentRow1", actualComponentLevel + "/20");
       update("componentRow2", actualComponentName)
       update("componentRow3", "[" + visualTag1 + "][" + actualComponentTag2 + "][" + actualComponentTag3 + "]");
@@ -1317,11 +1324,13 @@ function valuesSetter() {
   var cells5 = getIfActive(components, "token2", "effect1")
   var cells6 = getIfActive(components, "token3", "effect1")
   var cells7 = getIfActive(components, "token7", "effect1")
+  var cells8 = getIfActive(components, "token11", "effect2")
 
   cells3 = norm(cells3)
   cells5 = norm(cells5)
   cells6 = norm(cells6)
   cells7 = norm(cells7)
+  cells8 = norm(cells8)
 
   /*
     console.log("cells1 " + cells1)
@@ -1333,7 +1342,7 @@ function valuesSetter() {
     console.log("cells7 " + cells7)
     */
 
-  let globalCellsProd = (((((cells1 + cells2) * cells3) * cells5) * cells6) * cells7) * cells4
+  let globalCellsProd = ((((((cells1 + cells2) * cells3) * cells5) * cells6) * cells7) * cells8) * cells4
 
   ////////////////////
 
@@ -1352,8 +1361,12 @@ function valuesSetter() {
     data7 = 1;
   }
 
+  var data8 = getIfActive(components, "token12", "effect2")
+
+
   data6 = norm(data6)
   data5 = norm(data5)
+  data8 = norm(data8)
 
   /*
   console.log("data1: " + data1)
@@ -1364,7 +1377,7 @@ function valuesSetter() {
   console.log("data6: " + data6)
 */
 
-  let globalDataProd = 0 + (data1 + data2 + data3) * data5 * data4 * data6 * data7
+  let globalDataProd = 0 + (data1 + data2 + data3) * data5 * data4 * data6 * data7 * data8
 
   //////////////////
 
@@ -1377,14 +1390,22 @@ function valuesSetter() {
   var energy5 = getIfActive(components, "token3", "effect1")
   var energy6 = getIfActive(explorationUpgrades, getNotIf(explorationSelected, null, "explorationA"), "price")
   var energy7 = getIfActive(explorationUpgrades, getNotIf(explorationSelected, null, "explorationB"), "price")
+  var energy8 = getIfActive(components, "token10", "effect1")
+  var energy9 = getIfActive(components, "token11", "effect1")
+  var energy10 = getIfActive(components, "token12", "effect1")
 
   energy1 = norm(energy1)
   energy2 = norm(energy2)
   energy3 = norm(energy3)
   energy5 = norm(energy5)
+  energy8 = norm(energy8)
+  energy9 = norm(energy8)
+  energy10 = norm(energy10)
 
 
-  let globalEnergyProd = (0 + energy1 * energy4 * energy5) - energy6 - energy7
+  let globalEnergyProd = (0 + energy1 * energy4 * energy5) - energy6 - energy7 - energy9 - energy10
+
+  globalEnergyProd = norm(globalEnergyProd)
   let globalEnergyMax = 10 + energy2
 
   ///////////////////////////
@@ -1630,12 +1651,12 @@ function valuesSetter() {
     componentsToken2price = ((4.5 ** getNotIf(components, "token2", "level")) * (10 ** 8)) / getNotIf(dataUpgrades, "collectable8", "effect")
   }
   if (getNotIf(components, "token2", "level") >= 10 && getNotIf(components, "token2", "level") < 20) {
-    componentsToken2Effect1 = (2 * (1 + (0.5 * getNotIf(components, "token2", "level"))) * logBase(2, getNotIf(gameData, null, "cells"))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable7", "effect")
+    componentsToken2Effect1 = (2 * (1 + (0.5 * getNotIf(components, "token2", "level"))) * logBase(2, getNotIf(gameData, null, "cells"))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable7", "effect") * getNotIf(dataUpgrades, "collectable6", "effect")
     componentsToken2Effect2 = 0
     componentsToken2price = ((10 ** getNotIf(components, "token2", "level")) * (10 ** 16)) / getNotIf(dataUpgrades, "collectable8", "effect")
   }
   if (getNotIf(components, "token2", "level") == 20) {
-    componentsToken2Effect1 = (4 * (1 + (0.5 * getNotIf(components, "token2", "level"))) * logBase(2, getNotIf(gameData, null, "cells"))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable7", "effect")
+    componentsToken2Effect1 = (4 * (1 + (0.5 * getNotIf(components, "token2", "level"))) * logBase(2, getNotIf(gameData, null, "cells"))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable7", "effect") * getNotIf(dataUpgrades, "collectable6", "effect")
     componentsToken2Effect2 = 0
   }
 
@@ -1772,9 +1793,10 @@ function valuesSetter() {
     componentsToken8price = (20 ** getNotIf(components, "token8", "level"))
   }
   if (getNotIf(components, "token8", "level") == 20) {
-    componentsToken8Effect1 = 1 + (2 * getNotIf(components, "token8", "level")) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable6", "effect")
+    componentsToken8Effect1 = 1 + (4 * getNotIf(components, "token8", "level")) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable6", "effect")
   }
 
+  componentsToken8Effect1 = norm(componentsToken8Effect1)
 
   //Ally Synergy
   let componentsToken9Level = getNotIf(components, "token9", "level")
@@ -1831,18 +1853,18 @@ function valuesSetter() {
   let componentsToken11price = 0
 
   if (getNotIf(components, "token11", "level") >= 0 && getNotIf(components, "token11", "level") < 10) {
-    componentsToken10Effect1 = getNotIf(gameData, null, "energyProd") * 0.3;
-    componentsToken10Effect2 = (4 * (1 + (0.5 * getNotIf(components, "token11", "level"))) * logBase(2, getNotIf(gameData, null, "cells"))) * getNotIf(components, "token9", "effect1")
-    componentsToken10price = ((4.5 ** getNotIf(components, "token11", "level")) * (10 ** 20)) / getNotIf(dataUpgrades, "collectable8", "effect")
+    componentsToken11Effect1 = getNotIf(gameData, null, "energyProd") * 0.3;
+    componentsToken11Effect2 = (4 * (1 + (0.5 * getNotIf(components, "token11", "level"))) * logBase(2, getNotIf(gameData, null, "cells"))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable7", "effect") * getNotIf(dataUpgrades, "collectable6", "effect") * getNotIf(components, "token8", "effect1")
+    componentsToken11price = (4.5 ** getNotIf(components, "token11", "level")) / getNotIf(dataUpgrades, "collectable8", "effect")
   }
   if (getNotIf(components, "token11", "level") >= 10 && getNotIf(components, "token11", "level") < 20) {
-    componentsToken10Effect1 = getNotIf(gameData, null, "energyProd") * 0.3;
-    componentsToken10Effect2 = (12 * (1 + (0.5 * getNotIf(components, "token11", "level"))) * logBase(2, getNotIf(gameData, null, "cells"))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable7", "effect")
-    componentsToken10price = ((10 ** getNotIf(components, "token11", "level")) * (10 ** 30)) / getNotIf(dataUpgrades, "collectable8", "effect")
+    componentsToken11Effect1 = getNotIf(gameData, null, "energyProd") * 0.3;
+    componentsToken11Effect2 = (12 * (1 + (0.5 * getNotIf(components, "token11", "level"))) * logBase(2, getNotIf(gameData, null, "cells"))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable7", "effect") * getNotIf(dataUpgrades, "collectable6", "effect") * getNotIf(components, "token8", "effect1")
+    componentsToken11price = (10 ** getNotIf(components, "token11", "level")) / getNotIf(dataUpgrades, "collectable8", "effect")
   }
   if (getNotIf(components, "token11", "level") == 20) {
-    componentsToken10Effect1 = getNotIf(gameData, null, "energyProd") * 0.3;
-    componentsToken10Effect2 = (30 * (1 + (0.5 * getNotIf(components, "token11", "level"))) * logBase(2, getNotIf(gameData, null, "cells"))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable7", "effect")
+    componentsToken11Effect1 = getNotIf(gameData, null, "energyProd") * 0.3;
+    componentsToken11Effect2 = (30 * (1 + (0.5 * getNotIf(components, "token11", "level"))) * logBase(2, getNotIf(gameData, null, "cells"))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable7", "effect") * getNotIf(dataUpgrades, "collectable6", "effect") * getNotIf(components, "token8", "effect1")
   }
 
   componentsToken11Effect1 = norm(componentsToken11Effect1)
@@ -1856,18 +1878,18 @@ function valuesSetter() {
   let componentsToken12price = 0
 
   if (getNotIf(components, "token12", "level") >= 0 && getNotIf(components, "token12", "level") < 10) {
-    componentsToken10Effect1 = getNotIf(gameData, null, "energyProd") * 0.3;
-    componentsToken10Effect2 = (1 + (4 * (getNotIf(components, "token12", "level")))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable7", "effect")
-    componentsToken10price = ((4.5 ** getNotIf(components, "token12", "level")) * (10 ** 20)) / getNotIf(dataUpgrades, "collectable8", "effect")
+    componentsToken12Effect1 = getNotIf(gameData, null, "energyProd") * 0.3;
+    componentsToken12Effect2 = (1 + (8 * (getNotIf(components, "token12", "level")))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable7", "effect") * getNotIf(components, "token8", "effect1")
+    componentsToken12price = (4.5 ** getNotIf(components, "token12", "level")) / getNotIf(dataUpgrades, "collectable8", "effect")
   }
   if (getNotIf(components, "token12", "level") >= 10 && getNotIf(components, "token12", "level") < 20) {
-    componentsToken10Effect1 = getNotIf(gameData, null, "energyProd") * 0.3;
-    componentsToken10Effect2 = (1 + (8 * (getNotIf(components, "token12", "level")))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable6", "effect") * getNotIf(dataUpgrades, "collectable7", "effect")
-    componentsToken10price = ((10 ** getNotIf(components, "token12", "level")) * (10 ** 30)) / getNotIf(dataUpgrades, "collectable8", "effect")
+    componentsToken12Effect1 = getNotIf(gameData, null, "energyProd") * 0.3;
+    componentsToken12Effect2 = (1 + (16 * (getNotIf(components, "token12", "level")))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable6", "effect") * getNotIf(dataUpgrades, "collectable7", "effect") * getNotIf(components, "token8", "effect1")
+    componentsToken12price = (10 ** getNotIf(components, "token12", "level")) / getNotIf(dataUpgrades, "collectable8", "effect")
   }
   if (getNotIf(components, "token12", "level") == 20) {
-    componentsToken10Effect1 = getNotIf(gameData, null, "energyProd") * 0.3;
-    componentsToken10Effect2 = (1 + (16 * (getNotIf(components, "token12", "level")))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable6", "effect") * getNotIf(dataUpgrades, "collectable7", "effect")
+    componentsToken12Effect1 = getNotIf(gameData, null, "energyProd") * 0.3;
+    componentsToken12Effect2 = (1 + (32 * (getNotIf(components, "token12", "level")))) * getNotIf(components, "token9", "effect1") * getNotIf(dataUpgrades, "collectable6", "effect") * getNotIf(dataUpgrades, "collectable7", "effect") * getNotIf(components, "token8", "effect1")
   }
 
   componentsToken12Effect1 = norm(componentsToken12Effect1)
@@ -1943,13 +1965,13 @@ function valuesSetter() {
     setActive(refining, null, "speedExtractorPrice", true)
   }
 
-  let refiningValue = (4 * (getIfActive(refining, null, "extractors")) * (2 ** getIfActive(refining, null, "speedExtractor"))) * getNotIf(dataUpgrades, "collectable3", "effect");
+  let refiningValue = (10 * (getIfActive(refining, null, "extractors")) * (2 ** getIfActive(refining, null, "speedExtractor"))) * getNotIf(dataUpgrades, "collectable3", "effect");
 
   let refiningExtractors = getIfActive(refining, null, "extractors");
   let refiningSpeedExtractor = getIfActive(refining, null, "speedExtractor");
   let refiningEffect = 0; //effetto che si applica fra extractors e speedExtractors, attualmente, non viene usato
-  let refiningPriceExtractors = (1.4 ** (10 + getIfActive(refining, null, "extractors"))) / getNotIf(dataUpgrades, "collectable2", "effect");
-  let refiningSpeedExtractorPrice = (10 ** (2 + getIfActive(refining, null, "speedExtractor"))) / getNotIf(dataUpgrades, "collectable2", "effect");
+  let refiningPriceExtractors = (1.4 ** (19 + getIfActive(refining, null, "extractors"))) / getNotIf(dataUpgrades, "collectable2", "effect");
+  let refiningSpeedExtractorPrice = (10 ** (1 + getIfActive(refining, null, "speedExtractor"))) / getNotIf(dataUpgrades, "collectable2", "effect");
 
   setIfActive(refining, null, "value", refiningValue)
   setIfActive(refining, null, "extractors", refiningExtractors)
@@ -2268,7 +2290,7 @@ function valuesSetter() {
   let projectsUnlockable13Price3 = 100
 
   //FIRST EXPLORATION STEP
-  let projectsUnlockable14Price1 = 10 ** 13
+  let projectsUnlockable14Price1 = 10 ** 23
   let projectsUnlockable14Price2 = 10
   let projectsUnlockable14Price3 = 0
 
@@ -2998,7 +3020,7 @@ document.getElementById("unlockable16Button").onclick = function () {
 //energy
 
 document.getElementById("energy1Bottone").onclick = function () {
-  if (getNotIf(energy, "energy1", "level") < 10) {
+  if (getNotIf(energyBuilding, "energy1", "level") < 10) {
     buyId(energyBuilding, "energy1", "price", energyBuilding, "energy1", "level", 1)
     valuesSetter()
     manualVisualLoop()
@@ -3006,7 +3028,7 @@ document.getElementById("energy1Bottone").onclick = function () {
 }
 
 document.getElementById("energy2Bottone").onclick = function () {
-  if (getNotIf(energy, "energy2", "level") < 10) {
+  if (getNotIf(energyBuilding, "energy2", "level") < 10) {
     buyId(energyBuilding, "energy2", "price", energyBuilding, "energy2", "level", 1)
     valuesSetter()
     manualVisualLoop()
@@ -3014,7 +3036,7 @@ document.getElementById("energy2Bottone").onclick = function () {
 }
 
 document.getElementById("energy3Bottone").onclick = function () {
-  if (getNotIf(energy, "energy3", "level") < 10) {
+  if (getNotIf(energyBuilding, "energy3", "level") < 10) {
     buyId(energyBuilding, "energy3", "price", energyBuilding, "energy3", "level", 1)
     valuesSetter()
     manualVisualLoop()
@@ -3129,11 +3151,11 @@ document.getElementById("removeButton").onclick = function () {
 
 //components upgrade
 document.getElementById("buttonComponentRow0").onclick = function () {
-  if (getNotIf(components, actualComponentId, "active")) {
+  //if (getNotIf(components, actualComponentId, "active")) {
     if (getNotIf(components, actualComponentId, "level") < 20) {
       buyId(components, actualComponentId, "price", components, actualComponentId, "level", 1)
     }
-  }
+ // }
   if (componentsEquipped[0][actualComponentTag1 != ""]) {
     clickExpand(actualComponentTag1 + "Module")
   }
@@ -3706,6 +3728,8 @@ function manualVisualLoop() {
     visual_automation()
     unlockShow("topProgress", false)
   }
+
+  LoopShow()
 }
 
 // Funzione per salvare i dati di gioco
@@ -4055,6 +4079,7 @@ function importSave() {
   automation = savedGameData.automation;
   showable = savedGameData.showable;
 
+  updateGame()
 
   RgameData = savedGameData.RgameData,
     RcomponentsEquipped = savedGameData.RcomponentsEquipped,
@@ -4110,6 +4135,8 @@ function tab(tab) {
   unlockShow("options", false);
   unlockShow("progress", false);
   unlockShow(tab, true);
+
+  manualVisualLoop()
 }
 // go to a tab for the first time, so not all show
 tab("core")
