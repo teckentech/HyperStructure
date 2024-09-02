@@ -947,17 +947,18 @@ div {
 #dataGraphic {
   position: absolute;
 
-  background: #000000;
+  background: url("computer1.png");
+  background-repeat: no-repeat;
+  background-size:cover;
+  pointer-events: none;
+
   border: 1px solid #ffffff;
-  color: #ffffff;
-  font-family: 'Orbitron', sans-serif;
-  text-transform: uppercase;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   height: 50%;
   width: 30%;
   top: 0%;
-  left: 30%
+  left: 30%;
+  z-index: 2;
 }
 
 #dataUpgrade1 {

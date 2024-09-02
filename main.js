@@ -389,7 +389,7 @@ let showable = [
     software: false, softwareT1: false,
     projects: false, unlockable1: false, unlockable2: false, unlockable3: false, unlockable4: false, unlockable5: false, unlockable6: false, unlockable7: false, unlockable8: false, unlockable9: false, unlockable10: false, unlockable11: false, unlockable12: false, unlockable13: false, unlockable14: false, unlockable15: false, unlockable16: false,
 
-    data: false,
+    data: false, dataGraphic: true,
 
     communication: true, communicationT1: true,
 
@@ -999,6 +999,20 @@ function visual_dataLayer() {
     var actualUpgradeIdentity2 = data[x].upgradePrice2Identity
     var actualUpgradePrice1 = data[x].upgradePrice1
     var actualUpgradePrice2 = data[x].upgradePrice2
+  }
+
+  if(actualUpgradeEffect1 < 5){
+    console.log("test")
+    actualDataGraphic.style.background = "url(computer1.png)";
+  }
+  if(actualUpgradeEffect1 > 5 && actualUpgradeEffect1 < 10){
+    console.log("test")
+    actualDataGraphic.style.background = "url(computer2.png)";
+  }
+  if(actualUpgradeEffect1 > 10 && actualUpgradeEffect1 < 16){
+    console.log("test")
+    actualDataGraphic.style.background = "url(computer3.png)";
+    console.log(actualDataGraphic.style.background)
   }
 
   actualDataUpgrade1.innerHTML = "<div>" + actualUpgradeName1 + "</div>" +
