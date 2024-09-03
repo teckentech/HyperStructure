@@ -556,6 +556,8 @@ div {
 
   margin: 10px;
 
+  font-size: 1vw;
+
   background: #000000;
   padding: 10px;
   border: 1px solid #ffffff;
@@ -1112,7 +1114,7 @@ div {
 }
 
 .redimensionDataCollection>div {
-  font-size: x-small;
+  font-size: 0.8vw;
 }
 
 .redimensionDataCollection {
