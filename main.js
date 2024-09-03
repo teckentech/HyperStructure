@@ -491,6 +491,8 @@ var ThisExplorationName = "ExplorationA1";
 var waiting = false;
 var tempTickSpeed = 0;
 
+var secretKey = "DontLookAtMePls";
+
 
 function update(id, content) {
   document.getElementById(id).innerHTML = content;
@@ -4010,15 +4012,18 @@ function exportSave() {
     Rautomation: Rautomation,
     Rshowable: Rshowable,
   };
-  //btoa(
-  document.getElementById("Save").value = btoa(JSON.stringify(saveData));
+  var saveData = JSON.stringify(saveData);
+  var encryptedData = CryptoJS.AES.encrypt(saveData, secretKey).toString();
+  document.getElementById("Save").value = encryptedData;
 
 }
 
 function importSave() {
-  //atob(
-  let decripted = document.getElementById("Save").value;
-  localStorage.setItem("HyperStructureSave",   atob(decripted));
+    var encryptedData = document.getElementById("Save").value;
+    var decryptedData = CryptoJS.AES.decrypt(encryptedData, secretKey);
+    var originalData = decryptedData.toString(CryptoJS.enc.Utf8);
+    localStorage.setItem("HyperStructureSave", originalData);
+    
   var savedGameData = JSON.parse(localStorage.getItem("HyperStructureSave"));
   gameData = savedGameData.gameData;
   componentsEquipped = savedGameData.componentsEquipped
