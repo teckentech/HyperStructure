@@ -252,6 +252,10 @@
 
                 <button onclick="boostTickspeed(1)">reset tickspeed</button>
                 <button onclick="boostTickspeed(0)">stop time</button>
+                <button onclick="addCells(10**50)">add cells</button>
+                <button onclick="addData(10**50)">add cells</button>
+                <button onclick="addEnergy(10**50)">add cells</button>
+                <button onclick="addAsteroids(10**50)">add cells</button>
             </div>
 
         </div>
@@ -402,10 +406,10 @@
                     </div>
 
                     <button id="dataButton1">
-                        <div class="redimensionDataCollection" data-value="" id="dataUpgrade1"></div>
+                        <div class="redimensionDataUpgrades2" data-value="" id="dataUpgrade1"></div>
                     </button>
                     <button id="dataButton2">
-                        <div class="redimensionDataCollection" data-value="" id="dataUpgrade2"></div>
+                        <div class="redimensionDataUpgrades2" data-value="" id="dataUpgrade2"></div>
                     </button>
 
 
@@ -538,7 +542,7 @@
             <div id="loadoutShow">
                 <div style="margin:20px">
                     LOADOUT 1
-                    <div><button id="loadoutNameMod1">M</button><input style="width: 70%" type="text" id="loadoutName1"
+                    <div><input style="width: 70%" type="text" id="loadoutName1"
                             name="loadout1" value="" disabled><br></div>
                     <button id="saveloadout1">save</button>
                     <button id="loadloadout1">load</button>
@@ -546,7 +550,7 @@
 
                 <div style="margin:20px">
                     LOADOUT 2
-                    <div><button id="loadoutNameMod2">M</button><input style="width: 70%" type="text" id="loadoutName2"
+                    <div><input style="width: 70%" type="text" id="loadoutName2"
                             name="loadout1" value="" disabled><br></div>
                     <button id="saveloadout2">save</button>
                     <button id="loadloadout2">load</button>
@@ -554,7 +558,7 @@
 
                 <div style="margin:20px">
                     LOADOUT 3
-                    <div><button id="loadoutNameMod3">M</button><input style="width: 70%" type="text" id="loadoutName3"
+                    <div><input style="width: 70%" type="text" id="loadoutName3"
                             name="loadout1" value="" disabled><br></div>
                     <button id="saveloadout3">save</button>
                     <button id="loadloadout3">load</button>
@@ -703,8 +707,8 @@
             </div>
         </div>
     </div>
-    <script src="main.js?v=0.1.13" charset="utf-8" type="text/javascript"></script>
-    <link rel="stylesheet" href="cssPrototypes.css?v=0.1.13">
+    <script src="main.js?v=0.1.14" charset="utf-8" type="text/javascript"></script>
+    <link rel="stylesheet" href="cssPrototypes.css?v=0.1.14">
 </body>
 
 </html>

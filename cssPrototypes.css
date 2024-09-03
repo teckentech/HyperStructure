@@ -75,13 +75,16 @@ button,
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  z-index: 3;
 }
 
 #valute>div {
+  width: 7vw;
   position: relative;
   background: #000000;
-  padding: 10px;
-  border: 1px solid #ffffff;
+  padding: 1vw;
+  border: 0vw solid #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -97,7 +100,7 @@ button,
 #selectorTab {
   left: 0vw;
   top: 35vh;
-  width: 15vw;
+  width: 18vw;
   height: 65vh;
 
   background: #000000;
@@ -168,7 +171,7 @@ button,
 
 #loadout {
   position: absolute;
-  left: 15vw;
+  left: 18vw;
   top: 95vh;
   height: 5vh;
   width: 15vw;
@@ -182,7 +185,7 @@ button,
 
 #loadoutShow {
   position: absolute;
-  left: 15vw;
+  left: 18vw;
   bottom: 5vh;
   height: 60vh;
   width: 15vw;
@@ -533,8 +536,7 @@ div {
   height: 60vh;
   width: 40vw;
   left: 42vw;
-  top: 50vh;
-  transform: translateY(-50%);
+  top: 20vh;
   z-index: 1;
   overflow-y: scroll;
 
@@ -702,7 +704,7 @@ div {
 }
 
 #options {
-  left: 15vw;
+  left: 18vw;
   top: 0vh;
   width: 85vw;
   height: 100%;
@@ -735,7 +737,7 @@ div {
 }
 
 #hardware {
-  left: 15vw;
+  left: 18vw;
   top: 0vh;
   width: 85vw;
   height: 100%;
@@ -747,7 +749,7 @@ div {
 }
 
 #software {
-  left: 15vw;
+  left: 18vw;
   top: 0vh;
   width: 85vw;
   height: 100%;
@@ -759,7 +761,7 @@ div {
 }
 
 #communication {
-  left: 15vw;
+  left: 18vw;
   top: 0vh;
   width: 85vw;
   height: 100%;
@@ -811,7 +813,7 @@ div {
   width: 30vw;
   height: 30vw;
   left: 50vw;
-  top: 10vh;
+  top: 20vh;
   background-color: lightskyblue;
 }
 
@@ -911,8 +913,7 @@ div {
 #data {
   background-color: lightblue;
   left: 1vw;
-  top: 50vh;
-  transform: translateY(-50%);
+  top: 20vh;
   height: 20vw;
   width: 40vw;
 
@@ -944,10 +945,10 @@ div {
   left: 0%;
 }
 
-#dataGraphic {
+#dataGraphic{
   position: absolute;
 
-  background: url("coreB.png");
+  background:url("images/computer1.png");
   background-repeat: no-repeat;
   background-size:cover;
   pointer-events: none;
@@ -975,12 +976,12 @@ div {
   width: 100%;
   left: 0%;
   top: 0%;
-
+  font-size: 1px;
   pointer-events: none;
 }
 
 #dataUpgrade2 {
-  position: relative;
+  position: absolute;
 
   border: 0.1vw solid black;
   box-sizing: border-box;
@@ -992,7 +993,6 @@ div {
   width: 100%;
   left: 0%;
   top: 0%;
-
   pointer-events: none;
 }
 
@@ -1004,12 +1004,11 @@ div {
   background: #000000;
   padding: 10px;
   border: 1px solid #ffffff;
-  border-radius: 5px;
+  border-radius: 10px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-
 
   height: 25%;
   width: 40%;
@@ -1127,14 +1126,16 @@ div {
 }
 
 .redimensionDataUpgrades {
-  font-size: small;
+  font-size: x-small;
 }
 
 .redimensionDataUpgrades>div {
   font-size: medium;
 }
 
-
+.redimensionDataUpgrades2>div {
+  font-size: x-small;
+}
 
 #energyTier1 {
   position: absolute;
@@ -1362,8 +1363,8 @@ div {
 
 #dataDescription {
   position: absolute;
-  top: -10vh;
-  right: -0.2vw;
+  bottom: -12vh;
+  left: 0vw;
   height: 10vh;
   width: 40vw;
 
@@ -1374,7 +1375,6 @@ div {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   border: 1px solid #ffffff;
-  border-radius: 5px;
 }
 
 #hardwareSummary {
@@ -1545,7 +1545,7 @@ input[type=text] {
   position: relative;
 
   top: 0vh;
-  left: 15vw;
+  left: 18vw;
   width: 83vw;
   height: 100vh;
 

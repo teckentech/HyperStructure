@@ -602,7 +602,6 @@ function loadoutSave(number) {
 
 function loadoutName(number, enter) {
   loadout = document.getElementById("loadoutName" + (number + 1))
-  console.log("test")
   if(enter == true){
     loadout.disabled = false;
   }
@@ -1002,17 +1001,13 @@ function visual_dataLayer() {
   }
 
   if(actualUpgradeEffect1 < 5){
-    console.log(actualDataGraphic)
-    actualDataGraphic.style.background = "url(computer1.png)";
+    actualDataGraphic.style.background = "url(images/computer1.png)";
   }
   if(actualUpgradeEffect1 > 5 && actualUpgradeEffect1 < 10){
-    console.log(actualDataGraphic)
-    actualDataGraphic.style.background = "url(computer2.png)";
+    actualDataGraphic.style.background = "url(images/computer2.png)";
   }
   if(actualUpgradeEffect1 > 10 && actualUpgradeEffect1 < 16){
-    console.log(actualDataGraphic)
-    actualDataGraphic.style.background = "url(computer3.png)";
-    console.log(actualDataGraphic.style.background)
+    actualDataGraphic.style.background = "url(images/computer3.png)";
   }
 
   actualDataUpgrade1.innerHTML = "<div>" + actualUpgradeName1 + "</div>" +
@@ -4015,12 +4010,14 @@ function exportSave() {
     Rautomation: Rautomation,
     Rshowable: Rshowable,
   };
-  document.getElementById("Save").value = btoa(JSON.stringify(saveData));
+  //btoa(
+  document.getElementById("Save").value = JSON.stringify(saveData);
 
 }
 
 function importSave() {
-  localStorage.setItem("HyperStructureSave", atob(document.getElementById("Save").value));
+  //atob(
+  localStorage.setItem("HyperStructureSave", document.getElementById("Save").value);
   var savedGameData = JSON.parse(localStorage.getItem("HyperStructureSave"));
   gameData = savedGameData.gameData;
   componentsEquipped = savedGameData.componentsEquipped
