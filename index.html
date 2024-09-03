@@ -261,7 +261,6 @@
         </div>
 
         <div id="hardware">
-            <button id="hardwareTier1">Tier1(Current Layer)</button>
             <div id="hardwareT1">
 
                 <div id="refiningLayer">
@@ -289,12 +288,11 @@
         <div id="software">
 
             <div id="softwareT1">
-                <button id="softwareTier1">Tier1(Current Layer)</button>
 
                 <div id="projects">
                     PROJECTS
                     <div id="projectUtility">
-                        UTILITIES
+                        
                         <div id="unlockable5">
                             <div id="unlockable5Box"></div>
                             <button id="unlockable5Button" class='projectButtons'>BUY</button>
@@ -337,7 +335,6 @@
                     </div>
 
                     <div id="projectUnlockables">
-                        UNLOCKABLES
                         <div id="unlockable1">
                             <div id="unlockable1Box"></div>
                             <button id="unlockable1Button" class='projectButtons'>BUY</button>
@@ -382,6 +379,10 @@
 
 
                 <div id="data">
+
+                    <div id="dataGraphic">
+                    </div>
+
                     <div id="dataDescription">CLICK ON DATA TYPE "LIGHT" TO START, "MEDIUM" AND "HEAVY" WILL BE AVAIABLE
                         WHEN THEIR BAR IS GREEN.
                         WHEN A BAR IS FILLED IT WILL GENERATE AN UPGRADE OF THE FOLLOWING DATA TYPE.
@@ -400,9 +401,6 @@
                         <div id="heavyDataCollection">HEAVY</div>
                         <div id="collectable9" class="redimensionDataCollection">NOT UNLOCKED</div>
                         <div id="collectable11" class="redimensionDataCollection">NOT UNLOCKED</div>
-                    </div>
-
-                    <div id="dataGraphic">
                     </div>
 
                     <button id="dataButton1">
@@ -446,7 +444,6 @@
 
         <div id="communication">
             <div id="communicationT1">
-                <button id="communicationTier1">Tier1(Current Layer)</button>
 
                 <div id="energy">
                     <div id="energyTier1">
@@ -454,16 +451,16 @@
                         <button id="reallocateEnergy1">REALLOCATE THIS TIER (reset this energy structures, doesnt give
                             resources invested back)</button>
                         <div id="squareEnergy1">
-                            <span id="energy1"></span>
-                            <button id="energy1Bottone">Buy!</button>
+                            <span class="resizeEnergy" id="energy1"></span>
+                            <button class="shiftRight" id="energy1Bottone">Buy!</button>
                         </div>
                         <div id="squareEnergy2">
-                            <span id="energy2"></span>
-                            <button id="energy2Bottone">Buy!</button>
+                            <span class="resizeEnergy" id="energy2"></span>
+                            <button class="shiftRight" id="energy2Bottone">Buy!</button>
                         </div>
                         <div id="squareEnergy3">
-                            <span id="energy3"></span>
-                            <button id="energy3Bottone">Buy!</button>
+                            <span class="resizeEnergy" id="energy3"></span>
+                            <button class="shiftRight" id="energy3Bottone">Buy!</button>
                         </div>
                     </div>
                     <div id="energyTier2">
@@ -542,24 +539,24 @@
             <div id="loadoutShow">
                 <div style="margin:20px">
                     LOADOUT 1
-                    <div><input style="width: 70%" type="text" id="loadoutName1"
-                            name="loadout1" value="" disabled><br></div>
+                    <div><input style="width: 70%" type="text" id="loadoutName1" name="loadout1" value="" disabled><br>
+                    </div>
                     <button id="saveloadout1">save</button>
                     <button id="loadloadout1">load</button>
                 </div>
 
                 <div style="margin:20px">
                     LOADOUT 2
-                    <div><input style="width: 70%" type="text" id="loadoutName2"
-                            name="loadout1" value="" disabled><br></div>
+                    <div><input style="width: 70%" type="text" id="loadoutName2" name="loadout1" value="" disabled><br>
+                    </div>
                     <button id="saveloadout2">save</button>
                     <button id="loadloadout2">load</button>
                 </div>
 
                 <div style="margin:20px">
                     LOADOUT 3
-                    <div><input style="width: 70%" type="text" id="loadoutName3"
-                            name="loadout1" value="" disabled><br></div>
+                    <div><input style="width: 70%" type="text" id="loadoutName3" name="loadout1" value="" disabled><br>
+                    </div>
                     <button id="saveloadout3">save</button>
                     <button id="loadloadout3">load</button>
                 </div>
@@ -707,10 +704,10 @@
             </div>
         </div>
     </div>
-    <script src="main.js?v=0.1.14" charset="utf-8" type="text/javascript"></script>
+    <script src="main.js?v=0.1.15" charset="utf-8" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-    <link rel="stylesheet" href="cssPrototypes.css?v=0.1.14">
-    
+    <link rel="stylesheet" href="cssPrototypes.css?v=0.1.15">
+
 </body>
 
 </html>

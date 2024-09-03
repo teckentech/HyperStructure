@@ -420,7 +420,7 @@ let showable = [
 
     unlockable1Button: true, unlockable2Button: true, unlockable3Button: true, unlockable4Button: true, unlockable5Button: true, unlockable6Button: true, unlockable7Button: true, unlockable8Button: true, unlockable9Button: true, unlockable10Button: true, unlockable11Button: true, unlockable12Button: true, unlockable13Button: true, unlockable14Button: true, unlockable15Button: true, unlockable16Button: true,
 
-    topProgress: false, topProgress1: false, topProgress2: false, topProgress3: false, topProgress4: false, topProgress5: false, topProgress6: false, topProgress7: false, topProgress8: false
+    topProgress: false, topProgress1: false, topProgress2: false, topProgress3: false, topProgress4: false, topProgress5: false, topProgress6: false, topProgress7: false, topProgress8: false,
   }
 ]
 
@@ -1003,13 +1003,19 @@ function visual_dataLayer() {
   }
 
   if(actualUpgradeEffect1 < 5){
-    actualDataGraphic.style.background = "url(images/computer1.png)";
+    actualDataGraphic.style.background = "url(images/computer1.png) center center";
+    actualDataGraphic.style.backgroundSize = "contain";
+    actualDataGraphic.style.backgroundRepeat = "no-repeat";
   }
   if(actualUpgradeEffect1 > 5 && actualUpgradeEffect1 < 10){
-    actualDataGraphic.style.background = "url(images/computer2.png)";
+    actualDataGraphic.style.background = "url(images/computer2.png) center center";
+    actualDataGraphic.style.backgroundSize = "contain";
+    actualDataGraphic.style.backgroundRepeat = "no-repeat";
   }
   if(actualUpgradeEffect1 > 10 && actualUpgradeEffect1 < 16){
-    actualDataGraphic.style.background = "url(images/computer3.png)";
+    actualDataGraphic.style.background = "url(images/computer3.png) center center";
+    actualDataGraphic.style.backgroundSize = "contain";
+    actualDataGraphic.style.backgroundRepeat = "no-repeat";
   }
 
   actualDataUpgrade1.innerHTML = "<div>" + actualUpgradeName1 + "</div>" +
@@ -3236,26 +3242,6 @@ document.getElementById("reallocateEnergy2").onclick = function () {
   manualVisualLoop()
 }
 
-//LayerTiers
-
-document.getElementById("hardwareTier1").onclick = function () {
-  tab("hardware")
-  valuesSetter()
-  manualVisualLoop()
-}
-
-document.getElementById("softwareTier1").onclick = function () {
-  tab("software")
-  valuesSetter()
-  manualVisualLoop()
-}
-
-document.getElementById("communicationTier1").onclick = function () {
-  tab("communication")
-  valuesSetter()
-  manualVisualLoop()
-}
-
 function buy(array, price, arrayEffector, effector, value) {
   const priceIdentity = getNotIf(array, null, price + "Identity");
   const activePrice = getNotIf(array, null, price);
@@ -4023,7 +4009,7 @@ function importSave() {
     var decryptedData = CryptoJS.AES.decrypt(encryptedData, secretKey);
     var originalData = decryptedData.toString(CryptoJS.enc.Utf8);
     localStorage.setItem("HyperStructureSave", originalData);
-    
+
   var savedGameData = JSON.parse(localStorage.getItem("HyperStructureSave"));
   gameData = savedGameData.gameData;
   componentsEquipped = savedGameData.componentsEquipped
@@ -4414,7 +4400,7 @@ function LoopShow() {
   //cells: 1E10 - 1E12
 
   //idle 2
-  if (getNotIf(gameData, null, "data") >= 1 * (10 ** 10) && !(getNotIf(projects, "unlockable10", "unlocked"))) {
+  if (getNotIf(gameData, null, "data") >= 1 * (10 ** 5) && !(getNotIf(projects, "unlockable10", "unlocked"))) {
     unlockShow("unlockable10", true);
   }
 
@@ -4431,14 +4417,14 @@ function LoopShow() {
   //cells: 1E12 - 1E14
 
   //idle 3
-  if (getNotIf(gameData, null, "data") >= 100000000 && !(getNotIf(projects, "unlockable11", "unlocked"))) {
+  if (getNotIf(gameData, null, "data") >= 10 ** 7 && !(getNotIf(projects, "unlockable11", "unlocked"))) {
     unlockShow("unlockable11", true);
   }
 
   //cells: 1E14 - 1E16
 
   //idle 4
-  if (getNotIf(gameData, null, "data") >= 10000 && !(getNotIf(projects, "unlockable12", "unlocked"))) {
+  if (getNotIf(gameData, null, "data") >= 10 ** 10 && !(getNotIf(projects, "unlockable12", "unlocked"))) {
     unlockShow("unlockable12", true);
   }
 

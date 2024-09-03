@@ -84,8 +84,7 @@ button,
   position: relative;
   background: #000000;
   padding: 1vw;
-  border: 0vw solid #ffffff;
-  border-radius: 5px;
+  box-shadow: inset 0 0 0 1px #ffffff; 
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
@@ -879,7 +878,6 @@ div {
 
 .dropdownExploration {
   position: relative;
-  display: inline-block;
 }
 
 .dropdownExploration-content {
@@ -947,30 +945,29 @@ div {
 
 #dataGraphic{
   position: absolute;
-
-  background:url("images/computer1.png");
+    /* Dimensioni del div */
+    height: 50%;  /* 50% dell'altezza del contenitore genitore */
+    width: 30%;   /* 30% della larghezza del contenitore genitore */
+    
+    /* Posizionamento del div */
+    top: 0%; 
+    left: 30%;
+  background: url("images/coreB2.png");
   background-repeat: no-repeat;
-  background-size:cover;
   pointer-events: none;
-
-  border: 1px solid #ffffff;
-
-  height: 50%;
-  width: 30%;
-  top: 0%;
-  left: 30%;
   z-index: 2;
 }
 
 #dataUpgrade1 {
 
-  position: relative;
+  position: absolute;
 
   border: 0.1vw solid black;
   box-sizing: border-box;
   border-radius: 1vw;
   box-shadow: 0 0 1vw rgba(0, 0, 0, 0.1);
 
+  padding: 10px;
 
   height: 100%;
   width: 100%;
@@ -988,6 +985,7 @@ div {
   border-radius: 1vw;
   box-shadow: 0 0 1vw rgba(0, 0, 0, 0.1);
 
+  padding: 10px;
 
   height: 100%;
   width: 100%;
@@ -1297,6 +1295,39 @@ div {
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#reallocateEnergy1{
+  background: #c25050;
+  border: 1px solid #ffffff;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.shiftRight {
+  position: absolute;
+  right: 1%;
+  top: 50%;
+  transform:translateY(-50%);
+
+  background: #000000;
+  padding: 10px;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.shiftCenter {
+  right: -50%;
+  transform:translateX(50%);
+}
+
+.resizeEnergy>div {
+  width: 80%;
 }
 
 .progress-bar {
