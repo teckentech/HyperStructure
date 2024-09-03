@@ -337,13 +337,13 @@ let projects = [
 
 let loadoutData = [
   {
-    name: "", components1: "", components2: "", components3: ""
+    id:"loadout1", name: "", components1: "", components2: "", components3: ""
   },
   {
-    name: "", components1: "", components2: "", components3: ""
+    id:"loadout2",name: "", components1: "", components2: "", components3: ""
   },
   {
-    name: "", components1: "", components2: "", components3: ""
+    id:"loadout3",name: "", components1: "", components2: "", components3: ""
   }
 ]
 
@@ -3649,6 +3649,7 @@ function manualVisualLoop() {
   //global
   visual_valute();
   LoopShow();
+
   //core
   if (checkShow("core", true)) {
     unlockShow("coreImage", true)
