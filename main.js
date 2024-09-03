@@ -4011,13 +4011,13 @@ function exportSave() {
     Rshowable: Rshowable,
   };
   //btoa(
-  document.getElementById("Save").value = JSON.stringify(saveData);
+  document.getElementById("Save").value = btoa(JSON.stringify(saveData));
 
 }
 
 function importSave() {
   //atob(
-  localStorage.setItem("HyperStructureSave", document.getElementById("Save").value);
+  localStorage.setItem("HyperStructureSave",   atob(document.getElementById("Save").value));
   var savedGameData = JSON.parse(localStorage.getItem("HyperStructureSave"));
   gameData = savedGameData.gameData;
   componentsEquipped = savedGameData.componentsEquipped
