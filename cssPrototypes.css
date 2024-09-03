@@ -74,7 +74,6 @@ button,
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   z-index: 3;
 }
@@ -88,11 +87,6 @@ button,
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-#valute>div:hover {
-  transform: scale(1.05);
 }
 
 
@@ -1626,4 +1620,10 @@ input[type=text] {
 .tokenSizes {
   width: 5vw;
   height: 5vw;
+}
+
+#disclaimer {
+  position: absolute;
+  top: 90%;
+  width: 80%;
 }
