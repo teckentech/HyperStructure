@@ -1607,9 +1607,9 @@ input[type=text] {
 
 #coreImage {
   position: absolute;
-  width: 100vw;
+  width: 105vw;
   height: 100vh;
-  left: -2.35vw;
+  left: -5vw;
   z-index: -1;
   background: url("images/coreB2.png");
   background-repeat: no-repeat;
