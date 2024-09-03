@@ -4017,7 +4017,8 @@ function exportSave() {
 
 function importSave() {
   //atob(
-  localStorage.setItem("HyperStructureSave",   document.getElementById("Save").atob(value));
+  let decripted = document.getElementById("Save").value;
+  localStorage.setItem("HyperStructureSave",   atob(decripted));
   var savedGameData = JSON.parse(localStorage.getItem("HyperStructureSave"));
   gameData = savedGameData.gameData;
   componentsEquipped = savedGameData.componentsEquipped
