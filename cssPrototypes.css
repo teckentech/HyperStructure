@@ -967,7 +967,7 @@ div {
   border-radius: 1vw;
   box-shadow: 0 0 1vw rgba(0, 0, 0, 0.1);
 
-  padding: 10px;
+  padding: 0.1vw;
 
   height: 100%;
   width: 100%;
@@ -985,7 +985,7 @@ div {
   border-radius: 1vw;
   box-shadow: 0 0 1vw rgba(0, 0, 0, 0.1);
 
-  padding: 10px;
+  padding: 0.1vw;
 
   height: 100%;
   width: 100%;
@@ -1000,9 +1000,9 @@ div {
   position: absolute;
 
   background: #000000;
-  padding: 10px;
-  border: 1px solid #ffffff;
-  border-radius: 10px;
+  padding: 0.1vw;
+  border: 0.1vw solid #ffffff;
+  border-radius: 0.1vw;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
@@ -1023,9 +1023,9 @@ div {
   position: absolute;
 
   background: #000000;
-  padding: 10px;
-  border: 1px solid #ffffff;
-  border-radius: 5px;
+  padding: 0.1vw;
+  border: 0.1vw solid #ffffff;
+  border-radius: 0.1vw;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
@@ -1079,6 +1079,8 @@ div {
 }
 
 #dataSelector>button {
+  height:25%;
+
   background: #000000;
   padding: 9px;
   border: 1px solid #ffffff;
@@ -1132,7 +1134,7 @@ div {
 }
 
 .redimensionDataUpgrades2>div {
-  font-size: small;
+  font-size: 0.7vw;
 }
 
 #energyTier1 {
@@ -1360,6 +1362,7 @@ div {
   background-color: rgb(0, 255, 0);
 }
 
+
 .progress-bar span {
   position: absolute;
   width: 100%;
@@ -1386,6 +1389,7 @@ div {
 
 #dataHeavyLabel::before {
   content: attr(data-label);
+
 
   color: #000000;
   font-family: 'Orbitron', sans-serif;
