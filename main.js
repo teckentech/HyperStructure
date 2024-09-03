@@ -263,13 +263,13 @@ let projects = [
   },
 
   {
-    id: "unlockable5", name: "EXTRACTOR AUTOMATION", unlocked: false, unlockable1: "Automation: Extractor", unlockable2: "", unlockable3: "", price1: 10 ** 9, price2: 5000, price3: 0, price1Identity: "cells", price2Identity: "data", price3Identity: "energy",
+    id: "unlockable5", name: "EXTRACTOR AUTOMATION", unlocked: false, unlockable1: "Options:Extractor Automation", unlockable2: "", unlockable3: "", price1: 10 ** 9, price2: 5000, price3: 0, price1Identity: "cells", price2Identity: "data", price3Identity: "energy",
     positioned: false,
     price1Active: false, price2Active: false, price3Active: false
   },
 
   {
-    id: "unlockable6", name: "DATA AUTOMATION", unlocked: false, unlockable1: "Automation: Data", unlockable2: "", unlockable3: "", price1: 10, price2: 0, price3: 0, price1Identity: "cells", price2Identity: "data", price3Identity: "energy",
+    id: "unlockable6", name: "DATA AUTOMATION", unlocked: false, unlockable1: "Options:Data Automation", unlockable2: "", unlockable3: "", price1: 10, price2: 0, price3: 0, price1Identity: "cells", price2Identity: "data", price3Identity: "energy",
     positioned: false,
     price1Active: false, price2Active: false, price3Active: false
   },
@@ -355,18 +355,6 @@ let automation = [
   {
     id: "automation2", name: "Data Automation", description: "selects the Data Type with the least aquired data Upgrades", active: false
   },
-
-  {
-    id: "automation4", name: "Hardware Automation", description: "levels up the equipped hardware", active: false
-  },
-
-  {
-    id: "automation5", name: "Software Automation", description: "levels up the equipped software", active: false
-  },
-
-  {
-    id: "automation6", name: "Communication Automation", description: "levels up the equipped communication", active: false
-  },
 ]
 
 let showable = [
@@ -406,7 +394,7 @@ let showable = [
 
     token1: false, token2: false, token3: false, token4: false, token5: false, token6: false, token7: false, token8: false, token9: false, token10: false, token11: false, token12: false,
 
-    automation: false, automation1: false, automation1Button: false, automation2: false, automation2Button: false, automation4: false, automation4Button: false, automation5: false, automation5Button: false, automation6: false, automation6Button: false,
+    automation: false, automation1: false, automation1Button: false, automation2: false, automation2Button: false,
 
     visualModule1: false, visualModule2: false, visualModule3: false, visualModule4: false, visualModule5: false, visualModule6: false,
 
@@ -3185,49 +3173,6 @@ document.getElementById("automation2Button").onclick = function () {
   manualVisualLoop()
 }
 
-document.getElementById("automation4Button").onclick = function () {
-
-  for (let x in automation) {
-    if (automation[x].id == "automation4" && automation[x].active == false) {
-      automation[x].active = true;
-    }
-
-    else if (automation[x].id == "automation4" && automation[x].active == true) {
-      automation[x].active = false;
-    }
-  }
-  manualVisualLoop()
-}
-
-document.getElementById("automation5Button").onclick = function () {
-
-  for (let x in automation) {
-    if (automation[x].id == "automation5" && automation[x].active == false) {
-      automation[x].active = true;
-    }
-
-    else if (automation[x].id == "automation5" && automation[x].active == true) {
-      automation[x].active = false;
-    }
-  }
-  manualVisualLoop()
-}
-
-document.getElementById("automation6Button").onclick = function () {
-
-  for (let x in automation) {
-    if (automation[x].id == "automation6" && automation[x].active == false) {
-      automation[x].active = true;
-    }
-
-    else if (automation[x].id == "automation6" && automation[x].active == true) {
-      automation[x].active = false;
-    }
-  }
-  manualVisualLoop()
-}
-
-
 //reallocateEnergy
 document.getElementById("reallocateEnergy1").onclick = function () {
   resetEnergy(0, 2)
@@ -3648,6 +3593,7 @@ function manualVisualLoop() {
   //global
   visual_valute();
   LoopShow();
+  visual_automation();
 
   //core
   if (checkShow("core", true)) {
@@ -3684,7 +3630,6 @@ function manualVisualLoop() {
   }
   //options
   if (checkShow("options", true)) {
-    visual_automation()
     unlockShow("topProgress", false)
   }
 
@@ -3692,42 +3637,8 @@ function manualVisualLoop() {
 }
 
 
-var SaveGameLoop = window.setInterval(function () {
-  var saveData = {
-    gameData: gameData,
-    componentsEquipped: componentsEquipped,
-    components: components,
-    explorationUpgrades: explorationUpgrades,
-    explorationSelected: explorationSelected,
-    data: data,
-    dataUpgrades: dataUpgrades,
-    energyBuilding: energyBuilding,
-    refining: refining,
-    projects: projects,
-    loadoutData: loadoutData,
-    automation: automation,
-    showable: showable,
-
-    RgameData: RgameData,
-    RcomponentsEquipped: RcomponentsEquipped,
-    Rcomponents: Rcomponents,
-    RexplorationUpgrades: RexplorationUpgrades,
-    RexplorationSelected: RexplorationSelected,
-    Rdata: Rdata,
-    RdataUpgrades: RdataUpgrades,
-    RenergyBuilding: RenergyBuilding,
-    Rrefining: Rrefining,
-    Rprojects: Rprojects,
-    RloadoutData: RloadoutData,
-    Rautomation: Rautomation,
-    Rshowable: Rshowable,
-  };
-
-  localStorage.setItem("HyperStructureSave", JSON.stringify(saveData));
-}, 50);
 
 if (localStorage.getItem("HyperStructureSave") !== null) {
-
   var savedGameData = JSON.parse(localStorage.getItem("HyperStructureSave"));
   if (savedGameData.gameData) {
     gameData = savedGameData.gameData;
@@ -3837,6 +3748,43 @@ if (localStorage.getItem("HyperStructureSave") !== null) {
   }
 
 }
+
+var SaveGameLoop = window.setInterval(function () {
+  var saveData = {
+    gameData: gameData,
+    componentsEquipped: componentsEquipped,
+    components: components,
+    explorationUpgrades: explorationUpgrades,
+    explorationSelected: explorationSelected,
+    data: data,
+    dataUpgrades: dataUpgrades,
+    energyBuilding: energyBuilding,
+    refining: refining,
+    projects: projects,
+    loadoutData: loadoutData,
+    automation: automation,
+    showable: showable,
+
+    RgameData: RgameData,
+    RcomponentsEquipped: RcomponentsEquipped,
+    Rcomponents: Rcomponents,
+    RexplorationUpgrades: RexplorationUpgrades,
+    RexplorationSelected: RexplorationSelected,
+    Rdata: Rdata,
+    RdataUpgrades: RdataUpgrades,
+    RenergyBuilding: RenergyBuilding,
+    Rrefining: Rrefining,
+    Rprojects: Rprojects,
+    RloadoutData: RloadoutData,
+    Rautomation: Rautomation,
+    Rshowable: Rshowable,
+  };
+
+  
+  localStorage.setItem("HyperStructureSave", JSON.stringify(saveData));
+
+  
+}, 50);
 
 function updateSavedArrays(savedArray, defaultArray, newDefaultArray) {
   const newDefaultMap = newDefaultArray.reduce((map, item) => {
@@ -4040,6 +3988,117 @@ function importSave() {
     Rshowable = savedGameData.Rshowable
 }
 
+function manualSave(){
+  var savedGameData = JSON.parse(localStorage.getItem("HyperStructureSave"));
+  if (savedGameData.gameData) {
+    gameData = savedGameData.gameData;
+  }
+
+  if (savedGameData.components) {
+    components = savedGameData.components;
+  }
+
+  if (savedGameData.componentsEquipped) {
+    componentsEquipped = savedGameData.componentsEquipped;
+  }
+
+  if (savedGameData.explorationUpgrades) {
+    explorationUpgrades = savedGameData.explorationUpgrades;
+  }
+
+  if (savedGameData.explorationSelected) {
+    explorationSelected = savedGameData.explorationSelected;
+  }
+
+  if (savedGameData.data) {
+    data = data;
+  }
+
+  if (savedGameData.dataUpgrades) {
+    dataUpgrades = dataUpgrades;
+  }
+
+  if (savedGameData.energyBuilding) {
+    energyBuilding = savedGameData.energyBuilding;
+  }
+
+  if (savedGameData.refining) {
+    refining = refining;
+  }
+
+  if (savedGameData.projects) {
+    projects = savedGameData.projects;
+  }
+
+  if (savedGameData.loadoutData) {
+    loadoutData = savedGameData.loadoutData;
+  }
+
+  if (savedGameData.automation) {
+    automation = savedGameData.automation;
+  }
+
+  if (savedGameData.showable) {
+    showable = savedGameData.showable;
+  }
+
+  updateGame()
+  ///////////////////////////
+
+  if (savedGameData.RgameData) {
+    savedGameData.RgameData = RgameData
+  }
+
+  if (savedGameData.Rcomponents) {
+    savedGameData.Rcomponents = Rcomponents;
+  }
+
+  if (savedGameData.RcomponentsEquipped) {
+    savedGameData.RcomponentsEquipped = RcomponentsEquipped
+  }
+
+  if (savedGameData.RexplorationUpgrades) {
+    savedGameData.RexplorationUpgrades = RexplorationUpgrades
+  }
+
+  if (savedGameData.RexplorationSelected) {
+    savedGameData.RexplorationSelected = RexplorationSelected
+  }
+
+  if (savedGameData.Rdata) {
+    savedGameData.Rdata = Rdata
+  }
+
+  if (savedGameData.RdataUpgrades) {
+    savedGameData.RdataUpgrades = RdataUpgrades
+  }
+
+  if (savedGameData.RenergyBuilding) {
+    savedGameData.RenergyBuilding = RenergyBuilding
+  }
+
+  if (savedGameData.Rrefining) {
+    savedGameData.Rrefining = Rrefining
+  }
+
+  if (savedGameData.Rprojects) {
+    savedGameData.Rprojects = Rprojects
+  }
+
+  if (savedGameData.RloadoutData) {
+    savedGameData.RloadoutData = RloadoutData
+  }
+
+  if (savedGameData.Rautomation) {
+    savedGameData.Rautomation = Rautomation
+  }
+
+  if (savedGameData.Rshowable) {
+    savedGameData.Rshowable = Rshowable
+  }
+
+}
+
 function changeImage(component) {
 
   document.getElementById(component).style.background = "url(" + actualComponentImage + ")";
@@ -4234,8 +4293,6 @@ function LoopShow() {
     unlockShow("communicationSummary", false)
 
     unlockShow("visualModule1", true)
-
-    unlockShow("automation", true)
 
     unlockShow("dataGraphic", true)
   }
@@ -4526,14 +4583,6 @@ function LoopShow() {
   //components automation
   if (getNotIf(projects, "unlockable8", "unlocked")) {
     document.getElementById("unlockable8").style.backgroundColor = "#939393";
-    unlockShow("automation4", true)
-    unlockShow("automation4Button", true)
-
-    unlockShow("automation5")
-    unlockShow("automation5Button")
-
-    unlockShow("automation6", true)
-    unlockShow("automation6Button", true)
   }
 
   //idle 1
