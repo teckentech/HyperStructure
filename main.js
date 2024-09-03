@@ -337,13 +337,13 @@ let projects = [
 
 let loadoutData = [
   {
-    id:"loadout1", name: "", components1: "", components2: "", components3: ""
+    id: "loadout1", name: "", components1: "", components2: "", components3: ""
   },
   {
-    id:"loadout2",name: "", components1: "", components2: "", components3: ""
+    id: "loadout2", name: "", components1: "", components2: "", components3: ""
   },
   {
-    id:"loadout3",name: "", components1: "", components2: "", components3: ""
+    id: "loadout3", name: "", components1: "", components2: "", components3: ""
   }
 ]
 
@@ -404,7 +404,7 @@ let showable = [
 
     equipTab: false,
 
-    token1: false, token2: false, token3: false, token4: false, token5: false, token6: false, token7: false, token8: false, token9: false, token10: false, token11: false, token12: false, 
+    token1: false, token2: false, token3: false, token4: false, token5: false, token6: false, token7: false, token8: false, token9: false, token10: false, token11: false, token12: false,
 
     automation: false, automation1: false, automation1Button: false, automation2: false, automation2Button: false, automation4: false, automation4Button: false, automation5: false, automation5Button: false, automation6: false, automation6Button: false,
 
@@ -439,7 +439,6 @@ var Rdata = data
 var RdataUpgrades = dataUpgrades
 var RenergyBuilding = energyBuilding
 var Rrefining = refining
-// var Rrarity = rarity
 var Rprojects = projects
 var RloadoutData = loadoutData
 var Rautomation = automation
@@ -604,11 +603,11 @@ function loadoutSave(number) {
 
 function loadoutName(number, enter) {
   loadout = document.getElementById("loadoutName" + (number + 1))
-  if(enter == true){
+  if (enter == true) {
     loadout.disabled = false;
   }
 
-  if(enter == false){
+  if (enter == false) {
     loadout.disabled = true;
     loadoutData[number].name = loadout.value;
   }
@@ -653,7 +652,7 @@ function visual_ComponentInfo(component) {
         visualTag1 = "COMMUNICATION"
       }
 
-      if(actualComponentPriceIdentity == "explorationResource1"){
+      if (actualComponentPriceIdentity == "explorationResource1") {
         actualComponentPriceIdentity = "asteroids"
       }
 
@@ -852,7 +851,7 @@ function getExplorationSelected(a) {
           }
         }
       }
-  valuesSetter() 
+  valuesSetter()
 }
 
 //getters
@@ -1002,17 +1001,17 @@ function visual_dataLayer() {
     var actualUpgradePrice2 = data[x].upgradePrice2
   }
 
-  if(actualUpgradeEffect1 < 5){
+  if (actualUpgradeEffect1 < 5) {
     actualDataGraphic.style.background = "url(images/computer1.png) center center";
     actualDataGraphic.style.backgroundSize = "contain";
     actualDataGraphic.style.backgroundRepeat = "no-repeat";
   }
-  if(actualUpgradeEffect1 > 5 && actualUpgradeEffect1 < 10){
+  if (actualUpgradeEffect1 > 5 && actualUpgradeEffect1 < 10) {
     actualDataGraphic.style.background = "url(images/computer2.png) center center";
     actualDataGraphic.style.backgroundSize = "contain";
     actualDataGraphic.style.backgroundRepeat = "no-repeat";
   }
-  if(actualUpgradeEffect1 > 10 && actualUpgradeEffect1 < 16){
+  if (actualUpgradeEffect1 > 10 && actualUpgradeEffect1 < 16) {
     actualDataGraphic.style.background = "url(images/computer3.png) center center";
     actualDataGraphic.style.backgroundSize = "contain";
     actualDataGraphic.style.backgroundRepeat = "no-repeat";
@@ -1821,12 +1820,12 @@ function valuesSetter() {
   if (getNotIf(components, "token10", "level") >= 0 && getNotIf(components, "token10", "level") < 10) {
     componentsToken10Effect1 = 1 + (0.5 * getNotIf(components, "token10", "level"))
     componentsToken10Effect2 = 0
-    componentsToken10price = ((4.5 ** getNotIf(components, "token10", "level")) * (10 ** 37))/ getNotIf(dataUpgrades, "collectable8", "effect")
+    componentsToken10price = ((4.5 ** getNotIf(components, "token10", "level")) * (10 ** 37)) / getNotIf(dataUpgrades, "collectable8", "effect")
   }
   if (getNotIf(components, "token10", "level") >= 10 && getNotIf(components, "token10", "level") < 20) {
     componentsToken10Effect1 = 1 + (5 * getNotIf(components, "token10", "level")) * getNotIf(dataUpgrades, "collectable6", "effect")
     componentsToken10Effect2 = 0
-    componentsToken10price = ((10 ** getNotIf(components, "token10", "level"))* (10 ** 37)) / getNotIf(dataUpgrades, "collectable8", "effect")
+    componentsToken10price = ((10 ** getNotIf(components, "token10", "level")) * (10 ** 37)) / getNotIf(dataUpgrades, "collectable8", "effect")
   }
   if (getNotIf(components, "token10", "level") == 20) {
     componentsToken10Effect1 = 1 + (25 * getNotIf(components, "token10", "level")) * getNotIf(dataUpgrades, "collectable6", "effect")
@@ -1960,7 +1959,7 @@ function valuesSetter() {
 
   let refiningExtractors = getIfActive(refining, null, "extractors");
   let refiningSpeedExtractor = getIfActive(refining, null, "speedExtractor");
-  let refiningEffect = 0; 
+  let refiningEffect = 0;
   let refiningPriceExtractors = (1.4 ** (19 + getIfActive(refining, null, "extractors"))) / getNotIf(dataUpgrades, "collectable2", "effect");
   let refiningSpeedExtractorPrice = (10 ** (1 + getIfActive(refining, null, "speedExtractor"))) / getNotIf(dataUpgrades, "collectable2", "effect");
 
@@ -2290,10 +2289,10 @@ function valuesSetter() {
   let projectsUnlockable15Price2 = 5000
   let projectsUnlockable15Price3 = 0
 
-    //MILESTONE: FIRST STRATUM
-    let projectsUnlockable16Price1 = 10 ** 40
-    let projectsUnlockable16Price2 = 10 ** 20
-    let projectsUnlockable16Price3 = 10 ** 6
+  //MILESTONE: FIRST STRATUM
+  let projectsUnlockable16Price1 = 10 ** 40
+  let projectsUnlockable16Price2 = 10 ** 20
+  let projectsUnlockable16Price3 = 10 ** 6
 
   setIfActive(projects, "unlockable1", "price1", projectsUnlockable1Price1)
   setIfActive(projects, "unlockable1", "price2", projectsUnlockable1Price2)
@@ -3144,10 +3143,10 @@ document.getElementById("removeButton").onclick = function () {
 //components upgrade
 document.getElementById("buttonComponentRow0").onclick = function () {
   //if (getNotIf(components, actualComponentId, "active")) {
-    if (getNotIf(components, actualComponentId, "level") < 20) {
-      buyId(components, actualComponentId, "price", components, actualComponentId, "level", 1)
-    }
- // }
+  if (getNotIf(components, actualComponentId, "level") < 20) {
+    buyId(components, actualComponentId, "price", components, actualComponentId, "level", 1)
+  }
+  // }
   if (componentsEquipped[0][actualComponentTag1 != ""]) {
     clickExpand(actualComponentTag1 + "Module")
   }
@@ -3517,7 +3516,7 @@ async function dataActuator() {
 
         progressBarActuator("dataLightWait", getIfActive(data, null, "lightDuration"));
 
-        await pauseFunction("dataActuator", getIfActive(data, null, "lightDuration"), true);  
+        await pauseFunction("dataActuator", getIfActive(data, null, "lightDuration"), true);
 
         var found = 0;
         while (found == 0) {
@@ -3538,7 +3537,7 @@ async function dataActuator() {
 
         progressBarActuator("dataMediumWait", getIfActive(data, null, "mediumDuration"));
 
-        await pauseFunction("dataActuator", getIfActive(data, null, "mediumDuration"), true);  
+        await pauseFunction("dataActuator", getIfActive(data, null, "mediumDuration"), true);
 
         var found = 0;
         while (found == 0) {
@@ -3559,7 +3558,7 @@ async function dataActuator() {
 
         progressBarActuator("dataHeavyWait", getIfActive(data, null, "heavyDuration"));
 
-        await pauseFunction("dataActuator", getIfActive(data, null, "heavyDuration"), true);  
+        await pauseFunction("dataActuator", getIfActive(data, null, "heavyDuration"), true);
 
         var found = 0;
         while (found == 0) {
@@ -3636,7 +3635,7 @@ var mainGameLoop = window.setInterval(function () {
   offProgress(diffSec);
 
   gameData[0].lastTick = Date.now()
- 
+
   valuesSetterDinamic()
   dataActuator()
   automationActuator()
@@ -3725,8 +3724,6 @@ var SaveGameLoop = window.setInterval(function () {
   };
 
   localStorage.setItem("HyperStructureSave", JSON.stringify(saveData));
-
-
 }, 50);
 
 if (localStorage.getItem("HyperStructureSave") !== null) {
@@ -3859,7 +3856,7 @@ function updateSavedArrays(savedArray, defaultArray, newDefaultArray) {
       delete newDefaultMap[savedItem.id];
     } else {
       savedArray.splice(i, 1);
-      i--; 
+      i--;
     }
   }
   for (let id in newDefaultMap) {
@@ -4006,10 +4003,10 @@ function exportSave() {
 }
 
 function importSave() {
-    var encryptedData = document.getElementById("Save").value;
-    var decryptedData = CryptoJS.AES.decrypt(encryptedData, secretKey);
-    var originalData = decryptedData.toString(CryptoJS.enc.Utf8);
-    localStorage.setItem("HyperStructureSave", originalData);
+  var encryptedData = document.getElementById("Save").value;
+  var decryptedData = CryptoJS.AES.decrypt(encryptedData, secretKey);
+  var originalData = decryptedData.toString(CryptoJS.enc.Utf8);
+  localStorage.setItem("HyperStructureSave", originalData);
 
   var savedGameData = JSON.parse(localStorage.getItem("HyperStructureSave"));
   gameData = savedGameData.gameData;
@@ -4114,11 +4111,11 @@ function componentsTab(a, b) {
 
   var actualA = a;
   var actualB = b;
-  var found = false; 
+  var found = false;
 
   for (let y = 0; y < componentClass.length; y++) {
     if (componentClass[y].getAttribute("id") == b) {
-      found = true; 
+      found = true;
     }
     else {
       unlockShow(componentClass[y].getAttribute("id"), false);
@@ -4473,7 +4470,7 @@ function LoopShow() {
     unlockShow("explorationB", true)
     unlockShow("explorationBButton", true)
 
-    
+
   }
 
   unlockShow("cellsValute", true)
@@ -4690,14 +4687,14 @@ function automationActuator() {
   //automator estrattore
   if (getNotIf(automation, "automation1", "active")) {
     if (getNotIf(refining, null, "extractors") < 200) {
-    buyNoPrice(refining, "priceExtractors", refining, "extractors", 1)
-    manualVisualLoop()
+      buyNoPrice(refining, "priceExtractors", refining, "extractors", 1)
+      manualVisualLoop()
     }
 
     if (getNotIf(refining, null, "speedExtractors") < 30) {
-    buyNoPrice(refining, "speedExtractorPrice", refining, "speedExtractor", 1)
-    manualVisualLoop()
-    valuesSetter()
+      buyNoPrice(refining, "speedExtractorPrice", refining, "speedExtractor", 1)
+      manualVisualLoop()
+      valuesSetter()
     }
   }
 
