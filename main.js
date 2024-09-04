@@ -4695,7 +4695,7 @@ function automationActuator() {
       manualVisualLoop()
     }
 
-    if (getNotIf(refining, null, "speedExtractors") < 30) {
+    if (getNotIf(refining, null, "speedExtractor") < 30) {
       buyNoPrice(refining, "speedExtractorPrice", refining, "speedExtractor", 1)
       manualVisualLoop()
       valuesSetter()
