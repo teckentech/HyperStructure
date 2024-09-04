@@ -1444,23 +1444,25 @@ div {
 }
 
 #buttonComponentRow0 {
-  background: #2683ab;
+  background: #1E3A8A;
   padding: 10px;
   border: 1px solid #ffffff;
-  border-radius: 5px;
+  border-radius: 20px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
 
   height: 20vh;
+  text-align: center; 
+  cursor: pointer; 
 
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 #buttonComponentRow0>div {
   pointer-events: none;
-  background: #000000;
-  padding: 10px;
+  background: #1E3A8A;
+  padding: 0px;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
