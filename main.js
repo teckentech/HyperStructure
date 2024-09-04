@@ -68,7 +68,7 @@ let components = [
     levelActive: false, priceActive: false, effect1Active: false, effect2Active: false
   },
   {
-    id: "token8", name: "Asteroid Enchancer", description1: "all Asteroid Upgrades and components are boosted: x", description2: "-", level: 1, price: 0, effect1: 0, effect2: 0, identity1: "cell_Base", identity2: "a_Base", active: false, image: 'images/token_8.png', tag1: "components3", tag2: "booster", tag3: ".", priceIdentity: "explorationResource1",
+    id: "token8", name: "Asteroid Enchancer", description1: "all Asteroid explorations and components are boosted: x", description2: "-", level: 1, price: 0, effect1: 0, effect2: 0, identity1: "cell_Base", identity2: "a_Base", active: false, image: 'images/token_8.png', tag1: "components3", tag2: "booster", tag3: ".", priceIdentity: "explorationResource1",
     levelActive: false, priceActive: false, effect1Active: false, effect2Active: false
   },
   {
@@ -1427,9 +1427,7 @@ function valuesSetter() {
   var exploration1 = getIfActive(explorationUpgrades, getNotIf(explorationSelected, null, "explorationA"), "effect")
   var exploration2 = getIfActive(explorationUpgrades, getNotIf(explorationSelected, null, "explorationB"), "effect")
 
-  exploration2 = norm(exploration2)
-
-  let globalExplorationResource1Prod = exploration1 * exploration2;
+  let globalExplorationResource1Prod = exploration1 + exploration2;
 
   setNotIf(gameData, null, "cellsProd", globalCellsProd)
   setNotIf(gameData, null, "dataProd", globalDataProd)
@@ -2229,7 +2227,7 @@ function valuesSetter() {
     getNotIf(energyBuilding, "energy5", "level") +
     getNotIf(energyBuilding, "energy6", "level")
 
-  let energyBuildingEnergy1Effect = 2 ** getNotIf(energyBuilding, "energy1", "level");
+  let energyBuildingEnergy1Effect = 100 ** getNotIf(energyBuilding, "energy1", "level");
 
   let energyBuildingEnergy2Effect = (10 ** getIfActive(energyBuilding, "energy2", "level")) * getNotIf(energyBuilding, "energy3", "effect");
 
