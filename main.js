@@ -3636,7 +3636,15 @@ function manualVisualLoop() {
   LoopShow()
 }
 
+window.addEventListener('beforeunload', function() {
+  saveGameData();
+});
 
+window.addEventListener('visibilitychange', function() {
+  if (document.visibilityState === 'hidden') {
+    saveGameData();
+  }
+});
 
 if (localStorage.getItem("HyperStructureSave") !== null) {
   var savedGameData = JSON.parse(localStorage.getItem("HyperStructureSave"));
@@ -3696,55 +3704,55 @@ if (localStorage.getItem("HyperStructureSave") !== null) {
   ///////////////////////////
 
   if (savedGameData.RgameData) {
-    savedGameData.RgameData = RgameData
+    RgameData = savedGameData.RgameData
   }
 
   if (savedGameData.Rcomponents) {
-    savedGameData.Rcomponents = Rcomponents;
+    Rcomponents = savedGameData.Rcomponents
   }
 
   if (savedGameData.RcomponentsEquipped) {
-    savedGameData.RcomponentsEquipped = RcomponentsEquipped
+    RcomponentsEquipped = savedGameData.RcomponentsEquipped
   }
 
   if (savedGameData.RexplorationUpgrades) {
-    savedGameData.RexplorationUpgrades = RexplorationUpgrades
+    RexplorationUpgrades = savedGameData.RexplorationUpgrades
   }
 
   if (savedGameData.RexplorationSelected) {
-    savedGameData.RexplorationSelected = RexplorationSelected
+    RexplorationSelected = savedGameData.RexplorationSelected
   }
 
   if (savedGameData.Rdata) {
-    savedGameData.Rdata = Rdata
+    Rdata = savedGameData.Rdata
   }
 
   if (savedGameData.RdataUpgrades) {
-    savedGameData.RdataUpgrades = RdataUpgrades
+    RdataUpgrades = savedGameData.RdataUpgrades
   }
 
   if (savedGameData.RenergyBuilding) {
-    savedGameData.RenergyBuilding = RenergyBuilding
+    RenergyBuilding = savedGameData.RenergyBuilding
   }
 
   if (savedGameData.Rrefining) {
-    savedGameData.Rrefining = Rrefining
+    Rrefining = savedGameData.Rrefining
   }
 
   if (savedGameData.Rprojects) {
-    savedGameData.Rprojects = Rprojects
+    Rprojects = savedGameData.Rprojects
   }
 
   if (savedGameData.RloadoutData) {
-    savedGameData.RloadoutData = RloadoutData
+    RloadoutData = savedGameData.RloadoutData
   }
 
   if (savedGameData.Rautomation) {
-    savedGameData.Rautomation = Rautomation
+    Rautomation = savedGameData.Rautomation
   }
 
   if (savedGameData.Rshowable) {
-    savedGameData.Rshowable = Rshowable
+    Rshowable = savedGameData.Rshowable
   }
 
 }
@@ -4046,57 +4054,56 @@ function manualSave(){
   ///////////////////////////
 
   if (savedGameData.RgameData) {
-    savedGameData.RgameData = RgameData
+    RgameData = savedGameData.RgameData
   }
 
   if (savedGameData.Rcomponents) {
-    savedGameData.Rcomponents = Rcomponents;
+    Rcomponents = savedGameData.Rcomponents
   }
 
   if (savedGameData.RcomponentsEquipped) {
-    savedGameData.RcomponentsEquipped = RcomponentsEquipped
+    RcomponentsEquipped = savedGameData.RcomponentsEquipped
   }
 
   if (savedGameData.RexplorationUpgrades) {
-    savedGameData.RexplorationUpgrades = RexplorationUpgrades
+    RexplorationUpgrades = savedGameData.RexplorationUpgrades
   }
 
   if (savedGameData.RexplorationSelected) {
-    savedGameData.RexplorationSelected = RexplorationSelected
+    RexplorationSelected = savedGameData.RexplorationSelected
   }
 
   if (savedGameData.Rdata) {
-    savedGameData.Rdata = Rdata
+    Rdata = savedGameData.Rdata
   }
 
   if (savedGameData.RdataUpgrades) {
-    savedGameData.RdataUpgrades = RdataUpgrades
+    RdataUpgrades = savedGameData.RdataUpgrades
   }
 
   if (savedGameData.RenergyBuilding) {
-    savedGameData.RenergyBuilding = RenergyBuilding
+    RenergyBuilding = savedGameData.RenergyBuilding
   }
 
   if (savedGameData.Rrefining) {
-    savedGameData.Rrefining = Rrefining
+    Rrefining = savedGameData.Rrefining
   }
 
   if (savedGameData.Rprojects) {
-    savedGameData.Rprojects = Rprojects
+    Rprojects = savedGameData.Rprojects
   }
 
   if (savedGameData.RloadoutData) {
-    savedGameData.RloadoutData = RloadoutData
+    RloadoutData = savedGameData.RloadoutData
   }
 
   if (savedGameData.Rautomation) {
-    savedGameData.Rautomation = Rautomation
+    Rautomation = savedGameData.Rautomation
   }
 
   if (savedGameData.Rshowable) {
-    savedGameData.Rshowable = Rshowable
+    Rshowable = savedGameData.Rshowable
   }
-
 }
 
 function changeImage(component) {
