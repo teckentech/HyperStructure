@@ -420,6 +420,8 @@ let canCall = [
   }
 ]
 
+var stopDataActuator = false;
+
 var RgameData = gameData
 var RcomponentsEquipped = componentsEquipped
 var Rcomponents = components
@@ -502,17 +504,17 @@ function loadoutLoad(number) {
   for (let x in components) {
 
     if (components[x].id == loadoutData[number].components1) {
-      
+
       /*
       setNotIf(components, components[x].id, "active", true)
       setNotIf(componentsEquipped, null, components[x].tag1, components[x].id)
       */
 
-     equipButton(components[x].id, "equip")
+      equipButton(components[x].id, "equip")
     }
 
     if (components[x].id == loadoutData[number].components2) {
-      
+
       /*
       setNotIf(components, components[x].id, "active", true)
       setNotIf(componentsEquipped, null, components[x].tag1, components[x].id)
@@ -522,7 +524,7 @@ function loadoutLoad(number) {
     }
 
     if (components[x].id == loadoutData[number].components3) {
-  
+
       /*
       setNotIf(components, components[x].id, "active", true)
       setNotIf(componentsEquipped, null, components[x].tag1, components[x].id)
@@ -679,7 +681,6 @@ function visual_ComponentInfo(component) {
       update("componentRow5", "<div>" + actualComponentDescription2 + format(actualComponentEffect2, "scientific") + "</div>");
     }
 
-    console.log(actualComponentId)
     if (actualComponentId == undefined) {
       update("componentRow0", "<div> LEVEL UP </div> <div><div>-</div><div>EVERY 10 UPGRADES IT BOOSTS THE COMPONENT</div>")
     }
@@ -745,7 +746,6 @@ function equipButton(moduleName, operation) {
 
   if (operation == "equip") {
     for (x in components) {
-      console.log(moduleName)
       if (components[x].id != moduleName && components[x].tag1 == tag1) {
         setNotIf(components, components[x].id, "active", false)
       }
@@ -768,7 +768,7 @@ function equipButton(moduleName, operation) {
     }
     componentsEquipped[0][actualComponentTag1] = "";
   }
-  
+
   setComponentActive()
   setTickSpeed()
 }
@@ -1850,7 +1850,7 @@ function valuesSetter() {
 
   let dataLightDuration = 3000 / (getNotIf(gameData, null, "tickSpeed") / 1000)
   //30000
-  let dataMediumDuration = 30000 / (getNotIf(gameData, null, "tickSpeed") / 1000)
+  let dataMediumDuration = 10000 / (getNotIf(gameData, null, "tickSpeed") / 1000)
   //180000
   let dataHeavyDuration = 180000 / (getNotIf(gameData, null, "tickSpeed") / 1000)
   let dataLightExtractionMult = Math.floor(1 + getIfActive(data, null, "upgradeEffect1"))
@@ -3181,10 +3181,17 @@ function dataSelected(x) {
   var elemX = document.getElementById(x)
   data[0].selected = x;
 
+
   if (x == "dataNull" || x == "") {
     elem1.style.backgroundColor = "black"
     elem2.style.backgroundColor = "black"
     elem3.style.backgroundColor = "black"
+
+    if (x == "dataNull") {
+
+      setNotIf(canCall, null, "dataActuatorCanCall", true)
+      stopDataActuator = true;
+    }
   }
 
   if (x != "dataNull") {
@@ -3331,6 +3338,11 @@ async function progressBarActuator(id2, time) {
     if (!startTime) {
       startTime = currentTime;
     }
+    if (data[0].selected == "dataNull") {
+      elem.style.width = 100 + "%";
+      return;
+    }
+
     var progress = currentTime - startTime;
     var width = Math.min((progress / time) * 100, 100);
     elem.style.width = width + "%";
@@ -3344,9 +3356,9 @@ async function progressBarActuator(id2, time) {
 
 
 
-
 async function dataActuator() {
   if (!(getNotIf(canCall, null, "dataActuatorCanCall"))) {
+
     return;
   }
 
@@ -3355,69 +3367,110 @@ async function dataActuator() {
 
       if (getExtractedData("light") > 0) {
 
+        if (stopDataActuator == false) {
+        await pauseFunction("dataActuator", getIfActive(data, null, "lightDuration"), true);
+        }
+
         progressBarActuator("dataLightWait", getIfActive(data, null, "lightDuration"));
 
-        await pauseFunction("dataActuator", getIfActive(data, null, "lightDuration"), true);
-
-        var found = 0;
-        while (found == 0) {
-          var randomElement = Math.floor(Math.random() * dataUpgrades.length);
-          if (dataUpgrades[randomElement].extracted < dataUpgrades[randomElement].maxQuantity && dataUpgrades[randomElement].identity == "light") {
-            dataUpgrades[randomElement].extracted += getIfActive(data, null, "lightExtractionMult")
-            if (dataUpgrades[randomElement].extracted > dataUpgrades[randomElement].maxQuantity) {
-              dataUpgrades[randomElement].extracted = dataUpgrades[randomElement].maxQuantity
+        if (stopDataActuator == false) {
+          var found = 0;
+          while (found == 0) {
+            var randomElement = Math.floor(Math.random() * dataUpgrades.length);
+            if (dataUpgrades[randomElement].extracted < dataUpgrades[randomElement].maxQuantity && dataUpgrades[randomElement].identity == "light") {
+              dataUpgrades[randomElement].extracted += getIfActive(data, null, "lightExtractionMult")
+              if (dataUpgrades[randomElement].extracted > dataUpgrades[randomElement].maxQuantity) {
+                dataUpgrades[randomElement].extracted = dataUpgrades[randomElement].maxQuantity
+              }
+              found = 1;
             }
-            found = 1;
           }
         }
+        setNotIf(canCall, null, "dataActuatorCanCall", true)
+        stopDataActuator = false;
+        found = 1;
       }
     }
 
     if (data[0].selected == "dataMedium") {
       if (getExtractedData("medium") > 0) {
 
+        if (stopDataActuator == false) {
+          await pauseFunction("dataActuator", getIfActive(data, null, "mediumDuration"), true);
+        }
+
         progressBarActuator("dataMediumWait", getIfActive(data, null, "mediumDuration"));
 
-        await pauseFunction("dataActuator", getIfActive(data, null, "mediumDuration"), true);
-
-        var found = 0;
-        while (found == 0) {
-          var randomElement = Math.floor(Math.random() * dataUpgrades.length);
-          if (dataUpgrades[randomElement].extracted < dataUpgrades[randomElement].maxQuantity && dataUpgrades[randomElement].identity == "medium") {
-            dataUpgrades[randomElement].extracted += getIfActive(data, null, "mediumExtractionMult")
-            if (dataUpgrades[randomElement].extracted > dataUpgrades[randomElement].maxQuantity) {
-              dataUpgrades[randomElement].extracted = dataUpgrades[randomElement].maxQuantity
+        if (stopDataActuator == false) {
+          var found = 0;
+          while (found == 0) {
+            var randomElement = Math.floor(Math.random() * dataUpgrades.length);
+            if (dataUpgrades[randomElement].extracted < dataUpgrades[randomElement].maxQuantity && dataUpgrades[randomElement].identity == "medium") {
+              dataUpgrades[randomElement].extracted += getIfActive(data, null, "mediumExtractionMult")
+              if (dataUpgrades[randomElement].extracted > dataUpgrades[randomElement].maxQuantity) {
+                dataUpgrades[randomElement].extracted = dataUpgrades[randomElement].maxQuantity
+              }
+              found = 1;
             }
-            found = 1;
           }
         }
+        console.log("Mi hai raggiunto!")
+        setNotIf(canCall, null, "dataActuatorCanCall", true)
+        stopDataActuator = false;
+        found = 1;
       }
     }
 
     if (data[0].selected == "dataHeavy") {
       if (getExtractedData("heavy") > 0) {
 
+        if (stopDataActuator == false) {
+          await pauseFunction("dataActuator", getIfActive(data, null, "heavyDuration"), true);
+        }
+
         progressBarActuator("dataHeavyWait", getIfActive(data, null, "heavyDuration"));
-
-        await pauseFunction("dataActuator", getIfActive(data, null, "heavyDuration"), true);
-
-        var found = 0;
-        while (found == 0) {
-          var randomElement = Math.floor(Math.random() * dataUpgrades.length);
-          if (dataUpgrades[randomElement].extracted < dataUpgrades[randomElement].maxQuantity && dataUpgrades[randomElement].identity == "heavy") {
-            dataUpgrades[randomElement].extracted += getIfActive(data, null, "heavyExtractionMult")
-            if (dataUpgrades[randomElement].extracted > dataUpgrades[randomElement].maxQuantity) {
-              dataUpgrades[randomElement].extracted = dataUpgrades[randomElement].maxQuantity
+        
+        if (stopDataActuator == false) {
+          var found = 0;
+          while (found == 0) {
+            var randomElement = Math.floor(Math.random() * dataUpgrades.length);
+            if (dataUpgrades[randomElement].extracted < dataUpgrades[randomElement].maxQuantity && dataUpgrades[randomElement].identity == "heavy") {
+              dataUpgrades[randomElement].extracted += getIfActive(data, null, "heavyExtractionMult")
+              if (dataUpgrades[randomElement].extracted > dataUpgrades[randomElement].maxQuantity) {
+                dataUpgrades[randomElement].extracted = dataUpgrades[randomElement].maxQuantity
+              }
+              found = 1;
             }
-            found = 1;
           }
         }
+        setNotIf(canCall, null, "dataActuatorCanCall", true)
+        stopDataActuator = false;
+        found = 1;
       }
     }
   }
 }
 
 function pauseFunction(fun, time, bool) {
+  console.log("tempo?: " + time)
+  setNotIf(canCall, null, fun + "CanCall", false)
+  if (time != null) {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        console.log("fase 1.5: l' attesa: " + time)
+        console.log("debug: " + getIfActive(data, null, "mediumDuration"))
+        setNotIf(canCall, null, fun + "CanCall", true)
+        resolve();
+      }, time);
+    });
+  }
+  if (time == null) {
+    setNotIf(canCall, fun + "CanCall", bool)
+  }
+}
+
+function pauseFunctionPassive(fun, time, bool) {
+  console.log("tempo?: " + time)
   setNotIf(canCall, null, fun + "CanCall", false)
   if (time != null) {
     return new Promise(resolve => {
@@ -3427,7 +3480,6 @@ function pauseFunction(fun, time, bool) {
       }, time);
     });
   }
-
   if (time == null) {
     setNotIf(canCall, fun + "CanCall", bool)
   }
@@ -3440,12 +3492,14 @@ async function offProgress(time) {
     gameData[0].tickSpeed *= time;
     waiting = true;
 
-    await pauseFunction("offProgress", time, true);
+    await pauseFunctionPassive("offProgress", time, true);
 
     gameData[0].tickSpeed = tempTickSpeed;
     waiting = false;
   }
 }
+
+
 
 function clickExpand(element) {
   var selElement = document.getElementById(element)
@@ -3885,7 +3939,7 @@ function importSave() {
     Rshowable = savedGameData.Rshowable
 }
 
-function manualSave(){
+function manualSave() {
   var savedGameData = JSON.parse(localStorage.getItem("HyperStructureSave"));
   if (savedGameData.gameData) {
     gameData = savedGameData.gameData;
