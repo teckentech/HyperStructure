@@ -1853,7 +1853,7 @@ function valuesSetter() {
 
   let dataLightDuration = 3000 / (getNotIf(gameData, null, "tickSpeed") / 1000)
   //30000
-  let dataMediumDuration = 10000 / (getNotIf(gameData, null, "tickSpeed") / 1000)
+  let dataMediumDuration = 30000 / (getNotIf(gameData, null, "tickSpeed") / 1000)
   //180000
   let dataHeavyDuration = 180000 / (getNotIf(gameData, null, "tickSpeed") / 1000)
   let dataLightExtractionMult = Math.floor(1 + getIfActive(data, null, "upgradeEffect1"))
@@ -4727,6 +4727,11 @@ function automationActuator() {
     if (restHeavy >= restMedium && multHeavy > 0 && restHeavy >= restLight && multHeavy > 0) {
       dataSelected("dataHeavy")
     }
+
+    if(restHeavy == 0 && restMedium == 0 && restLight == 0){
+      dataSelected("dataNull")
+    }
+
     valuesSetter()
   }
 }
