@@ -769,8 +769,8 @@ function equipButton(moduleName, operation) {
     componentsEquipped[0][actualComponentTag1] = "";
   }
 
-  setComponentActive()
   setTickSpeed()
+  setComponentActive()
 }
 
 function visual_EnergyInfo() {
