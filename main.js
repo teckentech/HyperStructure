@@ -1015,17 +1015,17 @@ function visual_dataLayer() {
     var actualUpgradePrice2 = data[x].upgradePrice2
   }
 
-  if (actualUpgradeEffect1 < 5) {
+  if (actualUpgradeEffect1 < 4) {
     actualDataGraphic.style.background = "url(images/computer1.png) center center";
     actualDataGraphic.style.backgroundSize = "contain";
     actualDataGraphic.style.backgroundRepeat = "no-repeat";
   }
-  if (actualUpgradeEffect1 > 5 && actualUpgradeEffect1 < 10) {
+  if (actualUpgradeEffect1 >= 4 && actualUpgradeEffect1 < 9) {
     actualDataGraphic.style.background = "url(images/computer2.png) center center";
     actualDataGraphic.style.backgroundSize = "contain";
     actualDataGraphic.style.backgroundRepeat = "no-repeat";
   }
-  if (actualUpgradeEffect1 > 10 && actualUpgradeEffect1 < 16) {
+  if (actualUpgradeEffect1 >= 8 && actualUpgradeEffect1 < 16) {
     actualDataGraphic.style.background = "url(images/computer3.png) center center";
     actualDataGraphic.style.backgroundSize = "contain";
     actualDataGraphic.style.backgroundRepeat = "no-repeat";
