@@ -11,11 +11,13 @@ let gameData = [{
   energyProd: 0,
   energyMax: 0,
   energyProdActive: false,
+
   tickSpeed: 1000,
   tickSpeedProd: 0,
   tickSpeedProdActive: false,
 
   tickspeed3: 1,
+  tickspeed4: 1,
 
   offProgressLimit: 1800,
 
@@ -1300,6 +1302,11 @@ function valuesSetterDinamic() {
     setNotIf(gameData, null, "asteroids", 0)
   }
 
+  offProgressCheck()
+}
+
+function offProgressCheck(){
+  
   if (getIfActive(projects, "unlockable9", "unlocked")) {
     setNotIf(gameData, null, "offProgressLimit", 3600)
   }
@@ -1422,17 +1429,18 @@ function valuesSetter() {
   var tickspeed1 = getIfActive(gameData, null, "tickSpeed")
   var tickspeed2 = getIfActive(components, "token4", "effect1")
   var tickspeed3 = getNotIf(gameData, null, "tickspeed3")
+  var tickspeed4 = getNotIf(gameData, null, "tickspeed4")
 
   tickspeed2 = norm(tickspeed2)
 
-  let globalTickSpeedProd = 1000 * tickspeed2 * tickspeed3
-
+  let globalTickSpeedProd = 1000 * tickspeed2 * tickspeed3 * tickspeed4
   //exploration elements
 
   var exploration1 = getIfActive(explorationUpgrades, getNotIf(explorationSelected, null, "explorationA"), "effect")
   var exploration2 = getIfActive(explorationUpgrades, getNotIf(explorationSelected, null, "explorationB"), "effect")
+  var exploration3 = (getNotIf(gameData, null, "tickSpeed") / 1000)
 
-  let globalExplorationResource1Prod = exploration1 + exploration2;
+  let globalExplorationResource1Prod = (exploration1 + exploration2) * exploration3;
 
   setNotIf(gameData, null, "cellsProd", globalCellsProd)
   setNotIf(gameData, null, "dataProd", globalDataProd)
@@ -2407,10 +2415,11 @@ function setTickSpeed() {
   var tickspeed1 = getIfActive(gameData, null, "tickSpeed")
   var tickspeed2 = getIfActive(components, "token4", "effect1")
   var tickspeed3 = getNotIf(gameData, null, "tickspeed3")
+  var tickspeed4 = getNotIf(gameData, null, "tickspeed4")
 
   tickspeed2 = norm(tickspeed2)
 
-  let globalTickSpeedProd = 1000 * tickspeed2 * tickspeed3
+  let globalTickSpeedProd = 1000 * tickspeed2 * tickspeed3 * tickspeed4
 
   setNotIf(gameData, null, "tickSpeedProd", globalTickSpeedProd)
 
@@ -3371,7 +3380,7 @@ async function dataActuator() {
       if (getExtractedData("light") > 0) {
 
         if (stopDataActuator == false) {
-        await pauseFunction("dataActuator", getIfActive(data, null, "lightDuration"), true);
+          await pauseFunction("dataActuator", getIfActive(data, null, "lightDuration"), true);
         }
 
         progressBarActuator("dataLightWait", getIfActive(data, null, "lightDuration"));
@@ -3417,7 +3426,6 @@ async function dataActuator() {
             }
           }
         }
-        console.log("Mi hai raggiunto!")
         setNotIf(canCall, null, "dataActuatorCanCall", true)
         stopDataActuator = false;
         found = 1;
@@ -3432,7 +3440,7 @@ async function dataActuator() {
         }
 
         progressBarActuator("dataHeavyWait", getIfActive(data, null, "heavyDuration"));
-        
+
         if (stopDataActuator == false) {
           var found = 0;
           while (found == 0) {
@@ -3455,13 +3463,10 @@ async function dataActuator() {
 }
 
 function pauseFunction(fun, time, bool) {
-  console.log("tempo?: " + time)
   setNotIf(canCall, null, fun + "CanCall", false)
   if (time != null) {
     return new Promise(resolve => {
       setTimeout(() => {
-        console.log("fase 1.5: l' attesa: " + time)
-        console.log("debug: " + getIfActive(data, null, "mediumDuration"))
         setNotIf(canCall, null, fun + "CanCall", true)
         resolve();
       }, time);
@@ -3473,7 +3478,6 @@ function pauseFunction(fun, time, bool) {
 }
 
 function pauseFunctionPassive(fun, time, bool) {
-  console.log("tempo?: " + time)
   setNotIf(canCall, null, fun + "CanCall", false)
   if (time != null) {
     return new Promise(resolve => {
@@ -3490,19 +3494,16 @@ function pauseFunctionPassive(fun, time, bool) {
 
 async function offProgress(time) {
   if (!waiting) {
-    let tempTickSpeed = gameData[0].tickSpeed;
+    let tempTickSpeed = getNotIf(gameData, null, "tickspeed3")
 
-    gameData[0].tickSpeed *= time;
+    setNotIf(gameData, null, "tickspeed4", time / 10)
+
     waiting = true;
-
-    await pauseFunctionPassive("offProgress", time, true);
-
-    gameData[0].tickSpeed = tempTickSpeed;
+    await pauseFunctionPassive("offProgress", 100, true);
+    setNotIf(gameData, null, "tickspeed4", tempTickSpeed)
     waiting = false;
   }
 }
-
-
 
 function clickExpand(element) {
   var selElement = document.getElementById(element)
@@ -3520,17 +3521,18 @@ var mainGameLoop = window.setInterval(function () {
   let diff = Date.now() - gameData[0].lastTick
   let diffSec = diff / 1000;
 
-
+offProgressCheck()
   if (diffSec > gameData[0].offProgressLimit) {
     diffSec = gameData[0].offProgressLimit;
   }
 
-  if (diffSec < 10) {
+  if (diffSec < 4) {
     diffSec = 1;
   }
 
-
-  offProgress(diffSec);
+  if (diffSec > 3) {
+    offProgress(diffSec);
+  }
 
   gameData[0].lastTick = Date.now()
 
@@ -4728,7 +4730,7 @@ function automationActuator() {
       dataSelected("dataHeavy")
     }
 
-    if(restHeavy == 0 && restMedium == 0 && restLight == 0){
+    if (restHeavy == 0 && restMedium == 0 && restLight == 0) {
       dataSelected("dataNull")
     }
 

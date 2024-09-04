@@ -5,6 +5,7 @@ body {
   width: 100%;
 }
 
+
 /* questo mi permette di rendere il gioco ridimensionabile, credo almeno*/
 button,
 .redimension {
@@ -18,7 +19,6 @@ button,
 .redimensionSmall {
   font-size: 0.75vw;
 }
-
 
 #selectorTab,
 #Menu,
@@ -567,6 +567,10 @@ div {
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#projectsScrollable>div>div {
+  overflow-y: scroll;
 }
 
 #projectUtility {
