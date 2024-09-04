@@ -4305,6 +4305,7 @@ function LoopShow() {
       unlockShow("topProgress1", true)
     }
   }
+
   //cells: 1-1e3
   if (getNotIf(gameData, null, "cells") >= 1000) {
     unlockShow("hardwareTab", true)
