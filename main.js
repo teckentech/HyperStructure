@@ -2152,7 +2152,7 @@ function valuesSetter() {
   //MILESTONE: FIRST STRATUM
   let projectsUnlockable16Price1 = 10 ** 40
   let projectsUnlockable16Price2 = 10 ** 20
-  let projectsUnlockable16Price3 = 10 ** 6
+  let projectsUnlockable16Price3 = 10 ** 14
 
   setIfActive(projects, "unlockable1", "price1", projectsUnlockable1Price1)
   setIfActive(projects, "unlockable1", "price2", projectsUnlockable1Price2)
