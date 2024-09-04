@@ -353,7 +353,6 @@ let automation = [
   {
     id: "automation1", name: "Extractor Automation", description: "Buys Extractor upgrades if you can afford them, without expending cells", active: false
   },
-
   {
     id: "automation2", name: "Data Automation", description: "selects the Data Type with the least aquired data Upgrades", active: false
   },
@@ -4517,6 +4516,7 @@ function LoopShow() {
   //extraction automation
   if (getNotIf(projects, "unlockable5", "unlocked")) {
     document.getElementById("unlockable5").style.backgroundColor = "#939393";
+    unlockShow("automation", true)
     unlockShow("automation1", true)
     unlockShow("automation1Button", true)
   }
@@ -4524,6 +4524,7 @@ function LoopShow() {
   //data automation
   if (getNotIf(projects, "unlockable6", "unlocked")) {
     document.getElementById("unlockable6").style.backgroundColor = "#939393";
+    unlockShow("automation", true)
     unlockShow("automation2", true)
     unlockShow("automation2Button", true)
   }
