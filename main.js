@@ -750,6 +750,9 @@ function equipButton(moduleName, operation) {
       }
     }
 
+    setTickSpeed()
+    setComponentActive()
+
     for (x in components) {
       if (components[x].id == moduleName && components[x].tag1 == tag1) {
         setNotIf(components, components[x].id, "active", true)
@@ -757,6 +760,9 @@ function equipButton(moduleName, operation) {
     }
     componentsEquipped[0][tag1] = moduleName;
   }
+
+  setTickSpeed()
+  setComponentActive()
 
   if (operation == "remove") {
     for (x in components) {
