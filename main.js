@@ -25,7 +25,9 @@ let gameData = [{
   explorationResource1Prod: 0,
   explorationResource1ProdActive: false,
 
-  topProgressCount: 0
+  topProgressCount: 0,
+
+  init1: true,
 }]
 
 //ACCEPTED
@@ -472,7 +474,6 @@ var width = 0;
 var competitionTabCounter = 0;
 var currentTabNumber = 1;
 var maxTabNumber = 2;
-var init1 = true;
 var ThisExplorationName = "ExplorationA1";
 
 var waiting = false;
@@ -501,18 +502,33 @@ function loadoutLoad(number) {
   for (let x in components) {
 
     if (components[x].id == loadoutData[number].components1) {
+      
+      /*
       setNotIf(components, components[x].id, "active", true)
       setNotIf(componentsEquipped, null, components[x].tag1, components[x].id)
+      */
+
+     equipButton(components[x].id, "equip")
     }
 
     if (components[x].id == loadoutData[number].components2) {
+      
+      /*
       setNotIf(components, components[x].id, "active", true)
       setNotIf(componentsEquipped, null, components[x].tag1, components[x].id)
+      */
+
+      equipButton(components[x].id, "equip")
     }
 
     if (components[x].id == loadoutData[number].components3) {
+  
+      /*
       setNotIf(components, components[x].id, "active", true)
       setNotIf(componentsEquipped, null, components[x].tag1, components[x].id)
+      */
+
+      equipButton(components[x].id, "equip")
     }
 
     if (components[x].id != loadoutData[number].components1 && components[x].tag1 == "components1") {
@@ -663,7 +679,8 @@ function visual_ComponentInfo(component) {
       update("componentRow5", "<div>" + actualComponentDescription2 + format(actualComponentEffect2, "scientific") + "</div>");
     }
 
-    if (actualComponentId == "") {
+    console.log(actualComponentId)
+    if (actualComponentId == undefined) {
       update("componentRow0", "<div> LEVEL UP </div> <div><div>-</div><div>EVERY 10 UPGRADES IT BOOSTS THE COMPONENT</div>")
     }
   }
@@ -723,28 +740,37 @@ function componentSummary() {
 }
 
 function equipButton(moduleName, operation) {
+
+  let tag1 = getNotIf(components, moduleName, "tag1")
+
   if (operation == "equip") {
     for (x in components) {
-      if (components[x].id == moduleName && components[x].tag1 == actualComponentTag1) {
-        setNotIf(components, components[x].id, "active", true)
-      }
-
-
-      else if (components[x].id != moduleName && components[x].tag1 == actualComponentTag1) {
+      console.log(moduleName)
+      if (components[x].id != moduleName && components[x].tag1 == tag1) {
         setNotIf(components, components[x].id, "active", false)
       }
     }
-    componentsEquipped[0][actualComponentTag1] = moduleName;
+
+    for (x in components) {
+      if (components[x].id == moduleName && components[x].tag1 == tag1) {
+        setNotIf(components, components[x].id, "active", true)
+      }
+    }
+    componentsEquipped[0][tag1] = moduleName;
   }
 
   if (operation == "remove") {
     for (x in components) {
       if (components[x].id == moduleName) {
         components[x].active = false;
+        resetImage(components[x].tag1 + "Module")
       }
     }
     componentsEquipped[0][actualComponentTag1] = "";
   }
+  
+  setComponentActive()
+  setTickSpeed()
 }
 
 function visual_EnergyInfo() {
@@ -1250,7 +1276,7 @@ function valuesSetterDinamic() {
 
   setNotIf(gameData, null, "explorationResource1", getNotIf(gameData, null, "explorationResource1") + getNotIf(gameData, null, "explorationResource1Prod"))
 
-
+  setTickSpeed()
   setNotIf(gameData, null, "tickSpeed", getNotIf(gameData, null, "tickSpeedProd"))
 
   if (getNotIf(gameData, null, "cells") < 0) {
@@ -1411,6 +1437,7 @@ function valuesSetter() {
   setNotIf(gameData, null, "energyMax", globalEnergyMax)
   setNotIf(gameData, null, "explorationResource1Prod", globalExplorationResource1Prod)
   setNotIf(gameData, null, "tickSpeedProd", globalTickSpeedProd)
+  setTickSpeed()
   setNotIf(gameData, null, "tickSpeed", getNotIf(gameData, null, "tickSpeedProd"))
 
   //BALANCING
@@ -1421,173 +1448,7 @@ function valuesSetter() {
 
   //COMPONENTS
 
-
-  if (getNotIf(components, "token1", "active")) {
-    setActive(components, "token1", "level", true)
-    setActive(components, "token1", "effect1", true)
-    setActive(components, "token1", "effect2", true)
-    setActive(components, "token1", "price", true)
-  }
-  else if (!(getNotIf(components, "token1", "active"))) {
-    setActive(components, "token1", "level", false)
-    setActive(components, "token1", "effect1", false)
-    setActive(components, "token1", "effect2", false)
-    setActive(components, "token1", "price", false)
-  }
-
-
-  if (getNotIf(components, "token2", "active")) {
-    setActive(components, "token2", "level", true)
-    setActive(components, "token2", "effect1", true)
-    setActive(components, "token2", "effect2", true)
-    setActive(components, "token2", "price", true)
-  }
-  else if (!(getNotIf(components, "token2", "active"))) {
-    setActive(components, "token2", "level", false)
-    setActive(components, "token2", "effect1", false)
-    setActive(components, "token2", "effect2", false)
-    setActive(components, "token2", "price", false)
-  }
-
-
-  if (getNotIf(components, "token3", "active")) {
-    setActive(components, "token3", "level", true)
-    setActive(components, "token3", "effect1", true)
-    setActive(components, "token3", "effect2", true)
-    setActive(components, "token3", "price", true)
-  }
-  else if (!(getNotIf(components, "token3", "active"))) {
-    setActive(components, "token3", "level", false)
-    setActive(components, "token3", "effect1", false)
-    setActive(components, "token3", "effect2", false)
-    setActive(components, "token3", "price", false)
-  }
-
-
-  if (getNotIf(components, "token4", "active")) {
-    setActive(components, "token4", "level", true)
-    setActive(components, "token4", "effect1", true)
-    setActive(components, "token4", "effect2", true)
-    setActive(components, "token4", "price", true)
-  }
-  else if (!(getNotIf(components, "token4", "active"))) {
-    setActive(components, "token4", "level", false)
-    setActive(components, "token4", "effect1", false)
-    setActive(components, "token4", "effect2", false)
-    setActive(components, "token4", "price", false)
-  }
-
-
-  if (getNotIf(components, "token5", "active")) {
-    setActive(components, "token5", "level", true)
-    setActive(components, "token5", "effect1", true)
-    setActive(components, "token5", "effect2", true)
-    setActive(components, "token5", "price", true)
-  }
-  else if (!(getNotIf(components, "token5", "active"))) {
-    setActive(components, "token5", "level", false)
-    setActive(components, "token5", "effect1", false)
-    setActive(components, "token5", "effect2", false)
-    setActive(components, "token5", "price", false)
-  }
-
-
-  if (getNotIf(components, "token6", "active")) {
-    setActive(components, "token6", "level", true)
-    setActive(components, "token6", "effect1", true)
-    setActive(components, "token6", "effect2", true)
-    setActive(components, "token6", "price", true)
-  }
-  else if (!(getNotIf(components, "token6", "active"))) {
-    setActive(components, "token6", "level", false)
-    setActive(components, "token6", "effect1", false)
-    setActive(components, "token6", "effect2", false)
-    setActive(components, "token6", "price", false)
-  }
-
-
-  if (getNotIf(components, "token7", "active")) {
-    setActive(components, "token7", "level", true)
-    setActive(components, "token7", "effect1", true)
-    setActive(components, "token7", "effect2", true)
-    setActive(components, "token7", "price", true)
-  }
-  else if (!(getNotIf(components, "token7", "active"))) {
-    setActive(components, "token7", "level", false)
-    setActive(components, "token7", "effect1", false)
-    setActive(components, "token7", "effect2", false)
-    setActive(components, "token7", "price", false)
-  }
-
-
-  if (getNotIf(components, "token8", "active")) {
-    setActive(components, "token8", "level", true)
-    setActive(components, "token8", "effect1", true)
-    setActive(components, "token8", "effect2", true)
-    setActive(components, "token8", "price", true)
-  }
-  else if (!(getNotIf(components, "token8", "active"))) {
-    setActive(components, "token8", "level", false)
-    setActive(components, "token8", "effect1", false)
-    setActive(components, "token8", "effect2", false)
-    setActive(components, "token8", "price", false)
-  }
-
-
-  if (getNotIf(components, "token9", "active")) {
-    setActive(components, "token9", "level", true)
-    setActive(components, "token9", "effect1", true)
-    setActive(components, "token9", "effect2", true)
-    setActive(components, "token9", "price", true)
-  }
-  else if (!(getNotIf(components, "token9", "active"))) {
-    setActive(components, "token9", "level", false)
-    setActive(components, "token9", "effect1", false)
-    setActive(components, "token9", "effect2", false)
-    setActive(components, "token9", "price", false)
-  }
-
-
-  if (getNotIf(components, "token10", "active")) {
-    setActive(components, "token10", "level", true)
-    setActive(components, "token10", "effect1", true)
-    setActive(components, "token10", "effect2", true)
-    setActive(components, "token10", "price", true)
-  }
-  else if (!(getNotIf(components, "token10", "active"))) {
-    setActive(components, "token10", "level", false)
-    setActive(components, "token10", "effect1", false)
-    setActive(components, "token10", "effect2", false)
-    setActive(components, "token10", "price", false)
-  }
-
-
-  if (getNotIf(components, "token11", "active")) {
-    setActive(components, "token11", "level", true)
-    setActive(components, "token11", "effect1", true)
-    setActive(components, "token11", "effect2", true)
-    setActive(components, "token11", "price", true)
-  }
-  else if (!(getNotIf(components, "token11", "active"))) {
-    setActive(components, "token11", "level", false)
-    setActive(components, "token11", "effect1", false)
-    setActive(components, "token11", "effect2", false)
-    setActive(components, "token11", "price", false)
-  }
-
-
-  if (getNotIf(components, "token12", "active")) {
-    setActive(components, "token12", "level", true)
-    setActive(components, "token12", "effect1", true)
-    setActive(components, "token12", "effect2", true)
-    setActive(components, "token12", "price", true)
-  }
-  else if (!(getNotIf(components, "token12", "active"))) {
-    setActive(components, "token12", "level", false)
-    setActive(components, "token12", "effect1", false)
-    setActive(components, "token12", "effect2", false)
-    setActive(components, "token12", "price", false)
-  }
+  setComponentActive()
 
   //producer
   let componentsToken1Level = getNotIf(components, "token1", "level")
@@ -2548,7 +2409,7 @@ function setTickSpeed() {
 
   let globalTickSpeedProd = 1000 * tickspeed2 * tickspeed3
 
-  setNotIf(gameData, null, "tickSpeed", globalTickSpeedProd)
+  setNotIf(gameData, null, "tickSpeedProd", globalTickSpeedProd)
 
 }
 
@@ -2678,6 +2539,49 @@ function setComponentActive() {
     setActive(components, "token9", "effect2", false)
     setActive(components, "token9", "price", false)
   }
+
+
+  if (getNotIf(components, "token10", "active")) {
+    setActive(components, "token10", "level", true)
+    setActive(components, "token10", "effect1", true)
+    setActive(components, "token10", "effect2", true)
+    setActive(components, "token10", "price", true)
+  }
+  else if (!(getNotIf(components, "token10", "active"))) {
+    setActive(components, "token10", "level", false)
+    setActive(components, "token10", "effect1", false)
+    setActive(components, "token10", "effect2", false)
+    setActive(components, "token10", "price", false)
+  }
+
+
+  if (getNotIf(components, "token11", "active")) {
+    setActive(components, "token11", "level", true)
+    setActive(components, "token11", "effect1", true)
+    setActive(components, "token11", "effect2", true)
+    setActive(components, "token11", "price", true)
+  }
+  else if (!(getNotIf(components, "token11", "active"))) {
+    setActive(components, "token11", "level", false)
+    setActive(components, "token11", "effect1", false)
+    setActive(components, "token11", "effect2", false)
+    setActive(components, "token11", "price", false)
+  }
+
+
+  if (getNotIf(components, "token12", "active")) {
+    setActive(components, "token12", "level", true)
+    setActive(components, "token12", "effect1", true)
+    setActive(components, "token12", "effect2", true)
+    setActive(components, "token12", "price", true)
+  }
+  else if (!(getNotIf(components, "token12", "active"))) {
+    setActive(components, "token12", "level", false)
+    setActive(components, "token12", "effect1", false)
+    setActive(components, "token12", "effect2", false)
+    setActive(components, "token12", "price", false)
+  }
+
 }
 
 //buy zone
@@ -3110,22 +3014,14 @@ document.getElementById("loadoutName3").onmouseleave = function () {
 //equip module
 document.getElementById("equipButton").onclick = function () {
   equipButton(actualComponentId, "equip");
-  setComponentActive()
-  setTickSpeed()
   valuesSetter()
   manualVisualLoop()
-  setComponentActive()
 }
 
 document.getElementById("removeButton").onclick = function () {
   equipButton(actualComponentId, "remove")
-  setComponentActive()
-  resetImage(actualComponentTag1 + "Module")
-  setComponentActive()
-  setTickSpeed()
   valuesSetter()
   manualVisualLoop()
-  setComponentActive()
 }
 
 //components upgrade
@@ -3636,15 +3532,6 @@ function manualVisualLoop() {
   LoopShow()
 }
 
-window.addEventListener('beforeunload', function() {
-  saveGameData();
-});
-
-window.addEventListener('visibilitychange', function() {
-  if (document.visibilityState === 'hidden') {
-    saveGameData();
-  }
-});
 
 if (localStorage.getItem("HyperStructureSave") !== null) {
   var savedGameData = JSON.parse(localStorage.getItem("HyperStructureSave"));
@@ -3757,7 +3644,7 @@ if (localStorage.getItem("HyperStructureSave") !== null) {
 
 }
 
-var SaveGameLoop = window.setInterval(function () {
+function saveGameData() {
   var saveData = {
     gameData: gameData,
     componentsEquipped: componentsEquipped,
@@ -3788,10 +3675,12 @@ var SaveGameLoop = window.setInterval(function () {
     Rshowable: Rshowable,
   };
 
-  
   localStorage.setItem("HyperStructureSave", JSON.stringify(saveData));
 
-  
+}
+
+var SaveGameLoop = window.setInterval(function () {
+  saveGameData()
 }, 50);
 
 function updateSavedArrays(savedArray, defaultArray, newDefaultArray) {
@@ -3823,7 +3712,7 @@ function updateSavedArrays(savedArray, defaultArray, newDefaultArray) {
 
 
 function updateGame() {
-  if (init1 = true) {
+  if (getNotIf(gameData, null, "init1")) {
     updateSavedArrays(gameData, savedGameData.RgameData, RgameData);
     updateSavedArrays(componentsEquipped, savedGameData.RcomponentsEquipped, RcomponentsEquipped);
     updateSavedArrays(components, savedGameData.Rcomponents, Rcomponents);
@@ -3906,7 +3795,7 @@ function resetSave() {
       Rautomation = savedGameData.Rautomation,
       Rshowable = savedGameData.Rshowable,
 
-      init1 = true;
+      setNotIf(gameData, null, "init1", true)
 
     resetStyleAll()
   }
@@ -4264,8 +4153,8 @@ function LoopShow() {
     }
   }
 
-  if (init1) {
-    init1 = false
+  if (getNotIf(gameData, null, "init1")) {
+    setNotIf(gameData, null, "init1", false)
 
     actualComponentId = ""
     tab(core)
