@@ -503,62 +503,31 @@ function updateClass(cla, content) {
 
 function loadoutLoad(number) {
   for (let x in components) {
-
     if (components[x].id == loadoutData[number].components1) {
-
-      /*
-      setNotIf(components, components[x].id, "active", true)
-      setNotIf(componentsEquipped, null, components[x].tag1, components[x].id)
-      */
-
       equipButton(components[x].id, "equip")
     }
 
     if (components[x].id == loadoutData[number].components2) {
-
-      /*
-      setNotIf(components, components[x].id, "active", true)
-      setNotIf(componentsEquipped, null, components[x].tag1, components[x].id)
-      */
-
       equipButton(components[x].id, "equip")
     }
 
     if (components[x].id == loadoutData[number].components3) {
-
-      /*
-      setNotIf(components, components[x].id, "active", true)
-      setNotIf(componentsEquipped, null, components[x].tag1, components[x].id)
-      */
-
       equipButton(components[x].id, "equip")
     }
 
-    if (components[x].id != loadoutData[number].components1 && components[x].tag1 == "components1") {
-      setNotIf(components, components[x].id, "active", false)
-    }
-
-    if (components[x].id != loadoutData[number].components2 && components[x].tag1 == "components2") {
-      setNotIf(components, components[x].id, "active", false)
-    }
-
-    if (components[x].id != loadoutData[number].components3 && components[x].tag1 == "components3") {
-      setNotIf(components, components[x].id, "active", false)
-    }
-
     if (loadoutData[number].components1 == "" && components[x].tag1 == "components1") {
-      setNotIf(components, components[x].id, "active", false)
-      setNotIf(componentsEquipped, null, components[x].tag1, "")
+      equipButton(components[x].id, "remove")
+
     }
 
     if (loadoutData[number].components2 == "" && components[x].tag1 == "components2") {
-      setNotIf(components, components[x].id, "active", false)
-      setNotIf(componentsEquipped, null, components[x].tag1, "")
+      equipButton(components[x].id, "remove")
+
     }
 
     if (loadoutData[number].components3 == "" && components[x].tag1 == "components3") {
-      setNotIf(components, components[x].id, "active", false)
-      setNotIf(componentsEquipped, null, components[x].tag1, "")
+      equipButton(components[x].id, "remove")
+
     }
   }
 }
@@ -749,6 +718,9 @@ function equipButton(moduleName, operation) {
     for (x in components) {
       if (components[x].id != moduleName && components[x].tag1 == tag1) {
         setNotIf(components, components[x].id, "active", false)
+
+        setTickSpeed()
+        setComponentActive()
       }
     }
 
@@ -758,6 +730,9 @@ function equipButton(moduleName, operation) {
     for (x in components) {
       if (components[x].id == moduleName && components[x].tag1 == tag1) {
         setNotIf(components, components[x].id, "active", true)
+
+        setTickSpeed()
+        setComponentActive()
       }
     }
     componentsEquipped[0][tag1] = moduleName;
@@ -771,6 +746,9 @@ function equipButton(moduleName, operation) {
       if (components[x].id == moduleName) {
         components[x].active = false;
         resetImage(components[x].tag1 + "Module")
+
+        setTickSpeed()
+        setComponentActive()
       }
     }
     componentsEquipped[0][actualComponentTag1] = "";
