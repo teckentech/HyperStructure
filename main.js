@@ -1,5 +1,7 @@
 //control + shift + f: auto indent 
 
+
+
 let gameData = [{
   cells: 0,
   cellsProd: 0,
@@ -399,7 +401,7 @@ let showable = [
 
     automation: false, automation1: false, automation1Button: false, automation2: false, automation2Button: false,
 
-    visualModule1: false, visualModule2: false, visualModule3: false, visualModule4: false, visualModule5: false, visualModule6: false,
+    visualModule1: false, visualModule2: false, visualModule3: false,
 
 
     visualComponentTab: false,
@@ -721,11 +723,13 @@ function equipButton(moduleName, operation) {
 
         setTickSpeed()
         setComponentActive()
+        valuesSetter()
       }
     }
 
     setTickSpeed()
     setComponentActive()
+    valuesSetter()
 
     for (x in components) {
       if (components[x].id == moduleName && components[x].tag1 == tag1) {
@@ -733,6 +737,7 @@ function equipButton(moduleName, operation) {
 
         setTickSpeed()
         setComponentActive()
+        valuesSetter()
       }
     }
     componentsEquipped[0][tag1] = moduleName;
@@ -740,6 +745,7 @@ function equipButton(moduleName, operation) {
 
   setTickSpeed()
   setComponentActive()
+  valuesSetter()
 
   if (operation == "remove") {
     for (x in components) {
@@ -749,6 +755,7 @@ function equipButton(moduleName, operation) {
 
         setTickSpeed()
         setComponentActive()
+        valuesSetter()
       }
     }
     componentsEquipped[0][actualComponentTag1] = "";
@@ -756,6 +763,7 @@ function equipButton(moduleName, operation) {
 
   setTickSpeed()
   setComponentActive()
+  valuesSetter()
 }
 
 function visual_EnergyInfo() {
@@ -876,17 +884,17 @@ function getActualComponentIdentity() {
 
 
 function visual_valute() {
-  update("cellsValute", format(gameData[0].cells, "scientific") + " Cells")
-  update("cellsPerSecondValute", format(gameData[0].cellsProd, "scientific") + " cells/s")
+  update("cellsValute", format(gameData[0].cells, "scientific") + "<div>Cells</div>")
+  update("cellsPerSecondValute", format(gameData[0].cellsProd, "scientific") + "<div>cells/s</div>")
 
-  update("dataValute", format(gameData[0].data, "scientific") + " Data")
-  update("dataPerSecondValute", format(gameData[0].dataProd, "scientific") + " Data/s")
+  update("dataValute", format(gameData[0].data, "scientific") + "<div>Data</div>")
+  update("dataPerSecondValute", format(gameData[0].dataProd, "scientific") + "<div>Data/s</div>")
 
-  update("energyValute", format(gameData[0].energy, "scientific") + "/" + format(gameData[0].energyMax, "scientific") + " Energy")
-  update("energyPerSecondValute", format(gameData[0].energyProd, "scientific") + " Energy/s")
+  update("energyValute", format(gameData[0].energy, "scientific") + "/" + format(gameData[0].energyMax, "scientific") + "<div>Energy</div>")
+  update("energyPerSecondValute", format(gameData[0].energyProd, "scientific") + "<div>Energy/s</div>")
 
-  update("asteroidsValute", format(gameData[0].explorationResource1, "scientific") + " Asteroids")
-  update("asteroidsPerSecondValute", format(gameData[0].explorationResource1Prod, "scientific") + " Asteroids/s")
+  update("asteroidsValute", format(gameData[0].explorationResource1, "scientific") + "<div>Asteroids</div>")
+  update("asteroidsPerSecondValute", format(gameData[0].explorationResource1Prod, "scientific") + "<div>Asteroids/s</div>")
 }
 
 function getArrayValue(array, value) {
@@ -1283,8 +1291,8 @@ function valuesSetterDinamic() {
   offProgressCheck()
 }
 
-function offProgressCheck(){
-  
+function offProgressCheck() {
+
   if (getIfActive(projects, "unlockable9", "unlocked")) {
     setNotIf(gameData, null, "offProgressLimit", 3600)
   }
@@ -3499,7 +3507,7 @@ var mainGameLoop = window.setInterval(function () {
   let diff = Date.now() - gameData[0].lastTick
   let diffSec = diff / 1000;
 
-offProgressCheck()
+  offProgressCheck()
   if (diffSec > gameData[0].offProgressLimit) {
     diffSec = gameData[0].offProgressLimit;
   }
@@ -3570,8 +3578,10 @@ function manualVisualLoop() {
 }
 
 
+
 if (localStorage.getItem("HyperStructureSave") !== null) {
   var savedGameData = JSON.parse(localStorage.getItem("HyperStructureSave"));
+
   if (savedGameData.gameData) {
     gameData = savedGameData.gameData;
   }
@@ -3624,8 +3634,7 @@ if (localStorage.getItem("HyperStructureSave") !== null) {
     showable = savedGameData.showable;
   }
 
-  updateGame()
-  ///////////////////////////
+
 
   if (savedGameData.RgameData) {
     RgameData = savedGameData.RgameData
@@ -3679,6 +3688,8 @@ if (localStorage.getItem("HyperStructureSave") !== null) {
     Rshowable = savedGameData.Rshowable
   }
 
+  updateGame(false)
+
 }
 
 function saveGameData() {
@@ -3718,53 +3729,398 @@ function saveGameData() {
 
 var SaveGameLoop = window.setInterval(function () {
   saveGameData()
-}, 50);
+}, 1000);
 
-function updateSavedArrays(savedArray, defaultArray, newDefaultArray) {
-  const newDefaultMap = newDefaultArray.reduce((map, item) => {
-    map[item.id] = item;
-    return map;
-  }, {});
+function updateGame(a) {
+  if (getNotIf(gameData, null, "init1") || a == true) {
 
-  for (let i = 0; i < savedArray.length; i++) {
-    const savedItem = savedArray[i];
-    const newItem = newDefaultMap[savedItem.id];
-    if (newItem) {
-      for (let key in savedItem) {
-        if (defaultArray[i][key] !== newItem[key]) {
-          savedItem[key] = newItem[key];
+    updateSavedArrays(savedGameData.RgameData, RgameData);
+    updateSavedArrays(savedGameData.RcomponentsEquipped, RcomponentsEquipped);
+    updateSavedArrays(savedGameData.Rcomponents, Rcomponents);
+    updateSavedArrays(savedGameData.RexplorationUpgrades, RexplorationUpgrades);
+    updateSavedArrays(savedGameData.RexplorationSelected, RexplorationSelected);
+    updateSavedArrays(savedGameData.Rdata, Rdata);
+    updateSavedArrays(savedGameData.RdataUpgrades, RdataUpgrades);
+    updateSavedArrays(savedGameData.RenergyBuilding, RenergyBuilding);
+    updateSavedArrays(savedGameData.Rrefining, Rrefining);
+    updateSavedArrays(savedGameData.Rprojects, Rprojects);
+    updateSavedArrays(savedGameData.RloadoutData, RloadoutData);
+    updateSavedArrays(savedGameData.Rautomation, Rautomation);
+    //updateSavedArrays(savedGameData.Rshowable, Rshowable);
+
+    updateSavedArrays(savedGameData.gameData, gameData);
+    updateSavedArrays(savedGameData.componentsEquipped, componentsEquipped);
+    updateSavedArrays(savedGameData.components, components);
+    updateSavedArrays(savedGameData.explorationUpgrades, explorationUpgrades);
+    updateSavedArrays(savedGameData.explorationSelected, explorationSelected);
+    updateSavedArrays(savedGameData.data, data);
+    updateSavedArrays(savedGameData.dataUpgrades, dataUpgrades);
+    updateSavedArrays(savedGameData.energyBuilding, energyBuilding);
+    updateSavedArrays(savedGameData.refining, refining);
+    updateSavedArrays(savedGameData.projects, projects);
+    updateSavedArrays(savedGameData.loadoutData, loadoutData);
+    updateSavedArrays(savedGameData.automation, automation);
+    //updateSavedArrays(savedGameData.showable, showable);
+  }
+}
+
+function updateSavedArrays(obj1, obj2) {
+  savedGameData[obj2] = { ...obj1, ...obj2 };
+}
+
+
+
+/*
+function updateSavedArrays(savedArray, ArrayCheck) {
+  var index;
+  var index2;
+  var selKey;
+  //1. controlla se i due array hanno un solo array, se si procedi al passo 1.1
+
+  if (savedArray.length == 1 && ArrayCheck.length == 1) {
+    // 1.1: rimuovi le chiavi da savedArray che non esistono in ArrayCheck
+    for (let i in savedArray) {
+      Object.keys(savedArray[i]).forEach(chiave1 => {
+        // Imposta l'indice corrente e la chiave
+        index = i;
+        selKey = chiave1;
+
+        // Imposta il flag di eliminazione
+        let eliminate = true;
+
+        for (let j in ArrayCheck) {
+          if (ArrayCheck[j].hasOwnProperty(chiave1)) {
+            eliminate = false;
+            break;
+          }
         }
-      }
-      delete newDefaultMap[savedItem.id];
-    } else {
-      savedArray.splice(i, 1);
-      i--;
+
+        if (eliminate) {
+          delete savedArray[index][selKey];
+        }
+      });
+    }
+
+    // Elimina gli oggetti vuoti da savedArray
+    savedArray = savedArray.filter(obj => Object.keys(obj).length > 0);
+
+    // Secondo passaggio: aggiungi le chiavi da ArrayCheck a savedArray
+    for (let k in ArrayCheck) {
+      Object.keys(ArrayCheck[k]).forEach(chiave2 => {
+        // Imposta l'indice corrente e la chiave
+        index = k;
+        selKey = chiave2;
+
+        // Controlla se la chiave già esiste in savedArray
+        let chiaveEsistente = false;
+
+        for (let z in savedArray) {
+          if (savedArray[z].hasOwnProperty(chiave2)) {
+            chiaveEsistente = true;
+            break;
+          }
+        }
+
+        // Se la chiave non esiste, aggiungila a un oggetto esistente o come nuovo oggetto
+        if (!chiaveEsistente) {
+          if (ArrayCheck[k][chiave2] instanceof Object && !Array.isArray(ArrayCheck[k][chiave2])) {
+            // Aggiungi chiave come oggetto separato
+            savedArray.push({ [chiave2]: ArrayCheck[k][chiave2] });
+          } else {
+            // Aggiungi la chiave all'oggetto esistente
+            for (let z in savedArray) {
+              if (!savedArray[z].hasOwnProperty(chiave2)) {
+                savedArray[z][chiave2] = ArrayCheck[k][chiave2];
+              }
+            }
+          }
+        }
+      });
     }
   }
-  for (let id in newDefaultMap) {
-    savedArray.push(newDefaultMap[id]);
+
+  //2.1----------------------------------------------------
+  for (let i in savedArray) {
+    Object.keys(savedArray[i]).forEach(chiave1 => {
+      // Imposta l'indice corrente e la chiave
+      index = i;
+      selKey = chiave1;
+
+      // Imposta il flag di eliminazione
+      let eliminate = true;
+
+      if (chiave1 == "id") {
+        for (let j in ArrayCheck) {
+          if ((ArrayCheck[j].id) == savedArray[i][chiave1]) {
+            eliminate = false;
+            break;
+          }
+        }
+        if (eliminate) {
+          for (let x in savedArray[index]) {
+            delete savedArray[index][x]
+          }
+        }
+      }
+    });
+  }
+
+  // Elimina gli oggetti vuoti da savedArray
+  savedArray = savedArray.filter(obj => Object.keys(obj).length > 0);
+
+  //2.3 ora per tutti gli array con l' id uguale, aggiungi gli elementi nuovi
+  for (let k in ArrayCheck) {
+    Object.keys(ArrayCheck[k]).forEach(chiave2 => {
+      // Imposta l'indice corrente e la chiave
+      index = k;
+      selKey = chiave2;
+
+      // Controlla se la chiave già esiste in savedArray
+      let chiaveEsistente = false;
+
+      for (let z in savedArray) {
+        if (savedArray[z].id == ArrayCheck[k].id) {
+          if (savedArray[z].hasOwnProperty(chiave2)) {
+            chiaveEsistente = true;
+            break;
+          }
+        }
+      }
+
+      // Se la chiave non esiste, aggiungila a un oggetto esistente o come nuovo oggetto
+      if (!chiaveEsistente) {
+        if (ArrayCheck[k][chiave2] instanceof Object && !Array.isArray(ArrayCheck[k][chiave2])) {
+          // Aggiungi chiave come oggetto separato
+          savedArray.push({ [chiave2]: ArrayCheck[k][chiave2] });
+        } else {
+          // Aggiungi la chiave all'oggetto esistente
+          for (let z in savedArray) {
+            if (!savedArray[z].hasOwnProperty(chiave2)) {
+              savedArray[z][chiave2] = ArrayCheck[k][chiave2];
+            }
+          }
+        }
+      }
+    });
+  }
+
+  //aggiungi array che non esistono in savedArray
+  for (let k in ArrayCheck) {
+    Object.keys(ArrayCheck[k]).forEach(chiave1 => {
+      let eliminate = true;
+      index = k;
+      if (chiave1 == "id") {
+        for (let z in savedArray) {
+          Object.keys(savedArray[z]).forEach(chiave2 => {
+
+            if (chiave2 == "id") {
+              if (ArrayCheck[k][chiave1] == savedArray[z][chiave2]) {
+                eliminate = false;
+                return
+              }
+
+              if (ArrayCheck[k][chiave1] != savedArray[z][chiave2]) {
+                index = k
+              }
+            }
+          });
+        }
+        if (eliminate) {
+          savedArray.push(ArrayCheck[index])
+        }
+      }
+    });
   }
 }
 
 
 
-function updateGame() {
-  if (getNotIf(gameData, null, "init1")) {
-    updateSavedArrays(gameData, savedGameData.RgameData, RgameData);
-    updateSavedArrays(componentsEquipped, savedGameData.RcomponentsEquipped, RcomponentsEquipped);
-    updateSavedArrays(components, savedGameData.Rcomponents, Rcomponents);
-    updateSavedArrays(explorationUpgrades, savedGameData.RexplorationUpgrades, RexplorationUpgrades);
-    updateSavedArrays(explorationSelected, savedGameData.RexplorationSelected, RexplorationSelected);
-    updateSavedArrays(data, savedGameData.Rdata, Rdata);
-    updateSavedArrays(dataUpgrades, savedGameData.RdataUpgrades, RdataUpgrades);
-    updateSavedArrays(energyBuilding, savedGameData.RenergyBuilding, RenergyBuilding);
-    updateSavedArrays(refining, savedGameData.Rrefining, Rrefining);
-    updateSavedArrays(projects, savedGameData.Rprojects, Rprojects);
-    updateSavedArrays(loadoutData, savedGameData.RloadoutData, RloadoutData);
-    updateSavedArrays(automation, savedGameData.Rautomation, Rautomation);
-    updateSavedArrays(showable, savedGameData.Rshowable, Rshowable);
+if (localStorage.getItem("HyperStructureSave") !== null) {
+  var savedGameData = JSON.parse(localStorage.getItem("HyperStructureSave"));
+
+  if (savedGameData.gameData) {
+    gameData = savedGameData.gameData;
+  }
+
+  if (savedGameData.components) {
+    components = savedGameData.components;
+  }
+
+  if (savedGameData.componentsEquipped) {
+    componentsEquipped = savedGameData.componentsEquipped;
+  }
+
+  if (savedGameData.explorationUpgrades) {
+    explorationUpgrades = savedGameData.explorationUpgrades;
+  }
+
+  if (savedGameData.explorationSelected) {
+    explorationSelected = savedGameData.explorationSelected;
+  }
+
+  if (savedGameData.data) {
+    data = data;
+  }
+
+  if (savedGameData.dataUpgrades) {
+    dataUpgrades = dataUpgrades;
+  }
+
+  if (savedGameData.energyBuilding) {
+    energyBuilding = savedGameData.energyBuilding;
+  }
+
+  if (savedGameData.refining) {
+    refining = refining;
+  }
+
+  if (savedGameData.projects) {
+    projects = savedGameData.projects;
+  }
+
+  if (savedGameData.loadoutData) {
+    loadoutData = savedGameData.loadoutData;
+  }
+
+  if (savedGameData.automation) {
+    automation = savedGameData.automation;
+  }
+
+  if (savedGameData.showable) {
+    showable = savedGameData.showable;
+  }
+
+
+
+  if (savedGameData.RgameData) {
+    RgameData = savedGameData.RgameData
+  }
+
+  if (savedGameData.Rcomponents) {
+    Rcomponents = savedGameData.Rcomponents
+  }
+
+  if (savedGameData.RcomponentsEquipped) {
+    RcomponentsEquipped = savedGameData.RcomponentsEquipped
+  }
+
+  if (savedGameData.RexplorationUpgrades) {
+    RexplorationUpgrades = savedGameData.RexplorationUpgrades
+  }
+
+  if (savedGameData.RexplorationSelected) {
+    RexplorationSelected = savedGameData.RexplorationSelected
+  }
+
+  if (savedGameData.Rdata) {
+    Rdata = savedGameData.Rdata
+  }
+
+  if (savedGameData.RdataUpgrades) {
+    RdataUpgrades = savedGameData.RdataUpgrades
+  }
+
+  if (savedGameData.RenergyBuilding) {
+    RenergyBuilding = savedGameData.RenergyBuilding
+  }
+
+  if (savedGameData.Rrefining) {
+    Rrefining = savedGameData.Rrefining
+  }
+
+  if (savedGameData.Rprojects) {
+    Rprojects = savedGameData.Rprojects
+  }
+
+  if (savedGameData.RloadoutData) {
+    RloadoutData = savedGameData.RloadoutData
+  }
+
+  if (savedGameData.Rautomation) {
+    Rautomation = savedGameData.Rautomation
+  }
+
+  if (savedGameData.Rshowable) {
+    Rshowable = savedGameData.Rshowable
+  }
+
+  updateGame(false)
+
+}
+  */
+
+function saveGameData() {
+  var saveData = {
+    gameData: gameData,
+    componentsEquipped: componentsEquipped,
+    components: components,
+    explorationUpgrades: explorationUpgrades,
+    explorationSelected: explorationSelected,
+    data: data,
+    dataUpgrades: dataUpgrades,
+    energyBuilding: energyBuilding,
+    refining: refining,
+    projects: projects,
+    loadoutData: loadoutData,
+    automation: automation,
+    showable: showable,
+
+    RgameData: RgameData,
+    RcomponentsEquipped: RcomponentsEquipped,
+    Rcomponents: Rcomponents,
+    RexplorationUpgrades: RexplorationUpgrades,
+    RexplorationSelected: RexplorationSelected,
+    Rdata: Rdata,
+    RdataUpgrades: RdataUpgrades,
+    RenergyBuilding: RenergyBuilding,
+    Rrefining: Rrefining,
+    Rprojects: Rprojects,
+    RloadoutData: RloadoutData,
+    Rautomation: Rautomation,
+    Rshowable: Rshowable,
+  };
+
+  localStorage.setItem("HyperStructureSave", JSON.stringify(saveData));
+
+}
+
+var SaveGameLoop = window.setInterval(function () {
+  saveGameData()
+}, 1000);
+
+function updateGame(a) {
+  if (getNotIf(gameData, null, "init1") || a == true) {
+
+    updateSavedArrays(savedGameData.RgameData, RgameData);
+    updateSavedArrays(savedGameData.RcomponentsEquipped, RcomponentsEquipped);
+    updateSavedArrays(savedGameData.Rcomponents, Rcomponents);
+    updateSavedArrays(savedGameData.RexplorationUpgrades, RexplorationUpgrades);
+    updateSavedArrays(savedGameData.RexplorationSelected, RexplorationSelected);
+    updateSavedArrays(savedGameData.Rdata, Rdata);
+    updateSavedArrays(savedGameData.RdataUpgrades, RdataUpgrades);
+    updateSavedArrays(savedGameData.RenergyBuilding, RenergyBuilding);
+    updateSavedArrays(savedGameData.Rrefining, Rrefining);
+    updateSavedArrays(savedGameData.Rprojects, Rprojects);
+    updateSavedArrays(savedGameData.RloadoutData, RloadoutData);
+    updateSavedArrays(savedGameData.Rautomation, Rautomation);
+    updateSavedArrays(savedGameData.Rshowable, Rshowable);
+
+    updateSavedArrays(savedGameData.gameData, gameData);
+    updateSavedArrays(savedGameData.componentsEquipped, componentsEquipped);
+    updateSavedArrays(savedGameData.components, components);
+    updateSavedArrays(savedGameData.explorationUpgrades, explorationUpgrades);
+    updateSavedArrays(savedGameData.explorationSelected, explorationSelected);
+    updateSavedArrays(savedGameData.data, data);
+    updateSavedArrays(savedGameData.dataUpgrades, dataUpgrades);
+    updateSavedArrays(savedGameData.energyBuilding, energyBuilding);
+    updateSavedArrays(savedGameData.refining, refining);
+    updateSavedArrays(savedGameData.projects, projects);
+    updateSavedArrays(savedGameData.loadoutData, loadoutData);
+    updateSavedArrays(savedGameData.automation, automation);
+    updateSavedArrays(savedGameData.showable, showable);
   }
 }
+
 
 function resetSave() {
   if (localStorage.getItem("HyperStructureSave") !== null) {
@@ -3884,15 +4240,23 @@ function exportSave() {
 
 }
 
+
 function importSave() {
   var encryptedData = document.getElementById("Save").value;
   var decryptedData = CryptoJS.AES.decrypt(encryptedData, secretKey);
   var originalData = decryptedData.toString(CryptoJS.enc.Utf8);
   localStorage.setItem("HyperStructureSave", originalData);
 
+
   var savedGameData = JSON.parse(localStorage.getItem("HyperStructureSave"));
+
+  updateGame()
+
   gameData = savedGameData.gameData;
-  componentsEquipped = savedGameData.componentsEquipped
+
+  
+
+  componentsEquipped = savedGameData.componentsEquipped;
   components = savedGameData.components;
   explorationUpgrades = savedGameData.explorationUpgrades;
   explorationSelected = savedGameData.explorationSelected;
@@ -3905,20 +4269,18 @@ function importSave() {
   automation = savedGameData.automation;
   showable = savedGameData.showable;
 
-  updateGame()
-
-  RgameData = savedGameData.RgameData,
-    RcomponentsEquipped = savedGameData.RcomponentsEquipped,
-    Rcomponents = savedGameData.Rcomponents,
-    RexplorationUpgrades = savedGameData.RexplorationUpgrades,
-    RexplorationSelected = savedGameData.RexplorationSelected,
-    Rdata = savedGameData.Rdata,
-    RdataUpgrades = savedGameData.RdataUpgrades,
-    RenergyBuilding = savedGameData.RenergyBuilding,
-    Rrefining = savedGameData.Rrefining,
-    Rprojects = savedGameData.Rprojects,
-    RloadoutData = savedGameData.RloadoutData,
-    Rautomation = savedGameData.Rautomation,
+  RgameData = savedGameData.RgameData;
+    RcomponentsEquipped = savedGameData.RcomponentsEquipped;
+    Rcomponents = savedGameData.Rcomponents;
+    RexplorationUpgrades = savedGameData.RexplorationUpgrades;
+    RexplorationSelected = savedGameData.RexplorationSelected;
+    Rdata = savedGameData.Rdata;
+    RdataUpgrades = savedGameData.RdataUpgrades;
+    RenergyBuilding = savedGameData.RenergyBuilding;
+    Rrefining = savedGameData.Rrefining;
+    Rprojects = savedGameData.Rprojects;
+    RloadoutData = savedGameData.RloadoutData;
+    Rautomation = savedGameData.Rautomation;
     Rshowable = savedGameData.Rshowable
 }
 
@@ -3976,7 +4338,7 @@ function manualSave() {
     showable = savedGameData.showable;
   }
 
-  updateGame()
+  updateGame(false)
   ///////////////////////////
 
   if (savedGameData.RgameData) {
@@ -4716,68 +5078,31 @@ function automationActuator() {
     valuesSetter()
   }
 }
+saveGameData()
+if (typeof savedGameData.RgameData !== undefined) RgameData = savedGameData.RgameData
+if (typeof savedGameData.RcomponentsEquipped !== undefined) RcomponentsEquipped = savedGameData.RcomponentsEquipped
+if (typeof savedGameData.Rcomponents !== undefined) Rcomponents = savedGameData.Rcomponents
+if (typeof savedGameData.RexplorationUpgrades !== undefined) RexplorationUpgrades = savedGameData.RexplorationUpgrades
+if (typeof savedGameData.RexplorationSelected !== undefined) RexplorationSelected = savedGameData.RexplorationSelected
+if (typeof savedGameData.Rdata !== undefined) Rdata = savedGameData.Rdata
+if (typeof savedGameData.RdataUpgrades !== undefined) RdataUpgrades = savedGameData.RdataUpgrades
+if (typeof savedGameData.RenergyBuilding !== undefined) RenergyBuilding = savedGameData.RenergyBuilding
+if (typeof savedGameData.Rrefining !== undefined) Rrefining = savedGameData.Rrefining
+if (typeof savedGameData.Rprojects !== undefined) Rprojects = savedGameData.Rprojects
+if (typeof savedGameData.RloadoutData !== undefined) RloadoutData = savedGameData.RloadoutData
+if (typeof savedGameData.Rautomation !== undefined) Rautomation = savedGameData.Rautomation
+if (typeof savedGameData.Rshowable !== undefined) Rshowable = savedGameData.Rshowable
 
-
-if (typeof savedGameData.gameData !== "undefined") gameData = savedGameData.gameData
-if (typeof savedGameData.componentsEquipped !== "undefined") componentsEquipped = savedGameData.componentsEquipped
-if (typeof savedGameData.components !== "undefined") components = savedGameData.components
-if (typeof savedGameData.explorationUpgrades !== "undefined") explorationUpgrades = savedGameData.explorationUpgrades
-if (typeof savedGameData.explorationSelected !== "undefined") explorationSelected = savedGameData.explorationSelected
-if (typeof savedGameData.data !== "undefined") data = savedGameData.data
-if (typeof savedGameData.dataUpgrades !== "undefined") dataUpgrades = savedGameData.dataUpgrades
-if (typeof savedGameData.energyBuilding !== "undefined") energyBuilding = savedGameData.energyBuilding
-if (typeof savedGameData.refining !== "undefined") refining = savedGameData.refining
-if (typeof savedGameData.projects !== "undefined") projects = savedGameData.projects
-if (typeof savedGameData.loadoutData !== "undefined") loadoutData = savedGameData.loadoutData
-if (typeof savedGameData.automation !== "undefined") automation = savedGameData.automation
-if (typeof savedGameData.showable !== "undefined") showable = savedGameData.showable
-
-
-
-if (typeof savedGameData.RgameData !== "undefined") RgameData = savedGameData.RgameData
-if (typeof savedGameData.RcomponentsEquipped !== "undefined") RcomponentsEquipped = savedGameData.RcomponentsEquipped
-if (typeof savedGameData.Rcomponents !== "undefined") Rcomponents = savedGameData.Rcomponents
-if (typeof savedGameData.RexplorationUpgrades !== "undefined") RexplorationUpgrades = savedGameData.RexplorationUpgrades
-if (typeof savedGameData.RexplorationSelected !== "undefined") RexplorationSelected = savedGameData.RexplorationSelected
-if (typeof savedGameData.Rdata !== "undefined") Rdata = savedGameData.Rdata
-if (typeof savedGameData.RdataUpgrades !== "undefined") RdataUpgrades = savedGameData.RdataUpgrades
-if (typeof savedGameData.RenergyBuilding !== "undefined") RenergyBuilding = savedGameData.RenergyBuilding
-if (typeof savedGameData.Rrefining !== "undefined") Rrefining = savedGameData.Rrefining
-if (typeof savedGameData.Rprojects !== "undefined") Rprojects = savedGameData.Rprojects
-if (typeof savedGameData.RloadoutData !== "undefined") RloadoutData = savedGameData.RloadoutData
-if (typeof savedGameData.Rautomation !== "undefined") Rautomation = savedGameData.Rautomation
-if (typeof savedGameData.Rshowable !== "undefined") Rshowable = savedGameData.Rshowable
-
-//VALORI DI MANAGEMENT RESET DATI
-
-/*
-gameData = savedGameData.RgameData
-componentsEquipped = savedGameData.RcomponentsEquipped
-components = savedGameData.Rcomponents
-explorationUpgrades = savedGameData.RexplorationUpgrades
-explorationSelected = savedGameData.RexplorationSelected
-data = savedGameData.Rdata
-dataUpgrades = savedGameData.RdataUpgrades
-energyBuilding = savedGameData.RenergyBuilding
-refining = savedGameData.Rrefining
-//rarity = savedGameData.Rrarity
-projects = savedGameData.Rprojects
-loadoutData = savedGameData.RloadoutData
-automation = savedGameData.Rautomation
-showable = savedGameData.Rshowable
-
-RgameData= savedGameData.RgameData,
-RcomponentsEquipped= savedGameData.RcomponentsEquipped,
-Rcomponents= savedGameData.Rcomponents,
-RexplorationUpgrades= savedGameData.RexplorationUpgrades,
-RexplorationSelected= savedGameData.RexplorationSelected,
-Rdata= savedGameData.Rdata,
-RdataUpgrades= savedGameData.RdataUpgrades,
-RenergyBuilding= savedGameData.RenergyBuilding,
-Rrefining= savedGameData.Rrefining,
-//Rrarity= savedGameData.Rrarity,
-Rprojects= savedGameData.Rprojects,
-RloadoutData= savedGameData.RloadoutData,
-Rautomation = savedGameData.Rautomation
-Rshowable= savedGameData.Rshowable
-*/
+if (typeof savedGameData.gameData !== undefined) gameData = savedGameData.gameData
+if (typeof savedGameData.componentsEquipped !== undefined) componentsEquipped = savedGameData.componentsEquipped
+if (typeof savedGameData.components !== undefined) components = savedGameData.components
+if (typeof savedGameData.explorationUpgrades !== undefined) explorationUpgrades = savedGameData.explorationUpgrades
+if (typeof savedGameData.explorationSelected !== undefined) explorationSelected = savedGameData.explorationSelected
+if (typeof savedGameData.data !== undefined) data = savedGameData.data
+if (typeof savedGameData.dataUpgrades !== undefined) dataUpgrades = savedGameData.dataUpgrades
+if (typeof savedGameData.energyBuilding !== undefined) energyBuilding = savedGameData.energyBuilding
+if (typeof savedGameData.refining !== undefined) refining = savedGameData.refining
+if (typeof savedGameData.projects !== undefined) projects = savedGameData.projects
+if (typeof savedGameData.loadoutData !== undefined) loadoutData = savedGameData.loadoutData
+if (typeof savedGameData.automation !== undefined) automation = savedGameData.automation
+if (typeof savedGameData.showable !== undefined) showable = savedGameData.showable

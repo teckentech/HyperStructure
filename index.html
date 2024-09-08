@@ -9,43 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
 
     <title>HyperStructure</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            width: 100%;
-            font-family: Courier new, monospace;
-            -webkit-touch-callout: none;
-            -webkit-user-select: none;
-            -khtml-user-select: none;
-            -moz-user-select: moz-none;
-            -ms-user-select: none;
-            user-select: none;
-            background: #e4eff0;
-            overflow-y: hidden;
-            overflow-x: hidden
-        }
 
-        .grid-container {
-            border: 5px solid red;
-            border-color: #5013c3;
-        }
-
-        .grid-item {
-            border: 5px solid red;
-            border-color: #45c313;
-        }
-
-        .wrapper {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            grid-auto-rows: minmax(100px, auto);
-            border: 5px solid red;
-            border-color: red;
-        }
-    </style>
 </head>
 
 <body>
@@ -66,12 +30,13 @@
             <div id="options">
                 <div id="disclaimer">DISCLAIMER: the game is currently under development, future updates could radically
                     change the game, this could lead to the inability to the system to accept previous saves</div>
-                <div><button onclick="resetSave()">RESET SAVE</button></div>
-                <div><button onclick="exportSave()">Export Save</button></div>
-                <div><button onclick="importSave()">Import Save</button></div>
-                <div><button onclick="manualSave()">Manual Save</button></div>
-                <textarea class="input-like" id="Save" name="Save" rows="4" cols="50"></textarea><br>
-
+                <div div="optionsButtons">
+                    <div><button onclick="resetSave()">RESET SAVE</button></div>
+                    <div><button onclick="exportSave()">Export Save</button></div>
+                    <div><button onclick="importSave()">Import Save</button></div>
+                    <div><button onclick="manualSave()">Manual Save</button></div>
+                    <textarea class="input-like" id="Save" name="Save" rows="4" cols="50"></textarea><br>
+                </div>
                 <div id="automation">
                     <div>
                         <div id="automation1">test</div>
@@ -238,6 +203,7 @@
                 <div><button id="communicationTab" onclick="tab('communication')">Communication</button></div>
                 <div><button id="progressTab" onclick="tab('progress')">Progress</button></div>
                 <div><button id="optionsTab" onclick="tab('options')">Options</button></div>
+                <div id="version">V0.1.37 Prototype</div>
             </div>
 
         </div>
@@ -370,7 +336,8 @@
                     <div id="dataGraphic">
                     </div>
 
-                    <div id="dataDescription">CLICK ON DATA TYPE "LIGHT" TO START, "MEDIUM" AND "HEAVY" WILL BE AVAIABLE
+                    <div id="dataDescription">CLICK ON DATA TYPE "LIGHT" TO START, "MEDIUM" AND "HEAVY" WILL BE
+                        AVAILABLE
                         WHEN THEIR BAR IS GREEN.
                         WHEN A BAR IS FILLED IT WILL GENERATE AN UPGRADE OF THE FOLLOWING DATA TYPE.
                     </div>
@@ -557,12 +524,12 @@
 
                 <div id="baseSelector">
                     <div id="componentsTitle">COMPONENTS</div>
-                    <div style="position: absolute; left: 0vw; top: -14vw;" class="item" id="visualModule1">
+                    <div class="item" id="visualModule1">
                         <button onclick="showComponents('components1')" id="components1Module"
                             style="height: 7vw; width: 7vw; background: url(images/plus.png); background-size: cover;">
                         </button>
                     </div>
-                    <div style="position: absolute; left: -10vw; top: -7vw;" class="item" id="visualModule2">
+                    <div class="item" id="visualModule2">
                         <button onclick="showComponents('components2')" id="components2Module"
                             style="height: 7vw; width: 7vw; background: url(); background-size: cover;">
                         </button>
@@ -571,16 +538,6 @@
                         <button onclick="showComponents('components3')" id="components3Module"
                             style="height: 7vw; width: 7vw; background: url(); background-size: cover;">
                         </button>
-                    </div>
-
-                    <div style="position: absolute; left: -10vw; top: 7vw; " class="item" id="visualModule4">
-
-                    </div>
-                    <div style="position: absolute; left: 10vw; top: 7vw;" class="item" id="visualModule5">
-
-                    </div>
-                    <div style="position: absolute; left: 0vw;  top: 14vw;" class="item" id="visualModule6">
-
                     </div>
 
                 </div>
@@ -694,9 +651,9 @@
             </div>
         </div>
     </div>
-    <script src="main.js?v=0.1.36" charset="utf-8" type="text/javascript"></script>
+    <script src="main.js?v=0.1.37" charset="utf-8" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-    <link rel="stylesheet" href="cssPrototypes.css?v=0.1.36">
+    <link rel="stylesheet" href="cssPrototypes.css?v=0.1.37">
 
 </body>
 

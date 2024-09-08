@@ -1,8 +1,75 @@
 body {
   margin: 0;
   padding: 0;
+  width: 100vw;
   height: 100%;
-  width: 100%;
+  max-height: 56.25vw;
+  max-width: 225vh;
+  height: auto;
+}
+
+#mainGame {
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+  max-height: 56.25vw;
+  max-width: 225vh;
+  /* Imposta l'altezza massima in base alla larghezza (16:9) */
+
+  box-shadow: inset 0 0 0 1px #ffffff;
+
+}
+
+/*1024 x 768
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  #mainGame {
+    width: 100vw;
+    height: 100%;
+    max-height: 45.4545454545vw;
+    max-width: 250vh;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  #mainGame {
+    width: 100vw;
+    height: 100%;
+    max-height: 45.4545454545vw;
+    max-width: 250vh;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  #mainGame {
+    width: 100vw;
+    height: 100%;
+    max-height: 65vw;
+    max-width: 160vh;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  #mainGame {
+    width: 100vw;
+    height: 100%;
+    max-height: 56.25vw;
+    max-width: 225vh;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  #mainGame {
+    width: 100vw;
+    height: 100%;
+    max-height: 56.25vw;
+    max-width: 225vh;
+  }
 }
 
 
@@ -24,9 +91,6 @@ button,
 #Menu,
 #componentsSummary,
 #componentsList,
-/*
-#energyScreen,
-*/
 #energyTier1,
 #energy,
 #options,
@@ -41,65 +105,62 @@ button,
 #loadoutShow,
 #equipButton,
 #removeButton {
-  position: absolute;
-  border: 1px solid black;
+
   box-sizing: border-box;
-  padding: 1vw;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
 }
 
 #extractor1,
 #extractor3,
 #extractor4 {
-  border: 1px solid blue;
+  box-shadow: inset 0 0 0 1px #ffffff;
   box-sizing: border-box;
   padding: 10px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 0 0 1px #ffffff;
 }
 
 
 #valute {
   position: absolute;
-  left: 0vw;
-  top: 0vh;
-  width: 15vw;
-  height: 35vh;
+  left: 0;
+  top: 0;
+  width: 20%;
+  height: 40%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 
+  box-shadow: inset 0 0 0 1px #ffffff;
 
   background: #000000;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
-
-  z-index: 3;
 }
 
 #valute>div {
-  width: 7vw;
   position: relative;
   background: #000000;
-  padding: 1vw;
-  box-shadow: inset 0 0 0 1px #ffffff; 
+  box-shadow: inset 0 0 0 1px #ffffff;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
+
+  text-align: center;
+  padding: 3%;
 }
 
 
 #selectorTab {
-  left: 0vw;
-  top: 35vh;
-  width: 18vw;
-  height: 65vh;
+  position: absolute;
+  left: 0%;
+  top: 40%;
+  width: 20%;
+  height: 60%;
 
   background: #000000;
-  padding: 10px;
-  border: 1px solid #ffffff;
-  border-radius: 5px;
+  padding: 1%;
+  box-shadow: inset 0 0 0 1px #ffffff;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
@@ -107,9 +168,8 @@ button,
 
 #selectorTab>div>button {
   background: #000000;
-  padding: 10px;
-  border: 1px solid #ffffff;
-  border-radius: 5px;
+  padding: 3%;
+  box-shadow: inset 0 0 0 1px #ffffff;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
@@ -132,8 +192,8 @@ button,
 
 #baseSelector {
   position: absolute;
-  left: 45vw;
-  top: 50vh;
+  left: 45%;
+  top: 50%;
   transform: translate3D(-55%, 0, 0);
   background: greenyellow;
 }
@@ -142,17 +202,15 @@ button,
 
 .item {
   /* Misc */
-  border: 2px solid #000000;
-  border-radius: 5px;
-  height: 7vw;
-  width: 7vw;
+  box-shadow: inset 0 0 0 1px #ffffff;
+  height: 7%;
+  width: 7%;
   background-color: #857f7f;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .item button {
-  border: none;
-  border-radius: 2px;
+
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
 
@@ -162,15 +220,33 @@ button,
   transform: scale(1.1);
 }
 
+#visualModule1 {
+  position: absolute; 
+  left: 0vw; 
+  top: -14vw;
+}
+
+#visualModule2 {
+  position: absolute; 
+  left: -10vw; 
+  top: -7vw;
+}
+
+#visualModule3 {
+  position: absolute; 
+  left: 10vw; 
+  top: -7vw;
+}
+
 #loadout {
   position: absolute;
-  left: 18vw;
-  top: 95vh;
-  height: 5vh;
-  width: 15vw;
+  left: 20%;
+  top: 95%;
+  height: 5%;
+  width: 15%;
   transform: translate3D(0, -5%, 0);
   background: #000000;
-  border: 2px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
@@ -178,13 +254,13 @@ button,
 
 #loadoutShow {
   position: absolute;
-  left: 18vw;
-  bottom: 5vh;
-  height: 60vh;
-  width: 15vw;
+  left: 20%;
+  bottom: 5%;
+  height: 45%;
+  width: 15%;
   transform: translate3D(0, 0, 0);
   background: #000000;
-  border: 2px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
@@ -192,7 +268,7 @@ button,
 
 #loadoutShow>div>button {
   background: #000000;
-  border: 2px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
@@ -206,7 +282,7 @@ button,
 
 #loadoutShow>div>div>button {
   background: #000000;
-  border: 2px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
@@ -233,18 +309,19 @@ button,
 
 #equipTab {
   position: absolute;
-  left: 65vw;
-  top: 0vh;
-  height: 5vh;
-  width: 10vw;
+  left: 65%;
+  top: 0%;
+  height: 100%;
+  width: 10%;
 }
 
 #equipButton {
   position: relative;
-  text-align: center;
-  width: inherit;
+  width: 100%;
+  height: 7%;
+  padding: 3%;
   background: #0bb50b;
-  border: 2px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
@@ -258,10 +335,11 @@ button,
 
 #removeButton {
   position: relative;
-  text-align: center;
-  width: inherit;
+  width: 100%;
+  height: 7%;
+  padding: 3%;
   background: #aa0b0b;
-  border: 2px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
@@ -274,17 +352,18 @@ button,
 }
 
 #componentsSummary {
-  right: 0vw;
+  position: absolute;
+  right: 0%;
   top: 50%;
-  width: 25vw;
+  width: 25%;
   height: 50%;
   background-color: #000000;
   overflow-x: hidden;
   overflow-y: auto;
   background: #000000;
   padding: 10px;
-  border: 1px solid #ffffff;
-  border-radius: 5px;
+  box-shadow: inset 0 0 0 1px #ffffff;
+  border-radius: 3%;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
@@ -297,13 +376,12 @@ div {
 
 #componentsSummary>div {
   font-size: 1vw;
-  margin-right: 1px;
-  margin-bottom: 10px;
+  margin-right: 1%;
+  margin-bottom: 10%;
   display: flex;
   flex-direction: column;
   background: #000000;
-  padding: 10px;
-  border-radius: 5px;
+  padding: 1%;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
@@ -313,25 +391,24 @@ div {
   display: flex;
   flex-direction: column;
   background: #000000;
-  padding: 10px;
-  border: 1px solid #ffffff;
-  border-radius: 5px;
+  padding: 3%;
+  box-shadow: inset 0 0 0 1px #ffffff;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
 }
 
 #componentTab {
-  right: 0vw;
+  right: 0%;
   top: 0%;
-  width: 25vw;
+  width: 25%;
   height: 20%;
   z-index: 0;
   position: absolute;
   box-sizing: border-box;
   border-radius: 5px;
-  overflow-y:scroll;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow-y: scroll;
+  box-shadow: inset 0 0 0 1px #ffffff;
   overflow: hide;
   background: #1a1a1a;
   padding: 10px;
@@ -341,7 +418,7 @@ div {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: repeat(6, auto);
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
 }
 
 #componentTab div {
@@ -349,15 +426,16 @@ div {
 }
 
 #componentsList {
+  position: absolute;
   overflow-y: auto;
-  right: 0vw;
-  top: 20vh;
-  width: 25vw;
+  right: 0%;
+  top: 20%;
+  width: 25%;
   height: 30%;
   background: #1a1a1a;
-  padding: 10px;
-  border: 1px solid #ffffff;
-  border-radius: 5px;
+  padding: 1%;
+  box-shadow: inset 0 0 0 1px #ffffff;
+  border-radius: 3%;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
@@ -367,25 +445,15 @@ div {
   width: 100%;
 }
 
-#quadrato {
-  right: 2%;
-  top: 2%;
-  width: 60px;
-  height: 60px;
-  background-color: #fff;
-  border: 1px solid #ffffff;
-}
-
-
 #refiningLayer {
   position: absolute;
   z-index: 1;
-  left: 20vw;
-  top: 50vh;
+  left: 40%;
+  top: 50%;
   transform: translateY(-50%);
   background: #000000;
   padding: 10px;
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -394,8 +462,8 @@ div {
 
 #refiningLayer>div>div>button {
   background: #000000;
-  padding: 10px;
-  border: 1px solid #ffffff;
+  padding: 3%;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -408,70 +476,6 @@ div {
   transform: scale(1.05);
 }
 
-#increaseRarityButtonDiv {
-  pointer-events: none;
-}
-
-#rarityLayer {
-  position: absolute;
-  z-index: 0;
-  left: 60vw;
-  top: 50vh;
-  transform: translateY(-50%);
-  background: #000000;
-  padding: 10px;
-  border: 1px solid #ffffff;
-  border-radius: 5px;
-  color: #ffffff;
-  font-family: 'Orbitron', sans-serif;
-  text-transform: uppercase;
-}
-
-#rarityLayer>button {
-  background: #000000;
-  padding: 10px;
-  border: 1px solid #ffffff;
-  border-radius: 5px;
-  color: #ffffff;
-  font-family: 'Orbitron', sans-serif;
-  text-transform: uppercase;
-
-  z-index: 1;
-
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-#rarityLayer>button>div {
-  background: #000000;
-  padding: 10px;
-  border: 1px solid #ffffff;
-  border-radius: 5px;
-  color: #ffffff;
-  font-family: 'Orbitron', sans-serif;
-  text-transform: uppercase;
-
-  pointer-events: none;
-
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-#increaseRarityButton {
-  z-index: 2
-}
-
-#rarityButtons {
-  left: 20%;
-  top: 10%;
-  position: absolute;
-  z-index: 0;
-}
-
-#rarityExtracted {
-  left: 20%;
-  top: 10%;
-  position: absolute;
-  z-index: 0;
-}
 
 #extractor1 {
   position: relative;
@@ -479,8 +483,8 @@ div {
   left: 50%;
   transform: translateX(-50%);
   background: #000000;
-  padding: 10px;
-  border: 1px solid #ffffff;
+  padding: 3%;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -492,8 +496,8 @@ div {
   left: 50%;
   transform: translateX(-50%);
   background: #000000;
-  padding: 10px;
-  border: 1px solid #ffffff;
+  padding: 3%;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -503,8 +507,8 @@ div {
 #extractor3 {
   position: relative;
   background: #000000;
-  padding: 10px;
-  border: 1px solid #ffffff;
+  padding: 3%;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -515,7 +519,7 @@ div {
   position: relative;
   background: #000000;
   padding: 10px;
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -526,15 +530,14 @@ div {
 
 #projects {
   position: absolute;
-  height: 60vh;
-  width: 40vw;
-  left: 42vw;
-  top: 20vh;
+  height: 60%;
+  width: 40%;
+  left: 50%;
+  top: 20%;
   z-index: 1;
 
   background: #000000;
-  padding: 10px;
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -543,26 +546,27 @@ div {
 }
 
 #projectsScrollable {
-  position: relative;
+  position: absolute;
   overflow-y: scroll;
 
-  height: 55vh;
-  width: 40vw;
+
+  height: 100%;
+  width: 100%;
 }
 
 #projectsScrollable>div>div {
+  position:relative;
 
-  height: 20vh;
-  width: 16vw;
+  height: 50%;
+  width: 100%;
 
-  margin: 10px;
+  font-size: 1%;
 
-  font-size: 1vw;
+  padding: 1%;
 
   background: #000000;
-  padding: 10px;
-  border: 1px solid #ffffff;
-  border-radius: 5px;
+  box-shadow: inset 0 0 0 1px #ffffff;
+  border-radius: 3%;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
@@ -574,7 +578,7 @@ div {
 }
 
 #projectUtility {
-  position: absolute;
+  position: relative;
   height: 90%;
   width: 50%;
   left: 0%;
@@ -594,7 +598,7 @@ div {
 
 .projectSeparator {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 .invests {
@@ -609,7 +613,7 @@ div {
 
 .square {
   background-color: #ff0000;
-  border: 15px solid green;
+  box-shadow: inset 0 0 0 1px #ffffff;
   width: 100px;
   height: 100px;
   position: absolute
@@ -710,14 +714,15 @@ div {
 }
 
 #options {
-  left: 18vw;
-  top: 0vh;
-  width: 85vw;
+  position: absolute;
+  left: 20%;
+  top: 0%;
+  width: 80%;
   height: 100%;
 
   background: #000000;
-  padding: 10px;
-  border: 1px solid #ffffff;
+  padding: 3%;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -727,10 +732,10 @@ div {
   overflow-y: scroll;
 }
 
-#options>div>button {
+#options>div>div>button {
   background: #000000;
   padding: 10px;
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -742,55 +747,66 @@ div {
   transform: scale(1.05);
 }
 
+#optionsButtons{
+  position: absolute;
+  left: 0%;
+  top: 0%;
+}
+
 #hardware {
-  left: 18vw;
-  top: 0vh;
-  width: 85vw;
+  position: absolute;
+  left: 20%;
+  top: 0%;
+  width: 80%;
   height: 100%;
   background-color: #37cdbe;
   z-index: 1;
   background: url("images/hardware.png");
   background-repeat: no-repeat;
-  background-size:cover;
+  background-size: cover;
 }
 
 #software {
-  left: 18vw;
-  top: 0vh;
-  width: 85vw;
+  position: absolute;
+  left: 20%;
+  top: 0%;
+  width: 80%;
   height: 100%;
   background-color: #37cdbe;
   z-index: 1;
   background: url("images/software.png");
   background-repeat: no-repeat;
-  background-size:cover;
+  background-size: cover;
 }
 
 #communication {
-  left: 18vw;
-  top: 0vh;
-  width: 85vw;
+position: absolute;
+
+  left: 20%;
+  top: 0%;
+  width: 80%;
   height: 100%;
   background-color: #37cdbe;
   z-index: 1;
   background: url("images/communication.png");
   background-repeat: no-repeat;
-  background-size:cover;
+  background-size: cover;
 }
 
 
 
 #energy {
-  width: 30vw;
-  height: 30vw;
+  position: absolute;
+  width: 40%;
+  height: 70%;
   /* Aggiunge un margine tra gli elementi */
-  left: 20%;
+  left: 10%;
   top: 20%;
   z-index: 1;
 
   background: #000000;
   padding: 10px;
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -805,7 +821,7 @@ div {
 
   background: #000000;
   padding: 10px;
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -816,10 +832,10 @@ div {
 #exploration {
   position: absolute;
   padding: 10px;
-  width: 30vw;
-  height: 30vw;
-  left: 50vw;
-  top: 20vh;
+  width: 30%;
+  height: 70%;
+  left: 60%;
+  top: 20%;
   background-color: lightskyblue;
 }
 
@@ -831,11 +847,11 @@ div {
 
 #exploration1 {
   position: absolute;
-  border: 1px solid black;
+  box-shadow: inset 0 0 0 1px #ffffff;
   box-sizing: border-box;
   padding: 10px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 0 0 1px #ffffff;
 
   top: 0%;
   left: 0%;
@@ -844,7 +860,7 @@ div {
 
   background: #000000;
   padding: 10px;
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -854,11 +870,11 @@ div {
 
 #exploration2 {
   position: absolute;
-  border: 1px solid black;
+  box-shadow: inset 0 0 0 1px #ffffff;
   box-sizing: border-box;
   padding: 10px;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 0 0 1px #ffffff;
 
   top: 50%;
   left: 0%;
@@ -867,7 +883,7 @@ div {
 
   background: #000000;
   padding: 10px;
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -892,7 +908,7 @@ div {
   position: absolute;
   background-color: #f1f1f1;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 0 0 1px #ffffff;
   z-index: 1;
 }
 
@@ -916,27 +932,31 @@ div {
 }
 
 #data {
+  position: absolute;
   background-color: lightblue;
-  left: 1vw;
-  top: 20vh;
-  height: 20vw;
-  width: 40vw;
+  left: 1%;
+  top: 20%;
+  height: 40%;
+  width: 40%;
 
   background: #000000;
-  padding: 10px;
-  border: 1px solid #ffffff;
+  padding: 1%;
+  
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  z-index: 10;
 }
 
 #dataCollection {
   position: absolute;
 
   background: #000000;
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
@@ -950,15 +970,17 @@ div {
   left: 0%;
 }
 
-#dataGraphic{
+#dataGraphic {
   position: absolute;
-    /* Dimensioni del div */
-    height: 50%;  /* 50% dell'altezza del contenitore genitore */
-    width: 30%;   /* 30% della larghezza del contenitore genitore */
-    
-    /* Posizionamento del div */
-    top: 0%; 
-    left: 30%;
+  /* Dimensioni del div */
+  height: 50%;
+  /* 50% dell'altezza del contenitore genitore */
+  width: 30%;
+  /* 30% della larghezza del contenitore genitore */
+
+  /* Posizionamento del div */
+  top: 0%;
+  left: 30%;
   background: url("images/coreB2.png");
   background-repeat: no-repeat;
   pointer-events: none;
@@ -969,12 +991,12 @@ div {
 
   position: absolute;
 
-  border: 0.1vw solid black;
+  box-shadow: inset 0 0 0 1px #ffffff;
   box-sizing: border-box;
   border-radius: 1vw;
-  box-shadow: 0 0 1vw rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 0 0 1px #ffffff;
 
-  padding: 0.1vw;
+  padding: 1%;
 
   height: 100%;
   width: 100%;
@@ -987,10 +1009,10 @@ div {
 #dataUpgrade2 {
   position: absolute;
 
-  border: 0.1vw solid black;
+  box-shadow: inset 0 0 0 1px #ffffff;
   box-sizing: border-box;
   border-radius: 1vw;
-  box-shadow: 0 0 1vw rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 0 0 1px #ffffff;
 
   padding: 0.1vw;
 
@@ -1007,8 +1029,7 @@ div {
   position: absolute;
 
   background: #000000;
-  padding: 0.1vw;
-  border: 0.1vw solid #ffffff;
+  padding: 1%;
   border-radius: 0.1vw;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -1030,8 +1051,7 @@ div {
   position: absolute;
 
   background: #000000;
-  padding: 0.1vw;
-  border: 0.1vw solid #ffffff;
+  padding: 1%;
   border-radius: 0.1vw;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -1054,7 +1074,7 @@ div {
   position: absolute;
 
   background: #000000;
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
@@ -1070,7 +1090,7 @@ div {
   position: absolute;
 
   background: #000000;
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
@@ -1086,11 +1106,11 @@ div {
 }
 
 #dataSelector>button {
-  height:25%;
+  height: 25%;
 
   background: #000000;
   padding: 9px;
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -1127,7 +1147,7 @@ div {
 
   font-size: small;
 
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   background-color: rgb(69, 69, 69);
 }
@@ -1146,20 +1166,24 @@ div {
 
 #energyTier1 {
   position: absolute;
-  width: 30vw;
-  height: 30vw;
+  width: 100%;
+  height: 100%;
   top: 0%;
   left: 0%;
 
+  display: flex;
+  flex-direction:column;
+
   background: #000000;
   padding: 10px;
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
 
 #energyTier2 {
   position: absolute;
@@ -1170,7 +1194,7 @@ div {
 
   background: #000000;
   padding: 10px;
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -1179,19 +1203,17 @@ div {
 }
 
 #squareEnergy1 {
-  position: absolute;
+  position: relative;
 
   width: 90%;
-  height: 20%;
+  height: 25%;
   background-color: #3e8e41;
 
-  top: 30%;
-  left: 50%;
-  transform: translate3d(-50%, -66%, 0);
+
 
   background: #000000;
   padding: 10px;
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -1200,20 +1222,16 @@ div {
 }
 
 #squareEnergy2 {
-  position: absolute;
+  position: relative;
 
   width: 90%;
-  height: 20%;
+  height: 25%;
   background-color: #3e8e41;
 
-  top: 40%;
-  left: 50%;
-
-  transform: translate3d(-50%, 0, 0);
 
   background: #000000;
   padding: 10px;
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -1222,20 +1240,16 @@ div {
 }
 
 #squareEnergy3 {
-  position: absolute;
+  position: relative;
 
   width: 90%;
-  height: 20%;
+  height: 25%;
   background-color: #3e8e41;
 
-  top: 70%;
-  left: 50%;
-
-  transform: translate3d(-50%, 0, 0);
 
   background: #000000;
   padding: 10px;
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -1256,7 +1270,7 @@ div {
 
   background: #000000;
   padding: 10px;
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -1277,7 +1291,7 @@ div {
 
   background: #000000;
   padding: 10px;
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -1298,7 +1312,7 @@ div {
 
   background: #000000;
   padding: 10px;
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -1306,9 +1320,9 @@ div {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-#reallocateEnergy1{
+#reallocateEnergy1 {
   background: #c25050;
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -1318,11 +1332,11 @@ div {
   position: absolute;
   right: 1%;
   top: 50%;
-  transform:translateY(-50%);
+  transform: translateY(-50%);
 
   background: #000000;
   padding: 10px;
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -1332,7 +1346,7 @@ div {
 
 .shiftCenter {
   right: -50%;
-  transform:translateX(50%);
+  transform: translateX(50%);
 }
 
 .resizeEnergy>div {
@@ -1408,7 +1422,7 @@ div {
   bottom: -12vh;
   left: 0vw;
   height: 10vh;
-  width: 40vw;
+  width: 35vw;
 
   background: #000000;
   color: #ffffff;
@@ -1416,7 +1430,7 @@ div {
   text-transform: uppercase;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
 }
 
 #hardwareSummary {
@@ -1444,26 +1458,28 @@ div {
 }
 
 #buttonComponentRow0 {
+  position: relative;
+
   background: #1E3A8A;
-  padding: 10px;
-  border: 1px solid #ffffff;
-  border-radius: 20px;
+  padding: 3%;
+
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
-
-  height: 20vh;
-  text-align: center; 
-  cursor: pointer; 
+  box-shadow: inset 0 0 0 1px #ffffff;
+  border-radius: 3%;
+  height: 20%;
 
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 #buttonComponentRow0>div {
+  position: relative;
+
   pointer-events: none;
   background: #1E3A8A;
-  padding: 0px;
-  border-radius: 5px;
+  padding: 3%;
+  border-radius: 3%;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
   text-transform: uppercase;
@@ -1520,7 +1536,7 @@ div {
   left: 5vw;
   background: #000000;
   padding: 10px;
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -1533,7 +1549,7 @@ div {
   left: 5vw;
   background: #000000;
   padding: 10px;
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -1546,7 +1562,7 @@ div {
   left: 5vw;
   background: #000000;
   padding: 10px;
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -1561,23 +1577,25 @@ input[type=text] {
 }
 
 .input-like {
-  width: 500px; 
+  width: 500px;
   padding: 8px;
-  border: 1px solid #ccc;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 4px;
   font-size: 16px;
   line-height: 1.5;
   min-height: 30px;
-  white-space: pre-wrap; 
-  word-wrap: break-word; 
-  outline: none; 
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  outline: none;
   overflow-wrap: break-word;
 }
 
 #automation>div>div {
+  width: 50%;
+  height: 20%;
   background: #000000;
   padding: 10px;
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -1586,21 +1604,20 @@ input[type=text] {
 }
 
 #progress {
-  position: relative;
+  position: absolute;
 
-  top: 0vh;
-  left: 18vw;
-  width: 83vw;
-  height: 100vh;
+  top: 0%;
+  left: 20%;
+  width:80%;
+  height: 100%;
 
   background: #000000;
-  padding: 10px;
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
 
-  overflow-y:scroll;
+  overflow-y: scroll;
 }
 
 #topProgress {
@@ -1612,7 +1629,7 @@ input[type=text] {
 
   background: #B78628;
   padding: 10px;
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -1620,14 +1637,14 @@ input[type=text] {
 
 #coreImage {
   position: absolute;
-  width: 105vw;
-  height: 100vh;
-  left: -5vw;
+  width: 99%;
+  height: 100%;
   z-index: -1;
   background: url("images/coreB2.png");
   background-repeat: no-repeat;
-  background-size:cover;
+  background-size: cover;
   pointer-events: none;
+
 }
 
 .tokenSizes {
@@ -1646,7 +1663,7 @@ input[type=text] {
 
   background: #000000;
   padding: 10px;
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -1659,7 +1676,7 @@ input[type=text] {
 
   background: #000000;
   padding: 10px;
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -1672,7 +1689,7 @@ input[type=text] {
 
   background: #000000;
   padding: 10px;
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -1683,12 +1700,12 @@ input[type=text] {
 #projectsTitle {
   position: absolute;
 
-  top: -7vh;
+  top: -10%;
 
 
   background: #000000;
   padding: 10px;
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -1700,7 +1717,7 @@ input[type=text] {
 
   background: #000000;
   padding: 10px;
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
@@ -1713,11 +1730,24 @@ input[type=text] {
 
   background: #000000;
   padding: 10px;
-  border: 1px solid #ffffff;
+  box-shadow: inset 0 0 0 1px #ffffff;
   border-radius: 5px;
   color: #ffffff;
   font-family: 'Orbitron', sans-serif;
 
   top: -40vh;
   left: -0.7vw;
+}
+
+#version {
+  position: absolute;
+  bottom: 0%;
+
+  margin: 1%;
+
+  background: #000000;
+  padding: 10px;
+  border-radius: 5px;
+  color: #ffffff;
+  font-family: 'Orbitron', sans-serif;
 }
