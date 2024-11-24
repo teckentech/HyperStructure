@@ -1844,7 +1844,7 @@ function valuesSetter() {
 
   var selMon = IExpansor.monuments.monument14
 
-  selMon.req1 = (1 * 10 ** 26);
+  selMon.req1 = (1 * 10 ** 28);
   selMon.req2 = 0
   selMon.req3 = 0;
   selMon.req4 = 0;
