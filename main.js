@@ -3080,6 +3080,7 @@ document.getElementById("reallocateEnergy2").onclick = function () {
   manualVisualLoop()
 }
 
+/*
 function buy(array, price, arrayEffector, effector, value) {
   const priceIdentity = getNotIf(array, null, price + "Identity");
   const activePrice = getNotIf(array, null, price);
@@ -3093,6 +3094,7 @@ function buy(array, price, arrayEffector, effector, value) {
   }
   return false;
 }
+  */
 
 function buyNoPrice(array, price, arrayEffector, effector, value) {
   const priceIdentity = getNotIf(array, null, price + "Identity");

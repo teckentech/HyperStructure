@@ -1,0 +1,2025 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  container-type: inline-size;
+
+  font-size: 1cqw;
+}
+
+
+#mainGame {
+  width: 100vw;
+  height: 56.25vw;
+  /* 16:9 ratio */
+  max-width: 100vh * (16/9);
+  /* Se la larghezza del viewport è maggiore dell'altezza in proporzione, limita la larghezza */
+  max-height: 100vh;
+  /* L'altezza massima è quella del viewport */
+  position: relative;
+}
+
+#content {
+  width: 90%;
+  height: 90%;
+  margin: auto;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: inset 0 0 0 2px black;
+}
+
+/* Regolazioni per diverse risoluzioni */
+@media only screen and (max-width: 768px) {
+  #mainGame {
+    width: 100vw;
+    height: 56.25vw;
+    /* 16:9 ratio per schermi piccoli */
+  }
+
+  #content {
+    font-size: 1cqw;
+    /* Testo leggermente più grande per schermi piccoli */
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #mainGame {
+    width: 100vw;
+    height: 56.25vw;
+  }
+
+  #content {
+    font-size: 1cqw;
+    /* Testo proporzionale al viewport */
+  }
+}
+
+.defaultStyle {
+  background: #313131;
+  box-shadow: inset 0 0 0 0.15vw #ffffff;
+  color: #ffffff;
+  font-family: 'Arial', sans-serif;
+}
+
+.defaultButton {
+  background: #36454f;
+  box-shadow: inset 0 0 0 0.15vw #ffffff;
+  border-radius: 2vh;
+  color: #ffffff;
+  font-family: 'Arial', sans-serif;
+}
+
+.defaultButton:hover {
+  filter: brightness(85%);
+  /* Scurisce il colore del 15% */
+}
+
+.defaultButton:active {
+  filter: brightness(80%);
+  /* Scurisce il colore del 15% */
+}
+
+.defaultButtonSkin {
+  background: #36454f;
+  box-shadow: inset 0 0 0 0.15vw #ffffff;
+  border-radius: 2vh;
+  color: #ffffff;
+  font-family: 'Arial', sans-serif;
+}
+
+.centerDiv {
+  display: flex;
+  justify-content: center;
+  /* Centra orizzontalmente */
+  align-items: center;
+}
+
+
+/* questo mi permette di rendere il gioco ridimensionabile, credo almeno*/
+button,
+.redimension {
+  font-size: 1.25cqw;
+}
+
+#valute {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 10%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+#valute>div {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#valute>div>div {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-weight: 500;
+}
+
+#selectorTab {
+  position: absolute;
+  left: 0%;
+  top: 10%;
+  width: 100%;
+  height: 5%;
+
+  z-index: 10;
+}
+
+#selectors {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  height: 100%;
+  width: 50%;
+}
+
+#selectors>div {
+  position: relative;
+  width: 30%;
+  height: 100%;
+}
+
+#selectors>div>button {
+  position: relative;
+
+  height: 100%;
+  width: 100%;
+}
+
+.item {
+  height: 7%;
+  width: 7%;
+
+  width: 10%;
+  text-align: center;
+}
+
+.visualModuleText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10%;
+
+}
+
+#visualModule1 {
+  position: absolute;
+  right: 50%;
+  transform: translate3d(50%, 0, 0);
+  top: 30%;
+}
+
+#visualModule2 {
+  position: absolute;
+  right: 60%;
+  transform: translate3d(40%, 0, 0);
+  top: 50%;
+}
+
+#visualModule3 {
+  position: absolute;
+  right: 40%;
+  transform: translate3d(60%, 0, 0);
+  top: 50%;
+}
+
+#componentSelectorText {
+  position: absolute;
+  right: 50%;
+  transform: translate3d(50%, 0, 0);
+  top: 1%;
+
+  align-content: center;
+  text-align: center;
+
+  width: 50%;
+  height: 10%;
+}
+
+#loadout {
+  position: absolute;
+  left: 0%;
+  top: 75%;
+  height: 25%;
+  width: 25%;
+}
+
+#loadoutShow {
+  position: absolute;
+  left: 0%;
+  top: 85%;
+  height: 15%;
+  width: 25%;
+  transform: translate3D(0, 0, 0);
+
+  display: flex;
+  flex-direction: row;
+}
+
+#loadoutShow>div {
+  margin: 1%;
+
+  width: 33%;
+}
+
+#loadoutShow>div>div {
+  display: flex;
+
+  justify-content: center; /* Centra orizzontalmente */
+  align-items: center;
+}
+
+#loadoutName1 {
+  width: 80%;
+  height: 50%;
+}
+
+#loadoutName2 {
+  width: 80%;
+  height: 50%;
+}
+
+#loadoutName3 {
+  width: 80%;
+  height: 50%;
+}
+
+#componentsSummary {
+  position: absolute;
+  right: 0%;
+  top: 0%;
+  width: 25%;
+  height: 100%;
+
+  overflow-y: auto;
+
+}
+
+#componentsSummary>div {
+  margin-right: 1%;
+  margin-bottom: 3%;
+  display: flex;
+  flex-direction: column;
+  margin: 3%;
+
+}
+
+#componentsSummary>div>div {
+  display: flex;
+  flex-direction: column;
+  padding: 3%;
+  color: #ffffff;
+
+  box-shadow: inset 0 0 0 0.15vw #ffffff;
+}
+
+#componentTab {
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  width: 25%;
+  height: 25%;
+  z-index: 0;
+
+
+  box-shadow: inset 0 0 0 0.15vw #ffffff;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 3fr);
+  grid-template-rows: repeat(2, 2fr);
+}
+
+#componentTab div {
+  width: 100%;
+}
+
+#componentsList {
+  position: absolute;
+  left: 0%;
+  top: 35%;
+  width: 25%;
+  /* Larghezza del contenitore principale */
+  height: 50%;
+  font-family: 'Arial', sans-serif;
+  box-sizing: border-box;
+  /* Include il padding nel calcolo della larghezza e altezza */
+}
+
+#componentsList>div {
+  width: 100%;
+  height: max-content;
+  /* Assicurati che riempia tutto il contenitore */
+  padding: 3%;
+  box-sizing: border-box;
+  /* Include il padding nel calcolo della larghezza e altezza */
+}
+
+#componentsList>div>div {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  /* Include il padding nel calcolo della larghezza */
+}
+
+#componentsList>div>div>div {
+  position: relative;
+  height: 10%;
+  /* Mantieni l'altezza al 10% se desiderato */
+  width: 100%;
+  /* Assicurati che occupi il 100% del contenitore genitore */
+  padding: 3%;
+  background: #487145;
+  box-shadow: inset 0 0 0 0.15vw #ffffff;
+  color: #ffffff;
+  font-family: 'Arial', sans-serif;
+  box-sizing: border-box;
+  /* Include il padding nel calcolo della larghezza */
+
+  display: flex;
+  justify-content: center;
+  /* Centra orizzontalmente */
+  align-items: center;
+  /* Centra verticalmente */
+}
+
+#componentsList>div>div>button {
+  background: #5b5b5b;
+}
+
+#options {
+  position: absolute;
+  left: 0%;
+  top: 15%;
+  width: 100%;
+  height: 90%;
+
+  padding: 1%;
+
+  z-index: 10000000;
+
+
+  overflow-y: scroll;
+}
+
+#options>div>div>button {
+  padding: 1%;
+}
+
+#optionsButtons {
+  position: absolute;
+  left: 0%;
+  top: 0%;
+}
+
+#hardware {
+  position: absolute;
+  left: 0%;
+  top: 15%;
+  width: 100%;
+  height: 85%;
+  background-color: #858585;
+  z-index: 1;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.softwareUpgrades {
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  width: 50%;
+  height: 100%;
+
+  background-color: red;
+}
+
+#software1assimilationCenter {
+  position: relative;
+
+  grid-row-start: 2;
+  grid-row-end: 6;
+  grid-column-start: 6;
+  grid-column-end: 11;
+}
+
+#software2assimilationCenter {
+  position: relative;
+
+  grid-row-start: 2;
+  grid-row-end: 6;
+  grid-column-start: 6;
+  grid-column-end: 11;
+}
+
+.assimilationBaseGrid {
+  position: absolute;
+
+  display: grid;
+
+  grid-template-columns: repeat(10, 10fr);
+  grid-template-rows: repeat(10, 10fr);
+
+  width: 100%;
+  height: 100%;
+
+  z-index: 1;
+}
+
+.assimilationBaseGrid>* {
+  background: #36454f;
+  box-shadow: inset 0 0 0 0.15vw #ffffff;
+  border-radius: 3vh;
+  color: #ffffff;
+  font-family: 'Arial', sans-serif;
+
+  align-content: center;
+  text-align: center;
+
+  margin: 4%;
+
+  font-size: 100%;
+}
+
+.assimilationBaseGrid>*>* {
+  pointer-events: none;
+}
+
+
+#assimilationBaseGridbutton1 {
+  grid-row-start: 3;
+  grid-row-end: 9;
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
+#assimilationBaseGridbutton2 {
+  grid-row-start: 3;
+  grid-row-end: 9;
+  grid-column-start: 4;
+  grid-column-end: 7;
+}
+
+#assimilationBaseGridbutton3 {
+  grid-row-start: 3;
+  grid-row-end: 9;
+  grid-column-start: 7;
+  grid-column-end: 10;
+}
+
+#assimilationBaseGridbutton4 {
+  grid-row-start: 3;
+  grid-row-end: 9;
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
+#assimilationBaseGridbutton5 {
+  grid-row-start: 3;
+  grid-row-end: 9;
+  grid-column-start: 4;
+  grid-column-end: 7;
+}
+
+#assimilationBaseGridbutton6 {
+  grid-row-start: 3;
+  grid-row-end: 9;
+  grid-column-start: 7;
+  grid-column-end: 10;
+}
+
+
+.softwareUpgradesBase {
+  position: relative;
+  width: 100%;
+  height: 70%;
+
+}
+
+.softwareUpgradesCont {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.softwareUpgradesCont>div {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.softwareUpgradesCont>div>button {
+  position: relative;
+  width: 100%;
+  height: 25%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+.softwareUpgradesCont>div>button>div {
+  position: relative;
+  padding: 1%;
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  align-items: center;
+
+  font-size: 80%;
+
+  pointer-events: none;
+}
+
+.softwareUpgradesCont>div>button>div:nth-child(1) {
+  width: 50%;
+}
+
+.softwareUpgradesCont>div>button>div:nth-child(2) {
+  width: 20%;
+}
+
+.softwareUpgradesCont>div>button>div:nth-child(3) {
+  width: 30%;
+}
+
+.softwareUpgradesCont>div>div>div {
+  pointer-events: none;
+}
+
+.assimilationCenterBase {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+}
+
+#softwareUpgradesInfo {
+  position: relative;
+
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 6;
+
+  display: flex;
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+#softwareUpgradesInfo>div {
+  position: relative;
+
+  margin: 1%;
+}
+
+#softwareUpgradesInfo2 {
+  position: relative;
+
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 6;
+
+  display: flex;
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+#softwareUpgradesInfo2>div {
+  position: relative;
+
+  margin: 1%;
+}
+
+#software1assimilationCenterInfo {
+  position: relative;
+
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 6;
+  grid-column-end: 11;
+
+  display: flex;
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+#software1assimilationCenterInfo>div {
+  position: relative;
+
+  margin: 1%;
+}
+
+#software2assimilationCenterInfo {
+  position: relative;
+
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 6;
+  grid-column-end: 11;
+
+  display: flex;
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+#software2assimilationCenterInfo>div {
+  position: relative;
+
+  margin: 1%;
+}
+
+#hardwareSummary {
+  width: 80%;
+}
+
+#softwareSummary {
+  width: 80%;
+}
+
+#communicationSummary {
+  width: 80%;
+}
+
+
+input[type=text] {
+  word-wrap: break-word;
+  word-break: break-all;
+  height: 80px;
+}
+
+.input-like {
+  width: 50%;
+  padding: 8px;
+  box-shadow: inset 0 0 0 0.15vw #ffffff;
+  border-radius: 4px;
+  font-size: 1cqw;
+  line-height: 1.5;
+  min-height: 30px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  outline: none;
+  overflow-wrap: break-word;
+}
+
+#progress {
+  position: absolute;
+
+  top: 15%;
+  left: 0%;
+  width: 100%;
+  height: 85%;
+
+
+  overflow-y: scroll;
+}
+
+#progressTab {
+  position: absolute;
+  left: 0%;
+  top: 5%;
+  left: 50%;
+  width: 50%;
+  z-index: 4;
+  height: 90%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 1.5cqw;
+
+  background: #ab7c25;
+}
+
+#progressTab>button {
+  position: relative;
+  left: 0%;
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+
+
+
+  background: #B78628;
+}
+
+#core {
+  top: 15%;
+  left: 0%;
+
+  position: absolute;
+  width: 100%;
+  height: 85%;
+}
+
+.tokenSizes {
+  width: 20%;
+  aspect-ratio: 1 / 1;
+}
+
+#componentsEquip {
+  position: absolute;
+
+  left: 0%;
+  top: 25%;
+
+  background: #006176;
+
+  display: flex;
+  justify-content: center;
+  /* Centra orizzontalmente */
+  align-items: center;
+
+  height: 10%;
+  width: 12.5%;
+}
+
+#componentsLevelUp {
+  position: absolute;
+
+  left: 12.5%;
+  top: 25%;
+
+  background: #004526;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  /* Centra orizzontalmente */
+  align-items: center;
+
+  height: 10%;
+  width: 12.5%;
+
+}
+
+#componentsLevelUpDiv {
+  pointer-events: none;
+}
+
+
+#componentLevel {
+  grid-row-start: 1;
+  grid-row-end: 1;
+  grid-column-start: 1;
+  grid-column-end: 1;
+  background: none;
+
+}
+
+#componentName {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  background: none;
+}
+
+
+
+#componentEffect {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  background: none;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#componentEffect>div {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+#cellsValute {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+#cellsValuteBase {
+  font-size: 2cqw;
+}
+
+#assimilatedValute {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+#assimilatedValuteBase {
+  font-size: 2cqw;
+}
+
+#energyValute {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+#energyValuteBase {
+  font-size: 2cqw;
+}
+
+#potentialValute {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+#potentialValuteBase {
+  font-size: 2cqw;
+}
+
+#expansorWindow {
+  position: absolute;
+
+
+  top: 0%;
+  left: 0%;
+  width: 50%;
+  height: 100%;
+}
+
+#expansorImage {
+  position: absolute;
+
+  top: 0%;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+}
+
+#expansorName {
+  position: relative;
+
+  width: 100%;
+  height: 10%;
+
+  display: flex;
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+#expansorName>div {
+  position: relative;
+
+  margin: 1%;
+}
+
+#expansors {
+  position: relative;
+
+  width: 100%;
+  height: 60%;
+}
+
+#expansors>div {
+  position: relative;
+
+  width: 100%;
+  height: 25%;
+
+  font-size: 100%;
+}
+
+#expansor1 {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  font-size: 100%;
+}
+
+#expansor2 {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  font-size: 100%;
+}
+
+#expansor3 {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  font-size: 100%;
+}
+
+#expansorSide {
+  position: relative;
+
+  width: 100%;
+  height: 70%;
+}
+
+#expansorSide2 {
+  position: relative;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+}
+
+#automationTab {
+  height: 100%;
+  overflow-y: auto;
+
+}
+
+#automationTab>button {
+
+  padding: 3%;
+  height: fit-content;
+
+  text-align: left;
+
+}
+
+#automationTab>button>div {
+
+  pointer-events: none;
+}
+
+
+#expansorImagePlace {
+  position: absolute;
+
+  top: 0%;
+
+  width: 50%;
+  height: 90%;
+
+  background: #313131;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#monumentsHider {
+
+  position: absolute;
+  top: 90%;
+
+  height: 10%;
+  width: 50%;
+
+  display: flex;
+  justify-content: center;
+  /* Centra orizzontalmente */
+  align-items: center;
+}
+
+.expansorSector1 {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 50%;
+  height: 100%;
+  display: flex;
+}
+
+.expansorSector1>div {
+  display: flex;
+  justify-content: center;
+  /* Centra orizzontalmente */
+  align-items: left;
+  flex-direction: column;
+
+  height: 100%;
+  width: 50%;
+
+  margin: 1%;
+}
+
+.SingleExpansorName {
+  font-size: 150%;
+  width: 33%;
+}
+
+.SingleExpansorEffect {
+  font-size: 100%;
+}
+
+.expansorPrice {
+  width: 33%;
+
+  pointer-events: none;
+}
+
+.expansorPrice>div {
+
+  height: 100%;
+  width: 50%;
+
+  font-size: 100%;
+
+  text-transform: uppercase;
+  text-align: left;
+
+}
+
+.expansorLevel {
+  width: 33%;
+
+  pointer-events: none;
+}
+
+.expansorLevel>div {
+  text-align: center;
+}
+
+.expansorLevel>hr {
+  border: none;
+  border-top: 3px solid rgb(255, 255, 255);
+  /* Adjust the thickness and color of the line */
+  width: 50%;
+  /* Adjust the width of the line */
+  margin: 1% auto;
+  /* Center the line and add some space around it */
+
+  pointer-events: none;
+}
+
+.expansorsSector1Sub {
+  position: relative;
+
+  height: 100%;
+  width: 33%;
+
+  display: flex;
+  flex-direction: column;
+
+  pointer-events: none;
+}
+
+.expansorsSector1Sub>div {
+  text-align: left;
+}
+
+.expansorSector2 {
+  position: absolute;
+
+
+  top: 0;
+  left: 50%;
+
+  width: 50%;
+  height: 100%;
+
+  display: flex;
+
+  flex-direction: row;
+
+}
+
+.expansorSector2>button {
+
+  position: relative;
+  top: 0%;
+  width: 50%;
+  height: 100%;
+
+  background: #536878;
+}
+
+.expansorSector2>button>div {
+  pointer-events: none;
+}
+
+.monuments {
+
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 3fr);
+
+  overflow-y: scroll;
+}
+
+.monuments>div {
+
+  /* Centra orizzontalmente */
+  align-items: left;
+
+  border-style: double;
+  border-radius: 1%;
+
+  height: fit-content;
+}
+
+.monuments>div>div {
+
+  display: flex;
+
+  flex-direction: row;
+
+  justify-content: left;
+  /* Centra orizzontalmente */
+  align-items: left;
+
+  height:min-content;
+
+  padding: 2%;
+
+  z-index: -100;
+}
+
+.baseMonuments {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+
+  height: 15%;
+  width: 98.5%;
+
+}
+
+.baseMonuments>div {
+  display: flex;
+  justify-content: center;
+  /* Centra orizzontalmente */
+  align-items: center;
+  box-shadow: inset 0 0 0 1px #ffffff;
+}
+
+.monumentsGrid {
+
+  position: relative;
+
+  height: 85%;
+
+  overflow-y: scroll;
+}
+
+.monumentsGrid>div {
+
+  position: relative;
+
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  align-items: center;
+
+  height: fit-content;
+}
+
+
+.monumentsGrid>div>div {
+  box-shadow: inset 0 0 0 1px #ffffff;
+  color: #ffffff;
+
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  /* Centra orizzontalmente */
+  align-items: center;
+
+  padding: 1%;
+
+  background: #36454f;
+}
+
+.monumentName {
+  font-weight: bold;
+  text-transform: uppercase;
+
+  font-size: 125%;
+}
+
+#energyOverclock {
+  position: absolute;
+
+  top: 0%;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+}
+
+
+#screen {
+  position: absolute;
+
+  top: 0%;
+  left: 0%;
+  height: 100%;
+  width: 100%;
+
+  z-index: 1;
+
+  display: grid;
+
+  grid-template-columns: repeat(10, 10fr);
+  grid-template-rows: repeat(10, 10fr);
+
+}
+
+#screen>* {
+  background: #36454f;
+  box-shadow: inset 0 0 0 2px #ffffff;
+  border-radius: 3vh;
+  color: #ffffff;
+  font-family: 'Arial', sans-serif;
+
+  align-content: center;
+  text-align: center;
+
+  margin: 4%;
+
+  font-size: 100%;
+}
+
+#screen>*>* {
+  pointer-events: none;
+}
+
+#screenCanvas {
+  position: absolute;
+
+  top: 0%;
+  left: 0%;
+}
+
+#A1 {
+  grid-row-start: 5;
+  grid-row-end: 7;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+#A2 {
+  grid-row-start: 3;
+  grid-row-end: 5;
+  grid-column-start: 3;
+  grid-column-end: 5;
+}
+
+#A3 {
+  grid-row-start: 7;
+  grid-row-end: 9;
+  grid-column-start: 3;
+  grid-column-end: 5;
+}
+
+#A4 {
+  grid-row-start: 5;
+  grid-row-end: 7;
+  grid-column-start: 5;
+  grid-column-end: 7;
+}
+
+#A5 {
+  grid-row-start: 1;
+  grid-row-end: 3;
+  grid-column-start: 5;
+  grid-column-end: 7;
+}
+
+#A6 {
+  grid-row-start: 9;
+  grid-row-end: 11;
+  grid-column-start: 5;
+  grid-column-end: 7;
+}
+
+#A7 {
+  grid-row-start: 3;
+  grid-row-end: 5;
+  grid-column-start: 7;
+  grid-column-end: 9;
+}
+
+#A8 {
+  grid-row-start: 7;
+  grid-row-end: 9;
+  grid-column-start: 7;
+  grid-column-end: 9;
+}
+
+#A9 {
+  grid-row-start: 5;
+  grid-row-end: 7;
+  grid-column-start: 9;
+  grid-column-end: 11;
+}
+
+.kardashev {
+  top: 10%;
+  left: 10%;
+  height: 80%;
+  width: 80%;
+
+  z-index: 2;
+  display: grid;
+
+  grid-template-columns: repeat(10, 10fr);
+  grid-template-rows: repeat(10, 10fr);
+}
+
+#hardware1 {
+  position: relative;
+  background-color: #858585;
+}
+
+#hardware2 {
+  position: relative;
+  background-color: #858585;
+}
+
+#hardware3 {
+  position: relative;
+  background-color: #858585;
+}
+
+#software1 {
+  position: relative;
+  background-color: #858585;
+}
+
+#software2 {
+  position: relative;
+  background-color: #858585;
+}
+
+#software3 {
+  position: relative;
+  background-color: #858585;
+}
+
+#communication1 {
+  position: relative;
+  background-color: #858585;
+}
+
+#communication2 {
+  position: relative;
+  background-color: #858585;
+}
+
+#communication3 {
+  position: relative;
+  background-color: #858585;
+}
+
+#opaqueScreen {
+
+  position: absolute;
+
+  top: 0%;
+  left: 0%;
+
+  height: 100%;
+  width: 100%;
+
+  background-color: #36454f;
+
+  opacity: 0.5;
+
+  z-index: 2;
+}
+
+#opaqueScreen2 {
+
+  position: absolute;
+
+  top: 0%;
+  left: 0%;
+
+  height: 100%;
+  width: 100%;
+
+  background-color: #36454f;
+
+  opacity: 0.5;
+
+  z-index: 2;
+}
+
+#hardware1Info {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 11;
+
+  display: flex;
+  align-items: center;
+
+  justify-content: space-between;
+
+  background: #36454f;
+}
+
+#hardware1Info>div {
+  position: relative;
+
+  margin: 1%;
+}
+
+#hardware1Content1 {
+  grid-row-start: 2;
+  grid-row-end: 5;
+  grid-column-start: 1;
+  grid-column-end: 11;
+}
+
+#automation1 {
+  grid-row-start: 5;
+  grid-row-end: 6;
+  grid-column-start: 1;
+  grid-column-end: 11;
+}
+
+#automation1>div {
+  pointer-events: none;
+}
+
+#hardware1Content2 {
+
+  grid-row-start: 6;
+  grid-row-end: 11;
+  grid-column-start: 1;
+  grid-column-end: 11;
+}
+
+#hardware2Info {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 11;
+
+  display: flex;
+  align-items: center;
+
+  justify-content: space-between;
+
+  background: #36454f;
+}
+
+#hardware2Info>div {
+  position: relative;
+
+  margin: 1%;
+}
+
+#hardware2Content1 {
+  grid-row-start: 2;
+  grid-row-end: 5;
+  grid-column-start: 1;
+  grid-column-end: 11;
+}
+
+#automation2 {
+  grid-row-start: 5;
+  grid-row-end: 6;
+  grid-column-start: 1;
+  grid-column-end: 11;
+}
+
+#automation2>div {
+  pointer-events: none;
+}
+
+#hardware2Content2 {
+
+  grid-row-start: 6;
+  grid-row-end: 11;
+  grid-column-start: 1;
+  grid-column-end: 11;
+}
+
+#software1Content1 {
+  grid-row-start: 2;
+  grid-row-end: 6;
+  grid-column-start: 1;
+  grid-column-end: 6;
+}
+
+#software1Content2 {
+  grid-row-start: 6;
+  grid-row-end: 11;
+  grid-column-start: 1;
+  grid-column-end: 11;
+}
+
+#energyInfo1 {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 11;
+
+  display: flex;
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+#overclockInfo1 {
+  grid-row-start: 5;
+  grid-row-end: 6;
+  grid-column-start: 1;
+  grid-column-end: 11;
+
+  display: flex;
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding: 1%;
+}
+
+#overclockContainer1 {
+  grid-row-start: 6;
+  grid-row-end: 11;
+  grid-column-start: 1;
+  grid-column-end: 11;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 3fr);
+  grid-template-rows: repeat(2, 2fr);
+
+  z-index: 1;
+}
+
+#overclockContainer1>div {
+  display: flex;
+  align-items: center;
+
+  justify-content: center;
+
+}
+
+#overclockContainer1>div>div {
+  pointer-events: none;
+}
+
+#energyInfo1>div {
+  position: relative;
+
+  margin: 1%;
+}
+
+#energyInfo2 {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 11;
+
+  display: flex;
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+#energyInfo2>div {
+  position: relative;
+
+  margin: 1%;
+}
+
+#respecEnergy1 {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 11;
+}
+
+#energyGrid1 {
+  position: relative;
+
+  display: grid;
+
+  grid-row-start: 3;
+  grid-row-end: 7;
+  grid-column-start: 1;
+  grid-column-end: 11;
+
+  grid-template-columns: repeat(2, 2fr);
+  grid-template-rows: repeat(2, 2fr);
+
+  z-index: 1;
+}
+
+#energyGrid1>button>div {
+  pointer-events: none;
+}
+
+#respecEnergy2 {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 11;
+}
+
+#energyGrid2 {
+  position: relative;
+
+  display: grid;
+
+  grid-row-start: 3;
+  grid-row-end: 5;
+  grid-column-start: 1;
+  grid-column-end: 11;
+
+  grid-template-columns: repeat(2, 2fr);
+  grid-template-rows: repeat(1, 1fr);
+
+  z-index: 1;
+}
+
+#energyGrid2>button>div {
+  pointer-events: none;
+}
+
+#communication1Content1 {
+  grid-row-start: 7;
+  grid-row-end: 11;
+  grid-column-start: 1;
+  grid-column-end: 11;
+}
+
+#hardware3Info {
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 11;
+
+  display: flex;
+  align-items: center;
+
+  justify-content: space-between;
+
+  background: #36454f;
+}
+
+#hardware3Info>div {
+  position: relative;
+
+  margin: 1%;
+}
+
+#hardware3Content1 {
+  grid-row-start: 2;
+  grid-row-end: 5;
+  grid-column-start: 1;
+  grid-column-end: 11;
+}
+
+#automation3 {
+  grid-row-start: 5;
+  grid-row-end: 6;
+  grid-column-start: 1;
+  grid-column-end: 11;
+}
+
+#automation3>div {
+  pointer-events: none;
+}
+
+#hardware3Content2 {
+  grid-row-start: 6;
+  grid-row-end: 11;
+  grid-column-start: 1;
+  grid-column-end: 11;
+}
+
+#communication2Content1 {
+  grid-row-start: 6;
+  grid-row-end: 11;
+  grid-column-start: 1;
+  grid-column-end: 11;
+}
+
+#softwareUpgradesInfo3 {
+  position: relative;
+
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 6;
+
+  display: flex;
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+#softwareUpgradesInfo3 {
+  padding: 1%;
+}
+
+#software3Content2 {
+  grid-row-start: 2;
+  grid-row-end: 6;
+  grid-column-start: 1;
+  grid-column-end: 6;
+}
+
+#software3assimilationCenter {
+  position: relative;
+
+  grid-row-start: 2;
+  grid-row-end: 6;
+  grid-column-start: 6;
+  grid-column-end: 11;
+}
+
+#software3assimilationCenterInfo {
+  position: relative;
+
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 6;
+  grid-column-end: 11;
+
+  display: flex;
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+#software3assimilationCenterInfo>div {
+  position: relative;
+
+  margin: 1%;
+}
+
+#assimilationBaseGridbutton7 {
+  grid-row-start: 3;
+  grid-row-end: 9;
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
+#assimilationBaseGridbutton8 {
+  grid-row-start: 3;
+  grid-row-end: 9;
+  grid-column-start: 4;
+  grid-column-end: 7;
+}
+
+#assimilationBaseGridbutton9 {
+  grid-row-start: 3;
+  grid-row-end: 9;
+  grid-column-start: 7;
+  grid-column-end: 10;
+}
+
+#expansor4 {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  font-size: 100%;
+}
+
+#expansor4Button {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  font-size: 100%;
+}
+
+#expansorPotential {
+  grid-row-start: 1;
+  grid-row-end: 4;
+  grid-column-start: 6;
+  grid-column-end: 11;
+}
+
+#potentialUpgrades1 {
+  grid-row-start: 4;
+  grid-row-end: 7;
+  grid-column-start: 6;
+  grid-column-end: 11;
+}
+
+#potentialEnergy1 {
+  grid-row-start: 8;
+  grid-row-end: 11;
+  grid-column-start: 6;
+  grid-column-end: 11;
+}
+
+#potentialInfo{
+  grid-row-start: 1;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 6;
+
+  display: flex;
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+#potentialInfo>div{
+  margin: 1%;
+}
+
+#communication3Content1 {
+  grid-row-start: 2;
+  grid-row-end: 7;
+  grid-column-start: 1;
+  grid-column-end: 6;
+}
+
+.softwareUpgradesContVar {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.softwareUpgradesContVar>div {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.softwareUpgradesContVar>div>button {
+  position: relative;
+  width: 100%;
+  height: 33%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+.softwareUpgradesContVar>div>button>div {
+  position: relative;
+  padding: 1%;
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  align-items: center;
+
+  font-size: 80%;
+
+  pointer-events: none;
+}
+
+#respecEnergy3 {
+  grid-row-start: 7;
+  grid-row-end: 8;
+  grid-column-start: 6;
+  grid-column-end: 11;
+}
+
+#energyGrid3 {
+  position: relative;
+
+  display: grid;
+
+  grid-row-start: 8;
+  grid-row-end: 11;
+  grid-column-start: 6;
+  grid-column-end: 11;
+
+  grid-template-columns: repeat(2, 2fr);
+  grid-template-rows: repeat(1, 1fr);
+
+  z-index: 1;
+}
+
+#energyGrid3>button>div {
+  pointer-events: none;
+}
+
+#breakthrough1{
+  grid-row-start: 7;
+  grid-row-end: 11;
+  grid-column-start: 1;
+  grid-column-end: 6;
+}
+
+#breakthrough1Button{
+height:100%;
+width: 100%;
+}
+
+#resetScreen{
+  position: absolute;
+
+  z-index: 10;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-evenly;
+
+  width: 20%;
+  height: 20%;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate3d(-50%, -50%, 0);
+}
+
+#resetScreen>div {
+  display: flex;
+  justify-content: center; /* Centra orizzontalmente */
+  align-items: center;
+}
+
+#resetScreen>div>div>div {
+  display: flex;
+  justify-content: space-evenly; /* Centra orizzontalmente */
+}
+
+#r2 {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#loadoutButtons{
+  display: flex;
+
+  justify-content: center; /* Centra orizzontalmente */
+  align-items: center;
+}
+
+.chapter {
+
+  height:max-content; 
+
+  width:100%;
+
+  display: flex;
+
+  flex-direction: row;
+  background: #313131;
+}
+.chapter img {
+  width: 50%;
+  left: 0%;
+}
+
+.chapter-content {
+  width: 25%;
+  left: 75%;
+
+  background: #313131;
+
+  padding: 1%;
+}
+
+.chapter-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: goldenrod;
+  text-transform: uppercase;
+}

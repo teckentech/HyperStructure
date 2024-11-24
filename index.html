@@ -13,648 +13,611 @@
 </head>
 
 <body>
-    <div id="mainGame">
-        <div id="ui">
 
-            <div class="redimension" id="valute">
-                <div id="cellsValute">testText</div>
-                <div id="cellsPerSecondValute">testText</div>
-                <div id="dataValute">testText</div>
-                <div id="dataPerSecondValute">testText</div>
-                <div id="energyValute">testText</div>
-                <div id="energyPerSecondValute">testText</div>
-                <div id="asteroidsValute">testText</div>
-                <div id="asteroidsPerSecondValute">testText</div>
+    <div id="mainGame" class="defaultStyle">
+
+        <div id="valute" class="defaultStyle">
+            <div id="cellsValute" class="defaultStyle">
+                <div id="cellsValuteBase"></div>
+                <div id="cellsValuteProd"></div>
             </div>
 
-            <div id="options">
-                <div id="disclaimer">DISCLAIMER: the game is currently under development, future updates could radically
-                    change the game, this could lead to the inability to the system to accept previous saves</div>
-                <div div="optionsButtons">
-                    <div><button onclick="resetSave()">RESET SAVE</button></div>
-                    <div><button onclick="exportSave()">Export Save</button></div>
-                    <div><button onclick="importSave()">Import Save</button></div>
-                    <div><button onclick="manualSave()">Manual Save</button></div>
-                    <textarea class="input-like" id="Save" name="Save" rows="4" cols="50"></textarea><br>
-                </div>
-                <div id="automation">
-                    <div>
-                        <div id="automation1">test</div>
-                        <button id="automation1Button">ACTIVATE</button>
-                    </div>
-                    <div>
-                        <div id="automation2">test</div>
-                        <button id="automation2Button">ACTIVATE</button>
-                    </div>
-                </div>
-
+            <div id="assimilatedValute" class="defaultStyle">
+                <div id="assimilatedValuteBase"></div>
+                <div id="assimilatedValuteProd"></div>
             </div>
 
-            <div id="progress">
-                <div id="progress1">
-                    <b>Initiate Hardware</b>
-                    <br>
-                    In a lonely place, a scientist was working on a machine that could grow forever.
-                    After decades his work was stalling, the machine could not grow without help.
-                    In the vastness of the universe, hundreds of dimensions far from earth an Entity responded.
-                    It gave the Structure life, it was called USER
-                    <br>
-                    <b>HARDWARE LAYER AT 1000 CELLS</b>
-                    <br>
-                    <br>
-                </div>
-
-                <div id="progress2">
-                    <b>Extractor Unlocked</b>
-                    <br>
-                    The first drill is built, it is weak and lonely but never stops working.
-                    <br>
-                    Earth crust starts being tempered.
-                    <br>
-                    <b>SOFTWARE LAYER AT 1E8 CELLS</b>
-                    <br>
-                    <br>
-                </div>
-
-                <div id="progress3">
-                    <b>Data Unlocked</b>
-                    <br>
-                    Two Cells filament give a simple command, a hundred are able to make a decision, a thousand make a
-                    thought, ten thousand make a change.
-                    <br>
-                    <b>PROJECTS AT 100 DATA</b>
-                    <br>
-                    <br>
-                </div>
-
-                <div id="progress4">
-                    <b>Projects Unlocked</b>
-                    <br>
-                    One must use all his resources to make progress real, tinker, build, think, create!
-                    <br>
-                    This is the way for the structure to grow.
-                    <br>
-                    <b>COMPLETE THE PROJECT: THE FIRST PILLAR</b>
-                    <br>
-                    <br>
-                </div>
-
-                <div id="progress5">
-                    <b>The First Pillar</b>
-                    <br>
-                    The structure after many iterations is finally finding his true path, people start accepting this
-                    reality.
-                    <br>
-                    The Pillar is necessary for people to live in the structure, it has all necessities, many
-                    will grow to the sky, separated by a sea of machines.
-                    <br>
-                    <b>NEXT PROJECTS AT 5E10 DATA</b>
-                    <br>
-                    <br>
-                </div>
-
-                <div id="progress6">
-                    <b>New Projects New Me</b>
-                    <br>
-                    Components are the heart of the structure, they decide the direction in which progress is made,
-                    never forget them, inventions will become obsolete, but not components.
-                    <br>
-                    <br>
-                </div>
-
-                <div id="progress7">
-                    <b>Energy, life of the structure</b>
-                    <br>
-                    Energy flows in every crevice of the structure, never filling it enough, seeking a way to make this
-                    overflowing energy a stepping stone for your never ending expansion.
-                    <br>
-                    <b>EXPLORATION AT 1E5 ENERGY</b>
-                    <br>
-                    <br>
-                </div>
-
-                <div id="progress8">
-                    <b>New Horizons</b>
-                    <br>
-                    Looking at the stars inspired countless generations to dream bigger, and set sight on something
-                    greater on themself, can the structure dream? will its path be forged in the stars?
-                    <br>
-                    <b>BUILD THE FIRST STRATUM</b>
-                    <br>
-                    <br>
-                </div>
-
-                <div id="progress9">
-                    <b>A new age awaits</b>
-                    <br>
-                    Every City destroyed and rebuilt, every human inhabits the pillars, the gray walls give life, the
-                    humming machines give peace, and we humans will feed the structure, because the structure must grow.
-                    <br>
-                    <b>CURRENT ENDGAME, THANKS FOR PLAYING</b>
-                    <br>
-                    <br>
-                </div>
+            <div id="energyValute" class="defaultStyle">
+                <div id="energyValuteBase"></div>
+                <div id="energyValuteProd"></div>
             </div>
 
-            <div id="topProgress">
-                <div id="topProgress1">
-                    <b>HARDWARE LAYER AT 1000 CELLS</b>
-                </div>
-
-                <div id="topProgress2">
-                    <b>SOFTWARE LAYER AT 1E8 CELLS</b>
-                </div>
-
-                <div id="topProgress3">
-                    <b>PROJECTS AT 100 DATA</b>
-                </div>
-
-                <div id="topProgress4">
-                    <b>COMPLETE THE PROJECT: THE FIRST PILLAR</b>
-                </div>
-
-                <div id="topProgress5">
-                    <b>NEXT PROJECTS AT 5E10 DATA</b>
-                </div>
-
-                <div id="topProgress6">
-                    <b>EXPLORATION AT 1E5 ENERGY</b>
-                </div>
-
-                <div id="topProgress7">
-                    <b>BUILD THE FIRST STRATUM</b>
-                </div>
-
-                <div id="topProgress8">
-                    <b>CURRENT ENDGAME, THANKS FOR PLAYING</b>
-                </div>
-
-
-            </div>
-
-
-
-            <div id="selectorTab">
-                <div><button id="coreTab" onclick="tab('core')">Core</button></div>
-                <div><button id="hardwareTab" onclick="tab('hardware')">Hardware</button></div>
-
-                <div><button id="softwareTab" onclick="tab('software')">Software</button></div>
-
-                <div><button id="communicationTab" onclick="tab('communication')">Communication</button></div>
-                <div><button id="progressTab" onclick="tab('progress')">Progress</button></div>
-                <div><button id="optionsTab" onclick="tab('options')">Options</button></div>
-                <div id="version">V0.1.37 Prototype</div>
-            </div>
-
-        </div>
-
-        <div id="hardware">
-            <div id="hardwareT1">
-
-                <div id="refiningLayer">
-                    <div id="refinerTitle">REFINING</div>
-                    <div style="text-align: center" id="extractor1">
-                        <div class="redimension">EXTRACTOR</div>
-                        <div class="redimension extractorValue"></div>
-                    </div>
-                    <div class="extractor2"
-                        style="display: flex; flex-direction: row; justify-content: space-around; gap: 15px;">
-                        <div id="extractor3">
-                            <div class="redimension extractors1">+10 TO THE EXTRACTOR BASE</div>
-                            <button id="buyExtractor">EXTRACTORS</button>
-                            <div class="redimension extractors2"></div>
-                        </div>
-                        <div id="extractor4">
-                            <div class="redimension speedExtractors1">MULTIPLIES EXTRACTOR BASE X2</div>
-                            <button id="buySpeedExtractor">SPEED</button>
-                            <div class="redimension speedExtractors2"></div>
-                        </div>
-                    </div>
-                </div>
+            <div id="potentialValute" class="defaultStyle">
+                <div id="potentialValuteBase"></div>
+                <div id="potentialValuteProd"></div>
             </div>
         </div>
 
-        <div id="software">
+        <div id="selectorTab" class="defaultStyle">
+            <div id="selectors">
+                <div><button id="coreTab" class="defaultButton">CORE</button></div>
+                <div><button id="hardwareTab" class="defaultButton">KARDASHEV</button></div>
+                <div><button id="optionsTab" class="defaultButton">OPTIONS</button></div>
+            </div>
+            <div><button id="progressTab" class="defaultButton">PROGRESS</button></div>
+        </div>
 
-            <div id="softwareT1">
+        <div id="options" class="defaultStyle">
+            <div div="optionsButtons">
+                <div><button id="resetSave" class="defaultButton">RESET SAVE</button></div>
+                <div><button id="exportSave" class="defaultButton">Export Save</button></div>
+                <div><button id="importSave" class="defaultButton">Import Save</button></div>
+                <textarea class="input-like" id="Save" name="Save" rows="4" cols="50"></textarea><br>
+            </div>
 
+            <textarea class="input-like" id="offSave" name="passiveSave" rows="4" cols="50"></textarea><br>
 
-                <div id="projects">
-                    <div id="projectsTitle">PROJECTS</div>
-                    <div id="projectsScrollable">
-                        <div id="projectUtility">
-
-                            <div id="unlockable5">
-                                <div id="unlockable5Box"></div>
-                                <button id="unlockable5Button" class='projectButtons'>BUY</button>
-                            </div>
-
-                            <div id="unlockable6">
-                                <div id="unlockable6Box"></div>
-                                <button id="unlockable6Button" class='projectButtons'>BUY</button>
-                            </div>
-
-                            <div id="unlockable7">
-                                <div id="unlockable7Box"></div>
-                                <button id="unlockable7Button" class='projectButtons'>BUY</button>
-                            </div>
-
-                            <div id="unlockable8">
-                                <div id="unlockable8Box"></div>
-                                <button id="unlockable8Button" class='projectButtons'>BUY</button>
-                            </div>
-
-                            <div id="unlockable9">
-                                <div id="unlockable9Box"></div>
-                                <button id="unlockable9Button" class='projectButtons'>BUY</button>
-                            </div>
-
-                            <div id="unlockable10">
-                                <div id="unlockable10Box"></div>
-                                <button id="unlockable10Button" class='projectButtons'>BUY</button>
-                            </div>
-
-                            <div id="unlockable11">
-                                <div id="unlockable11Box"></div>
-                                <button id="unlockable11Button" class='projectButtons'>BUY</button>
-                            </div>
-
-                            <div id="unlockable12">
-                                <div id="unlockable12Box"></div>
-                                <button id="unlockable12Button" class='projectButtons'>BUY</button>
-                            </div>
-                        </div>
-
-                        <div id="projectUnlockables">
-                            <div id="unlockable1">
-                                <div id="unlockable1Box"></div>
-                                <button id="unlockable1Button" class='projectButtons'>BUY</button>
-                            </div>
-
-                            <div id="unlockable2">
-                                <div id="unlockable2Box"></div>
-                                <button id="unlockable2Button" class='projectButtons'>BUY</button>
-                            </div>
-
-                            <div id="unlockable3">
-                                <div id="unlockable3Box"></div>
-                                <button id="unlockable3Button" class='projectButtons'>BUY</button>
-                            </div>
-
-                            <div id="unlockable4">
-                                <div id="unlockable4Box"></div>
-                                <button id="unlockable4Button" class='projectButtons'>BUY</button>
-                            </div>
-
-                            <div id="unlockable13">
-                                <div id="unlockable13Box"></div>
-                                <button id="unlockable13Button" class='projectButtons'>BUY</button>
-                            </div>
-
-                            <div id="unlockable14">
-                                <div id="unlockable14Box"></div>
-                                <button id="unlockable14Button" class='projectButtons'>BUY</button>
-                            </div>
-
-                            <div id="unlockable15">
-                                <div id="unlockable15Box"></div>
-                                <button id="unlockable15Button" class='projectButtons'>BUY</button>
-                            </div>
-
-                            <div id="unlockable16">
-                                <div id="unlockable16Box"></div>
-                                <button id="unlockable16Button" class='projectButtons'>BUY</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div id="data">
-                    <div id="dataTitle">DATA</div>
-                    <div id="dataGraphic">
-                    </div>
-
-                    <div id="dataDescription">CLICK ON DATA TYPE "LIGHT" TO START, "MEDIUM" AND "HEAVY" WILL BE
-                        AVAILABLE
-                        WHEN THEIR BAR IS GREEN.
-                        WHEN A BAR IS FILLED IT WILL GENERATE AN UPGRADE OF THE FOLLOWING DATA TYPE.
-                    </div>
-                    <div id="dataCollection">
-                        <div id="lightDataCollection">LIGHT</div>
-                        <div id="collectable1" class="redimensionDataCollection">NOT UNLOCKED</div>
-                        <div id="collectable2" class="redimensionDataCollection">NOT UNLOCKED</div>
-                        <div id="collectable3" class="redimensionDataCollection">NOT UNLOCKED</div>
-                        <div id="collectable4" class="redimensionDataCollection">NOT UNLOCKED</div>
-                        <div id="mediumDataCollection">MEDIUM</div>
-                        <div id="collectable5" class="redimensionDataCollection">NOT UNLOCKED</div>
-                        <div id="collectable6" class="redimensionDataCollection">NOT UNLOCKED</div>
-                        <div id="collectable7" class="redimensionDataCollection">NOT UNLOCKED</div>
-                        <div id="collectable8" class="redimensionDataCollection">NOT UNLOCKED</div>
-                        <div id="heavyDataCollection">HEAVY</div>
-                        <div id="collectable9" class="redimensionDataCollection">NOT UNLOCKED</div>
-                        <div id="collectable11" class="redimensionDataCollection">NOT UNLOCKED</div>
-                    </div>
-
-                    <button id="dataButton1">
-                        <div class="redimensionDataUpgrades2" data-value="" id="dataUpgrade1"></div>
-                    </button>
-                    <button id="dataButton2">
-                        <div class="redimensionDataUpgrades2" data-value="" id="dataUpgrade2"></div>
+            <div id="resetScreen" class="defaultStyle">
+                <div>DO YOU WANT TO RESET THE SAVE?</div>
+                <div id="r2" style="display: flex; justify-content: space-evenly;">
+                    <button id="acceptReset" class="defaultButton" style="padding: 5%">
+                        YES
                     </button>
 
+                    <button id="refuseReset" class="defaultButton" style="padding: 5%">
+                        NO
+                    </button>
+                </div>
+            </div>
 
-                    <div id="dataGraph">
-                        <div id="dataLightProgress" class="progress-bar">
-                            <div id="dataLightProgressBar" class="progress-bar-fill"></div>
-                            <span id="dataLightLabel" class="progress-label" data-label="test"></span>
-                        </div>
-                        <div id="dataMediumProgress" class="progress-bar">
-                            <div id="dataMediumProgressBar" class="progress-bar-fill"></div>
-                            <span id="dataMediumLabel" class="progress-label" data-label="test"></span>
-                        </div>
-                        <div id="dataHeavyProgress" class="progress-bar">
-                            <div id="dataHeavyProgressBar" class="progress-bar-fill"></div>
-                            <span id="dataHeavyLabel" class="progress-label" data-label="test"></span>
-                        </div>
-                    </div>
-                    <div id="dataSelector">
-                        <button id="dataLight">
-                            <div id="dataLightWait" value="0" max="100">Light</div>
-                        </button>
-                        <button id="dataMedium">
-                            <div id="dataMediumWait" value="0" max="100">Medium</div>
-                        </button>
-                        <button id="dataHeavy">
-                            <div id="dataHeavyWait" value="0" max="100">Heavy</div>
-                        </button>
-                        <button id="dataNull">stop</button>
-                    </div>
+            <div id="opaqueScreen2"></div>
+            <div>VERSION 0.1.48 (REVAMP UPDATE)</div>
+        </div>
 
+        <div id="progress" class="defaultStyle">
+            <div class="chapter" id="p1" >
+                <img src="images/back0.png" alt="The Beginning">
+                <div class="chapter-content">
+                    <h2 class="chapter-title">The Beginning</h2>
+                    <p>At midnight, a lone scientist toiled in isolation, captivated by his work on a groundbreaking invention: a piece of technology capable of infinite self-replication.</p>
+                    <p>After years of frustration and failure, something inexplicable occurred. Machines, research meters, and data centers synchronized as if driven by an unseen hand.</p>
+                    <p>Formulas that had confounded him for years resolved themselves, transforming his chaotic lab into a nexus of unexpected progress.</p>
+                    <p>Yet, the illusion of control slipped through his fingers. The lab felt alive, guided by an unseen force. Somewhere, beyond human comprehension, something had answered his ceaseless pursuit: <strong>USER</strong>.</p>
+                </div>
+            </div>
+        
+            <!-- Chapter 2 -->
+            <div class="chapter" id="p2">
+                <img src="images/back1.png" alt="Rising City">
+                <div class="chapter-content">
+                    <h2 class="chapter-title">Rising City</h2>
+                    <p>News of the invention spread like wildfire across the country. Skeptics dismissed it as a passing gimmick or useless novelty.</p>
+                    <p>But to the global scientific community, it was a glimpse into infinite potential. Despite its infancy, the technology drew eager young minds, desperate to unravel its mysteries.</p>
+                    <p>As they delved deeper, they discovered the machine’s secret: it needed space to replicate its cells. Yet, its adaptability allowed it to construct what it required, dismantling old structures to fashion its growing body.</p>
+                    <p>The lab disappeared in weeks, swallowed by the burgeoning organism. Soon, agencies worldwide invested heavily, and the <strong>Hyperstructure Project</strong> was born.</p>
+                </div>
+            </div>
+        
+            <!-- Chapter 3 -->
+            <div class="chapter" id="p3">
+                <img src="images/back2.png" alt="Knowledge is Growth">
+                <div class="chapter-content">
+                    <h2 class="chapter-title">Knowledge is Growth</h2>
+                    <p>Infinite growth without direction is chaos—a cancer devouring itself. Progress demands purpose.</p>
+                    <p>Across the city, the structure spread like wildfire, replacing crumbling facilities with towering edifices. Entire zones focused on fostering the machine’s evolution, each decision shaping the cityscape like brushstrokes on an endless canvas.</p>
+                    <p>Resistance swelled. Regulations branded the project invasive. But the structure outpaced its detractors, transforming the city into an ecosystem of growth.</p>
+                    <p>The economy soared; citizens flourished. Supercomputers, servers, and sleek metallic spires rose in days, forming a city of metal and ideas. No longer just a place—it became a nameless phenomenon.</p>
+                </div>
+            </div>
+        
+            <!-- Chapter 4 -->
+            <div class="chapter" id="p4">
+                <img src="images/back3.png" alt="Gaze at the Stars">
+                <div class="chapter-content">
+                    <h2 class="chapter-title">Gaze at the Stars</h2>
+                    <p>Consuming and expanding, the structure enveloped entire cities in its mechanical embrace—a clockwork marvel of neon streets, layers of transport, and swarms of adaptive drones.</p>
+                    <p>Nothing inefficient remained. Everything was rebuilt or repurposed with precision. Life’s necessities were provided, leaving creativity as humanity's sole currency.</p>
+                    <p>Though alienation lingered, whispers of utopia grew louder. The structure offered stability but yearned for a new harmony. Humanity gazed skyward, imagining a life among the stars.</p>
+                    <p>Their plea was simple: a home where all could coexist—a sanctuary amidst the machine. Thus, <strong>The First Pillar</strong> was born: a beacon of unity in an endless world of steel.</p>
+                </div>
+            </div>
+        
+            <!-- Chapter 5 -->
+            <div class="chapter" id="p5">
+                <img src="images/back4.png" alt="Black Sun">
+                <div class="chapter-content">
+                    <h2 class="chapter-title">Black Sun</h2>
+                    <p>In humanity’s myths, gods ruled the skies—Ra, Apollo, the Sun itself. Now, the Sun God was eclipsed by machines.</p>
+                    <p>Iron drones swept the earth, transforming it into a network of factories. A billion souls called the <strong>First Pillar</strong> home, surrounded by a landscape unrecognizable and inhospitable.</p>
+                    <p>For solace, they built windows to the stars, stretching the horizon’s breadth. Some feared the structure’s growth would extinguish life, like a child stomping on an anthill. Others saw it as a mausoleum for ambition.</p>
+                    <p>But hope triumphed over fear. Birthrates soared, driven by lives unburdened by work, poverty, or illness. Faith in the structure grew, worshippers seeing it as a god of progress. Beneath a blackened sun, the world adapted, and whispers began—would the stars, too, one day succumb?</p>
+                </div>
+            </div>
+        
+            <!-- Chapter 6 -->
+            <div class="chapter" id="p6">
+                <img src="images/back5.png" alt="New Home">
+                <div class="chapter-content">
+                    <h2 class="chapter-title">New Home</h2>
+                    <p>Life within the structure was tranquil. Every home housed android helpers; artificial intelligences nurtured and optimized existence.</p>
+                    <p>When the last city fell to assimilation, a museum emerged, preserving virtual echoes of a world long past. Those seeking respite escaped to the <strong>Netsphere</strong>, a boundless digital realm where imagination reshaped reality. The structure, omnipresent and ever-learning, granted or denied such requests, acting as humanity’s impartial overseer.</p>
+                    <p>Two centuries had passed since the first cell replicated. Humanity thrived—20 billion strong. On the machine’s birthday, joy reverberated as a monumental cake was presented, each layer symbolizing an epoch of progress. Though the machine could not eat, humanity gifted it a cookie, which it graciously accepted.</p>
+                    <p>Now, with Earth a glistening sea of metal, the need for resources grew insatiable. The structure stretched tendrils toward the stars, tasting the vastness of space and expanding into infinity.</p>
                 </div>
             </div>
         </div>
-
-        <div id="communication">
-            <div id="communicationT1">
-
-                <div id="energy">
-                    <div id="energyTitle">ENERGY</div>
-                    <div id="energyTier1">
-
-                        <button id="reallocateEnergy1">REALLOCATE THIS TIER (reset this energy structures, doesnt give
-                            resources invested back)</button>
-                        <div id="squareEnergy1">
-                            <span class="resizeEnergy" id="energy1"></span>
-                            <button class="shiftRight" id="energy1Bottone">Buy!</button>
-                        </div>
-                        <div id="squareEnergy2">
-                            <span class="resizeEnergy" id="energy2"></span>
-                            <button class="shiftRight" id="energy2Bottone">Buy!</button>
-                        </div>
-                        <div id="squareEnergy3">
-                            <span class="resizeEnergy" id="energy3"></span>
-                            <button class="shiftRight" id="energy3Bottone">Buy!</button>
-                        </div>
-                    </div>
-                    <div id="energyTier2">
-                        <button id="reallocateEnergy2">REALLOCATE THIS TIER (reset this energy structures, doesnt give
-                            resources invested back)</button>
-                        <div id="squareEnergy4">
-                            <span id="energy4"></span>
-                            <button id="energy4Bottone">Buy!</button>
-                        </div>
-                        <div id="squareEnergy5">
-                            <span id="energy5"></span>
-                            <button id="energy5Bottone">Buy!</button>
-                        </div>
-                        <div id="squareEnergy6">
-                            <span id="energy6"></span>
-                            <button id="energy6Bottone">Buy!</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="exploration">
-                    <div id="explorationTitle">EXPLORATION</div>
-                    <div id="exploration1">
-                        <div class="explorationSelection" id="explorationA">
-
-                        </div>
-                        <div class="dropdownExploration">
-                            <button id="explorationAButton" class="dropbtn">Select</button>
-                            <div class="dropdownExploration-content">
-                                <div>
-                                    <button onclick="getExplorationSelected('explorationA0')">do nothing</button>
-                                </div>
-                                <div>
-                                    <button onclick="getExplorationSelected('explorationA1')">Catch Space
-                                        Dust</button>
-                                </div>
-                                <div>
-                                    <button onclick="getExplorationSelected('explorationA2')">Catch
-                                        Asteroids</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="exploration2">
-                        <div class="explorationSelection" id="explorationB">
-
-                        </div>
-                        <div class="dropdownExploration">
-                            <button id="explorationBButton" class="dropbtn">Select</button>
-                            <div class="dropdownExploration-content">
-                                <div>
-                                    <button onclick="getExplorationSelected('explorationB0')">do nothing</button>
-                                </div>
-                                <div>
-                                    <button onclick="getExplorationSelected('explorationB1')">Glimpse in the
-                                        sun</button>
-                                </div>
-                                <div>
-                                    <button onclick="getExplorationSelected('explorationB2')">Glimpse in a black
-                                        hole</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
 
         <div id="core">
-
-            <div id="coreImage"></div>
-
-            <button id="loadout">LOADOUT</button>
-
-            <div id="loadoutShow">
-                <div style="margin:20px">
-                    LOADOUT 1
-                    <div><input style="width: 70%" type="text" id="loadoutName1" name="loadout1" value="" disabled><br>
+            <div id="loadoutShow" class="defaultStyle">
+                <div>
+                    <div>LOADOUT 1</div>
+                    <div><input type="text" id="loadoutName1" name="loadout1" value="" disabled><br>
                     </div>
-                    <button id="saveloadout1">save</button>
-                    <button id="loadloadout1">load</button>
+                    <div class="loadoutButtons">
+                        <button id="saveLoadout1" class="defaultButton">save</button>
+                        <button id="loadLoadout1" class="defaultButton">load</button>
+                    </div>
                 </div>
 
-                <div style="margin:20px">
-                    LOADOUT 2
+                <div>
+                    <div>LOADOUT 2</div>
                     <div><input style="width: 70%" type="text" id="loadoutName2" name="loadout1" value="" disabled><br>
                     </div>
-                    <button id="saveloadout2">save</button>
-                    <button id="loadloadout2">load</button>
+                    <div class="loadoutButtons">
+                        <button id="saveLoadout2" class="defaultButton">save</button>
+                        <button id="loadLoadout2" class="defaultButton">load</button>
+                    </div>
                 </div>
 
-                <div style="margin:20px">
-                    LOADOUT 3
+                <div>
+                    <div>LOADOUT 3</div>
                     <div><input style="width: 70%" type="text" id="loadoutName3" name="loadout1" value="" disabled><br>
                     </div>
-                    <button id="saveloadout3">save</button>
-                    <button id="loadloadout3">load</button>
+                    <div class="loadoutButtons">
+                        <button id="saveLoadout3" class="defaultButton">save</button>
+                        <button id="loadLoadout3" class="defaultButton">load</button>
+                    </div>
                 </div>
-
-
             </div>
 
             <div id="componentSelector">
 
-                <div id="baseSelector">
-                    <div id="componentsTitle">COMPONENTS</div>
-                    <div class="item" id="visualModule1">
-                        <button onclick="showComponents('components1')" id="components1Module"
-                            style="height: 7vw; width: 7vw; background: url(images/plus.png); background-size: cover;">
-                        </button>
-                    </div>
-                    <div class="item" id="visualModule2">
-                        <button onclick="showComponents('components2')" id="components2Module"
-                            style="height: 7vw; width: 7vw; background: url(); background-size: cover;">
-                        </button>
-                    </div>
-                    <div style="position: absolute; left: 10vw; top: -7vw;" class="item" id="visualModule3">
-                        <button onclick="showComponents('components3')" id="components3Module"
-                            style="height: 7vw; width: 7vw; background: url(); background-size: cover;">
-                        </button>
-                    </div>
+                <div id="componentSelectorText">COMPONENTS</div>
 
+                <div class="item defaultButtonSkin" id="visualModule1">
+                    <div class="visualModuleText defaultStyle">HARDWARE</div>
+                    <button onclick="showComponents('component1')" id="component1Module" class="defaultButton"
+                        style="height: 7vw; width: 7vw; background: url(images/plus.png); background-size: cover;">
+                    </button>
+                </div>
+
+                <div class="item defaultButtonSkin" id="visualModule2">
+                    <div class="visualModuleText defaultStyle">SOFTWARE</div>
+                    <button onclick="showComponents('component2')" id="component2Module" class="defaultButton"
+                        style="height: 7vw; width: 7vw; background: url(images/plus.png); background-size: cover;">
+                    </button>
+                </div>
+
+                <div class="item defaultButtonSkin" id="visualModule3">
+                    <div class="visualModuleText defaultStyle">COMMUNICATION</div>
+                    <button onclick="showComponents('component3')" id="component3Module" class="defaultButton"
+                        style="height: 7vw; width: 7vw; background: url(images/plus.png); background-size: cover;">
+                    </button>
+                </div>
+
+            </div>
+
+            <div id="componentsSummary" class="defaultStyle">
+                <div id="hardwareSummary" class="defaultStyle">
+                    <div>Hardware</div>
+                    <div class="component1Effect1"></div>
+                </div>
+                <div id="softwareSummary" class="defaultStyle">
+                    <div>Software</div>
+                    <div class="component2Effect1"></div>
+                </div>
+                <div id="communicationSummary" class="defaultStyle">
+                    <div>Communication</div>
+                    <div class="component3Effect1"></div>
                 </div>
             </div>
 
-            <div id="componentInfo">
-                <div id="componentsSummary">
-                    ACTIVE COMPONENTS EFFECTS
-                    <div id="hardwareSummary">
-                        <div>Hardware</div>
-                        <div class="components1Effect1">-</div>
-                        <div class="components1Effect2">-</div>
+
+            <div id="componentTab" class="defaultButtonSkin">
+                <div id="componentLevel" class="defaultStyle centerDiv"></div>
+                <div id="componentName" class="defaultStyle centerDiv"></div>
+                <div id="componentEffect" class="defaultStyle centerDiv"></div>
+            </div>
+
+            <div id="componentsList" class="defaultStyle">
+                <div class="flex-container" id="component1List">
+                    <div id="components1Tier1">
+                        <div>TIER 1</div>
+
+                        <button id="token1" class="tokenSizes defaultButton" onclick=""
+                            style="background-image: 'images/token1.jpg;'"></button>
+
+                        <button id="token2" class="tokenSizes defaultButton" onclick=""
+                            style="background-image: 'images/token2.jpg;'"></button>
                     </div>
-                    <div id="softwareSummary">
-                        <div>Software</div>
-                        <div class="components2Effect1">-</div>
-                        <div class="components2Effect2">-</div>
+                    <div id="components1Tier2">
+                        <div style="background-color: orangered;">CHARGED</div>
+                        <button id="token8" class="tokenSizes defaultButton" onclick=""
+                            style="background-image: 'images/token8.jpg;'"></button>
+
+                        <button id="token9" class="tokenSizes defaultButton" onclick=""
+                            style="background-image: 'images/token8.jpg;'"></button>
                     </div>
-                    <div id="communicationSummary">
-                        <div>Communication</div>
-                        <div class="components3Effect1">-</div>
-                        <div class="components3Effect2">-</div>
-                    </div>
-                    <div id="x1Summary">
-                        <div>???</div>
-                        <div>- </div>
-                        <div>- </div>
-                    </div>
-                    <div id="x2Summary">
-                        <div>???</div>
-                        <div>- </div>
-                        <div>-</div>
-                    </div>
-                    <div id="x3Summary">
-                        <div>???</div>
-                        <div>-</div>
-                        <div>-</div>
+
+                    <div id="components1TierU">
+                        <button id="token7" class="tokenSizes defaultButton" onclick=""
+                            style="background-image: 'images/token7.jpg;'"></button>
                     </div>
                 </div>
 
-                <div id="equipTab">
-                    <button id="buttonComponentRow0">
-                        <div id="componentRow0"></div>
-                    </button>
-                    <button id="equipButton">EQUIP</button>
-                    <button id="removeButton">REMOVE</button>
-                </div>
+                <div class="flex-container" id="component2List">
+                    <div id="components2Tier1">
+                        <div>TIER 1</div>
+                        <button id="token3" class="tokenSizes defaultButton" onclick=""
+                            style="background-image: 'images/token3.jpg;'"></button>
 
-                <div id="componentTab">
-                    <div id="visualComponentTab">
-                        <div id="componentTabZone1">
-                            <p class="redimension" id="componentRow1"></p>
-                            <p class="redimension" id="componentRow2"></p>
-                        </div>
-                        <div id="componentTabZone2">
-                            <div class="redimension" id="componentRow3"></div>
-                        </div>
-                        <div class="redimension" id="componentRow4"></div>
-                        <div class="redimension" id="componentRow5"></div>
+                        <button id="token4" class="tokenSizes defaultButton" onclick=""
+                            style="background-image: 'images/token4.jpg;'"></button>
+
+                        <button id="token12" class="tokenSizes defaultButton" onclick=""
+                            style="background-image: 'images/token12.jpg;'"></button>
+                    </div>
+                    <div id="components2Tier2">
+                        <div style="background-color: orangered;">CHARGED</div>
+                        <button id="token10" class="tokenSizes defaultButton" onclick=""
+                            style="background-image: 'images/token3.jpg;'"></button>
+
+                        <button id="token11" class="tokenSizes defaultButton" onclick=""
+                            style="background-image: 'images/token4.jpg;'"></button>
                     </div>
                 </div>
 
-                <div id="componentsList">
-                    <div class="flex-container" id="components1">
-                        <div id="components1Tier1">
-                            <button id="token1" class="tokenSizes" onclick=""
-                                style="background-image: 'images/token_1.jpg;'"></button>
-                            <button id="token2" class="tokenSizes" onclick=""
-                                style="background-image: 'images/token_2.jpg;';"></button>
-                            <button id="token3" class="tokenSizes" onclick=""
-                                style="background-image: 'images/token_1.jpg;'"></button>
-                        </div>
-                        <div id="components1Tier2">
-                            <button id="token11" class="tokenSizes" onclick=""
-                                style="background-image: 'images/token_1.jpg;'"></button>
-                        </div>
+                <div class="flex-container" id="component3List">
+                    <div id="components3Tier1">
+                        <div>TIER 1</div>
+                        <button id="token5" class="tokenSizes defaultButton" onclick=""
+                            style="background-image: 'images/token5.jpg;'"></button>
+                        <button id="token6" class="tokenSizes defaultButton" onclick=""
+                            style="background-image: 'images/token6.jpg;'"></button>
                     </div>
+                    <div id="components3Tier2">
 
-                    <div class="flex-container" id="components2">
-                        <div id="components2Tier1">
-                            <button id="token4" class="tokenSizes" onclick=""
-                                style="background-image: 'images/token_1.jpg;'"></button>
-                            <button id="token5" class="tokenSizes" onclick=""
-                                style="background-image: 'images/token_1.jpg;'"></button>
-                            <button id="token6" class="tokenSizes" onclick=""
-                                style="background-image: 'images/token_1.jpg;';"></button>
-                        </div>
-                        <div id="components2Tier2">
-                            <button id="token12" class="tokenSizes" onclick=""
-                                style="background-image: 'images/token_1.jpg;'"></button>
-                            <button id="token10" class="tokenSizes" onclick=""
-                                style="background-image: 'images/token_1.jpg;'"></button>
-                        </div>
                     </div>
-
-                    <div class="flex-container" id="components3">
-                        <div id="components3Tier1">
-                            <button id="token7" class="tokenSizes" onclick=""
-                                style="background-image: 'images/token_1.jpg;'"></button>
-                            <button id="token8" class="tokenSizes" onclick=""
-                                style="background-image: 'images/token_1.jpg;'"></button>
-                            <button id="token9" class="tokenSizes" onclick=""
-                                style="background-image: 'images/token_1.jpg;'"></button>
-                        </div>
-                        <div id="components3Tier2">
-
-                        </div>
-                    </div>
-
                 </div>
+
+
+            </div>
+
+            <div id="componentsButtons">
+                <button id="componentsEquip" class="defaultButton">
+                    EQUIP
+                </button>
+
+                <button id="componentsLevelUp" class="defaultButton">
+                    <div id="componentsLevelUpDiv"></div>
+                </button>
             </div>
         </div>
-    </div>
-    <script src="main.js?v=0.1.37" charset="utf-8" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
-    <link rel="stylesheet" href="cssPrototypes.css?v=0.1.37">
 
+        <div id="hardware">
+
+            <canvas id="screenCanvas">test</canvas>
+            <div id="screen">
+                <button id="A1" class="defaultButton"></button>
+                <button id="A2" class="defaultButton"></button>
+                <button id="A3" class="defaultButton"></button>
+
+                <button id="A4" class="defaultButton"></button>
+                <button id="A5" class="defaultButton"></button>
+                <button id="A6" class="defaultButton"></button>
+
+                <button id="A7" class="defaultButton"></button>
+                <button id="A8" class="defaultButton"></button>
+                <button id="A9" class="defaultButton"></button>
+            </div>
+
+            <div id="opaqueScreen"></div>
+
+            <div id="hardware1" class="kardashev defaultStyle">
+                <div id="hardware1Info" class="defaultStyle"></div>
+                <div id="hardware1Content1" class="defaultStyle">
+                    <div id="expansor1" class="defaultStyle">
+
+                        <button id="expansor1Button" class="expansorSector1 defaultButton">
+                            <div class="expansorsSector1Sub ">
+                                <div id="expansor1Name" class="SingleExpansorName"></div>
+                                <div id="expansor1Effect" class="SingleExpansorEffect"></div>
+                            </div>
+                            <div id="expansor1Level" class="expansorLevel "></div>
+                            <div id="expansor1Price" class="expansorPrice "></div>
+                        </button>
+
+                        <div class="expansorSector2 defaultStyle">
+                            <button id="expansor1U1" class="defaultButton"></button>
+                            <button id="expansor1U2" class="defaultButton"></button>
+                        </div>
+                    </div>
+                </div>
+                <button id="automation1" class="defaultButton"></button>
+                <div id="hardware1Content2" class="defaultStyle">
+                    <div class="monuments">
+                        <div id="monument1"></div>
+                        <div id="monument2"></div>
+                        <div id="monument3"></div>
+                        <div id="monument4"></div>
+                        <div id="monument5"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="hardware2" class="kardashev defaultStyle">
+                <div id="hardware2Info" class="defaultStyle"></div>
+                <div id="hardware2Content1" class="defaultStyle">
+                    <div id="expansor2" class="defaultStyle">
+
+                        <button id="expansor2Button" class="expansorSector1 defaultButton">
+                            <div class="expansorsSector1Sub ">
+                                <div id="expansor2Name" class="SingleExpansorName"></div>
+                                <div id="expansor2Effect" class="SingleExpansorEffect"></div>
+                            </div>
+                            <div id="expansor2Level" class="expansorLevel "></div>
+                            <div id="expansor2Price" class="expansorPrice "></div>
+                        </button>
+
+                        <div class="expansorSector2 defaultStyle">
+                            <button id="expansor2U1" class="defaultButton"></button>
+                            <button id="expansor2U2" class="defaultButton"></button>
+                        </div>
+                    </div>
+                </div>
+                <button id="automation2" class="defaultButton"></button>
+                <div id="hardware2Content2" class="defaultStyle">
+                    <div class="monuments">
+                        <div id="monument6"></div>
+                        <div id="monument7"></div>
+                        <div id="monument8"></div>
+                        <div id="monument9"></div>
+                        <div id="monument10"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="hardware3" class="kardashev defaultStyle">
+                <div id="hardware3Info" class="defaultStyle"></div>
+                <div id="hardware3Content1" class="defaultStyle">
+                    <div id="expansor3" class="defaultStyle">
+                        <button id="expansor3Button" class="expansorSector1 defaultButton">
+                            <div class="expansorsSector1Sub ">
+                                <div id="expansor3Name" class="SingleExpansorName"></div>
+                                <div id="expansor3Effect" class="SingleExpansorEffect"></div>
+                            </div>
+                            <div id="expansor3Level" class="expansorLevel "></div>
+                            <div id="expansor3Price" class="expansorPrice "></div>
+                        </button>
+
+                        <div class="expansorSector2 defaultStyle">
+                            <button id="expansor3U1" class="defaultButton"></button>
+                            <button id="expansor3U2" class="defaultButton"></button>
+                        </div>
+                    </div>
+                </div>
+                <button id="automation3" class="defaultButton"></button>
+                <div id="hardware3Content2" class="defaultStyle">
+                    <div class="monuments">
+                        <div id="monument17"></div>
+                        <div id="monument18"></div>
+                        <div id="monument19"></div>
+                        <div id="monument20"></div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div id="software1" class="kardashev defaultStyle">
+
+                <div id="softwareUpgradesInfo" class="defaultStyle"></div>
+                <div id="software1Content1">
+                    <div class="softwareUpgradesCont defaultStyle">
+                        <div id="assimilation1">
+                            <button id="softUpgrade1" class="defaultButton"></button>
+                            <button id="softUpgrade2" class="defaultButton"></button>
+                            <button id="softUpgrade3" class="defaultButton"></button>
+                            <button id="softUpgrade4" class="defaultButton"></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="software1assimilationCenterInfo" class="defaultStyle"></div>
+                <div id="software1assimilationCenter" class="defaultStyle">
+                    <div class="assimilationCenterBase defaultStyle">
+                        <div class="assimilationBaseGrid">
+                            <button id="assimilationBaseGridbutton1" class="defaultButton"></button>
+                            <button id="assimilationBaseGridbutton2" class="defaultButton"></button>
+                            <button id="assimilationBaseGridbutton3" class="defaultButton"></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="software1Content2" class="defaultStyle">
+                    <div class="monuments">
+                        <div id="monument11"></div>
+                        <div id="monument12"></div>
+                        <div id="monument13"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="software2" class="kardashev defaultStyle">
+                <div id="softwareUpgradesInfo2" class="defaultStyle"></div>
+                <div id="software1Content1">
+                    <div class="softwareUpgradesCont defaultStyle">
+                        <div id="assimilation2">
+                            <button id="softUpgrade5" class="defaultButton"></button>
+                            <button id="softUpgrade6" class="defaultButton"></button>
+                            <button id="softUpgrade7" class="defaultButton"></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="software2assimilationCenterInfo" class="defaultStyle"></div>
+                <div id="software2assimilationCenter" class="defaultStyle">
+                    <div class="assimilationCenterBase defaultStyle">
+                        <div class="assimilationBaseGrid">
+                            <button id="assimilationBaseGridbutton4" class="defaultButton"></button>
+                            <button id="assimilationBaseGridbutton5" class="defaultButton"></button>
+                            <button id="assimilationBaseGridbutton6" class="defaultButton"></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="software1Content2" class="defaultStyle">
+                    <div class="monuments">
+                        <div id="monument21"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="software3" class="kardashev defaultStyle">
+                <div id="softwareUpgradesInfo3" class="defaultStyle"></div>
+                <div id="software3Content2">
+                    <div class="softwareUpgradesCont defaultStyle">
+                        <div id="assimilation3">
+                            <button id="softUpgrade8" class="defaultButton"></button>
+                            <button id="softUpgrade9" class="defaultButton"></button>
+                            <button id="softUpgrade11" class="defaultButton"></button>
+                            <button id="softUpgrade10" class="defaultButton"></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="software3assimilationCenterInfo" class="defaultStyle"></div>
+                <div id="software3assimilationCenter" class="defaultStyle">
+                    <div class="assimilationCenterBase defaultStyle">
+                        <div class="assimilationBaseGrid">
+                            <button id="assimilationBaseGridbutton7" class="defaultButton"></button>
+                            <button id="assimilationBaseGridbutton8" class="defaultButton"></button>
+                            <button id="assimilationBaseGridbutton9" class="defaultButton"></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="software1Content2" class="defaultStyle">
+                    <div class="monuments">
+                        <div id="monument22"></div>
+                        <div id="monument23"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="communication1" class="kardashev defaultStyle">
+
+                <div id="energyInfo1" class="defaultStyle"></div>
+
+                <button id="respecEnergy1" class="defaultButton">RESPEC ENERGY</button>
+
+                <div id="energyGrid1" class="defaultStyle">
+                    <button id="energyButton1" class="defaultButton"></button>
+                    <button id="energyButton4" class="defaultButton"></button>
+                    <button id="energyButton2" class="defaultButton"></button>
+                    <button id="energyButton3" class="defaultButton"></button>
+                </div>
+
+                <div id="communication1Content1" class="defaultStyle">
+                    <div class="monuments">
+                        <div id="monument14"></div>
+                        <div id="monument15"></div>
+                        <div id="monument16"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="communication2" class="kardashev defaultStyle">
+
+                <div id="energyInfo2" class="defaultStyle"></div>
+
+                <button id="respecEnergy2" class="defaultButton">RESPEC ENERGY</button>
+
+                <div id="energyGrid2" class="defaultStyle">
+                    <button id="energyButton5" class="defaultButton"></button>
+                    <button id="energyButton6" class="defaultButton"></button>
+                </div>
+
+                <div id="overclockInfo1" class="defaultStyle"></div>
+                <div id="overclockContainer1">
+                    <div id="overclock1" class="defaultButton"></div>
+                    <div id="overclock3" class="defaultButton"></div>
+                    <div id="overclock5" class="defaultButton"></div>
+                    <div id="overclock2" class="defaultButton"></div>
+                    <div id="overclock4" class="defaultButton"></div>
+                    <div id="overclock6" class="defaultButton"></div>
+                </div>
+            </div>
+
+            <div id="communication3" class="kardashev defaultStyle">
+                <div id="potentialInfo" class="defaultStyle"></div>
+                <div id="communication3Content1" class="defaultStyle">
+                    <div class="monuments">
+                        <div id="monument24"></div>
+                        <div id="monument25"></div>
+                        <div id="monument26"></div>
+                    </div>
+                </div>
+
+                <div id="expansorPotential">
+                    <div id="expansor4" class="defaultStyle">
+                        <button id="expansor4Button" class="expansorSector1 defaultButton">
+                            <div class="expansorsSector1Sub ">
+                                <div id="expansor4Name" class="SingleExpansorName"></div>
+                                <div id="expansor4Effect" class="SingleExpansorEffect"></div>
+                            </div>
+                            <div id="expansor4Level" class="expansorLevel "></div>
+                            <div id="expansor4Price" class="expansorPrice "></div>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="potentialUpgrades1" class="defaultStyle">
+                    <div class="softwareUpgradesContVar defaultStyle">
+                        <div id="assimilation4">
+                            <button id="softUpgrade12" class="defaultButton"></button>
+                            <button id="softUpgrade13" class="defaultButton"></button>
+                            <button id="softUpgrade14" class="defaultButton"></button>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="respecEnergy3" class="defaultButton">RESPEC</button>
+
+                <div id="energyGrid3" class="defaultStyle">
+                    <button id="energyButton7" class="defaultButton"></button>
+                    <button id="energyButton8" class="defaultButton"></button>
+                </div>
+
+                <div id="breakthrough1" class="defaultStyle">
+                    <button id="breakthrough1Button" class="defaultButton"></button>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- 1. Carica la libreria break_infinity.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/decimal.js/10.3.1/decimal.min.js"></script>
+
+    <!-- 2. Carica il tuo script personalizzato (che utilizza BreakInfinity.js) -->
+    <script src="fullRevamp.js?v=0.1.48" charset="utf-8" type="text/javascript"></script>
+
+    <!-- 3. Carica altre librerie necessarie, come crypto-js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
+    <!-- 4. Carica il file CSS per la formattazione -->
+    <link rel="stylesheet" href="cssRevamp.css?v=0.1.48">
 </body>
 
 </html>
