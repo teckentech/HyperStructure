@@ -517,7 +517,7 @@ class Software {
       },
 
       softUpgrade9: {
-        name: "CELLS boosts POPULATION/S: × ", nameF: true, level: 0, maxLevel: 10, effect: 1, price: 0, priceIdentity: "assimilated", priceIdentityF: true,
+        name: " TOTAL CELLS boosts POPULATION/S: × ", nameF: true, level: 0, maxLevel: 10, effect: 1, price: 0, priceIdentity: "assimilated", priceIdentityF: true,
       },
 
       softUpgrade10: {
@@ -556,7 +556,7 @@ class Software {
       },
 
       button4: {
-        name: "Deeper Processes", description: "POPULATION boosts POPULATION/S: × ", effect: 0, price: 0, priceIdentity: "POPULATION", group: "group5", active: false, nameF: true, descriptionF: true, groupF: true
+        name: "Deeper Processes", description: "TOTAL POPULATION boosts POPULATION/S: × ", effect: 0, price: 0, priceIdentity: "POPULATION", group: "group5", active: false, nameF: true, descriptionF: true, groupF: true
       },
 
       button5: {
@@ -572,7 +572,7 @@ class Software {
       },
 
       button8: {
-        name: "Potential Feeders", description: "ENERGY boosts ENERGY/S: × ", effect: 0, price: 0, priceIdentity: "POPULATION", group: "group7", active: false, nameF: true, descriptionF: true
+        name: "Potential Feeders", description: "TOTAL ENERGY boosts ENERGY/S: × ", effect: 0, price: 0, priceIdentity: "POPULATION", group: "group7", active: false, nameF: true, descriptionF: true
       },
 
       button9: {
@@ -598,7 +598,7 @@ class Energy {
         name: "ALL CHARGED COMPONENTS: × ", nameF: true, level: 0, maxLevel: 10, effect: 1, price: 0, priceIdentity: "cells", priceIdentityF: true,
       },
       energyButton4: {
-        name: "ENERGY boosts ALL VALUTES: × ", nameF: true, level: 0, maxLevel: 10, effect: 1, price: 0, priceIdentity: "cells", priceIdentityF: true,
+        name: "TOTAL ENERGY boosts ALL VALUTES: × ", nameF: true, level: 0, maxLevel: 10, effect: 1, price: 0, priceIdentity: "cells", priceIdentityF: true,
       },
       energyButton5: {
         name: "OVERCLOCK EFFECT boosted", nameF: true, level: 0, maxLevel: 10, effect: 1, price: 0, priceIdentity: "cells", priceIdentityF: true,
@@ -610,7 +610,7 @@ class Energy {
         name: "POTENTIAL/S: × ", nameF: true, level: 0, maxLevel: 10, effect: 1, price: 0, priceIdentity: "potential", priceIdentityF: true,
       },
       energyButton8: {
-        name: "POTENTIAL boosts CELLS/S: × ", nameF: true, level: 0, maxLevel: 10, effect: 1, price: 0, priceIdentity: "potential", priceIdentityF: true,
+        name: "TOTAL POTENTIAL boosts CELLS/S: × ", nameF: true, level: 0, maxLevel: 10, effect: 1, price: 0, priceIdentity: "potential", priceIdentityF: true,
       },
 
     }
