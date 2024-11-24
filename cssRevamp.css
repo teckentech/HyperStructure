@@ -1442,6 +1442,23 @@ input[type=text] {
   z-index: 2;
 }
 
+#opaqueScreen3 {
+
+  position: absolute;
+
+  top: 0%;
+  left: 0%;
+
+  height: 100%;
+  width: 100%;
+
+  background-color: #36454f;
+
+  opacity: 0.5;
+
+  z-index: 2;
+}
+
 #hardware1Info {
   grid-row-start: 1;
   grid-row-end: 2;
@@ -2023,3 +2040,47 @@ width: 100%;
   color: goldenrod;
   text-transform: uppercase;
 }
+
+#tutorial {
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Aligns items at the start (top) */
+  align-items: center;
+  width: 50%;
+  height: 75%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow-y: auto; /* Scrollable if content overflows */
+}
+
+#tutorial>div{
+  padding: 2%;
+
+  font-size: 2cqw;
+}
+
+#tutorial>img{
+  max-width: 100%; /* Makes sure images are responsive */
+  height: auto;
+  margin: 10px 0; /* Adds spacing between images */
+
+  border: dashed goldenrod;
+}
+
+#tutorialTab{
+
+  position: absolute;
+
+  z-index: 10;
+
+  top: 90%;
+  left: 50%;
+
+  transform: translate3d(-50%, -50%, 0);
+
+  
+}
+

@@ -96,7 +96,7 @@ class ShowableClass {
       //layers
       opaqueScreen: false, hardware1: false, hardware2: false, hardware3: false,
       software1: false, software2: false, software3: false,
-      communication1: false, communication2: false, communication3: false, resetScreen: false, opaqueScreen2: false,
+      communication1: false, communication2: false, communication3: false, resetScreen: false, opaqueScreen2: false, opaqueScreen3: false, tutorialTab: true, tutorial: false,
 
       //kardashev
       A1: false, A2: false, A3: false,
@@ -2650,6 +2650,10 @@ document.getElementById("progressTab").onclick = function () {
   changePage("selector", "progress")
 }
 
+document.getElementById("tutorialTab").onclick = function () {
+  changePage("main", "tutorial")
+}
+
 //components equip & levelup
 
 document.getElementById("componentsLevelUp").onclick = function () {
@@ -3136,6 +3140,10 @@ document.getElementById("opaqueScreen2").onclick = function () {
   changePage("options", "out")
 }
 
+document.getElementById("opaqueScreen3").onclick = function () {
+  changePage("main", "out")
+}
+
 
 document.getElementById("A1").onclick = function () {
   changePage("global", "hardware1")
@@ -3328,6 +3336,7 @@ function loopShow() {
 
     //kardashevs
     unlockShow("progressTab", true)
+    unlockShow("tutorialTab", true)
 
     unlockShow("A1", false)
     unlockShow("A2", false)
@@ -3716,6 +3725,16 @@ function changePage(type, page) {
 
     if (page != "out") {
       unlockShow("opaqueScreen2", true)
+      unlockShow(page, true)
+    }
+  }
+
+  if(type == "main") {
+    unlockShow("tutorial", false)
+    unlockShow("opaqueScreen3", false)
+
+    if (page != "out") {
+      unlockShow("opaqueScreen3", true)
       unlockShow(page, true)
     }
   }
