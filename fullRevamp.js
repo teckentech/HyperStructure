@@ -1816,7 +1816,7 @@ function valuesSetter() {
 
   var selMon = IExpansor.monuments.monument10
 
-  selMon.req1 = (1 * 10 ** 25);
+  selMon.req1 = (1 * 10 ** 24);
   selMon.req2 = (10 ** 10);
   selMon.req3 = 0;
   selMon.req4 = 0;
@@ -1844,7 +1844,7 @@ function valuesSetter() {
 
   var selMon = IExpansor.monuments.monument14
 
-  selMon.req1 = (1 * 10 ** 29);
+  selMon.req1 = (1 * 10 ** 26);
   selMon.req2 = 0
   selMon.req3 = 0;
   selMon.req4 = 0;
@@ -1852,7 +1852,7 @@ function valuesSetter() {
   var selMon = IExpansor.monuments.monument15
 
   selMon.req1 = 0
-  selMon.req2 = 10 ** 12;
+  selMon.req2 = 10 ** 10;
   selMon.req3 = 0;
   selMon.req4 = 0;
 
@@ -1860,7 +1860,7 @@ function valuesSetter() {
 
   selMon.req1 = 0
   selMon.req2 = 0
-  selMon.req3 = (1 * 10 ** 8);
+  selMon.req3 = (1 * 10 ** 7);
   selMon.req4 = 0;
 
   var selMon = IExpansor.monuments.monument17
