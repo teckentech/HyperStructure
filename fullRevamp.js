@@ -84,7 +84,7 @@ class ShowableClass {
 
       visualModule2: true, visualModule3: false,
 
-      loadoutShow: false,
+      loadoutShow: true,
 
       componentsList: false, component1List: false, component2List: false, component3List: false, componentsButtons: false, componentTab: false, componentsSummary: false,
 
@@ -96,7 +96,7 @@ class ShowableClass {
       //layers
       opaqueScreen: false, hardware1: false, hardware2: false, hardware3: false,
       software1: false, software2: false, software3: false,
-      communication1: false, communication2: false, communication3: false, resetScreen: false, opaqueScreen2: false, opaqueScreen3: false, tutorialTab: true, tutorial: false,
+      communication1: false, communication2: false, communication3: false, resetScreen: false, opaqueScreen2: false, opaqueScreen3: false, tutorialTab: false, tutorial: false,
 
       //kardashev
       A1: false, A2: false, A3: false,
@@ -1055,11 +1055,6 @@ function visualComponentInfo(id) {
 
   else {
 
-    unlockShow("componentTab", true)
-    unlockShow("loadoutShow", true)
-    unlockShow("componentsButtons", true)
-    unlockShow("componentsSummary", true)
-
     update("componentLevel", sel.level + " / " + sel.maxLevel);
     update("componentName", sel.name);
     update("componentEffect", sel.description);
@@ -1082,8 +1077,6 @@ function visualComponentsLoadout() {
 }
 
 function showComponents(componentType) {
-
-  unlockShow("componentsList", true)
 
   unlockShow("component1List", false)
   unlockShow("component2List", false)
@@ -3336,7 +3329,12 @@ function loopShow() {
 
     //kardashevs
     unlockShow("progressTab", true)
-    unlockShow("tutorialTab", true)
+    unlockShow("tutorialTab", false)
+    unlockShow("componentsList", true)
+    unlockShow("componentTab", true)
+    unlockShow("loadoutShow", true)
+    unlockShow("componentsButtons", true)
+    unlockShow("componentsSummary", true)
 
     unlockShow("A1", false)
     unlockShow("A2", false)

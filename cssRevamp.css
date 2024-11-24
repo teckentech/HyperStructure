@@ -192,6 +192,8 @@ button,
   right: 50%;
   transform: translate3d(50%, 0, 0);
   top: 30%;
+
+  height: 30%;
 }
 
 #visualModule2 {
@@ -199,6 +201,8 @@ button,
   right: 60%;
   transform: translate3d(40%, 0, 0);
   top: 50%;
+
+  height: 30%;
 }
 
 #visualModule3 {
@@ -206,6 +210,8 @@ button,
   right: 40%;
   transform: translate3d(60%, 0, 0);
   top: 50%;
+
+  height: 30%;
 }
 
 #componentSelectorText {
@@ -216,6 +222,12 @@ button,
 
   align-content: center;
   text-align: center;
+
+  display:flex;
+
+  flex-direction: column;
+
+  font-size: 1.25cqw;
 
   width: 50%;
   height: 10%;
@@ -242,9 +254,14 @@ button,
 }
 
 #loadoutShow>div {
-  margin: 1%;
+  padding: 1%;
 
   width: 33%;
+
+  background: #313131;
+  box-shadow: inset 0 0 0 0.15vw #ffffff;
+  color: #ffffff;
+  font-family: 'Arial', sans-serif;
 }
 
 #loadoutShow>div>div {
@@ -276,6 +293,12 @@ button,
   width: 25%;
   height: 100%;
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+
   overflow-y: auto;
 
 }
@@ -286,6 +309,9 @@ button,
   display: flex;
   flex-direction: column;
   margin: 3%;
+
+  align-content: center;
+  text-align: center;
 
 }
 
@@ -329,6 +355,8 @@ button,
   font-family: 'Arial', sans-serif;
   box-sizing: border-box;
   /* Include il padding nel calcolo della larghezza e altezza */
+
+  overflow-y: auto;
 }
 
 #componentsList>div {
@@ -348,13 +376,23 @@ button,
   /* Include il padding nel calcolo della larghezza */
 }
 
+.componentLabel{
+  display: flex;
+  justify-content: center; /* Centra orizzontalmente */
+  align-items: center; 
+
+  background: #313131;
+
+  padding: 2%;
+}
+
 #componentsList>div>div>div {
   position: relative;
   height: 10%;
   /* Mantieni l'altezza al 10% se desiderato */
   width: 100%;
   /* Assicurati che occupi il 100% del contenitore genitore */
-  padding: 3%;
+  padding: 1.5%;
   background: #487145;
   box-shadow: inset 0 0 0 0.15vw #ffffff;
   color: #ffffff;
@@ -806,6 +844,8 @@ input[type=text] {
   grid-column-start: 2;
   grid-column-end: 4;
   background: none;
+
+  font-weight: bold;
 }
 
 
@@ -2083,4 +2123,3 @@ width: 100%;
 
   
 }
-

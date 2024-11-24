@@ -200,24 +200,24 @@
 
             <div id="componentSelector">
 
-                <div id="componentSelectorText">COMPONENTS</div>
+                <div id="componentSelectorText"><div>COMPONENTS</div><div>Equip a Hardware Component into the slot to start activating various effects</div></div>
 
                 <div class="item defaultButtonSkin" id="visualModule1">
-                    <div class="visualModuleText defaultStyle">HARDWARE</div>
+                    <div class="visualModuleText">HARDWARE</div>
                     <button onclick="showComponents('component1')" id="component1Module" class="defaultButton"
                         style="height: 7vw; width: 7vw; background: url(images/plus.png); background-size: cover;">
                     </button>
                 </div>
 
                 <div class="item defaultButtonSkin" id="visualModule2">
-                    <div class="visualModuleText defaultStyle">SOFTWARE</div>
+                    <div class="visualModuleText">SOFTWARE</div>
                     <button onclick="showComponents('component2')" id="component2Module" class="defaultButton"
                         style="height: 7vw; width: 7vw; background: url(images/plus.png); background-size: cover;">
                     </button>
                 </div>
 
                 <div class="item defaultButtonSkin" id="visualModule3">
-                    <div class="visualModuleText defaultStyle">COMMUNICATION</div>
+                    <div class="visualModuleText">COMMUNICATION</div>
                     <button onclick="showComponents('component3')" id="component3Module" class="defaultButton"
                         style="height: 7vw; width: 7vw; background: url(images/plus.png); background-size: cover;">
                     </button>
@@ -226,6 +226,7 @@
             </div>
 
             <div id="componentsSummary" class="defaultStyle">
+                <div class="defaultStyle componentLabel">COMPONENTS SUMMARY</div>
                 <div id="hardwareSummary" class="defaultStyle">
                     <div>Hardware</div>
                     <div class="component1Effect1"></div>
@@ -248,7 +249,9 @@
             </div>
 
             <div id="componentsList" class="defaultStyle">
+                <div class="defaultStyle componentLabel">COMPONENTS LIST</div>
                 <div class="flex-container" id="component1List">
+                    <div class="defaultStyle componentLabel">HARDWARE COMPONENTS</div>
                     <div id="components1Tier1">
                         <div>TIER 1</div>
 
@@ -274,6 +277,7 @@
                 </div>
 
                 <div class="flex-container" id="component2List">
+                    <div class="defaultStyle componentLabel">SOFTWARE COMPONENTS</div>
                     <div id="components2Tier1">
                         <div>TIER 1</div>
                         <button id="token3" class="tokenSizes defaultButton" onclick=""
@@ -296,6 +300,7 @@
                 </div>
 
                 <div class="flex-container" id="component3List">
+                    <div class="defaultStyle componentLabel">COMMUNICATION COMPONENTS</div>
                     <div id="components3Tier1">
                         <div>TIER 1</div>
                         <button id="token5" class="tokenSizes defaultButton" onclick=""
@@ -629,13 +634,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/decimal.js/10.3.1/decimal.min.js"></script>
 
     <!-- 2. Carica il tuo script personalizzato (che utilizza BreakInfinity.js) -->
-    <script src="fullRevamp.js?v=0.1.52" charset="utf-8" type="text/javascript"></script>
+    <script src="fullRevamp.js?v=0.1.53" charset="utf-8" type="text/javascript"></script>
 
     <!-- 3. Carica altre librerie necessarie, come crypto-js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 
     <!-- 4. Carica il file CSS per la formattazione -->
-    <link rel="stylesheet" href="cssRevamp.css?v=0.1.52">
+    <link rel="stylesheet" href="cssRevamp.css?v=0.1.53">
 </body>
 
 </html>
