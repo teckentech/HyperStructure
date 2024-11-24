@@ -1236,24 +1236,24 @@ function visualHardware() {
     if (!(selExp.active)) {
 
       ItMonumentsGrid =
-        `<div class="monumentName  defaultButtonSkin">${selExp.name}</div>` +
+        `<div class="monumentName  defaultStyle">${selExp.name}</div>` +
         div1 +
         div2 +
         div3 +
         div4 + 
-        `<div class="defaultButtonSkin">UNLOCKS ${selExp.unlocked}</div>`
+        `<div class="defaultStyle">UNLOCKS ${selExp.unlocked}</div>`
 
     } else {
       if (IExpansor.showMonuments) {
         unlockShow(x, true)
 
         ItMonumentsGrid =
-        `<div class="monumentName defaultButtonSkin">${selExp.name}</div>` +
+        `<div class="monumentName defaultStyle">${selExp.name}</div>` +
         div1 +
         div2 +
         div3 +
         div4 +
-        `<div class="defaultButtonSkin">UNLOCKS ${selExp.unlocked}</div>`
+        `<div class="defaultStyle">UNLOCKS ${selExp.unlocked}</div>`
       }
 
       if (selExp.active) {
