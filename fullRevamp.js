@@ -1549,7 +1549,7 @@ function valuesSetter() {
 
   token1.level = token1.level;
   token1.maxLevel = 100;
-  token1.description = `<div>CELLS/S: × ${format(token1.effect1)}</div>`
+  token1.description = `<div>CELLS/S: + ${format(token1.effect1)}</div>`
   token1.effect1 = Math.pow(token1.level + compToken5, 1.2)/* * componentEf1*/; //1.2
   token1.price = Math.pow(2, token1.level) / softUpgrade3;
 
