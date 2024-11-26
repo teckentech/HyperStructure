@@ -1124,9 +1124,14 @@ function visualHardware() {
 
     var selExp = IExpansor.expansors[x]
     //...............................
+
     if (selExp.priceIdentity != "") {
       var pId1 = selExp.priceIdentity + ":"
       var pId1P = format(selExp.price1)
+      
+      if(selExp.priceIdentity == "assimilated"){
+        var pId1 = "POPULATION:" 
+      }
     }
     else {
       var pId1 = ""
