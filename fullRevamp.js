@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 class GameData {
   constructor(options) {
     options = options || {}
+
     this.cells = options.cells || 0;
     this.cellsProd = options.cellsProd || 0;
 
@@ -568,15 +569,15 @@ class Software {
       },
 
       button7: {
-        name: "Tecnological Revolution", description: "CELLS/S reduces UNIT PRICE: / ", effect: 0, price: 0, priceIdentity: "POPULATION", group: "group7", active: false, nameF: true, descriptionF: true
+        name: "grw gr", description: "CELLS/S reduces UNIT PRICE: / ", effect: 0, price: 0, priceIdentity: "POPULATION", group: "group7", active: false, nameF: true, descriptionF: true
       },
 
       button8: {
-        name: "Potential Feeders", description: "TOTAL ENERGY boosts ENERGY/S: × ", effect: 0, price: 0, priceIdentity: "POPULATION", group: "group7", active: false, nameF: true, descriptionF: true
+        name: "gaga gaga", description: "TOTAL ENERGY boosts ENERGY/S: × ", effect: 0, price: 0, priceIdentity: "POPULATION", group: "group7", active: false, nameF: true, descriptionF: true
       },
 
       button9: {
-        name: "Netsphere Prototype", description: "EXPANSION/S: × ", effect: 0, price: 0, priceIdentity: "POPULATION", group: "group7", active: false, nameF: true, descriptionF: true
+        name: "gg gg", description: "EXPANSION/S: × ", effect: 0, price: 0, priceIdentity: "POPULATION", group: "group7", active: false, nameF: true, descriptionF: true
       },
     }
   }
@@ -1037,11 +1038,18 @@ function visualComponentInfo(id) {
   for (let x in IComponents.components) {
     var selId = document.getElementById(x)
     if (x == id) {
-      selId.style.boxShadow = 'inset 0 0 0 2px #ff0000';
+      selId.style.boxShadow = 'inset 0 0 0 0.15vw #ff0000';
+
+      if(x == IComponents.equipped[sel.tag1]){
+        update("componentsEquip", "UNEQUIP")
+      }
+      else{
+        update("componentsEquip", "EQUIP")
+      }
     }
 
     else {
-      selId.style.boxShadow = 'inset 0 0 0 2px #ffffff'
+      selId.style.boxShadow = 'inset 0 0 0 0.15vw #ffffff'
     }
   }
 
@@ -1095,7 +1103,6 @@ function showComponents(componentType) {
 function visualProgress() {
   var locator = ITopProgress.actualProgress;
 
-  console.log(ITopProgress.progress["p" + locator])
   update("progressTab", ITopProgress.progress["p" + locator])
 
 }
@@ -1704,7 +1711,7 @@ function valuesSetter() {
   selExp.level = selExp.level;
   selExp.maxLevel = 49;
   selExp.effect = 7 * selExp.level;
-  selExp.price1 = (10 ** 4) * (1 + Math.pow(selExp.level, 6));
+  selExp.price1 = (10 ** 4) * (1 + Math.pow(selExp.level, 8));
 
   selExp = IExpansor.expansors.expansor4
 
@@ -1749,6 +1756,7 @@ function valuesSetter() {
 
   //monuments
 
+  //Hardware Component: Builder
   var selMon = IExpansor.monuments.monument1
 
   selMon.req1 = (1 * 10 ** 3);
@@ -1756,6 +1764,7 @@ function valuesSetter() {
   selMon.req3 = 0;
   selMon.req4 = 0;
 
+  //Hardware 1: Automation: Unit
   var selMon = IExpansor.monuments.monument2
 
   selMon.req1 = (1 * 10 ** 4);
@@ -1763,6 +1772,7 @@ function valuesSetter() {
   selMon.req3 = 0;
   selMon.req4 = 0;
 
+  //Hardware 1: Unit Upgrades
   var selMon = IExpansor.monuments.monument3
 
   selMon.req1 = (4 * 10 ** 4);
@@ -1770,6 +1780,7 @@ function valuesSetter() {
   selMon.req3 = 0;
   selMon.req4 = 0;
 
+  //Hardware 1: Unit Upgrades both active
   var selMon = IExpansor.monuments.monument4
 
   selMon.req1 = (2 * 10 ** 5);
@@ -1777,6 +1788,7 @@ function valuesSetter() {
   selMon.req3 = 0;
   selMon.req4 = 0;
 
+  //New Layers
   var selMon = IExpansor.monuments.monument5
 
   selMon.req1 = (1 * 10 ** 6);
@@ -1784,34 +1796,39 @@ function valuesSetter() {
   selMon.req3 = 0;
   selMon.req4 = 0;
 
+  //Software Component: Multimaker
   var selMon = IExpansor.monuments.monument6
 
-  selMon.req1 = (1 * 10 ** 7);
+  selMon.req1 = (1 * 10 ** 9);
   selMon.req2 = 8;
   selMon.req3 = 0;
   selMon.req4 = 0;
 
+  //Hardware 2: Automation: Block
   var selMon = IExpansor.monuments.monument7
 
-  selMon.req1 = (2 * 10 ** 11);
+  selMon.req1 = (2 * 10 ** 15);
   selMon.req2 = 250;
   selMon.req3 = 0;
   selMon.req4 = 0;
 
+  //Hardware 2: Block Upgrades
   var selMon = IExpansor.monuments.monument8
 
-  selMon.req1 = (1 * 10 ** 13);
+  selMon.req1 = (1 * 10 ** 18);
   selMon.req2 = (500);
   selMon.req3 = 0;
   selMon.req4 = 0;
 
+  //Hardware 2: Block Upgrades both active
   var selMon = IExpansor.monuments.monument9
 
-  selMon.req1 = (1 * 10 ** 20);
+  selMon.req1 = (1 * 10 ** 22);
   selMon.req2 = (10 ** 4);
   selMon.req3 = 0;
   selMon.req4 = 0;
 
+  //New Layers
   var selMon = IExpansor.monuments.monument10
 
   selMon.req1 = (1 * 10 ** 24);
@@ -1819,6 +1836,7 @@ function valuesSetter() {
   selMon.req3 = 0;
   selMon.req4 = 0;
 
+  //Software1: Population Center
   var selMon = IExpansor.monuments.monument11
 
   selMon.req1 = (1 * 10 ** 7);
@@ -1826,6 +1844,7 @@ function valuesSetter() {
   selMon.req3 = 0;
   selMon.req4 = 0;
 
+  //Software Components: Population Converter
   var selMon = IExpansor.monuments.monument12
 
   selMon.req1 = (1 * 10 ** 16);
@@ -1833,6 +1852,7 @@ function valuesSetter() {
   selMon.req3 = 0;
   selMon.req4 = 0;
 
+  //New Layers
   var selMon = IExpansor.monuments.monument13
 
   selMon.req1 = (1 * 10 ** 20);
@@ -1840,62 +1860,71 @@ function valuesSetter() {
   selMon.req3 = 0;
   selMon.req4 = 0;
 
+  //Hardware Components: Charged Components
   var selMon = IExpansor.monuments.monument14
 
-  selMon.req1 = (1 * 10 ** 28);
+  selMon.req1 = (1 * 10 ** 30);
   selMon.req2 = 0
   selMon.req3 = 0;
   selMon.req4 = 0;
 
+  //Software Components: Charged Components
   var selMon = IExpansor.monuments.monument15
 
   selMon.req1 = 0
-  selMon.req2 = 10 ** 10;
+  selMon.req2 = 10 ** 12;
   selMon.req3 = 0;
   selMon.req4 = 0;
 
+  //Communication Components: New Components
   var selMon = IExpansor.monuments.monument16
 
   selMon.req1 = 0
   selMon.req2 = 0
-  selMon.req3 = (1 * 10 ** 7);
+  selMon.req3 = (1 * 10 ** 9);
   selMon.req4 = 0;
 
+  //Hardware 3: Sector Upgrades
   var selMon = IExpansor.monuments.monument17
 
-  selMon.req1 = (1 * 10 ** 42)
+  selMon.req1 = (1 * 10 ** 50)
   selMon.req2 = 0
   selMon.req3 = 0;
   selMon.req4 = 0;
 
+  //Hardware 3: Sector Upgrades both active
   var selMon = IExpansor.monuments.monument18
 
-  selMon.req1 = (1 * 10 ** 45)
+  selMon.req1 = (1 * 10 ** 52)
   selMon.req2 = 0
   selMon.req3 = 0;
   selMon.req4 = 0;
 
+  //Hardware 3: Automation: Sector
   var selMon = IExpansor.monuments.monument19
 
-  selMon.req1 = (1 * 10 ** 48)
+  selMon.req1 = (1 * 10 ** 54)
   selMon.req2 = 0
   selMon.req3 = 0;
   selMon.req4 = 0;
 
+  //New Layers
   var selMon = IExpansor.monuments.monument20
 
-  selMon.req1 = (1 * 10 ** 60)
+  selMon.req1 = (1 * 10 ** 59)
   selMon.req2 = (1 * 10 ** 15)
   selMon.req3 = (1 * 10 ** 15);
   selMon.req4 = 0;
 
+  //Software 2: Population Center
   var selMon = IExpansor.monuments.monument21
 
   selMon.req1 = 0
-  selMon.req2 = (1 * 10 ** 20)
+  selMon.req2 = (1 * 10 ** 23)
   selMon.req3 = 0
   selMon.req4 = 0;
 
+  //Software 3: Population Center
   var selMon = IExpansor.monuments.monument22
 
   selMon.req1 = 0
@@ -1903,6 +1932,7 @@ function valuesSetter() {
   selMon.req3 = 0
   selMon.req4 = 0;
 
+  //Last Layer
   var selMon = IExpansor.monuments.monument23
 
   selMon.req1 = 0
@@ -1910,6 +1940,7 @@ function valuesSetter() {
   selMon.req3 = (1 * 10 ** 41)
   selMon.req4 = 0;
 
+  //Communication 3: New Upgrades
   var selMon = IExpansor.monuments.monument24
 
   selMon.req1 = 0
@@ -1917,6 +1948,7 @@ function valuesSetter() {
   selMon.req3 = 0
   selMon.req4 = 250;
 
+  //Software Components: Potential Producer
   var selMon = IExpansor.monuments.monument25
 
   selMon.req1 = 0
@@ -1924,12 +1956,14 @@ function valuesSetter() {
   selMon.req3 = 0
   selMon.req4 = (3 * 10 ** 5);
 
+  //Communication 3: New Upgrades
   var selMon = IExpansor.monuments.monument26
 
   selMon.req1 = 0
   selMon.req2 = 0
   selMon.req3 = 0
   selMon.req4 = (2 * 10 ** 11);
+
   //Software
 
   //softUpgrades
@@ -2132,10 +2166,12 @@ function valuesSetter() {
 
   var totalLevel = sel1 + sel2 + sel3 + sel4
 
-  var adjuster = Math.floor(totalLevel / 3);
-  var adjuster2 = Math.floor(adjuster / 2);
+  //var adjuster = Math.floor(totalLevel / 3);
+  //var adjuster2 = Math.floor(adjuster / 2);
 
-  totalLevel = sel1 + sel2 + sel3 + sel4 + adjuster + adjuster2
+  var adjuster = Math.floor(totalLevel / 1.8);
+
+  totalLevel = sel1 + sel2 + sel3 + sel4 + adjuster //+ adjuster2
 
   //total level communication 2
 
@@ -2274,7 +2310,14 @@ function valuesSetter() {
 
 function valuesSetterDinamic() {
 
-  var global1 = IEnergy.energyUpgrades.energyButton4.effect * ISoftware.upgrades.softUpgrade14.effect
+  if (IComponents.components.token6.active) {
+    var token6Eff = 0.1
+  }
+  else{
+    var token6Eff = 1
+  }
+  
+  var global1 = IEnergy.energyUpgrades.energyButton4.effect * ISoftware.upgrades.softUpgrade14.effect * token6Eff
   var global2 = ISoftware.upgrades.softUpgrade14.effect
 
   //cells
@@ -2820,7 +2863,7 @@ function assignGroup(obj, element) {
   var sel = obj[element]
   var selGroup = ISelUpgrade.group[sel.group]
 
-
+console.log(selGroup)
   if (sel.active) {
     sel.active = false
     selGroup.num = selGroup.num - 1;
@@ -3433,7 +3476,6 @@ function loopShow() {
 
   if (checkShow("A2")) {
     unlockShow("assimilatedValute", true)
-    unlockShow("softwareSummary", true)
   }
 
   if (checkShow("A5")) {
@@ -3541,6 +3583,7 @@ function loopShow() {
     unlockShow("token3", true)
     unlockShow("visualModule2", true)
     unlockShow("monument7", true)
+    unlockShow("softwareSummary", true)
   }
 
   if (IExpansor.monuments.monument7.active) {
@@ -3877,7 +3920,8 @@ function resetCanvas() {
 //developer functions
 
 function addCells(x) {
-  IGameData.cells = IGameData.cellsProd
+  IGameData.cells += IGameData.cellsProd * 100000000
+  IGameData.assimilated = IGameData.assimilatedProd * 100000000
 }
 
 function addPopulation(x) {
