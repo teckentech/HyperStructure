@@ -97,6 +97,13 @@ body {
   font-family: 'Arial', sans-serif;
 }
 
+.defaultButtonSkinStraight {
+  background: #36454f;
+  box-shadow: inset 0 0 0 0.15vw #ffffff;
+  color: #ffffff;
+  font-family: 'Arial', sans-serif;
+}
+
 .centerDiv {
   display: flex;
   justify-content: center;
@@ -153,12 +160,12 @@ button,
   flex-direction: row;
   justify-content: left;
   height: 100%;
-  width: 50%;
+  width: 100%;
 }
 
 #selectors>div {
   position: relative;
-  width: 30%;
+  width: 25%;
   height: 100%;
 }
 
@@ -200,7 +207,7 @@ button,
   position: absolute;
   right: 60%;
   transform: translate3d(40%, 0, 0);
-  top: 50%;
+  top: 30%;
 
   height: 30%;
 }
@@ -209,7 +216,7 @@ button,
   position: absolute;
   right: 40%;
   transform: translate3d(60%, 0, 0);
-  top: 50%;
+  top: 30%;
 
   height: 30%;
 }
@@ -258,6 +265,11 @@ button,
 
   width: 33%;
 
+  display: grid;
+  
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(3, 3fr);
+
   background: #313131;
   box-shadow: inset 0 0 0 0.15vw #ffffff;
   color: #ffffff;
@@ -271,18 +283,27 @@ button,
   align-items: center;
 }
 
+#loadoutShow>div>div>button {
+  display: flex;
+
+  justify-content: center; /* Centra orizzontalmente */
+  align-items: center;
+
+  width: 50%;
+}
+
 #loadoutName1 {
-  width: 80%;
+  width: 100%;
   height: 50%;
 }
 
 #loadoutName2 {
-  width: 80%;
+  width: 100%;
   height: 50%;
 }
 
 #loadoutName3 {
-  width: 80%;
+  width: 100%;
   height: 50%;
 }
 
@@ -298,17 +319,14 @@ button,
   align-items: center;
 
   text-align: center;
-
-  overflow-y: auto;
-
 }
 
 #componentsSummary>div {
-  margin-right: 1%;
-  margin-bottom: 3%;
+
   display: flex;
   flex-direction: column;
-  margin: 3%;
+  
+  width: 100%;
 
   align-content: center;
   text-align: center;
@@ -318,10 +336,32 @@ button,
 #componentsSummary>div>div {
   display: flex;
   flex-direction: column;
+
   padding: 3%;
   color: #ffffff;
 
+  height:50%;
+
+}
+
+#componentsSummary>div>div>div {
+  display: flex;
+  flex-direction: column;
+
+  padding: 3%;
+  color: #ffffff;
+
+  height:50%;
+
   box-shadow: inset 0 0 0 0.15vw #ffffff;
+}
+
+#summaryName{
+  width: 100%;
+  height: max-content;
+  /* Assicurati che riempia tutto il contenitore */
+  padding: 3%;
+  box-sizing: border-box;
 }
 
 #componentTab {
@@ -331,8 +371,7 @@ button,
   width: 25%;
   height: 25%;
   z-index: 0;
-
-
+  
   box-shadow: inset 0 0 0 0.15vw #ffffff;
 
   display: grid;
@@ -356,7 +395,6 @@ button,
   box-sizing: border-box;
   /* Include il padding nel calcolo della larghezza e altezza */
 
-  overflow-y: auto;
 }
 
 #componentsList>div {
@@ -699,19 +737,6 @@ button,
   margin: 1%;
 }
 
-#hardwareSummary {
-  width: 80%;
-}
-
-#softwareSummary {
-  width: 80%;
-}
-
-#communicationSummary {
-  width: 80%;
-}
-
-
 input[type=text] {
   word-wrap: break-word;
   word-break: break-all;
@@ -746,18 +771,13 @@ input[type=text] {
 
 #progressTab {
   position: absolute;
-  left: 0%;
-  top: 5%;
-  left: 50%;
-  width: 50%;
   z-index: 4;
-  height: 90%;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  font-size: 1.5cqw;
+  font-size: 1cqw;
 
   background: #ab7c25;
 }
@@ -820,12 +840,42 @@ input[type=text] {
   align-items: center;
 
   height: 10%;
-  width: 12.5%;
+  width: 10%;
 
 }
 
 #componentsLevelUpDiv {
   pointer-events: none;
+}
+
+#componentsLevelUpMulti {
+  position: absolute;
+
+  left: 22.5%;
+  top: 25%;
+
+  background: #004526;
+
+  display: flex;
+  justify-content: center; /* Centra orizzontalmente */
+  align-items: center;     /* Centra verticalmente */
+
+  flex-direction: column;
+  align-items: center;
+
+  height: 10%;
+  width: 2.5%;
+}
+
+#componentsLevelUpMultiDiv {
+  pointer-events: none;
+
+}
+
+#componentsLevelUpMultiDiv>div {
+  pointer-events: none;
+  padding: 10%;
+  font-size: 0.8cqw;
 }
 
 
@@ -836,6 +886,7 @@ input[type=text] {
   grid-column-end: 1;
   background: none;
 
+  z-index: -1;
 }
 
 #componentName {
@@ -846,6 +897,8 @@ input[type=text] {
   background: none;
 
   font-weight: bold;
+
+  z-index: -1;
 }
 
 
@@ -2122,4 +2175,33 @@ width: 100%;
   transform: translate3d(-50%, -50%, 0);
 
   
+}
+
+#monumentPop{
+  position: absolute;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra orizzontalmente */
+  align-items: center;  
+
+  background-color: #174d00;
+
+  width: 25%;
+  height: 10%;
+
+  right: 0%;
+  bottom: 0%;
+
+  z-index: 100;
+}
+
+#monument {
+  font-size: 2cqw;
+}
+
+@keyframes colorBlink {
+  0% {  box-shadow: inset 0 0 0 2px white;}
+  40% { box-shadow: inset 0 0 0 2px red;}
+  100% { box-shadow: inset 0 0 0 2px white;}
 }

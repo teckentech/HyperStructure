@@ -69,7 +69,87 @@ class ShowableClass {
   constructor(options) {
     options = options || {}
 
+    this.popUp = options.popUp || {
+      monument1: false,
+      monument2: false,
+      monument3: false,
+      monument4: false,
+      monument5: false,
+      monument6: false,
+      monument7: false,
+      monument8: false,
+      monument9: false,
+      monument10: false,
+      monument11: false,
+      monument12: false,
+      monument13: false,
+      monument14: false,
+      monument15: false,
+      monument16: false,
+      monument17: false,
+      monument18: false,
+      monument19: false,
+      monument20: false,
+      monument21: false,
+      monument22: false,
+      monument23: false,
+      monument24: false,
+      monument25: false,
+      monument26: false,
+    }
+
+    this.flashIntervals = options.flashIntervals || {
+      coreTab: false,
+      hardwareTab: false,
+      A1: false,
+      A2: false,
+      A3: false,
+      A4: false,
+      A5: false,
+      A6: false,
+      A7: false,
+      A8: false,
+      A9: false,
+      progressTab: false,
+
+      token1: false,
+      token2: false,
+
+      component1Module: false,
+      component2Module: false,
+      component3Module: false,
+
+      componentsEquip: false,
+      componentsLevelUp: false,
+    }
+
+    this.flashState = options.flashState || {
+      coreTab: false,
+      hardwareTab: false,
+      A1: false,
+      A2: false,
+      A3: false,
+      A4: false,
+      A5: false,
+      A6: false,
+      A7: false,
+      A8: false,
+      A9: false,
+      progressTab: false,
+
+      token1: false,
+      token2: false,
+
+      component1Module: false,
+      component2Module: false,
+      component3Module: false,
+
+      componentsEquip: false,
+      componentsLevelUp: false,
+    };
+
     this.init = options.init || true;
+
     this.showable = options.showable || {
 
       offSave: false,
@@ -157,6 +237,9 @@ class ShowableClass {
 
       //potential
       breakthrough1: false, respecEnergy3: false, energyGrid3: false,
+
+      //pop
+      monumentPop: false,
     }
 
   }
@@ -192,6 +275,8 @@ class CanCall {
 class Components {
   constructor(options) {
     options = options || {}
+
+    this.levelUpMulti = options.levelUpMulti || false
 
     this.selected = options.selected || ""
 
@@ -645,6 +730,7 @@ class Canvas {
   constructor(options) {
     options = options || {}
 
+
     // it works with percetiles
     this.screen = options.screen || {
       line1: {
@@ -788,6 +874,13 @@ function saveGameData() {
 
 }
 
+function offSaveGameData() {
+  createSaveData()
+  const stringifiedData = JSON.stringify(saveData);
+  localStorage.setItem("HyperStructureSaveOff", stringifiedData);
+
+}
+
 function resetSave() {
   createClassInstance()
   createSaveData()
@@ -833,10 +926,7 @@ function exportSave() {
 }
 
 function offExportSave() {
-  saveGameData();
-  var exportSaveData = localStorage.getItem("HyperStructureSave");
-  var encryptedData = CryptoJS.AES.encrypt(exportSaveData, secretKey).toString();
-  document.getElementById("offSave").value = encryptedData;
+  offSaveGameData();
 }
 
 function importSave() {
@@ -853,6 +943,31 @@ function importSave() {
     }
   } catch (e) {
     console.error("Errore nella decifratura o parsing dei dati: ", e);
+  }
+  resetCanvas()
+
+  console.log(ITopProgress.actualProgress)
+
+  IShowableClass.init = true;
+}
+
+function offImportSave() {
+  IShowableClass.init = true;
+  resetSave()
+  if (localStorage.getItem("HyperStructureSaveOff") !== null) {
+
+    var encryptedData = JSON.parse(localStorage.getItem("HyperStructureSaveOff"));
+    try {
+      var savedGameData = encryptedData;
+      for (let x in savedGameData) {
+        saveGameData()
+        if (saveData[x]) {
+          deepMerge(saveData[x], savedGameData[x]);
+        }
+      }
+    } catch (e) {
+      console.error("Errore nella decifratura o parsing dei dati: ", e);
+    }
   }
   resetCanvas()
   IShowableClass.init = true;
@@ -877,41 +992,17 @@ function passiveImport() {
   }
 }
 
-function offImportSave() {
-  var encryptedData = document.getElementById("offSave").value;
-  const decryptedData = decryptData(encryptedData, secretKey);
-  try {
-    var savedGameData = JSON.parse(decryptedData);
-    for (let x in savedGameData) {
-      if (saveData[x]) {
-        deepMerge(saveData[x], savedGameData[x]);
-      }
+document.addEventListener('visibilitychange', function () {
+  if (document.hidden) {
+    // Salva i dati solo quando l'utente lascia la pagina
+    offExportSave();
+  } else {
+    // Importa i dati quando l'utente ritorna alla pagina
+    if (localStorage.getItem("HyperStructureSave") !== null) {
+      offImportSave();
     }
-  } catch (e) {
-    console.error("Errore nella decifratura o parsing dei dati: ", e);
   }
-}
-
-function salva(x) {
-  const dati = {};
-  for (let key of Object.keys(x)) {
-    dati[key] = this[key];
-  }
-  return dati;
-}
-
-function carica(a, b) {
-  var importedData = document.getElementById("Save").value;
-  localStorage.setItem("personaData", importedData);
-
-  const dati = localStorage.getItem('personaData');
-  if (dati) {
-    const parsedData = JSON.parse(dati);
-    var deepMergeValue = deepMerge(a, b);
-    return deepMergeValue;
-  }
-  return null;
-}
+});
 
 //COSE DA FARE/AGGIUNTE
 
@@ -1032,18 +1123,24 @@ function visualComponents() {
 
 function visualComponentInfo(id) {
 
+
+
   var sel = IComponents.components[id]
   IComponents.selected = id
 
   for (let x in IComponents.components) {
     var selId = document.getElementById(x)
     if (x == id) {
+
+      if (ITopProgress.actualProgress < 3) {
+        flashOnce("componentsEquip")
+      }
       selId.style.boxShadow = 'inset 0 0 0 0.15vw #ff0000';
 
-      if(x == IComponents.equipped[sel.tag1]){
+      if (x == IComponents.equipped[sel.tag1]) {
         update("componentsEquip", "UNEQUIP")
       }
-      else{
+      else {
         update("componentsEquip", "EQUIP")
       }
     }
@@ -1058,7 +1155,16 @@ function visualComponentInfo(id) {
     update("componentName", "");
     update("componentEffect", "");
 
-    update("componentsLevelUpDiv", "LEVEL UP: ")
+    update("componentsLevelUpDiv", "LEVEL UP ")
+
+    if (IComponents.levelUpMulti == false) {
+      update("componentsLevelUpMultiDiv", "1")
+    }
+    else {
+      update("componentsLevelUpMultiDiv", "<div>M</div><div>A</div><div>X</div>")
+
+      update("componentsLevelUpDiv", "<div>LEVEL UP </div>" + "<div>" + format(sel.price) + " " + sel.priceIdentity + "</div>")
+    }
   }
 
   else {
@@ -1067,7 +1173,25 @@ function visualComponentInfo(id) {
     update("componentName", sel.name);
     update("componentEffect", sel.description);
 
-    update("componentsLevelUpDiv", "<div>LEVEL UP: </div>" + "<div>" + format(sel.price) + " " + sel.priceIdentity + "</div>")
+    update("componentsLevelUpDiv", "<div>LEVEL UP </div>" + "<div>" + format(sel.price) + " " + sel.priceIdentity + "</div>")
+
+    if (IComponents.levelUpMulti == false) {
+      update("componentsLevelUpMultiDiv", "1")
+    }
+    else {
+      update("componentsLevelUpMultiDiv", "<div>M</div><div>A</div><div>X</div>")
+
+      update("componentsLevelUpDiv", "<div>LEVEL UP </div>" + "<div>" + format(sel.price) + " " + sel.priceIdentity + "</div>")
+    }
+  }
+}
+
+function componentsLevelUpMulti() {
+  if (IComponents.levelUpMulti == false) {
+    IComponents.levelUpMulti = true
+  }
+  else {
+    IComponents.levelUpMulti = false
   }
 }
 
@@ -1135,9 +1259,9 @@ function visualHardware() {
     if (selExp.priceIdentity != "") {
       var pId1 = selExp.priceIdentity + ":"
       var pId1P = format(selExp.price1)
-      
-      if(selExp.priceIdentity == "assimilated"){
-        var pId1 = "POPULATION:" 
+
+      if (selExp.priceIdentity == "assimilated") {
+        var pId1 = "POPULATION:"
       }
     }
     else {
@@ -1245,7 +1369,7 @@ function visualHardware() {
         div1 +
         div2 +
         div3 +
-        div4 + 
+        div4 +
         `<div class="defaultStyle">UNLOCKS ${selExp.unlocked}</div>`
 
     } else {
@@ -1253,12 +1377,12 @@ function visualHardware() {
         unlockShow(x, true)
 
         ItMonumentsGrid =
-        `<div class="monumentName defaultStyle">${selExp.name}</div>` +
-        div1 +
-        div2 +
-        div3 +
-        div4 +
-        `<div class="defaultStyle">UNLOCKS ${selExp.unlocked}</div>`
+          `<div class="monumentName defaultStyle">${selExp.name}</div>` +
+          div1 +
+          div2 +
+          div3 +
+          div4 +
+          `<div class="defaultStyle">UNLOCKS ${selExp.unlocked}</div>`
       }
 
       if (selExp.active) {
@@ -1451,6 +1575,9 @@ function automationActuator() {
 
 //EQUIP BUTTON
 function equipComponent(id, removeType) {
+  if (ITopProgress.actualProgress < 3) {
+    flashOnce("componentsLevelUp")
+  }
 
   if (id == "" && removeType != null) {
 
@@ -1501,8 +1628,9 @@ function buy(item, propertyToUpdate, priceIdentity, price, effect) {
     valuesSetter()
     return true
   }
-
-  valuesSetter()
+  else {
+    return false
+  }
 }
 
 //VALUTE
@@ -2313,10 +2441,10 @@ function valuesSetterDinamic() {
   if (IComponents.components.token6.active) {
     var token6Eff = 0.1
   }
-  else{
+  else {
     var token6Eff = 1
   }
-  
+
   var global1 = IEnergy.energyUpgrades.energyButton4.effect * ISoftware.upgrades.softUpgrade14.effect * token6Eff
   var global2 = ISoftware.upgrades.softUpgrade14.effect
 
@@ -2702,9 +2830,13 @@ document.getElementById("componentsLevelUp").onclick = function () {
 
   // Chiama la funzione buy passando l'oggetto, la proprietà da aggiornare e i parametri di prezzo ed effetto
   if (selectedComponent.level < selectedComponent.maxLevel) {
-    buy(selectedComponent, 'level', selectedComponent.priceIdentity, selectedComponent.price, 1);
-  }
+    if (IComponents.levelUpMulti == false) {
+      buy(selectedComponent, 'level', selectedComponent.priceIdentity, selectedComponent.price, 1);
 
+    } else {
+      buyMultiple(selectedComponent, 'level', 1);
+    }
+  }
 }
 
 document.getElementById("componentsEquip").onclick = function () {
@@ -2863,7 +2995,6 @@ function assignGroup(obj, element) {
   var sel = obj[element]
   var selGroup = ISelUpgrade.group[sel.group]
 
-console.log(selGroup)
   if (sel.active) {
     sel.active = false
     selGroup.num = selGroup.num - 1;
@@ -3222,6 +3353,9 @@ document.getElementById("A9").onclick = function () {
   changePage("global", "communication3")
 }
 
+document.getElementById("componentsLevelUpMulti").onclick = function () {
+  componentsLevelUpMulti()
+}
 
 function activateAutomation(aut) {
   if (IAutomation.automators[aut].active) {
@@ -3367,7 +3501,6 @@ function loopShow() {
   //initial
 
   if (IShowableClass.init) {
-    ITopProgress.actualProgress = 1;
 
     unlockShow("hardwareSummary", true)
     unlockShow("softwareSummary", false)
@@ -3461,17 +3594,33 @@ function loopShow() {
     unlockShow("assimilationBaseGridbutton2", true)
     unlockShow("assimilationBaseGridbutton3", true)
 
+    unlockShow("monumentPop", false)
+
     IShowableClass.init = false;
   }
 
   //valutes
 
-  if(IGameData.cells >= 100){
-    unlockShow("hardwareTab", true)
+  //setFlash("coreTab", false)
+  //flashOnce("coreTab")
+
+  if (ITopProgress.actualProgress < 3) {
+    flashOnce("component1Module")
+    flashOnce("token1")
   }
 
-  if(checkShow("hardwareTab")){
+  if (IGameData.cells >= 100) {
+    unlockShow("hardwareTab", true)
+    if (ITopProgress.actualProgress < 3) {
+      flashOnce("hardwareTab")
+    }
+  }
+
+  if (checkShow("hardwareTab")) {
     unlockShow("A1", true)
+    if (ITopProgress.actualProgress < 3) {
+      flashOnce("A1")
+    }
   }
 
   if (checkShow("A2")) {
@@ -3485,19 +3634,32 @@ function loopShow() {
   if (checkShow("core")) {
     unlockShow("core", true)
   }
+  
 
   if (ITopProgress.progress.p1Check()) {
     unlockShow("hardwareTab", true)
     if (ITopProgress.actualProgress < 2) {
       ITopProgress.actualProgress = 2;
+
+      if (checkShow("p2") == false) {
+        setFlash("progressTab", false)
+        flashOnce("progressTab")
+      }
+
       unlockShow("p2", true)
-      
+
     }
   }
 
   if (ITopProgress.progress.p2Check()) {
     if (ITopProgress.actualProgress < 3) {
       ITopProgress.actualProgress = 3;
+
+      if (checkShow("p3") == false) {
+        setFlash("progressTab", false)
+        flashOnce("progressTab")
+      }
+
       unlockShow("p3", true)
     }
   }
@@ -3506,6 +3668,12 @@ function loopShow() {
   if (ITopProgress.progress.p3Check()) {
     if (ITopProgress.actualProgress < 4) {
       ITopProgress.actualProgress = 4;
+
+      if (checkShow("p4") == false) {
+        setFlash("progressTab", false)
+        flashOnce("progressTab")
+      }
+
       unlockShow("p4", true)
     }
   }
@@ -3513,6 +3681,12 @@ function loopShow() {
   if (ITopProgress.progress.p4Check()) {
     if (ITopProgress.actualProgress < 5) {
       ITopProgress.actualProgress = 5;
+
+      if (checkShow("p5") == false) {
+        setFlash("progressTab", false)
+        flashOnce("progressTab")
+      }
+
       unlockShow("p5", true)
     }
   }
@@ -3520,6 +3694,12 @@ function loopShow() {
   if (ITopProgress.progress.p5Check()) {
     if (ITopProgress.actualProgress < 6) {
       ITopProgress.actualProgress = 6;
+
+      if (checkShow("p6") == false) {
+        setFlash("progressTab", false)
+        flashOnce("progressTab")
+      }
+
       unlockShow("p6", true)
     }
   }
@@ -3551,64 +3731,115 @@ function loopShow() {
   //monuments
 
   if (IExpansor.monuments.monument1.active) {
+
+    popUp("monument", "monument1")
+
+    if (ITopProgress.actualProgress < 3) {
+      if (checkShow("token2") == false) {
+        setFlash("component1Module", false)
+        flashOnce("component1Module")
+      }
+    }
+
     unlockShow("token2", true)
+
     unlockShow("monument2", true)
   }
 
   if (IExpansor.monuments.monument2.active) {
+
+      popUp("monument", "monument2")
+
     unlockShow("automation1", true)
     unlockShow("monument3", true)
   }
 
   if (IExpansor.monuments.monument3.active) {
+
+      popUp("monument", "monument3")
+
     unlockShow("expansor1U1", true)
     unlockShow("expansor1U2", true)
     unlockShow("monument4", true)
   }
 
   if (IExpansor.monuments.monument4.active) {
+
+      popUp("monument", "monument4")
+
     ISelUpgrade.group.group1.maxNum = 2;
     unlockShow("monument5", true)
   }
 
   if (IExpansor.monuments.monument5.active) {
+
+      popUp("monument", "monument5")
+
     unlockShow("A2", true)
     unlockShow("A3", true)
+    if (ITopProgress.actualProgress < 4) {
+      flashOnce("A2")
+      flashOnce("A3")
+    }
 
     ICanvas.screen.line1.active = true;
     ICanvas.screen.line2.active = true;
   }
 
   if (IExpansor.monuments.monument6.active) {
+
+      popUp("monument", "monument6")
+
     unlockShow("token3", true)
     unlockShow("visualModule2", true)
+    if (ITopProgress.actualProgress < 4) {
+      flashOnce("component2Module")
+    }
     unlockShow("monument7", true)
     unlockShow("softwareSummary", true)
   }
 
   if (IExpansor.monuments.monument7.active) {
+
+      popUp("monument", "monument7")
+
     unlockShow("automation2", true)
     unlockShow("monument8", true)
   }
 
   if (IExpansor.monuments.monument8.active) {
+
+      popUp("monument", "monument8")
+
     unlockShow("expansor2U1", true)
     unlockShow("expansor2U2", true)
     unlockShow("monument9", true)
   }
 
   if (IExpansor.monuments.monument9.active) {
+
+      popUp("monument", "monument9")
+
     ISelUpgrade.group.group3.maxNum = 2;
     unlockShow("monument10", true)
   }
 
   if (IExpansor.monuments.monument10.active) {
+
+      popUp("monument", "monument10")
+
     unlockShow("A6", true)
+    if (ITopProgress.actualProgress < 5) {
+      flashOnce("A6")
+    }
 
     ICanvas.screen.line5.active = true;
   }
 
   if (IExpansor.monuments.monument11.active) {
+
+      popUp("monument", "monument11")
+
     unlockShow("software1assimilationCenterInfo", true)
     unlockShow("software1assimilationCenter", true)
     unlockShow("softUpgrade4", true)
@@ -3616,12 +3847,24 @@ function loopShow() {
   }
 
   if (IExpansor.monuments.monument12.active) {
+
+      popUp("monument", "monument12")
+
     unlockShow("token4", true)
+    if (ITopProgress.actualProgress < 4) {
+      flashOnce("component2Module")
+    }
     unlockShow("monument13", true)
   }
 
   if (IExpansor.monuments.monument13.active) {
+
+      popUp("monument", "monument13")
+
     unlockShow("A5", true)
+    if (ITopProgress.actualProgress < 5) {
+      flashOnce("A5")
+    }
     unlockShow("energyValute", true)
 
     ICanvas.screen.line3.active = true;
@@ -3631,49 +3874,88 @@ function loopShow() {
     IExpansor.monuments.monument13.active
   ) {
     unlockShow("A4", true)
+    if (ITopProgress.actualProgress < 5) {
+      flashOnce("A4")
+    }
 
     ICanvas.screen.line4.active = true;
     ICanvas.screen.line6.active = true;
   }
 
   if (IExpansor.monuments.monument14.active) {
+
+      popUp("monument", "monument14")
+
     unlockShow("token8", true)
     unlockShow("token9", true)
+    if (ITopProgress.actualProgress < 5) {
+      flashOnce("component1Module")
+    }
     unlockShow("components1Tier2", true)
   }
 
   if (IExpansor.monuments.monument15.active) {
+
+      popUp("monument", "monument15")
+
     unlockShow("token10", true)
     unlockShow("token11", true)
+
+    if (ITopProgress.actualProgress < 5) {
+      flashOnce("component2Module")
+    }
     unlockShow("components2Tier2", true)
   }
 
   if (IExpansor.monuments.monument16.active) {
+
+      popUp("monument", "monument16")
+
     unlockShow("visualModule3", true)
+    if (ITopProgress.actualProgress < 5) {
+      flashOnce("component3Module")
+    }
     unlockShow("communicationSummary", true)
     unlockShow("token5", true)
     unlockShow("token6", true)
   }
 
   if (IExpansor.monuments.monument17.active) {
+
+      popUp("monument", "monument17")
+
     unlockShow("expansor3U1", true)
     unlockShow("expansor3U2", true)
     unlockShow("monument18", true)
   }
 
   if (IExpansor.monuments.monument18.active) {
+
+      popUp("monument", "monument18")
+
     ISelUpgrade.group.group4.maxNum = 2;
     unlockShow("monument19", true)
   }
 
   if (IExpansor.monuments.monument19.active) {
+
+      popUp("monument", "monument19")
+
     unlockShow("automation3", true)
     unlockShow("monument20", true)
   }
 
   if (IExpansor.monuments.monument20.active) {
+
+      popUp("monument", "monument20")
+
     unlockShow("A7", true)
     unlockShow("A8", true)
+
+    if (ITopProgress.actualProgress < 6) {
+      flashOnce("A7")
+      flashOnce("A8")
+    }
 
     ICanvas.screen.line7.active = true;
     ICanvas.screen.line8.active = true;
@@ -3682,12 +3964,18 @@ function loopShow() {
   }
 
   if (IExpansor.monuments.monument21.active) {
+
+      popUp("monument", "monument21")
+
     unlockShow("software2assimilationCenterInfo", true)
     unlockShow("software2assimilationCenter", true)
     unlockShow("softUpgrade7", true)
   }
 
   if (IExpansor.monuments.monument22.active) {
+
+      popUp("monument", "monument22")
+
     unlockShow("software3assimilationCenterInfo", true)
     unlockShow("software3assimilationCenter", true)
     unlockShow("softUpgrade10", true)
@@ -3695,13 +3983,23 @@ function loopShow() {
   }
 
   if (IExpansor.monuments.monument23.active) {
+
+      popUp("monument", "monument23")
+
     unlockShow("A9", true)
+
+    if (ITopProgress.actualProgress < 6) {
+      flashOnce("A9")
+    }
     ICanvas.screen.line11.active = true;
     ICanvas.screen.line12.active = true;
     unlockShow("potentialValute", true)
   }
 
   if (IExpansor.monuments.monument24.active) {
+
+      popUp("monument", "monument24")
+
     unlockShow("monument25", true)
     unlockShow("softUpgrade12", true)
     unlockShow("softUpgrade13", true)
@@ -3709,11 +4007,18 @@ function loopShow() {
   }
 
   if (IExpansor.monuments.monument25.active) {
+
+      popUp("monument", "monument25")
+
+
     unlockShow("monument26", true)
     unlockShow("token12", true)
   }
 
   if (IExpansor.monuments.monument26.active) {
+
+      popUp("monument", "monument26")
+
     unlockShow("respecEnergy3", true)
     unlockShow("energyGrid3", true)
     unlockShow("breakthrough1", true)
@@ -3765,7 +4070,7 @@ function changePage(type, page) {
     }
   }
 
-  if(type == "options") {
+  if (type == "options") {
     unlockShow("resetScreen", false)
     unlockShow("opaqueScreen2", false)
 
@@ -3775,7 +4080,7 @@ function changePage(type, page) {
     }
   }
 
-  if(type == "main") {
+  if (type == "main") {
     unlockShow("tutorial", false)
     unlockShow("opaqueScreen3", false)
 
@@ -3863,15 +4168,6 @@ function sec(x) {
   return x * temp
 }
 
-document.addEventListener('visibilitychange', function () {
-  if (document.hidden) {
-    exportSave()
-  }
-  if (document.hidden == false) {
-    importSave()
-    document.getElementById("Save").value = "";
-  }
-});
 //AUTOMATION
 
 function CanvasLines(selCanvas) {
@@ -3893,7 +4189,7 @@ function CanvasLines(selCanvas) {
 
       x = canvas.getContext("2d")
 
-      x.lineWidth = canvasWidth/100;
+      x.lineWidth = canvasWidth / 100;
 
       curvedX = canvasWidth * sel.startX
 
@@ -3920,7 +4216,7 @@ function resetCanvas() {
 //developer functions
 
 function addCells(x) {
-  IGameData.cells += IGameData.cellsProd * 100000000
+  IGameData.cells += IGameData.cellsProd * (10 ** 200)
   IGameData.assimilated = IGameData.assimilatedProd * 100000000
 }
 
@@ -3931,3 +4227,91 @@ function addPopulation(x) {
 function addEnergy(x) {
   IGameData.energy = IGameData.energyProd
 }
+
+function flashOnce(buttonId) {
+
+  if (!(IShowableClass.flashState[buttonId])) {
+    IShowableClass.flashState[buttonId] = true;
+    flashButtonColor(buttonId);
+  }
+}
+
+function flashButtonColor(buttonId) {
+  // Create a unique interval for each button based on its ID
+  IShowableClass.flashIntervals[buttonId] = true;
+}
+
+function flashLoopActuator() {
+  for (let x in IShowableClass.flashIntervals) {
+    var iter = IShowableClass.flashIntervals[x];
+
+    var button = document.getElementById(x);
+    if (iter === true) {
+      // If button is set to flash, toggle the box shadow for flashing effect
+      // The 'flashingState' for each button is tracked
+      if (button.flashingState) {
+        button.style.animation = `colorBlink 1s linear infinite`; // Color 1 (flashing)
+      } else {
+        button.style.animation = `` // Reset (no flash)
+      }
+      // Toggle flashing state for the next iteration
+      button.flashingState = !button.flashingState;
+    } else {
+      button.style.animation = `` // Reset (no flash)
+    }
+  }
+}
+
+// Run the flashing loop every 500ms
+var flashLoop = window.setInterval(function () {
+  flashLoopActuator();
+}, 1000);
+
+document.addEventListener('click', function (event) {
+  if (event.target.tagName === 'BUTTON') {
+    resetFlash(event.target.id)
+  }
+});
+
+function resetFlash(target) {
+  IShowableClass.flashIntervals[target] = false; // Clear the flashing interval for this button
+  var element = document.getElementById(target)
+  element.style.boxShadow = ``; // Color 1
+}
+
+function setFlash(target, status) {
+  IShowableClass.flashState[target] = status
+}
+
+function buyMultiple(item, propertyToUpdate, effect) {
+
+
+  while (buy(item, propertyToUpdate, item.priceIdentity, item.price, effect)) {
+    if(item.level > item.maxLevel - 1){
+      return
+    }
+  }
+}
+
+function popUp(popScreen, element) {
+  if (popScreen == "monument") {
+    if (IShowableClass.popUp[element] == false) {
+
+      IShowableClass.popUp[element] = true
+
+      var el = IExpansor.monuments[element]
+
+      update("monumentPop", `<div>${el.name}</div><div>UNLOCKS ${el.unlocked}</div>`)
+
+      unlockShow("monumentPop", true)
+
+      setTimeout(() => {
+        unlockShow("monumentPop", false)
+      }, 10000);
+    }
+  }
+}
+
+var popTime = window.setInterval(function () {
+  unlockShow("monumentPop", false)
+}, 30000)
